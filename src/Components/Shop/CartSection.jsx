@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const CartSection = ({ cart, shopId, removeFromCart }) => {
-  console.log(cart?.length);
 
   const sendOrder = () => {
     axios.post("", {

@@ -13,6 +13,11 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (JSON.parse(localStorage.getItem("liked")) === "") {
+      const liked = [];
+      localStorage.setItem("liked", JSON.stringify(liked));
+    }
+    console.log(localStorage.getItem("liked"));
     getShops("mock.json"); // /shops/shops
   }, [])
 
@@ -34,7 +39,6 @@ const HomePage = () => {
     setIsLoading(true);
     axios.get(url)
       .then((res) => {
-        //console.log(res.data)
         setShopList(res.data)
         setIsLoading(false);
       })
