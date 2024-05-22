@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "Burger King",
+  "address": "Via Calamattia, 5, 09134 Cagliari",
+  "description": "Fast food",
+  "image": "/media/images/burger-king-logo.jpg",
+  "products": [
+      {
+          "id": 1,
+          "shop": 1,
+          "name": "CheesBurger",
+          "product_image": "/media/images/cheesburger.jpeg",
+          "description": "Pane, hamburger, cheddar, ketchup",
+          "price": 5.0,
+          "available_amount": 197
+      }
+  ]
+}

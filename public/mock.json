@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "nome attività",
+        "address": "indirizzo",
+        "description": "descrizione",
+        "image": "immagine"
+    },
+    {
+        "id": 2,
+        "name": "nome attività",
+        "address": "indirizzo",
+        "description": "descrizione",
+        "image": "immagine"
+    },
+    {
+        "id": 3,
+        "name": "nome attività",
+        "address": "indirizzo",
+        "description": "descrizione",
+        "image": "immagine"
+    },
+    {
+        "id": 4,
+        "name": "nome attività",
+        "address": "indirizzo",
+        "description": "descrizione",
+        "image": "immagine"
+    }
+]

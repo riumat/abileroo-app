@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "dbfb880c-fa2a-481a-a3d9-e8a4f04b38a8",
+		"name": "Abileroo Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25823724"
+	},
+	"item": [
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Shop list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 1,\n        \"name\": \"Burger King\",\n        \"address\": \"Via Calamattia, 5, 09134 Cagliari CA\",\n        \"description\": \"Burger King fast food\",\n        \"palle\": 4\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/shops/a-z/",
+						"description": "List of all shops ordered by shop id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get shop details with list of products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/shop/1/"
+					},
+					"response": []
+				},
+				{
+					"name": "Post new Shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/api/shops/all/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get product by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/product/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get products by shop name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/product/s_name/Su Stampu/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Get products by shop name from a to z",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/product/s_name/Su Stampu/a-z"
+					},
+					"response": []
+				},
+				{
+					"name": "Get products by shop name from z to a",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/product/s_name/Su Stampu/z-a"
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of products by shop id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/products/shop_id/2/"
+					},
+					"response": []
+				},
+				{
+					"name": "POST new product for a shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"shop\": 2,\n    \"name\": \"Prosciutto e funghi\",\n    \"description\": \"Mozzarella, pomodoro., prosciutto, funghi\",\n    \"price\": 7.0,\n    \"available_amount\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/products/shop_id/2/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get orders by email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"mario.rossi@email.it\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders/email"
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/order/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Post new order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Order\": {\n        \"id\": 1,\n        \"date_time_delivery\": \"2022-12-06T10:35:30Z\",\n        \"address\": \"Via Roma 50, Cagliari CA\",\n        \"client_email\": \"mario.rossi@email.it\",\n        \"shipped\": false,\n        \"delivered\": false,\n        \"shop\": 1,\n    },\n    \"Order_detail\": [\n        {\n            \"id\": 1,\n            \"amount\": 5,\n            \"order\": 1,\n            \"product\": 1\n        },\n        {\n            \"id\": 2,\n            \"amount\": 1,\n            \"order\": 1,\n            \"product\": 2\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get orders list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/orders/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mario_rossi\",\n    \"password\": \"customerpsw\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/login/"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
