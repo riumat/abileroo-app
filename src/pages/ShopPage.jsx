@@ -35,17 +35,17 @@ const ShopPage = () => {
 
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex gap-5 items-center">
-        <img src={shopData?.image} alt="" width={100} height={100} className="border border-black rounded-full" />
+    <div className="flex flex-col gap-10">
+      <div className="flex gap-7 items-center">
+        <img src={shopData?.image} alt="" width={130} height={130} className="border border-black rounded-full" />
         <div className="flex flex-col gap-3">
-          <p className="text-[40px]">{shopData?.name}</p>
+          <p className="text-[40px] font-semibold">{shopData?.name}</p>
           <p>{shopData?.description}</p>
           <p>{shopData?.address}</p>
         </div>
       </div>
-      <div>
-        <p className="text-[18px] font-bold">Products</p>
+      <div className="flex flex-col gap-3">
+        <p className="text-[20px] font-bold">Products</p>
         <div className="">
           {products?.map((p, i) => (
             <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />

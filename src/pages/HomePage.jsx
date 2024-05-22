@@ -34,7 +34,7 @@ const HomePage = () => {
     setIsLoading(true);
     axios.get(url)
       .then((res) => {
-        console.log(res)
+        //console.log(res.data)
         setShopList(res.data)
         setIsLoading(false);
       })
@@ -49,11 +49,12 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      
-      <Searchbar searchByName={searchByName} />
 
-      <SortControls orderedList={orderedList} />
+      <div className="flex gap-10">
+        <Searchbar searchByName={searchByName} />
 
+        <SortControls orderedList={orderedList} />
+      </div>
       <ShopList shopList={shopList} error={error} isLoading={isLoading} />
 
     </div>

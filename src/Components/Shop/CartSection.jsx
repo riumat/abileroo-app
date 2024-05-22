@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const CartSection = ({ cart, shopId, removeFromCart }) => {
-  
+  console.log(cart?.length);
+
   const sendOrder = () => {
     axios.post("", {
       "id": 1,
@@ -26,8 +27,16 @@ const CartSection = ({ cart, shopId, removeFromCart }) => {
 
   return (
     <div>
+      <div className="flex gap-10 items-center">
+        <p>Cart:</p>
+        {cart?.length === 0 ? (
+          <button className="p-3 bg-blue-600/40 text-white/40 rounded-2xl cursor-not-allowed " disabled onClick={sendOrder}>Click to Order</button>
+        ) : (
+          <button className="p-3 bg-blue-600 text-white rounded-2xl " onClick={sendOrder}>Click to Order</button>
+        )}
+      </div>
       <ul>
-        <p>Selected products</p>
+
         <div className="flex flex-col gap-1">
           {cart?.map((p, i) => (
             <li key={`cart-${i}`} className="flex justify-between hover:bg-slate-200 p-2 rounded-xl">
@@ -37,7 +46,6 @@ const CartSection = ({ cart, shopId, removeFromCart }) => {
           ))}
         </div>
       </ul>
-      <button className="p-3 bg-blue-600 text-white rounded-2xl " onClick={sendOrder}>Click to Order</button>
     </div>
 
   )
