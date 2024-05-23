@@ -4,13 +4,14 @@ import CartSection from "../Components/Shop/CartSection";
 import { AiOutlineLike, AiOutlineDislike, AiFillAccountBook } from "react-icons/ai";
 import { axiosBase } from "../constants";
 import axios from "axios";
-import { json } from "react-router";
+import { useParams } from "react-router";
 
 const ShopPage = () => {
   const [products, setProducts] = useState();
   const [shopData, setShopData] = useState();
   const [cart, setCart] = useState([]);
   const [isLiked, setIsLiked] = useState();
+  const { shopId } = useParams();
 
   const addToCart = (id, name, price) => {
     setCart([...cart, { "id": id, "name": name, "price": price }]);
@@ -45,7 +46,8 @@ const ShopPage = () => {
   }
 
   useEffect(() => {
-    axios.get(`../mockShop.json`) ///shops/shop/${shopId}
+    console.log(shopId);
+    axios.get(`../mockShop${shopId}.json`) ///shops/shop/${shopId}
       .then(res => {
         setProducts(res.data.products);
         setShopData({
@@ -58,7 +60,7 @@ const ShopPage = () => {
         return res.data
       })
       .then(data => isInLiked(data.id))
-        .catch(error => console.log(error));
+      .catch(error => console.log(error));
   }, [])
 
 

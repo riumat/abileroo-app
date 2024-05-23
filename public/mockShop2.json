@@ -1,0 +1,18 @@
+{
+  "id": 2,
+  "name": "Su Stampu",
+  "address": "Corso Vittorio Emanuele II 78, 09134, Cagliari",
+  "description": "Pizzeria",
+  "image": "/media/images/su_stampu_logo.png",
+  "products": [
+      {
+          "id": 3,
+          "shop": 2,
+          "name": "Margherita",
+          "product_image": "/media/images/Margherita_aHzsuz5.jpg",
+          "description": "Pomodoro, mozzarella, basilico",
+          "price": 4.5,
+          "available_amount": 48
+      }
+  ]
+}

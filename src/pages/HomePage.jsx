@@ -13,7 +13,7 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("liked")) === "") {
+    if (localStorage.getItem("liked") === "") {
       const liked = [];
       localStorage.setItem("liked", JSON.stringify(liked));
     }
