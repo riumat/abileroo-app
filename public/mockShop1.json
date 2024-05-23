@@ -3,7 +3,7 @@
   "name": "Burger King",
   "address": "Via Calamattia, 5, 09134 Cagliari",
   "description": "Fast food",
-  "image": "/media/images/burger-king-logo.jpg",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBaezZuZ0r_apyCTYzy6wo39QbfnVDHN6GQqZ2y5Gptw&s",
   "products": [
       {
           "id": 1,

@@ -8,18 +8,14 @@ import AuthPage from './pages/AuthPage';
 function App() {
   return (
     <BrowserRouter>
-      <main className="w-screen h-screen">
+      <main className="absolute w-full h-full t-0 l-0 bg-slate-200 overflow-x-hidden">
 
-        <div className='container m-auto flex flex-col gap-10'>
-
-          <Navbar />
+        <div className='flex flex-col gap-10 h-full mx-5'>
 
           <Routes>
-
             <Route exact path='/' element={<AuthPage />} />
             <Route path='/home' element={<HomePage />} />
             <Route path='/shop/:shopId' element={<ShopPage />} />
-
           </Routes>
         </div>
 

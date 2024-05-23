@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom"
+import Logo from "./Logo"
+import SettingsDropdown from "./Navbar/SettingsDropdown";
+import TranslateDropdown from "./Navbar/TranslateDropdown";
+
 
 const Navbar = () => {
+
   return (
-    <nav className="rounded-3xl bg-blue-600 text-white flex items-center p-3 w-30% mt-5">
-      <Link to={"/"}>
-        <p className="font-bold text-[18px] ps-5">Abileroo</p>
-        </Link>
+    <nav className=" flex items-center p-3 pt-5 justify-between bg-white rounded-b-lg shadow">
+      <Link to={"/"} className="ms-10">
+        <Logo  />
+      </Link>
+      <div className="flex gap-5 me-10">
+        <TranslateDropdown />
+        <SettingsDropdown/>
+      </div>
     </nav>
   )
 }

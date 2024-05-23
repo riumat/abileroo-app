@@ -4,8 +4,9 @@ import { axiosBase } from "../constants";
 import axios from "axios";
 import SortControls from "../Components/Shop/SortControls";
 import ShopList from "../Components/Shop/ShopList";
-
-
+import Navbar from "../Components/Navbar";
+import Sidebar from "../Components/Sidebar";
+import Cart from "../Components/Cart/Cart";
 
 const HomePage = () => {
   const [shopList, setShopList] = useState();
@@ -17,6 +18,7 @@ const HomePage = () => {
       const liked = [];
       localStorage.setItem("liked", JSON.stringify(liked));
     }
+    
     console.log(localStorage.getItem("liked"));
     getShops("mock.json"); // /shops/shops
   }, [])
@@ -33,8 +35,6 @@ const HomePage = () => {
     }
   }
 
-
-
   const getShops = (url) => {
     setIsLoading(true);
     axios.get(url)
@@ -46,21 +46,23 @@ const HomePage = () => {
         setError(true);
         console.log(error);
       })
-
   }
-
-
-
   return (
     <div className="flex flex-col gap-5">
+      <Navbar />
+      <div className="flex gap-3">
+        <Sidebar/>
+        <div className="flex flex-col gap-5 flex-1">
 
-      <div className="flex gap-10">
-        <Searchbar searchByName={searchByName} />
+          <div className="flex gap-10">
+            <Searchbar searchByName={searchByName} />
 
-        <SortControls orderedList={orderedList} />
+            <SortControls orderedList={orderedList} />
+          </div>
+          <ShopList shopList={shopList} error={error} isLoading={isLoading} />
+        </div>
+        <Cart/>
       </div>
-      <ShopList shopList={shopList} error={error} isLoading={isLoading} />
-
     </div>
   )
 }

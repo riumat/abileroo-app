@@ -4,7 +4,7 @@
         "name": "Burger King",
         "address": "Via Calamattia, 5, 09134 Cagliari",
         "description": "Fast food",
-        "image": "http://1752-93-61-90-162.ngrok-free.app/media/images/burger-king-logo.jpg"
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBaezZuZ0r_apyCTYzy6wo39QbfnVDHN6GQqZ2y5Gptw&s"
     },
     {
         "id": 2,
@@ -12,5 +12,21 @@
         "address": "Corso Vittorio Emanuele II 78, 09134, Cagliari",
         "description": "Pizzeria",
         "image": "http://1752-93-61-90-162.ngrok-free.app/media/images/su_stampu_logo.png"
+    },
+    {
+        "id": 3,
+        "name": "Mc Donalds",
+        "address": "Via Giovanni Maria Dettori 34, 09124, Cagliari",
+        "description": "Fast Food",
+        "image": "https://s3-symbol-logo.tradingview.com/mcdonalds--600.png"
+    },
+   
+    {
+        "id": 5,
+        "name": "Evelyn Pizzeria",
+        "address": "Via Giuseppe Peretti 2A, 0947, Cagliari",
+        "description": "Pizzeria",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTFBgwBIcQ5D3O1Um7EyYruWIzwHERW9vaJw&s"
     }
+    
 ]

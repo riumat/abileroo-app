@@ -5,7 +5,7 @@ const ShopList = ({ shopList, error, isLoading }) => {
   if (error) return <p>Error fetching ac data</p>
   if (isLoading) return <p>Loading...</p>
   return (
-    <div className="grid grid-cols-2 gap-x-4 gap-y-5">
+    <div className="flex flex-col gap-3">
       {shopList?.map((shop, i) => (
         <Link key={`ac-${i}`} to={`/shop/${shop.id}`} className="cursor-pointer">
           <ShopCard ac={shop} />
