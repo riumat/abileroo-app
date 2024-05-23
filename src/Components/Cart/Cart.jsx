@@ -2,7 +2,7 @@ import { FaShoppingCart } from "react-icons/fa";
 //TODO cart dinamic
 const Cart = () => {
   return (
-    <div className="bg-white rounded-lg w-60 flex flex-col items-center">
+    <div className="bg-white rounded-lg shadow w-60 flex flex-col items-center">
       <div className="py-10">
         <FaShoppingCart className="w-10 h-10 " />
       </div>

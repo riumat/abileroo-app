@@ -54,7 +54,7 @@ const HomePage = () => {
         <Sidebar/>
         <div className="flex flex-col gap-5 flex-1">
 
-          <div className="flex gap-10">
+          <div className="flex gap-3">
             <Searchbar searchByName={searchByName} />
 
             <SortControls orderedList={orderedList} />
