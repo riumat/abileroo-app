@@ -7,7 +7,7 @@ const ShopList = ({ shopList, error, isLoading }) => {
   return (
     <div className="grid grid-cols-2 gap-x-4 gap-y-5">
       {shopList?.map((shop, i) => (
-        <Link key={`ac-${i}`} to={`shop/${shop.id}`} className="cursor-pointer">
+        <Link key={`ac-${i}`} to={`/shop/${shop.id}`} className="cursor-pointer">
           <ShopCard ac={shop} />
         </Link>
       ))}
