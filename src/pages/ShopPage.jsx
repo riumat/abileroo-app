@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import axios from "axios";
 import { useParams } from "react-router";
 import Cart from "../Components/Cart/Cart";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
-import { FaStar } from "react-icons/fa";
+import Info from "../Components/Shop/Info";
 
 const ShopPage = () => {
   const [shopData, setShopData] = useState();
@@ -57,7 +56,7 @@ const ShopPage = () => {
           "description": res.data.description,
           "image": res.data.image,
           "rating": res.data.rating,
-          "products":res.data.products,
+          "products": res.data.products,
         });
         return res.data
       })
@@ -81,44 +80,18 @@ const ShopPage = () => {
               <p className="text-[40px] font-semibold">{shopData?.name}</p>
             </div>
 
-            <div className="component-card rounded-lg flex justify-between w-full py-5  text-slate-700">
-              <div className="border-r border-slate-400  items-center flex justify-center flex-1">
-                {isLiked ? (
-                  <AiOutlineDislike className="w-7 h-7 cursor-pointer" onClick={() => dislikeShop(shopData?.id)} />
-                ) : (
-                  <AiOutlineLike className="w-7 h-7 cursor-pointer" onClick={() => likeShop(shopData?.id)} />
-                )
-                }
-              </div>
+            <Info
+              isLiked={isLiked}
+              likeShop={likeShop}
+              dislikeShop={dislikeShop}
+              rating={shopData?.rating}
+              description={shopData?.description}
+              address={shopData?.address}
+              id={shopData?.id}
+            />
 
-              <div className="border-r border-slate-400  flex flex-col items-center gap-2  justify-center flex-1">
-                <p className="text-[14px] text-slate-500">Rate by other users</p>
-                <div className="flex">
-                  {[...Array(shopData?.rating)].map((star, i) => (
-                    <FaStar key={`star-${i}`} />
-                  ))
-                  }
-                </div>
-              </div>
-
-              <div className="border-r border-slate-400  items-center flex flex-col gap-2 justify-center flex-1">
-                <p className="text-[14px] text-slate-500">Type</p>
-                <p>{shopData?.description}</p>
-              </div>
-
-              <div className="items-center flex justify-center gap-2  flex-1">
-                <div className="flex flex-col items-center">
-                  {shopData?.address.map((el, i) => (
-                    <p key={`address-key-${i}`} className="text-[13px] text-center">{el}</p>
-                  ))}</div>
-              </div>
-
-            </div>
-
-            <div className="flex flex-col gap-3">
-
-            </div>
           </div>
+
           <div className="flex flex-col gap-7">
             <p className="text-[23px] font-bold text-center">Products</p>
             <div className="grid grid-cols-3 justify-items-center gap-x-4 gap-y-7">
@@ -127,30 +100,13 @@ const ShopPage = () => {
               ))}
             </div>
           </div>
+
         </div>
+
         <Cart cart={cart} removeFromCart={removeFromCart} />
+
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   )
 }
 

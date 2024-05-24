@@ -10,6 +10,13 @@ const Cart = ({ cart, removeFromCart }) => {
     setTotal(newTotal);
   }, [cart]);
 
+  const sendOrder=()=>{
+    console.log("success");
+   /*  axios.post("",{
+
+    }) */
+  }
+
   return (
     <div className="bg-white rounded-lg shadow w-64 flex flex-col px-5">
       <div className="py-10 flex justify-center">
@@ -35,7 +42,9 @@ const Cart = ({ cart, removeFromCart }) => {
               ))}
             </div>
             <p className="text-[18px] font-semibold text-center"> Total: {total} €</p>
+            <button className="p-3 bg-blue-900 text-white rounded-lg " onClick={sendOrder}>Send Order</button>
           </div>
+          
 
         )}
       </div>
