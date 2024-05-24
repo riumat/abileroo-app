@@ -8,6 +8,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import Info from "../Components/Shop/Info";
 
 const ShopPage = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [shopData, setShopData] = useState();
   const [cart, setCart] = useState([]);
   const [isLiked, setIsLiked] = useState();
@@ -44,6 +45,11 @@ const ShopPage = () => {
     localStorage.setItem("liked", JSON.stringify(liked));
     isInLiked(id);
   }
+//TODO Toggle Modal for Cart
+  const toggleModal = () => {
+    console.log("asd")
+    setIsCartOpen(prev => !prev)
+  }
 
 
   useEffect(() => {
@@ -68,7 +74,7 @@ const ShopPage = () => {
   return (
 
     <div className="flex flex-col gap-5">
-      <Navbar />
+      <Navbar  /> 
       <div className="flex gap-3">
         <Sidebar />
         <div className="flex flex-col gap-5 flex-1">
@@ -95,7 +101,7 @@ const ShopPage = () => {
 
           <div className="flex flex-col gap-7">
             <p className="text-[23px] font-bold text-center">Products</p>
-            <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7">
+            <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7 mb-10">
               {shopData?.products?.map((p, i) => (
                 <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />
               ))}
@@ -103,12 +109,13 @@ const ShopPage = () => {
           </div>
 
         </div>
-        <div className="hidden lg:visible">
+        {!isCartOpen && (
           <Cart cart={cart} removeFromCart={removeFromCart} />
-        </div>
-
+        )}
       </div>
+
     </div>
+
   )
 }
 

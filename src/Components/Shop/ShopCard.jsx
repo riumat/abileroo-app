@@ -7,10 +7,10 @@ const ShopCard = ({ ac }) => {
 
       <div className="flex lg:gap-2  items-start">
         <div className="lg:px-5 border-e border-slate-300">
-          <p className="lg:text-[30px] ">{ac?.name}</p>
+          <p className="lg:text-[25px] ">{ac?.name}</p>
 
         </div>
-        
+
         <div className="lg:px-5 text-slate-700 flex flex-col  justify-center lg:text-[14px] ">
           <p>{ac?.address}</p>
           <p>{ac?.description}</p>

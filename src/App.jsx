@@ -13,7 +13,7 @@ function App() {
         <div className='flex flex-col gap-10 h-full mx-5'>
 
           <Routes>
-            <Route exact path='/' element={<AuthPage />} />
+            <Route exact path='/' element={<AuthPage  />} />
             <Route path='/home' element={<HomePage />} />
             <Route path='/shop/:shopId' element={<ShopPage />} />
           </Routes>

@@ -4,7 +4,6 @@ import axios from "axios";
 import SortControls from "../Components/Shop/SortControls";
 import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
-import Cart from "../Components/Cart/Cart";
 import Navbar from "../Components/Navbar/Navbar";
 
 const HomePage = () => {
@@ -75,9 +74,7 @@ const HomePage = () => {
           </div>
           <ShopList shopList={shopList} error={error} isLoading={isLoading} />
         </div>
-        <div className="hidden lg:visible">
-          <Cart cart={new Array()} />
-        </div>
+        
       </div>
     </div>
   )
