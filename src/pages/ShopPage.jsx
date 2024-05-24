@@ -79,16 +79,17 @@ const ShopPage = () => {
               <img src={shopData?.image} alt="" className="w-[130px] h-[130px] border border-black rounded-full" />
               <p className="text-[40px] font-semibold">{shopData?.name}</p>
             </div>
-
-            <Info
-              isLiked={isLiked}
-              likeShop={likeShop}
-              dislikeShop={dislikeShop}
-              rating={shopData?.rating}
-              description={shopData?.description}
-              address={shopData?.address}
-              id={shopData?.id}
-            />
+            {shopData && (
+              <Info
+                isLiked={isLiked}
+                likeShop={likeShop}
+                dislikeShop={dislikeShop}
+                rating={shopData.rating}
+                description={shopData.description}
+                address={shopData.address}
+                id={shopData.id}
+              />
+            )}
 
           </div>
 
