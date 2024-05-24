@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
 import Searchbar from "../Components/Searchbar";
-import { axiosBase } from "../constants";
 import axios from "axios";
 import SortControls from "../Components/Shop/SortControls";
 import ShopList from "../Components/Shop/ShopList";
-import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import Cart from "../Components/Cart/Cart";
+import Navbar from "../Components/Navbar/Navbar";
 
 const HomePage = () => {
   const [shopList, setShopList] = useState();
@@ -14,11 +13,8 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem("liked") === "") {
-      const liked = [];
-      localStorage.setItem("liked", JSON.stringify(liked));
-    }
-    
+    const liked = JSON.parse(localStorage.getItem("liked")) || [];
+    localStorage.setItem("liked", JSON.stringify(liked));
     console.log(localStorage.getItem("liked"));
     getShops("mock.json"); // /shops/shops
   }, [])
@@ -28,21 +24,39 @@ const HomePage = () => {
   }
 
   const orderedList = (isToOrder) => {
+
+    const sortShops = (shops, isAscending) => {
+      return shops.slice().sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        if (isAscending) {
+          if (nameA < nameB) return -1;
+          if (nameA > nameB) return 1;
+        } else {
+          if (nameA > nameB) return -1;
+          if (nameA < nameB) return 1;
+        }
+        return 0;
+      });
+    };
+
     if (isToOrder) {
-      getShops("mock.json"); ///shops/shops/?ordering=name
+      console.log("asc");
+      setShopList(sortShops(shopList, true));
     } else {
-      getShops("mock.json"); ///shops/shops/?ordering=-name
+      console.log("desc");
+      setShopList(sortShops(shopList, false));
     }
-  }
+  };
 
   const getShops = (url) => {
     setIsLoading(true);
     axios.get(url)
-      .then((res) => {
+      .then(res => {
         setShopList(res.data)
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         setError(true);
         console.log(error);
       })
@@ -51,7 +65,7 @@ const HomePage = () => {
     <div className="flex flex-col gap-5">
       <Navbar />
       <div className="flex gap-3">
-        <Sidebar/>
+        <Sidebar />
         <div className="flex flex-col gap-5 flex-1">
 
           <div className="flex gap-3">
@@ -61,7 +75,7 @@ const HomePage = () => {
           </div>
           <ShopList shopList={shopList} error={error} isLoading={isLoading} />
         </div>
-        <Cart/>
+        <Cart cart={new Array()} />
       </div>
     </div>
   )

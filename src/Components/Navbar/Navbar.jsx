@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import Logo from "./Logo"
-import SettingsDropdown from "./Navbar/SettingsDropdown";
-import TranslateDropdown from "./Navbar/TranslateDropdown";
+import Logo from "../Logo"
+import SettingsDropdown from "./SettingsDropdown";
+import TranslateDropdown from "./TranslateDropdown";
 
 
 const Navbar = () => {

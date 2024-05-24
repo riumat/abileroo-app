@@ -1,16 +1,10 @@
-import { sidebarDiscover } from "../constants"
 import { FaShop } from "react-icons/fa6";
-
 import { IoIosTrendingUp } from "react-icons/io";
 import { FaPersonWalkingDashedLineArrowRight } from "react-icons/fa6";
 import { RiDiscountPercentLine } from "react-icons/ri";
 import { MdOutlineDiscount, MdOutlineSettingsAccessibility } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRegCreditCard } from "react-icons/fa6";
-
-
-import ListItems from "./ListItems";
-
 
 
 const Sidebar = () => {
@@ -53,7 +47,6 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-     
 
       <div className="flex flex-col gap-5 border-b py-3">
         <p className="font-semibold">Your Area</p>

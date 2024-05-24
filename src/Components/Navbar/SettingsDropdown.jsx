@@ -15,7 +15,7 @@ const SettingsDropdown = () => {
         className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-2 text-[14px]"
       >
         {settingsOptions.map((option, i) => (
-          <div className="p-4 cursor-pointer hover:bg-slate-300 w-full rounded-md" >
+          <div key={`optiondropdown-${i}`} className="p-4 cursor-pointer hover:bg-slate-300 w-full rounded-md" >
             <p >{option} </p>
           </div>
         ))}

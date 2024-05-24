@@ -1,28 +1,20 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
-import CartSection from "../Components/Shop/CartSection";
-import { AiOutlineLike, AiOutlineDislike, AiFillAccountBook } from "react-icons/ai";
-import { axiosBase } from "../constants";
+import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import axios from "axios";
 import { useParams } from "react-router";
 import Cart from "../Components/Cart/Cart";
-import Searchbar from "../Components/Searchbar";
-import SortControls from "../Components/Shop/SortControls";
 import Sidebar from "../Components/Sidebar";
-import Navbar from "../Components/Navbar";
-
+import Navbar from "../Components/Navbar/Navbar";
 import { FaStar } from "react-icons/fa";
 
-
 const ShopPage = () => {
-  const [products, setProducts] = useState();
   const [shopData, setShopData] = useState();
   const [cart, setCart] = useState([]);
   const [isLiked, setIsLiked] = useState();
-  const [address, setAddress] = useState([]);
   const { shopId } = useParams();
 
-  const addToCart = (id, name, price) => {
+  const addToCart = ({ id, name, price }) => {
     setCart([...cart, { "id": id, "name": name, "price": price }]);
   }
 
@@ -33,7 +25,7 @@ const ShopPage = () => {
   }
 
   const isInLiked = (id) => {
-    const liked = JSON.parse(localStorage.getItem("liked"));
+    const liked = JSON.parse(localStorage.getItem("liked")) || [];
     setIsLiked(liked.includes(id));
   }
 
@@ -54,38 +46,22 @@ const ShopPage = () => {
     isInLiked(id);
   }
 
-  const searchByName = () => {
-
-  }
-  const orderedList = () => {
-
-  }
-
-  const splitAddress = (string) => {
-    setAddress(string.split(","));
-  }
-
 
   useEffect(() => {
-    console.log(shopId);
     axios.get(`../mockShop${shopId}.json`) ///shops/shop/${shopId}
       .then(res => {
-        setProducts(res.data.products);
         setShopData({
           "id": res.data.id,
           "name": res.data.name,
-          "address": res.data.address,
+          "address": res.data.address.split(","),
           "description": res.data.description,
           "image": res.data.image,
-          "rating": res.data.rating
+          "rating": res.data.rating,
+          "products":res.data.products,
         });
         return res.data
       })
-      .then(data => {
-        isInLiked(data.id)
-        splitAddress(data.address)
-      })
-
+      .then(data => isInLiked(data.id))
       .catch(error => console.log(error));
   }, [])
 
@@ -132,8 +108,8 @@ const ShopPage = () => {
 
               <div className="items-center flex justify-center gap-2  flex-1">
                 <div className="flex flex-col items-center">
-                  {address.map((el, i) => (
-                    <p className="">{el}</p>
+                  {shopData?.address.map((el, i) => (
+                    <p key={`address-key-${i}`} className="text-[13px] text-center">{el}</p>
                   ))}</div>
               </div>
 
@@ -146,13 +122,13 @@ const ShopPage = () => {
           <div className="flex flex-col gap-7">
             <p className="text-[23px] font-bold text-center">Products</p>
             <div className="grid grid-cols-3 justify-items-center gap-x-4 gap-y-7">
-              {products?.map((p, i) => (
+              {shopData?.products?.map((p, i) => (
                 <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />
               ))}
             </div>
           </div>
         </div>
-        <Cart />
+        <Cart cart={cart} removeFromCart={removeFromCart} />
       </div>
     </div>
 

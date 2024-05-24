@@ -21,22 +21,5 @@ export const settingsOptions = [
   "Logout"
 ];
 
-export const sidebarDiscover = {
-  "shops": [
-    "Trending Shops",
-    "Shops Near You",
-    "All Shops"
-  ],
-  "products": [
-    "All products",
-    "50% Discount"
-  ]
-}
 
-export const sidebarUser = [
-  "Account Settings",
-  "Your Orders",
-  "Payment Methods",
-
-]
 
