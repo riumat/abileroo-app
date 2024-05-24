@@ -75,9 +75,9 @@ const ShopPage = () => {
 
           <div className="flex flex-col gap-7 items-center">
 
-            <div className="component-card rounded-lg py-7 px-32 flex flex-col gap-5 items-center">
-              <img src={shopData?.image} alt="" className="w-[130px] h-[130px] border border-black rounded-full" />
-              <p className="text-[40px] font-semibold">{shopData?.name}</p>
+            <div className="component-card rounded-lg py-7 w-full px-12 lg:px-32 flex flex-col gap-5 items-center">
+              <img src={shopData?.image} alt="" className="w-[130px] h-[130px]   rounded-lg" />
+              <p className="text-[25px] lg:text-[40px] font-semibold text-slate-800">{shopData?.name}</p>
             </div>
             {shopData && (
               <Info
@@ -95,7 +95,7 @@ const ShopPage = () => {
 
           <div className="flex flex-col gap-7">
             <p className="text-[23px] font-bold text-center">Products</p>
-            <div className="grid grid-cols-3 justify-items-center gap-x-4 gap-y-7">
+            <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7">
               {shopData?.products?.map((p, i) => (
                 <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />
               ))}
@@ -103,8 +103,9 @@ const ShopPage = () => {
           </div>
 
         </div>
-
-        <Cart cart={cart} removeFromCart={removeFromCart} />
+        <div className="hidden lg:visible">
+          <Cart cart={cart} removeFromCart={removeFromCart} />
+        </div>
 
       </div>
     </div>

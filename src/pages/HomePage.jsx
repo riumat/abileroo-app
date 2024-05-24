@@ -68,14 +68,16 @@ const HomePage = () => {
         <Sidebar />
         <div className="flex flex-col gap-5 flex-1">
 
-          <div className="flex gap-3">
+          <div className="flex flex-col lg:flex-row gap-3">
             <Searchbar searchByName={searchByName} />
 
             <SortControls orderedList={orderedList} />
           </div>
           <ShopList shopList={shopList} error={error} isLoading={isLoading} />
         </div>
-        <Cart cart={new Array()} />
+        <div className="hidden lg:visible">
+          <Cart cart={new Array()} />
+        </div>
       </div>
     </div>
   )

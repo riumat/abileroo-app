@@ -1,7 +1,7 @@
 
 const SortControls = ({ orderedList }) => {
   return (
-    <div className="flex gap-7 items-center bg-white rounded-lg shadow p-2">
+    <div className="flex gap-7 items-center bg-white rounded-lg shadow p-2 justify-center">
       <p className="text-[14px]">Sort options</p>
       <div className="flex gap-5 items-center">
         <div className="flex flex-col items-center gap-1">

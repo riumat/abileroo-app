@@ -7,7 +7,7 @@ const Searchbar = ({ searchByName }) => {
   return (
     <form onSubmit={(e)=>e.preventDefault()} className="flex items-center justify-between flex-1 rounded-lg bg-white shadow text-[15px]">
       <input
-        className="p-2 outline-none flex-1"
+        className="p-2 outline-none flex-1 rounded-lg"
         placeholder="Search by shop name..."
         type="text"
         onChange={(e) => setQuery(e.target.value)} />

@@ -3,7 +3,8 @@ import { FaStar } from "react-icons/fa"
 
 const Info = ({ isLiked, likeShop, dislikeShop, rating, description, address,id }) => {
   return (
-    <div className="component-card rounded-lg flex justify-between w-full py-5  text-slate-700">
+    <div className="component-card rounded-lg grid grid-cols-2 gap-y-7 lg:flex justify-between w-full py-5  text-slate-700">
+
       <div className="border-r border-slate-400  items-center flex justify-center flex-1">
         {isLiked ? (
           <AiOutlineDislike className="w-7 h-7 cursor-pointer" onClick={() => dislikeShop(id)} />
@@ -13,8 +14,8 @@ const Info = ({ isLiked, likeShop, dislikeShop, rating, description, address,id 
         }
       </div>
 
-      <div className="border-r border-slate-400  flex flex-col items-center gap-2  justify-center flex-1">
-        <p className="text-[14px] text-slate-500">Rate by other users</p>
+      <div className="lg:border-r border-slate-400  flex flex-col items-center gap-2  justify-center flex-1">
+        <p className="text-[0px] lg:text-[14px] text-slate-500">Rated by other users</p>
         <div className="flex">
           {[...Array(rating)].map((star, i) => (
             <FaStar key={`star-${i}`} />
@@ -34,6 +35,7 @@ const Info = ({ isLiked, likeShop, dislikeShop, rating, description, address,id 
             <p key={`address-key-${i}`} className="text-[13px] text-center">{el}</p>
           ))}</div>
       </div>
+
     </div>
   )
 }
