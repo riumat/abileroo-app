@@ -7,7 +7,7 @@ import TranslateDropdown from "./Navbar/TranslateDropdown";
 const Navbar = () => {
 
   return (
-    <nav className=" flex items-center p-3 pt-5 justify-between bg-white rounded-b-lg shadow">
+    <nav className=" flex items-center p-3 pt-5 justify-between component-card rounded-b-lg">
       <Link to={"/"} className="ms-10">
         <Logo  />
       </Link>

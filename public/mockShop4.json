@@ -1,0 +1,27 @@
+{
+  "id": 4,
+  "name": "Evelyn Pizzeria",
+  "address": "Via Giuseppe Peretti 2A, 0947, Cagliari",
+  "description": "Pizzeria",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTFBgwBIcQ5D3O1Um7EyYruWIzwHERW9vaJw&s",
+  "rating":5,
+  "products": [
+      {
+          "id": 5,
+          "shop": 4,
+          "name": "Marinara",
+          "product_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSssyFpYWK7eDK7kIQR7L800aPOCNvhooOfWlgKw_MmMg&s",
+          "description": "Pomodoro, origano",
+          "price": 4,
+          "available_amount": 22
+      }, {
+        "id": 6,
+        "shop": 4,
+        "name": "Romana",
+        "product_image": "https://nicolosiphp.com/wp-content/uploads/2023/03/Romana-Pizze-Classiche-Nicolosi-PHP.jpg",
+        "description": "Pomodoro, porchetta, formaggio, patate",
+        "price": 5.5,
+        "available_amount": 33
+    }
+  ]
+}

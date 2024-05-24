@@ -15,7 +15,7 @@ import ListItems from "./ListItems";
 
 const Sidebar = () => {
   return (
-    <div className="bg-white rounded-lg shadow p-7 w-[250px]">
+    <div className="component-card rounded-lg p-7 w-[250px]">
 
       <div className="flex flex-col gap-5 border-b py-3">
         <p className="font-semibold">Shops</p>

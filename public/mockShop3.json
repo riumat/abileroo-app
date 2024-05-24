@@ -1,0 +1,27 @@
+{
+  "id": 3,
+  "name": "Mc Donalds",
+  "address": "Via Giovanni Maria Dettori 34, 09124, Cagliari",
+  "description": "Fast Food",
+  "image": "https://s3-symbol-logo.tradingview.com/mcdonalds--600.png",
+  "rating":2,
+  "products": [
+      {
+          "id": 3,
+          "shop": 3,
+          "name": "Happy Meal",
+          "product_image": "https://www.mcdonalds.it/sites/default/files/styles/compressed/public/product_category/mobile/happy-meal--hero-mob_0.jpg?itok=mW9bRjCu",
+          "description": "Hamburger, nuggets di pollo, bibita",
+          "price": 7,
+          "available_amount": 230
+      }, {
+        "id": 4,
+        "shop": 3,
+        "name": "Happy Meal Pro",
+        "product_image": "https://s7d1.scene7.com/is/image/mcdonalds/cheeseburger_Sommer23:nutrition-calculator-tile?wid=450&hei=450&dpr=off",
+        "description": "Hamburger, nuggets di pollo, bibita, succo",
+        "price": 8.5,
+        "available_amount": 3
+    }
+  ]
+}
