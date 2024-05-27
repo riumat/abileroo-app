@@ -8,8 +8,8 @@ import Info from "../Components/Shop/Info";
 
 const ShopPage = () => {
   const [shopData, setShopData] = useState();
-  const [cart, setCart] = useState([]);
   const [isLiked, setIsLiked] = useState();
+  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 640);
   const { shopId } = useParams();
 
   const addToCart = ({ id, name, price, product_image }) => {
@@ -58,13 +58,12 @@ const ShopPage = () => {
       .catch(error => console.log(error));
   }, [])
 
-
   return (
 
     <div className="flex flex-col gap-5">
-      <Navbar />
+      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3">
-        <Sidebar />
+        <Sidebar isSideOpen={isSideOpen} />
         <div className="flex flex-col gap-5 flex-1">
 
           <div className="flex flex-col gap-7 items-center">
@@ -84,7 +83,6 @@ const ShopPage = () => {
                 id={shopData.id}
               />
             )}
-
           </div>
 
           <div className="flex flex-col gap-7">

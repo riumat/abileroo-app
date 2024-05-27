@@ -30,7 +30,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow lg:flex flex-col px-5 hidden ">
+    <div className="bg-white rounded-lg shadow flex flex-col px-5  ">
 
       <div className="py-10 flex justify-center">
         <FaShoppingCart className="w-10 h-10 " />

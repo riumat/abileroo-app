@@ -1,35 +1,35 @@
 import { useEffect, useState } from "react"
-import Searchbar from "../Components/Searchbar";
 import axios from "axios";
 import SortControls from "../Components/Shop/SortControls";
 import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
+import { useSearchParams } from "react-router-dom";
 
 const HomePage = () => {
   const [shopList, setShopList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [params, setParams] = useSearchParams();
+  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 640);
 
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
     localStorage.setItem("liked", JSON.stringify(liked));
-    console.log(localStorage.getItem("liked"));
     getShops("mock.json"); // /shops/shops
   }, [])
 
-  const searchByName = (name) => {
-    //getShops("mock.json");///shops/shops/?search=name
+  useEffect(() => {
+    const name = params.get("search") || "";
     axios.get("mock.json")
       .then(res => res.data)
       .then(data => {
         const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
         setShopList([...filtered]);
       })
-  }
+  }, [params])
 
   const orderedList = (isToOrder) => {
-
     const sortShops = (shops, isAscending) => {
       return shops.slice().sort((a, b) => {
         const nameA = a.name.toUpperCase();
@@ -46,15 +46,13 @@ const HomePage = () => {
     };
 
     if (isToOrder) {
-      console.log("asc");
       setShopList(sortShops(shopList, true));
     } else {
-      console.log("desc");
       setShopList(sortShops(shopList, false));
     }
   };
 
-  const getShops = async (url) => {
+  const getShops = (url) => {
     setIsLoading(true);
     axios.get(url)
       .then(res => {
@@ -67,14 +65,19 @@ const HomePage = () => {
       })
   }
   return (
-    <div className="flex flex-col gap-5">
-      <Navbar />
-      <div className="flex gap-3">
-        <Sidebar />
-        <div className="flex flex-col gap-5 flex-1">
 
-          <div className="flex flex-col lg:flex-row gap-3">
-            <Searchbar searchByName={searchByName} />
+    <div className="flex flex-col gap-5">
+      {isSideOpen && window.innerWidth < 640 && (
+        <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}>
+
+        </div>
+      )}
+      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
+      <div className="flex gap-3">
+        <Sidebar isSideOpen={isSideOpen} />
+        <div className="flex flex-col gap-3 flex-1">
+
+          <div className="flex  gap-3">
 
             <SortControls orderedList={orderedList} />
           </div>

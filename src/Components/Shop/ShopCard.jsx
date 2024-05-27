@@ -1,7 +1,7 @@
 
 const ShopCard = ({ ac }) => {
   return (
-    <div className="flex justify-center lg:justify-start items-center gap-5 bg-white p-4 rounded-lg shadow text-[0px] ">
+    <div className="flex justify-center lg:justify-start items-center gap-5 bg-white p-4 rounded-lg shadow text-[0px] hover:scale-[1.03] hover:z-50 transition-transform">
 
       <img className="rounded-lg object-cover" width={140} height={140} src={ac?.image} alt="" />
 
