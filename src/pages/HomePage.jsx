@@ -19,7 +19,13 @@ const HomePage = () => {
   }, [])
 
   const searchByName = (name) => {
-    getShops("mockName.json"); ///shops/shops/?search=name
+    //getShops("mock.json");///shops/shops/?search=name
+    axios.get("mock.json")
+      .then(res => res.data)
+      .then(data => {
+        const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
+        setShopList([...filtered]);
+      })
   }
 
   const orderedList = (isToOrder) => {
@@ -48,7 +54,7 @@ const HomePage = () => {
     }
   };
 
-  const getShops = (url) => {
+  const getShops = async (url) => {
     setIsLoading(true);
     axios.get(url)
       .then(res => {
@@ -74,7 +80,7 @@ const HomePage = () => {
           </div>
           <ShopList shopList={shopList} error={error} isLoading={isLoading} />
         </div>
-        
+
       </div>
     </div>
   )
