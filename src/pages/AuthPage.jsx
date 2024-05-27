@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import { SiDeliveroo } from "react-icons/si";
 import Logo from '../Components/Logo';
 
 
@@ -42,9 +41,14 @@ const AuthPage = () => {
       username: username,
       password: password,
     })
-      .then(res => console.log(res.data))
+      .then(res => res.data)
       .catch((error) => console.log(error));
 
+    const credentials={
+      "username":username,
+      "passoword":password
+    }
+    localStorage.setItem("credentials",JSON.stringify(credentials));
     setUsername("");
     setPassword("");
     navigate("/home");

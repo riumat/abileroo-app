@@ -15,10 +15,10 @@ export const translateOptions = [
 ]
 
 export const settingsOptions = [
-  "Account Settings",
-  "Privacy",
-  "Invite Friends",
-  "Logout"
+  { "name": "Account Settings", "path": "/home" },
+  { "name": "Privacy", "path": "/home" },
+  { "name": "Invite Friends", "path": "/home" },
+  { "name": "Logout", "path": "/" }
 ];
 
 

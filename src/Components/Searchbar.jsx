@@ -4,16 +4,23 @@ import { CiSearch } from "react-icons/ci";
 
 const Searchbar = ({ searchByName }) => {
   const [query, setQueryName] = useState("");
+const submitHandle=(e)=>{
+  e.preventDefault();
+  searchByName(query);
+}
 
-  
   return (
-    <form onSubmit={(e)=>e.preventDefault()} className="flex items-center justify-between flex-1 rounded-lg bg-white shadow text-[15px]">
+    <form onSubmit={(e) => submitHandle(e)} className="flex items-center justify-between flex-grow rounded-lg bg-white shadow text-[15px] cursor-text">
+      <div className="px-3 py-1">
+        <CiSearch className="w-4 h-4"/>
+      </div>
+
       <input
         className="p-2 outline-none flex-1 rounded-lg"
-        placeholder="Search by shop name..."
+        placeholder="Search shop"
         type="text"
         onChange={(e) => setQueryName(e.target.value)} />
-      <button className="px-5 py-2 rounded-e-lg border-s border-slate-300 bg-transparent h-full" onClick={(e) => searchByName(query)}><CiSearch className="w-5 h-5 "/></button>
+
     </form>
   )
 }

@@ -1,8 +1,8 @@
 {
   "username": [
-    "This field may not be blank."
+    "usernameTest"
   ],
   "password": [
-    "This field may not be blank."
+    "passwordTest"
   ]
 }

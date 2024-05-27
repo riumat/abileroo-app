@@ -2,26 +2,20 @@ import { useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
 import axios from "axios";
 import { useParams } from "react-router";
-import Cart from "../Components/Cart/Cart";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import Info from "../Components/Shop/Info";
 
 const ShopPage = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [shopData, setShopData] = useState();
   const [cart, setCart] = useState([]);
   const [isLiked, setIsLiked] = useState();
   const { shopId } = useParams();
 
-  const addToCart = ({ id, name, price }) => {
-    setCart([...cart, { "id": id, "name": name, "price": price }]);
-  }
-
-  const removeFromCart = (index) => {
-    const tmp = [...cart];
-    tmp.splice(index, 1);
-    setCart([...tmp]);
+  const addToCart = ({ id, name, price, product_image }) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const newCart = [...cart, { "id": id, "name": name, "price": price, "image": product_image }];
+    localStorage.setItem("cart", JSON.stringify(newCart));
   }
 
   const isInLiked = (id) => {
@@ -45,12 +39,6 @@ const ShopPage = () => {
     localStorage.setItem("liked", JSON.stringify(liked));
     isInLiked(id);
   }
-//TODO Toggle Modal for Cart
-  const toggleModal = () => {
-    console.log("asd")
-    setIsCartOpen(prev => !prev)
-  }
-
 
   useEffect(() => {
     axios.get(`../mockShop${shopId}.json`) ///shops/shop/${shopId}
@@ -74,7 +62,7 @@ const ShopPage = () => {
   return (
 
     <div className="flex flex-col gap-5">
-      <Navbar  /> 
+      <Navbar />
       <div className="flex gap-3">
         <Sidebar />
         <div className="flex flex-col gap-5 flex-1">
@@ -82,7 +70,7 @@ const ShopPage = () => {
           <div className="flex flex-col gap-7 items-center">
 
             <div className="component-card rounded-lg py-7 w-full px-12 lg:px-32 flex flex-col gap-5 items-center">
-              <img src={shopData?.image} alt="" className="w-[130px] h-[130px]   rounded-lg" />
+              <img src={shopData?.image} alt="" className="w-[130px] h-[130px] rounded-lg" />
               <p className="text-[25px] lg:text-[40px] font-semibold text-slate-800">{shopData?.name}</p>
             </div>
             {shopData && (
@@ -109,9 +97,7 @@ const ShopPage = () => {
           </div>
 
         </div>
-        {!isCartOpen && (
-          <Cart cart={cart} removeFromCart={removeFromCart} />
-        )}
+
       </div>
 
     </div>

@@ -4,6 +4,8 @@ import "./index.css";
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import AuthPage from './pages/AuthPage';
+import Cart from './Components/Cart/Cart';
+import CartPage from './pages/CartPage';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
             <Route exact path='/' element={<AuthPage  />} />
             <Route path='/home' element={<HomePage />} />
             <Route path='/shop/:shopId' element={<ShopPage />} />
+            <Route path='/cart' element={<CartPage/>}/>
           </Routes>
         </div>
 
