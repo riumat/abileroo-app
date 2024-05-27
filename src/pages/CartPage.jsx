@@ -8,6 +8,9 @@ const CartPage = () => {
 
   return (
     <div className="flex flex-col gap-5">
+      {isSideOpen && window.innerWidth < 640 && (
+        <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
+      )}
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3">
         <Sidebar isSideOpen={isSideOpen} />

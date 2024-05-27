@@ -10,8 +10,8 @@ const HomePage = () => {
   const [shopList, setShopList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [params, setParams] = useSearchParams();
-  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 640);
+  const [params] = useSearchParams();
+  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 1024);
 
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
@@ -67,10 +67,8 @@ const HomePage = () => {
   return (
 
     <div className="flex flex-col gap-5">
-      {isSideOpen && window.innerWidth < 640 && (
-        <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}>
-
-        </div>
+      {isSideOpen && window.innerWidth < 1024 && (
+        <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
       )}
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3">

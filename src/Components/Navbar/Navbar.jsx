@@ -13,11 +13,11 @@ import { IoMdClose } from "react-icons/io";
 const Navbar = ({ toggleSidebar }) => {
   const [isTranslateOpen, setIsTranslateOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [isMobile, setMobile] = useState(window.innerWidth > 640);
+  const [isMobile, setMobile] = useState(window.innerWidth > 1024);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const updateMedia = () => {
-    setMobile(window.innerWidth > 640);
+    setMobile(window.innerWidth > 1024);
   };
 
   useEffect(() => {
