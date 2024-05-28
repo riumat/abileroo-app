@@ -6,7 +6,7 @@ const TranslateDropdown = ({ isOpen,open }) => {
 
   return (
     <div>
-      <MdOutlineTranslate className="w-7 h-7 hover:fill-white p-1 rounded hover:bg-blue-700 cursor-pointer dark:text-slate-100" onClick={open} />
+      <MdOutlineTranslate className="w-7 h-7 hover:fill-white p-1 rounded hover:bg-emerald-700 cursor-pointer dark:text-slate-100" onClick={open} />
 
       {isOpen && (
         <div

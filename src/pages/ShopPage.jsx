@@ -9,7 +9,7 @@ import Info from "../Components/Shop/Info";
 const ShopPage = () => {
   const [shopData, setShopData] = useState();
   const [isLiked, setIsLiked] = useState();
-  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 640);
+  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
   const { shopId } = useParams();
 
   const addToCart = ({ id, name, price, product_image }) => {
@@ -61,17 +61,17 @@ const ShopPage = () => {
   return (
 
     <div className="flex flex-col gap-5">
-      {isSideOpen && window.innerWidth < 1024 && (
+      {isSideOpen && window.innerWidth < 768 && (
         <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
       )}
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-5 flex-1 bg-slate-200 dark:bg-slate-700 p-3 rounded-t-lg">
+        <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-900 p-3 rounded-t-lg">
 
           <div className="flex flex-col gap-7 items-center ">
 
-            <div className="component-card rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center dark:bg-slate-800">
+            <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center dark:bg-emerald-950 shadow bg-white">
               <img src={shopData?.image} alt="" className="w-[130px] h-[130px] rounded-lg" />
               <p className="text-[25px] lg:text-[40px] font-semibold text-slate-800 dark:text-slate-100">{shopData?.name}</p>
             </div>

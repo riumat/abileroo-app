@@ -9,9 +9,9 @@ import CartPage from './pages/CartPage';
 function App() {
   return (
     <BrowserRouter>
-      <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-800 overflow-x-hidden">
+      <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-emerald-950 overflow-x-hidden">
 
-        <div className='flex flex-col gap-10 h-full mx-5'>
+        <div className='flex flex-col h-full mx-5'>
 
           <Routes>
             <Route exact path='/' element={<AuthPage  />} />

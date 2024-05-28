@@ -3,7 +3,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 const ProductCard = ({ p, addToCart }) => {
 
   return (
-    <div className="flex flex-col w-full md:w-[230px] items-center justify-between pb-5 gap-2 component-card rounded-lg text-slate-700 dark:bg-slate-800 dark:text-slate-100">
+    <div className="flex flex-col w-full md:w-[230px] items-center justify-between pb-5 gap-2 shadow rounded-lg text-emerald-800 bg-white dark:bg-emerald-950 dark:text-slate-100">
       <img src={p?.product_image} alt="" className="w-full h-32 object-cover rounded-t-lg" />
       <div className="flex flex-col gap-2">
         <div className="flex flex-col items-center gap-2 border-b border-slate-300 py-3">

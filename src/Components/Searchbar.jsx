@@ -13,7 +13,7 @@ const Searchbar = () => {
   }
 
   return (
-    <form onSubmit={(e) => submitHandle(e)} className="flex items-center justify-between flex-grow rounded-s-lg cd:rounded-lg bg-slate-100 dark:bg-slate-700 dark:text-slate-100 text-[15px] cursor-text">
+    <form onSubmit={(e) => submitHandle(e)} className="flex items-center justify-between flex-grow rounded-s-lg md:rounded-lg bg-emerald-50 dark:bg-emerald-900 dark:text-slate-100 text-[15px] cursor-text">
       <div className="px-3 py-1">
         <CiSearch className="w-4 h-4" />
       </div>

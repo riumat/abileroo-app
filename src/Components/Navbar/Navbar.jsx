@@ -46,11 +46,11 @@ const Navbar = ({ toggleSidebar }) => {
   }
 
   return (
-    <nav className="component-card rounded-b-lg dark:bg-slate-800" >
+    <nav className="component-card rounded-b-lg dark:bg-emerald-950 text-emerald-900" >
       {isSearchOpen ? (
-        <div className="flex justify-between items-center text-slate-600 dark:text-slate-100">
+        <div className="flex justify-between items-center text-emerald-800 dark:text-slate-100">
           <Searchbar />
-          <div onClick={() => setIsSearchOpen(false)} className="cursor-pointer rounded-e-lg bg-slate-100 dark:bg-slate-700 py-3 md:py-2">
+          <div onClick={() => setIsSearchOpen(false)} className="cursor-pointer rounded-e-lg bg-emerald-P50 dark:bg-emerald-900 py-3 md:py-2">
             <IoMdClose className="w-[22px] h-[22px]"/>
           </div>
         </div>
@@ -75,13 +75,13 @@ const Navbar = ({ toggleSidebar }) => {
           <div className="flex gap-5 me-3 md:me-10 items-center">
             <div>
             {isDarkMode?(
-              <MdOutlineLightMode className="w-7 h-7 cursor-pointer hover:fill-white p-1 rounded hover:bg-blue-700 dark:text-slate-100" onClick={toggleDarkMode}/>
+              <MdOutlineLightMode className="w-7 h-7 cursor-pointer hover:fill-white p-1 rounded hover:bg-emerald-700 dark:text-slate-100" onClick={toggleDarkMode}/>
             ):(
-              <MdOutlineDarkMode className="w-7 h-7 cursor-pointer hover:fill-white p-1 rounded hover:bg-blue-700 dark:text-slate-100" onClick={toggleDarkMode}/>
+              <MdOutlineDarkMode className="w-7 h-7 cursor-pointer hover:fill-white p-1 rounded hover:bg-emerald-700 dark:text-slate-100" onClick={toggleDarkMode}/>
             )}
             </div>
             <Link to={"/cart"}>
-              <BsCart3 className="cursor-pointer w-7 h-7 hover:fill-white p-1 rounded hover:bg-blue-700 dark:text-slate-100" />
+              <BsCart3 className="cursor-pointer w-7 h-7 hover:fill-white p-1 rounded hover:bg-emerald-700 dark:text-slate-100" />
             </Link>
             <TranslateDropdown isOpen={isTranslateOpen} open={toggleTranslate} />
             <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} />

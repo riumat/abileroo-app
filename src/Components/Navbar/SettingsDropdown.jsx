@@ -12,7 +12,7 @@ const SettingsDropdown = ({ isOpen, open }) => {
 
   return (
     <div>
-      <IoMdSettings className="w-7 h-7 hover:fill-white p-1 rounded hover:bg-blue-700 cursor-pointer dark:text-slate-100" onClick={open} />
+      <IoMdSettings className="w-7 h-7 hover:fill-white p-1 rounded hover:bg-emerald-700 cursor-pointer dark:text-slate-100" onClick={open} />
 
       {isOpen && (
         <div

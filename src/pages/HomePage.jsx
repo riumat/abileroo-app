@@ -5,6 +5,7 @@ import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";
+import Greetings from "../Components/Home/Greetings";
 
 const HomePage = () => {
   const [shopList, setShopList] = useState();
@@ -83,7 +84,9 @@ const HomePage = () => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 flex-grow">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-3 flex-1 bg-slate-200 dark:bg-slate-700 rounded-t-lg px-3">
+        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-900 rounded-t-lg px-3">
+
+
           <div className="flex gap-3">
             <SortControls orderedList={orderedList} />
           </div>

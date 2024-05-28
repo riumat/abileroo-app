@@ -30,7 +30,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow flex flex-col px-5  dark:bg-slate-800 dark:text-slate-100">
+    <div className="bg-white rounded-lg flex flex-col px-5  dark:bg-emerald-950 dark:text-slate-100 shadow text-emerald-950">
 
       <div className="py-10 flex justify-center">
         <FaShoppingCart className="w-10 h-10 " />
@@ -57,7 +57,7 @@ const Cart = () => {
               ))}
             </div>
             <p className="text-[18px] font-semibold text-center"> Total: {total} €</p>
-            <button className="p-3 bg-blue-900 dark:bg-blue-700 text-white rounded-lg " onClick={sendOrder}>Send Order</button>
+            <button className="p-3 bg-emerald-900 dark:bg-emerald-800 text-white rounded-lg " onClick={sendOrder}>Send Order</button>
           </div>
 
         )}
