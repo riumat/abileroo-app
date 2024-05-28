@@ -7,7 +7,6 @@ const Searchbar = () => {
   const navigate = useNavigate();
 
   const submitHandle = (e) => {
-    console.log("test")
     e.preventDefault();
     navigate(`/home?search=${query}`);
   }

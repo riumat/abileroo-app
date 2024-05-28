@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import Logo from '../Components/Logo';
+import Register from '../Components/Auth/Register';
+import Login from '../Components/Auth/Login';
 
 
 const AuthPage = () => {
@@ -44,11 +46,11 @@ const AuthPage = () => {
       .then(res => res.data)
       .catch((error) => console.log(error));
 
-    const credentials={
-      "username":username,
-      "passoword":password
+    const credentials = {
+      "username": username,
+      "passoword": password
     }
-    localStorage.setItem("credentials",JSON.stringify(credentials));
+    localStorage.setItem("credentials", JSON.stringify(credentials));
     setUsername("");
     setPassword("");
     navigate("/home");
@@ -66,100 +68,25 @@ const AuthPage = () => {
           <p className='text-emerald-700 text-[14px] text-center'>Please enter your credentials to continue</p>
         </div>
         {isToSign ? (
-          <form className='flex flex-col gap-4 p-5 '>
-
-            <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-400" : "border-red-500"}`}>
-              <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Email</p>
-
-              <input
-                required
-                name='email'
-                type="email"
-                className='rounded-xl focus:outline-none '
-                onChange={(e) => emailChange(e.target.value)}
-                value={email}
-              />
-            </div>
-
-            <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-              <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Email Address/Username</p>
-              <input
-                required
-                name='username'
-                type="text"
-                className='rounded-xl focus:outline-none '
-                onChange={(e) => usernameChange(e.target.value)}
-                value={username}
-              />
-            </div>
-            <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-              <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Password</p>
-
-              <input
-                required
-                name='password'
-                type="password"
-                className='rounded-xl focus:outline-none '
-                onChange={(e) => passwordChange(e.target.value)}
-                value={password}
-              />
-            </div>
-            <div className='flex gap-2'>
-              <input type="checkbox" name="" id="" className='w-4 h-4 cursor-pointer' />
-              <p className='text-[14px] text-emerald-600'>Keep me logged in</p>
-            </div>
-            <button
-              onClick={submitHandle}
-              type="submit"
-              className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white hover:bg-emerald-200 hover:text-black transition-colors'
-            >Log In</button>
-
-            <div>
-              <p className='text-red-500 text-[15px]'>{error}</p>
-            </div>
-          </form>
+          <Register
+            error={error}
+            usernameChange={usernameChange}
+            username={username}
+            emailChange={emailChange}
+            email={email}
+            passwordChange={passwordChange}
+            password={password}
+            submitHandle={submitHandle}
+          />
         ) : (
-          <form className='flex flex-col gap-4 p-5 '>
-
-            <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-              <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Email Address/Username</p>
-              <input
-                required
-                name='username'
-                type="text"
-                className='rounded-xl focus:outline-none '
-                onChange={(e) => usernameChange(e.target.value)}
-                value={username}
-              />
-            </div>
-            <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-              <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Password</p>
-
-              <input
-                required
-                name='password'
-                type="password"
-                className='rounded-xl focus:outline-none '
-                onChange={(e) => passwordChange(e.target.value)}
-                value={password}
-              />
-            </div>
-
-            <div className='flex gap-2'>
-              <input type="checkbox" name="" id="" className='w-4 h-4 cursor-pointer border-emerald-700' />
-              <p className='text-[14px] text-emerald-700'>Keep me logged in</p>
-            </div>
-
-            <button
-              onClick={submitHandle}
-              type="submit"
-              className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white hover:bg-emerald-700 hover:text-black transition-colors'
-            >Log In</button>
-
-            <div>
-              <p className='text-red-500 text-[15px]'>{error}</p>
-            </div>
-          </form>
+          <Login
+            error={error}
+            usernameChange={usernameChange}
+            username={username}
+            passwordChange={passwordChange}
+            password={password}
+            submitHandle={submitHandle}
+          />
         )
         }
 

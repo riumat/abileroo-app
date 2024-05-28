@@ -5,7 +5,22 @@ import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";
-import Greetings from "../Components/Home/Greetings";
+
+const sortList = (shops, isAscending) => {
+  return shops.slice().sort((a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    if (isAscending) {
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+    } else {
+      if (nameA > nameB) return -1;
+      if (nameA < nameB) return 1;
+    }
+    return 0;
+  });
+};
+
 
 const HomePage = () => {
   const [shopList, setShopList] = useState();
@@ -30,38 +45,14 @@ const HomePage = () => {
       })
   }, [params])
 
-  const updateMedia = () => {
+  const updateSidebar = () => {
     setIsSideOpen(window.innerWidth > 768);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", updateMedia);
-    return () => window.removeEventListener("resize", updateMedia);
+    window.addEventListener("resize", updateSidebar);
+    return () => window.removeEventListener("resize", updateSidebar);
   });
-
-
-  const orderedList = (isToOrder) => {
-    const sortShops = (shops, isAscending) => {
-      return shops.slice().sort((a, b) => {
-        const nameA = a.name.toUpperCase();
-        const nameB = b.name.toUpperCase();
-        if (isAscending) {
-          if (nameA < nameB) return -1;
-          if (nameA > nameB) return 1;
-        } else {
-          if (nameA > nameB) return -1;
-          if (nameA < nameB) return 1;
-        }
-        return 0;
-      });
-    };
-
-    if (isToOrder) {
-      setShopList(sortShops(shopList, true));
-    } else {
-      setShopList(sortShops(shopList, false));
-    }
-  };
 
   const getShops = (url) => {
     setIsLoading(true);
@@ -75,8 +66,12 @@ const HomePage = () => {
         console.log(error);
       })
   }
-  return (
 
+  const sortShops = (isAscending) => {
+    setShopList(sortList(shopList, isAscending));
+  };
+
+  return (
     <div className="flex flex-col gap-5 flex-grow">
       {isSideOpen && window.innerWidth < 768 && (
         <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
@@ -86,9 +81,8 @@ const HomePage = () => {
         <Sidebar isSideOpen={isSideOpen} />
         <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-900 rounded-t-lg px-3">
 
-
           <div className="flex gap-3">
-            <SortControls orderedList={orderedList} />
+            <SortControls sortShops={sortShops} />
           </div>
           {shopList?.length === 0 ? (
             <p className="text-center text-slate-800 dark:text-slate-200">Shops not found</p>

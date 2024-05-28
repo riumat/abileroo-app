@@ -59,7 +59,6 @@ const ShopPage = () => {
   }, [])
 
   return (
-
     <div className="flex flex-col gap-5">
       {isSideOpen && window.innerWidth < 768 && (
         <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
@@ -96,13 +95,9 @@ const ShopPage = () => {
               ))}
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   )
 }
 
