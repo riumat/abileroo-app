@@ -13,13 +13,13 @@ const Searchbar = () => {
   }
 
   return (
-    <form onSubmit={(e) => submitHandle(e)} className="flex items-center justify-between flex-grow rounded-lg bg-white lg:shadow text-[15px] cursor-text">
+    <form onSubmit={(e) => submitHandle(e)} className="flex items-center justify-between flex-grow rounded-s-lg cd:rounded-lg bg-slate-100 dark:bg-slate-700 dark:text-slate-100 text-[15px] cursor-text">
       <div className="px-3 py-1">
         <CiSearch className="w-4 h-4" />
       </div>
 
       <input
-        className="p-3 lg:p-2 outline-none flex-1 rounded-lg"
+        className="p-3 md:p-2 outline-none flex-1 rounded-lg bg-transparent"
         placeholder="Search shop"
         type="text"
         onChange={(e) => setQueryName(e.target.value)} />

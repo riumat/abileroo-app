@@ -30,7 +30,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow flex flex-col px-5  ">
+    <div className="bg-white rounded-lg shadow flex flex-col px-5  dark:bg-slate-800 dark:text-slate-100">
 
       <div className="py-10 flex justify-center">
         <FaShoppingCart className="w-10 h-10 " />
@@ -42,7 +42,7 @@ const Cart = () => {
 
         ) : (
           <div className="flex flex-col gap-5">
-            <p className="text-[13px] text-slate-600 text-center">Current Order:</p>
+            <p className="text-[13px] text-slate-600 dark:text-slate-300 text-center">Current Order:</p>
             <div className="flex flex-col">
               {cart?.map((product, i) => (
                 <div
@@ -57,7 +57,7 @@ const Cart = () => {
               ))}
             </div>
             <p className="text-[18px] font-semibold text-center"> Total: {total} €</p>
-            <button className="p-3 bg-blue-900 text-white rounded-lg " onClick={sendOrder}>Send Order</button>
+            <button className="p-3 bg-blue-900 dark:bg-blue-700 text-white rounded-lg " onClick={sendOrder}>Send Order</button>
           </div>
 
         )}

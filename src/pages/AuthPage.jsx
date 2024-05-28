@@ -76,8 +76,8 @@ const AuthPage = () => {
                 name='email'
                 type="email"
                 className='rounded-xl focus:outline-none '
-                onChange={(e) => (e.target.value)}
-                value={password}
+                onChange={(e) => emailChange(e.target.value)}
+                value={email}
               />
             </div>
 

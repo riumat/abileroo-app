@@ -61,19 +61,19 @@ const ShopPage = () => {
   return (
 
     <div className="flex flex-col gap-5">
-      {isSideOpen && window.innerWidth < 640 && (
+      {isSideOpen && window.innerWidth < 1024 && (
         <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
       )}
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-5 flex-1">
+        <div className="flex flex-col gap-5 flex-1 bg-slate-200 dark:bg-slate-700 p-3 rounded-t-lg">
 
-          <div className="flex flex-col gap-7 items-center">
+          <div className="flex flex-col gap-7 items-center ">
 
-            <div className="component-card rounded-lg py-7 w-full px-12 lg:px-32 flex flex-col gap-5 items-center">
+            <div className="component-card rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center dark:bg-slate-800">
               <img src={shopData?.image} alt="" className="w-[130px] h-[130px] rounded-lg" />
-              <p className="text-[25px] lg:text-[40px] font-semibold text-slate-800">{shopData?.name}</p>
+              <p className="text-[25px] lg:text-[40px] font-semibold text-slate-800 dark:text-slate-100">{shopData?.name}</p>
             </div>
             {shopData && (
               <Info
@@ -89,7 +89,7 @@ const ShopPage = () => {
           </div>
 
           <div className="flex flex-col gap-7">
-            <p className="text-[23px] font-bold text-center">Products</p>
+            <p className="text-[23px] font-bold text-center dark:text-slate-100">Products</p>
             <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7 mb-10">
               {shopData?.products?.map((p, i) => (
                 <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />

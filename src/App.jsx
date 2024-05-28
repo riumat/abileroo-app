@@ -4,13 +4,12 @@ import "./index.css";
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import AuthPage from './pages/AuthPage';
-import Cart from './Components/Cart/Cart';
 import CartPage from './pages/CartPage';
 
 function App() {
   return (
     <BrowserRouter>
-      <main className="absolute w-full h-full t-0 l-0 bg-slate-200 overflow-x-hidden">
+      <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-800 overflow-x-hidden">
 
         <div className='flex flex-col gap-10 h-full mx-5'>
 

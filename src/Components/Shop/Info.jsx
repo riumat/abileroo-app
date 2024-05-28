@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa"
 
 const Info = ({ isLiked, likeShop, dislikeShop, rating, description, address,id }) => {
   return (
-    <div className="component-card rounded-lg grid grid-cols-2 gap-y-7 lg:flex justify-between w-full py-5  text-slate-700">
+    <div className="component-card rounded-lg grid grid-cols-2 gap-y-7 lg:flex justify-between w-full py-5  text-slate-700 dark:bg-slate-800 dark:text-slate-100">
 
       <div className="border-r border-slate-400  items-center flex justify-center flex-1">
         {isLiked ? (
