@@ -12,9 +12,9 @@ const Sidebar = ({ isSideOpen }) => {
 
   if (!isSideOpen) return;
   return (
-    <div className={`bg-white dark:bg-emerald-950 rounded-lg p-5 absolute md:static z-50 text-[13px] dark:text-slate-100 ${isCompressed ? "w-18" : "w-[200px]"}`}>
+    <div className={`bg-white dark:bg-slate-950 rounded-lg p-5 absolute md:static z-50 text-[13px] dark:text-slate-100 ${isCompressed ? "w-18" : "w-[200px]"}`}>
 
-      <div className="lg:flex justify-center hidden">
+      <div className="md:flex justify-center hidden">
         <IoMenu className="w-7 h-7 p-1 rounded-lg cursor-pointer hover:bg-emerald-800 dark:hover:bg-emerald-800 hover:text-white dark:text-slate-100" onClick={() => setIsCompressed(prev => !prev)} />
       </div>
 

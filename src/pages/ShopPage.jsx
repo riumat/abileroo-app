@@ -12,6 +12,15 @@ const ShopPage = () => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
   const { shopId } = useParams();
 
+  const updateSidebar = () => {
+    setIsSideOpen(window.innerWidth > 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateSidebar);
+    return () => window.removeEventListener("resize", updateSidebar);
+  });
+
   const addToCart = ({ id, name, price, product_image }) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const newCart = [...cart, { "id": id, "name": name, "price": price, "image": product_image }];
@@ -66,11 +75,11 @@ const ShopPage = () => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-900 p-3 rounded-t-lg">
+        <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 p-3 rounded-t-lg">
 
           <div className="flex flex-col gap-7 items-center ">
 
-            <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center dark:bg-emerald-950 shadow bg-white">
+            <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center dark:bg-slate-950 shadow bg-white">
               <img src={shopData?.image} alt="" className="w-[130px] h-[130px] rounded-lg" />
               <p className="text-[25px] lg:text-[40px] font-semibold text-slate-800 dark:text-slate-100">{shopData?.name}</p>
             </div>

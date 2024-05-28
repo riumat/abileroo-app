@@ -79,7 +79,7 @@ const HomePage = () => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 flex-grow">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-900 rounded-t-lg px-3">
+        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3">
 
           <div className="flex gap-3">
             <SortControls sortShops={sortShops} />
