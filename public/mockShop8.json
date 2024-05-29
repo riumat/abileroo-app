@@ -1,10 +1,10 @@
 {
-  "id": 7,
-  "name": "Old Wild West",
-  "address": "Pza L'Unione Sarda, 09122 Cagliari CA",
+  "id": 8,
+  "name": "Su Boy Burgers",
+  "address": "Via Sandro Pertini, 09044 Quartucciu CA",
   "description": "Fast Food",
-  "image": "https://maximoshopping.it/wp-content/uploads/media/negozi/logo/logo-old-wild-west.png",
-  "rating":2,
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRywF2VHXv4h7a97KIo8FrW8scL2BY4Kcy_TblOZMiamQ&s",
+  "rating":5,
   "products": [
     {
       "id": 1,

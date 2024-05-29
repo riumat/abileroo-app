@@ -9,10 +9,10 @@ import { createContext, useEffect, useState } from 'react';
 export const CartCtx = createContext();
 
 const App = () => {
-  const [cart, setCart] = useState([]); 
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")));
+    setCart(JSON.parse(localStorage.getItem("cart")) || []);
   }, [])
 
   return (
@@ -25,7 +25,7 @@ const App = () => {
               <Route exact path='/' element={<AuthPage />} />
               <Route path='/home' element={<HomePage />} />
               <Route path='/shop/:shopId' element={<ShopPage setCart={setCart} />} />
-              <Route path='/cart' element={<CartPage cart={cart} setCart={setCart} />} />
+              <Route path='/cart' element={<CartPage setCart={setCart} />} />
             </Routes>
           </div>
 

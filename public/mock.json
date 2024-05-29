@@ -51,12 +51,12 @@
     {
         "id": 8,
         "name": "Su Boy Burgers",
-        "address": " Via Sandro Pertini, 09044 Quartucciu CA",
+        "address": "Via Sandro Pertini, 09044 Quartucciu CA",
         "description": "Fast Food",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRywF2VHXv4h7a97KIo8FrW8scL2BY4Kcy_TblOZMiamQ&s"
     },
     {
-        "id": 7,
+        "id": 9,
         "name": "Suzaku",
         "address": "Via S. Benedetto, 16, 09128 Cagliari CA",
         "description": "Sushi",
