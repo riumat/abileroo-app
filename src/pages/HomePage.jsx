@@ -72,14 +72,14 @@ const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 flex-grow">
+    <div className="flex flex-col gap-5 flex-grow overflow-hidden">
       {isSideOpen && window.innerWidth < 768 && (
         <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
       )}
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
-      <div className="flex gap-3 flex-grow">
+      <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3">
+        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3 overflow-auto ">
 
           <div className="flex gap-3">
             <SortControls sortShops={sortShops} />

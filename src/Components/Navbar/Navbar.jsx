@@ -1,4 +1,4 @@
-import { Link, useFetcher } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Logo from "../Logo"
 import SettingsDropdown from "./SettingsDropdown";
 import TranslateDropdown from "./TranslateDropdown";
@@ -47,9 +47,9 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <nav className="component-card rounded-b-lg dark:bg-slate-950 text-emerald-900" >
       {isSearchOpen ? (
-        <div className="flex justify-between items-center text-emerald-800 dark:text-slate-100">
+        <div className="flex justify-between items-center text-emerald-800 dark:text-slate-100 pb-[5.5px]">
           <Searchbar />
-          <div onClick={() => setIsSearchOpen(false)} className="cursor-pointer rounded-e-lg bg-emerald-P50 dark:bg-emerald-950 py-3 md:py-2">
+          <div onClick={() => setIsSearchOpen(false)} className="cursor-pointer rounded-e-lg bg-emerald-50 dark:bg-emerald-950/70 py-3 md:py-2">
             <IoMdClose className="w-[22px] h-[22px]" />
           </div>
         </div>
