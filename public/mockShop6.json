@@ -1,0 +1,19 @@
+{
+  "id": 6,
+  "name": "Old Square",
+  "address": "Corso Vittorio Emanuele II, 44, 09124 Cagliari CA",
+  "description": "Pub",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVuL6M399wN6K0FCkVn-KdgE5uUfAQ01XYg&s",
+  "rating":4,
+  "products": [
+      {
+          "id": 8,
+          "shop": 6,
+          "name": "Cheeseburger",
+          "product_image": "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-cheeseburger-BB-1:nutrition-calculator-tile?wid=472&hei=472&dpr=off",
+          "description": "Pane, hamburger, cheddar, ketchup",
+          "price": 5.0,
+          "available_amount": 197
+      }
+  ]
+}

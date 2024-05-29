@@ -20,13 +20,46 @@
         "description": "Fast Food",
         "image": "https://s3-symbol-logo.tradingview.com/mcdonalds--600.png"
     },
-   
     {
         "id": 4,
         "name": "Evelyn Pizzeria",
         "address": "Via Giuseppe Peretti 2A, 0947, Cagliari",
         "description": "Pizzeria",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTFBgwBIcQ5D3O1Um7EyYruWIzwHERW9vaJw&s"
+    },
+    {
+        "id": 5,
+        "name": "KFC",
+        "address": "SS 131 Carlo Felice, km 10, 09028 Sestu CA",
+        "description": "Fast Food",
+        "image": "https://www.cortedelsolesestu.it/loghi/KFC_logo.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Old Square",
+        "address": "Corso Vittorio Emanuele II, 44, 09124 Cagliari CA",
+        "description": "Pub",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVuL6M399wN6K0FCkVn-KdgE5uUfAQ01XYg&s"
+    },
+    {
+        "id": 7,
+        "name": "Old Wild West",
+        "address": "Pza L'Unione Sarda, 09122 Cagliari CA",
+        "description": "Fast Food",
+        "image": "https://maximoshopping.it/wp-content/uploads/media/negozi/logo/logo-old-wild-west.png"
+    },
+    {
+        "id": 8,
+        "name": "Su Boy Burgers",
+        "address": " Via Sandro Pertini, 09044 Quartucciu CA",
+        "description": "Fast Food",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRywF2VHXv4h7a97KIo8FrW8scL2BY4Kcy_TblOZMiamQ&s"
+    },
+    {
+        "id": 7,
+        "name": "Suzaku",
+        "address": "Via S. Benedetto, 16, 09128 Cagliari CA",
+        "description": "Sushi",
+        "image": "https://pbs.twimg.com/profile_images/437770386747314176/KTOZbiGx_400x400.jpeg"
     }
-    
 ]

@@ -5,23 +5,33 @@ import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import AuthPage from './pages/AuthPage';
 import CartPage from './pages/CartPage';
+import { createContext, useEffect, useState } from 'react';
+export const CartCtx = createContext();
 
-function App() {
+const App = () => {
+  const [cart, setCart] = useState([]); 
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")));
+  }, [])
+
   return (
     <BrowserRouter>
-      <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-950 overflow-x-hidden">
+      <CartCtx.Provider value={cart}>
+        <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-950 overflow-x-hidden">
 
-        <div className='flex flex-col h-full mx-5'>
+          <div className='flex flex-col h-full mx-5'>
+            <Routes>
+              <Route exact path='/' element={<AuthPage />} />
+              <Route path='/home' element={<HomePage />} />
+              <Route path='/shop/:shopId' element={<ShopPage setCart={setCart} />} />
+              <Route path='/cart' element={<CartPage cart={cart} setCart={setCart} />} />
+            </Routes>
+          </div>
 
-          <Routes>
-            <Route exact path='/' element={<AuthPage  />} />
-            <Route path='/home' element={<HomePage />} />
-            <Route path='/shop/:shopId' element={<ShopPage />} />
-            <Route path='/cart' element={<CartPage/>}/>
-          </Routes>
-        </div>
+        </main>
+      </CartCtx.Provider>
 
-      </main>
     </BrowserRouter >
 
   );

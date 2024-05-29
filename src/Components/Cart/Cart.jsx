@@ -2,13 +2,8 @@ import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-const Cart = () => {
-  const [cart, setCart] = useState([]);
+const Cart = ({cart,setCart}) => {
   const [total, setTotal] = useState(0);
-
-  useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")));
-  }, [])
 
   useEffect(() => {
     const newTotal = cart?.reduce((current, product) => current + product.price, 0);

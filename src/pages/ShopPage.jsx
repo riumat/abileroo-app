@@ -6,7 +6,7 @@ import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import Info from "../Components/Shop/Info";
 
-const ShopPage = () => {
+const ShopPage = ({setCart}) => {
   const [shopData, setShopData] = useState();
   const [isLiked, setIsLiked] = useState();
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
@@ -25,6 +25,7 @@ const ShopPage = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const newCart = [...cart, { "id": id, "name": name, "price": price, "image": product_image }];
     localStorage.setItem("cart", JSON.stringify(newCart));
+    setCart([...newCart]);
   }
 
   const isInLiked = (id) => {
