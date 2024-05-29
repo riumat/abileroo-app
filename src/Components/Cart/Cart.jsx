@@ -4,7 +4,7 @@ import CartProductCard from "./CartProductCard";
 import { CartCtx } from "../../App";
 import { Link } from "react-router-dom";
 
-const Cart = ({ setCart }) => {
+const Cart = ({ addToCart, removeFromCart }) => {
   const [total, setTotal] = useState(0);
   const [cartFormatted, setCartFormatted] = useState([]);
   const cart = useContext(CartCtx);
@@ -30,19 +30,6 @@ const Cart = ({ setCart }) => {
     return Object.values(counter);
   }
 
-  const removeFromCart = (index) => {
-    const removed = [...cart];
-    removed.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(removed));
-    setCart([...removed]);
-  }
-
-  const addToCart = ({ id, name, price, product_image }) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const newCart = [...cart, { "id": id, "name": name, "price": price, "product_image": product_image }];
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    setCart([...newCart]);
-  }
 
   const sendOrder = () => {
     console.log(cartFormatted);

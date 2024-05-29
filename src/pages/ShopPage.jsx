@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
 import axios from "axios";
 import { useParams } from "react-router";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import Info from "../Components/Shop/Info";
+import { FavoriteCtx } from "../App";
 
-const ShopPage = ({setCart}) => {
+const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
   const [shopData, setShopData] = useState();
   const [isLiked, setIsLiked] = useState();
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
   const { shopId } = useParams();
+  const favorites = useContext(FavoriteCtx);
 
   const updateSidebar = () => {
     setIsSideOpen(window.innerWidth > 768);
@@ -21,34 +23,6 @@ const ShopPage = ({setCart}) => {
     return () => window.removeEventListener("resize", updateSidebar);
   });
 
-  const addToCart = ({ id, name, price, product_image }) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const newCart = [...cart, { "id": id, "name": name, "price": price, "product_image": product_image }];
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    setCart([...newCart]);
-  }
-
-  const isInLiked = (id) => {
-    const liked = JSON.parse(localStorage.getItem("liked")) || [];
-    setIsLiked(liked.includes(id));
-  }
-
-  const likeShop = (id) => {
-    const liked = JSON.parse(localStorage.getItem("liked"));
-    liked.push(id);
-    localStorage.setItem("liked", JSON.stringify(liked));
-    isInLiked(id);
-  }
-
-  const dislikeShop = (id) => {
-    const liked = JSON.parse(localStorage.getItem("liked"));
-    const index = liked.indexOf(id);
-    if (index != -1) {
-      liked.splice(index, 1);
-    }
-    localStorage.setItem("liked", JSON.stringify(liked));
-    isInLiked(id);
-  }
 
   useEffect(() => {
     axios.get(`../mockShop${shopId}.json`) ///shops/shop/${shopId}
@@ -64,7 +38,7 @@ const ShopPage = ({setCart}) => {
         });
         return res.data
       })
-      .then(data => isInLiked(data.id))
+      .then(data => setIsLiked(favorites.includes(data.id)))
       .catch(error => console.log(error));
   }, [])
 
@@ -86,7 +60,6 @@ const ShopPage = ({setCart}) => {
             </div>
             {shopData && (
               <Info
-                isLiked={isLiked}
                 likeShop={likeShop}
                 dislikeShop={dislikeShop}
                 rating={shopData.rating}

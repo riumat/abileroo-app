@@ -22,7 +22,7 @@ const sortList = (shops, isAscending) => {
 };
 
 
-const HomePage = () => {
+const HomePage = ({ likeShop, dislikeShop }) => {
   const [shopList, setShopList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -79,7 +79,7 @@ const HomePage = () => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3 overflow-auto ">
+        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
 
           <div className="flex gap-3">
             <SortControls sortShops={sortShops} />
@@ -87,7 +87,7 @@ const HomePage = () => {
           {shopList?.length === 0 ? (
             <p className="text-center text-slate-800 dark:text-slate-200">Shops not found</p>
           ) : (
-            <ShopList shopList={shopList} error={error} isLoading={isLoading} />
+            <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
           )}
         </div>
 
