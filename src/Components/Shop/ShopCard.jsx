@@ -11,12 +11,14 @@ const ShopCard = ({ shop, likeShop, dislikeShop }) => {
   }, [favorites])
 
   const dislikeHandler = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     dislikeShop(shop?.id)
 
   }
 
   const likeHandler = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     likeShop(shop?.id);
   }
