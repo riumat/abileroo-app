@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai"
+import { FaHeart , FaRegHeart} from "react-icons/fa6";
+
 import { FaStar } from "react-icons/fa"
 import { FavoriteCtx } from "../../App"
 
@@ -8,7 +10,6 @@ const Info = ({ likeShop, dislikeShop, rating, description, address, id }) => {
   const favorites = useContext(FavoriteCtx);
 
   useEffect(() => {
-    console.log(favorites)
     setIsFavorite(favorites.includes(id));
   }, [favorites])
 
@@ -17,9 +18,9 @@ const Info = ({ likeShop, dislikeShop, rating, description, address, id }) => {
 
       <div className="border-r border-slate-400  items-center flex justify-center flex-1">
         {isFavorite ? (
-          <AiOutlineDislike className="w-7 h-7 cursor-pointer" onClick={() => dislikeShop(id)} />
+          <FaHeart className="w-7 h-7 cursor-pointer" onClick={() => dislikeShop(id)} />
         ) : (
-          <AiOutlineLike className="w-7 h-7 cursor-pointer" onClick={() => likeShop(id)} />
+          <FaRegHeart className="w-7 h-7 cursor-pointer" onClick={() => likeShop(id)} />
         )
         }
       </div>

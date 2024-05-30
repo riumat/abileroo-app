@@ -4,11 +4,14 @@ import { FaHeart , FaRegHeart} from "react-icons/fa6";
 import { FavoriteCtx } from "../../App";
 
 const ShopCard = ({ shop, likeShop, dislikeShop }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState();
   const favorites = useContext(FavoriteCtx);
 
   useEffect(() => {
     setIsFavorite(favorites.includes(shop?.id));
+    if(favorites.includes(shop?.id)){
+      console.log(`shop ${shop?.name} è dentro favorites`)
+    }
   }, [favorites])
 
   const dislikeHandler = (e) => {

@@ -8,7 +8,7 @@ const Searchbar = () => {
 
   const submitHandle = (e) => {
     e.preventDefault();
-    navigate(`/home?search=${query}`);
+    navigate(`/find?search=${query}`);
   }
 
   return (

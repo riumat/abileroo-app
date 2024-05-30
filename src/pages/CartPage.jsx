@@ -3,7 +3,7 @@ import Cart from "../Components/Cart/Cart"
 import Navbar from "../Components/Navbar/Navbar"
 import Sidebar from "../Components/Sidebar"
 
-const CartPage = ({ addToCart, removeFromCart }) => {
+const CartPage = ({ addToCart, removeFromCart, sendOrder }) => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
 
   const updateSidebar = () => {
@@ -24,7 +24,7 @@ const CartPage = ({ addToCart, removeFromCart }) => {
       <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
         <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-lg p-3 overflow-auto">
-          <Cart addToCart={addToCart} removeFromCart={removeFromCart} />
+          <Cart addToCart={addToCart} removeFromCart={removeFromCart} sendOrder={sendOrder} />
         </div>
 
       </div>

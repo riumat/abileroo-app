@@ -1,14 +1,9 @@
 import { IoMdSettings } from "react-icons/io";
 import { settingsOptions } from "../../constants";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 const SettingsDropdown = ({ isOpen, open }) => {
-  const user = JSON.parse(localStorage.getItem("credentials"));
-
-  const toggleMode=()=>{
-    document.documentElement.classList.toggle("dark");
-  }
+  const user = JSON.parse(localStorage.getItem("credentials")) || "";
 
   return (
     <div>

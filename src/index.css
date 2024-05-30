@@ -19,5 +19,18 @@ body {
 
 .component-card {
   --tw-bg-opacity: 1;
-  
+}
+
+.carousel {
+  animation: slide 35s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -100%;
+  }
 }

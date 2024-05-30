@@ -16,10 +16,12 @@ export const translateOptions = [
 
 export const settingsOptions = [
   { "name": "Account Settings", "path": "/home" },
-  { "name": "Privacy", "path": "/home" },
-  { "name": "Invite Friends", "path": "/home" },
+  { "name": "Favorites", "path": "/favorites" },
+  { "name": "Order History", "path": "/orders" },
   { "name": "Logout", "path": "/" }
 ];
+
+
 
 
 

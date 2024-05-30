@@ -6,6 +6,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { BsHouseHeart } from "react-icons/bs";
+
 
 const Sidebar = ({ isSideOpen }) => {
   const [isCompressed, setIsCompressed] = useState(false);
@@ -30,7 +32,7 @@ const Sidebar = ({ isSideOpen }) => {
             )}
           </div>
 
-          <Link to={"/home"} className="flex gap-5 items-center rounded-lg transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3" >
+          <Link to={"/find"} className="flex gap-5 items-center rounded-lg transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3" >
             <FaShop className="w-5 h-5" />
             {!isCompressed && (
               <p>Find All</p>
@@ -68,14 +70,14 @@ const Sidebar = ({ isSideOpen }) => {
         )}
 
         <div className="flex flex-col gap-2 text-slate-700 dark:text-slate-200">
-          <div className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
-            <MdOutlineSettingsAccessibility className="w-5 h-5" />
+          <Link to={"/favorites"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+            <BsHouseHeart className="w-5 h-5" />
             {!isCompressed && (
-              <p>Account Settings</p>
+              <p>Favorites</p>
             )}
-          </div>
+          </Link>
 
-          <Link to={"/cart"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+          <Link to={"/orders"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
             <FaShoppingCart className="w-5 h-5" />
             {!isCompressed && (
               <p>Orders</p>

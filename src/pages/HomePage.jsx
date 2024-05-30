@@ -1,49 +1,18 @@
 import { useEffect, useState } from "react"
-import axios from "axios";
-import SortControls from "../Components/Shop/SortControls";
-import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
-import { useSearchParams } from "react-router-dom";
+import Greetings from "../Components/Home/Greetings";
+import Carousel from "../Components/Home/Carousel";
+import { Link } from "react-router-dom";
+import History from "../Components/Home/History";
+import FavoritesCard from "../Components/Home/FavoritesCard";
 
-const sortList = (shops, isAscending) => {
-  return shops.slice().sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (isAscending) {
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-    } else {
-      if (nameA > nameB) return -1;
-      if (nameA < nameB) return 1;
-    }
-    return 0;
-  });
-};
-
-
-const HomePage = ({ likeShop, dislikeShop }) => {
-  const [shopList, setShopList] = useState();
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [params] = useSearchParams();
+const HomePage = () => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
 
   useEffect(() => {
-    const liked = JSON.parse(localStorage.getItem("liked")) || [];
-    localStorage.setItem("liked", JSON.stringify(liked));
-    getShops("mock.json"); // /shops/shops
-  }, [])
 
-  useEffect(() => {
-    const name = params.get("search") || "";
-    axios.get("mock.json")
-      .then(res => res.data)
-      .then(data => {
-        const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
-        setShopList([...filtered]);
-      })
-  }, [params])
+  }, [])
 
   const updateSidebar = () => {
     setIsSideOpen(window.innerWidth > 768);
@@ -54,23 +23,6 @@ const HomePage = ({ likeShop, dislikeShop }) => {
     return () => window.removeEventListener("resize", updateSidebar);
   });
 
-  const getShops = (url) => {
-    setIsLoading(true);
-    axios.get(url)
-      .then(res => {
-        setShopList(res.data)
-        setIsLoading(false);
-      })
-      .catch(error => {
-        setError(true);
-        console.log(error);
-      })
-  }
-
-  const sortShops = (isAscending) => {
-    setShopList(sortList(shopList, isAscending));
-  };
-
   return (
     <div className="flex flex-col gap-5 flex-grow overflow-hidden">
       {isSideOpen && window.innerWidth < 768 && (
@@ -79,16 +31,39 @@ const HomePage = ({ likeShop, dislikeShop }) => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
 
-          <div className="flex gap-3">
-            <SortControls sortShops={sortShops} />
+        <div className="flex flex-col flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg p-3 overflow-y-auto overflow-x-hidden ">
+
+          <Greetings />
+
+          <div className="flex flex-col justify-evenly h-full">
+
+            <Link to={"/find"} className="flex flex-col items-start hover:scale-[1.01] duration-500">
+              <div className="bg-white rounded-t-lg shadow py-1 px-3 text-[13px] dark:bg-slate-950 dark:text-white">
+                <p>Search and Find Shops</p>
+              </div>
+              <Carousel />
+            </Link>
+
+            <div className="flex flex-col md:flex-row gap-5 ">
+
+              <Link to={"/orders"} className="flex flex-col items-start flex-1 hover:scale-[1.01] duration-500">
+                <div className="bg-white rounded-t-lg shadow py-1 px-3 text-[13px] dark:bg-slate-950 dark:text-white">
+                  <p>Your Orders</p>
+                </div>
+                <History />
+              </Link>
+
+              <Link to={"/favorites"} className="flex flex-col items-start flex-1  hover:scale-[1.01] duration-500">
+                <div className="bg-white rounded-t-lg shadow py-1 px-3 text-[13px]  dark:bg-slate-950 dark:text-white">
+                  <p>Your Shops</p>
+                </div>
+                <FavoritesCard />
+              </Link>
+            </div>
+
           </div>
-          {shopList?.length === 0 ? (
-            <p className="text-center text-slate-800 dark:text-slate-200">Shops not found</p>
-          ) : (
-            <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
-          )}
+
         </div>
 
       </div>
