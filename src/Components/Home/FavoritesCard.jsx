@@ -22,7 +22,7 @@ const FavoritesCard = () => {
       {favorites.length === 0 ? (
         <p className="text-center text-slate-700 dark:text-slate-100">Empty. Find shops and add them to the favorites!</p>
       ) : (
-        <div className="grid grid-cols-3 justify-items-center dark:bg-slate-950">
+        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-y-10 justify-items-center dark:bg-slate-950">
           {shopList.map((shop, i) => (
             
             <div key={`favorite-card-${i}`} className="flex flex-col items-center gap-2">
