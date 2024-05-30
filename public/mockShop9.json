@@ -1,5 +1,5 @@
 {
-  "id": 7,
+  "id": 9,
   "name": "Suzaku",
   "address": "Via S. Benedetto, 16, 09128 Cagliari CA",
   "description": "Sushi",
@@ -8,7 +8,7 @@
   "products": [
       {
           "id": 9,
-          "shop": 7,
+          "shop": 9,
           "name": "Sushimi",
           "product_image": "https://media-cdn.tripadvisor.com/media/photo-s/18/05/d5/1e/carpaccio-misto.jpg",
           "description": "Tonno, Salmone, Sesamo",

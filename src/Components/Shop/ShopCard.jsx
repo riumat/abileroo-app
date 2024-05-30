@@ -9,20 +9,15 @@ const ShopCard = ({ shop, likeShop, dislikeShop }) => {
 
   useEffect(() => {
     setIsFavorite(favorites.includes(shop?.id));
-    if(favorites.includes(shop?.id)){
-      console.log(`shop ${shop?.name} è dentro favorites`)
-    }
-  }, [favorites])
+  }, [favorites,shop?.id])
 
   const dislikeHandler = (e) => {
     e.preventDefault();
-    e.stopPropagation();
     dislikeShop(shop?.id)
   }
 
   const likeHandler = (e) => {
     e.preventDefault();
-    e.stopPropagation();
     likeShop(shop?.id);
   }
 

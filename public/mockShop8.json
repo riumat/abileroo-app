@@ -8,7 +8,7 @@
   "products": [
     {
       "id": 1,
-      "shop": 1,
+      "shop": 8,
       "name": "Cheeseburger",
       "product_image": "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-cheeseburger-BB-1:nutrition-calculator-tile?wid=472&hei=472&dpr=off",
       "description": "Pane, hamburger, cheddar, ketchup",
