@@ -1,18 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
 import axios from "axios";
 import { useParams } from "react-router";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import Info from "../Components/Shop/Info";
-import { FavoriteCtx } from "../App";
 
 const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
   const [shopData, setShopData] = useState();
-  const [isLiked, setIsLiked] = useState();
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
   const { shopId } = useParams();
-  const favorites = useContext(FavoriteCtx);
 
   const updateSidebar = () => {
     setIsSideOpen(window.innerWidth > 768);
@@ -36,9 +33,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
           "rating": res.data.rating,
           "products": res.data.products,
         });
-        return res.data
       })
-      .then(data => setIsLiked(favorites.includes(data.id)))
       .catch(error => console.log(error));
   }, [])
 
@@ -74,7 +69,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
             <p className="text-[23px] font-bold text-center dark:text-slate-100">Products</p>
             <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7 mb-10">
               {shopData?.products?.map((p, i) => (
-                <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />
+                <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} id={shopData.id}/>
               ))}
             </div>
           </div>
