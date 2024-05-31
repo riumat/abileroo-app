@@ -3,6 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import CartProductCard from "./CartProductCard";
 import { CartCtx } from "../../App";
 import FindShopButton from "../FindShopButton";
+import { Link } from "react-router-dom";
 
 const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
   const [total, setTotal] = useState(0);
@@ -45,14 +46,19 @@ const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
             <FindShopButton />
           </div>
         ) : (
-          <div className="flex flex-col gap-5 ">
+          <div className="flex flex-col gap-5 items-center">
             <p className="text-[13px] text-slate-600 dark:text-slate-300 text-center">Current Order:</p>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 w-full">
               {cartFormatted?.map((product, i) => (
                 <CartProductCard key={`product-cart-${i}`} p={product} addToCart={addToCart} removeFromCart={removeFromCart} />
               ))}
             </div>
+            <div className="flex justify-around w-full">
               <p className="text-[18px] font-semibold text-center"> Total: {total} €</p>
+              <Link to={`/shop/${cart?.id}`} className="rounded-lg bg-white p-2 text-slate-800 text-[13px] font-bold">
+                Get More
+              </Link>
+            </div>
             <button
               className="p-3 bg-emerald-900 dark:bg-emerald-800 text-white rounded-lg"
               onClick={() => sendOrder(cartFormatted, total)}

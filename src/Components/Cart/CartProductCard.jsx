@@ -12,6 +12,7 @@ const CartProductCard = ({ p, removeFromCart, addToCart}) => {
           <p className="font-bold text-[16px]">x{p.count}</p>
         </div>
       </div>
+      
       <div className="flex gap-2 me-5">
         <div
           className="p-2 rounded-lg hover:bg-green-100 dark:hover:bg-emerald-900 cursor-pointer active:scale-50 duration-500"
