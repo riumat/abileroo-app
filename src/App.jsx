@@ -8,9 +8,10 @@ import { createContext, useEffect, useState } from 'react';
 import FavoritesPage from './pages/FavoritesPage';
 import FindPage from './pages/FindPage';
 import OrdersPage from './pages/OrdersPage';
+import CheckoutPage from './pages/CheckoutPage';
 
 const App = () => {
-  const [cart, setCart] = useState({ id: "", list: [] });
+  const [cart, setCart] = useState({});
   const [favorites, setFavorites] = useState([]);
   const [orders, setOrders] = useState([]);
 
@@ -80,6 +81,7 @@ const App = () => {
                   <Route path='/cart' element={<CartPage addToCart={addToCart} removeFromCart={removeFromCart} sendOrder={sendOrder} />} />
                   <Route path='/favorites' element={<FavoritesPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
                   <Route path='/orders' element={<OrdersPage />} />
+                  <Route path='/checkout' element={<CheckoutPage />} />
                 </Routes>
               </div>
 

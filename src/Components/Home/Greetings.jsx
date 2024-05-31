@@ -6,7 +6,7 @@ const useDate = () => {
 
   useEffect(() => {
     const hour = new Date().getHours().toLocaleString("it");
-    setIsEvening(hour > 14);
+    setIsEvening(hour > 13);
   }, [])
   return isEvening;
 }

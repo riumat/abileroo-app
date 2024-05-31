@@ -59,12 +59,13 @@ const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
                 Get More!
               </Link>
             </div>
-            <button
+            <Link
+              to={"/checkout"}
               className="p-3 bg-emerald-900 dark:bg-emerald-800 text-white rounded-lg"
               onClick={() => sendOrder(cartFormatted, total)}
             >
               Checkout
-            </button>
+            </Link>
           </div>
 
         )}
