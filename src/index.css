@@ -25,6 +25,13 @@ body {
   animation: slide 35s linear infinite;
 }
 
+.bg-home{
+  background-image: url("https://png.pngtree.com/background/20230417/original/pngtree-burger-food-restaurant-background-picture-image_2445056.jpg");
+  background-size: cover;
+  background-position: 2px -170px;
+
+}
+
 @keyframes slide {
   0% {
     left: 0;

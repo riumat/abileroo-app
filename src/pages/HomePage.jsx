@@ -32,11 +32,12 @@ const HomePage = () => {
       <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
 
-        <div className="flex flex-col gap-16 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg p-3 overflow-y-auto overflow-x-hidden ">
+        <div className="flex flex-col  flex-1 bg-home rounded-t-lg  overflow-y-auto overflow-x-hidden relative">
+        <div className='absolute bg-gradient-to-t from-emerald-50 from-40% to-black/70 dark:from-emerald-950 dark:from-0% dark:to-black/50  w-full h-full '/>
 
           <Greetings />
 
-          <div className="flex flex-col gap-12 ">
+          <div className="flex flex-col gap-12 p-3 z-10">
 
             <Link to={"/find"} className="flex flex-col items-start hover:scale-[1.01] duration-500">
               <div className="bg-white rounded-t-lg shadow py-1 px-3 text-[13px] dark:bg-slate-950 dark:text-white">
