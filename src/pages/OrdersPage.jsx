@@ -7,6 +7,7 @@ import Navbar from "../Components/Navbar/Navbar"
 import Sidebar from "../Components/Sidebar"
 import CartProductCard from '../Components/Cart/CartProductCard';
 import FindShopButton from '../Components/FindShopButton';
+import { MdErrorOutline } from 'react-icons/md';
 
 const OrdersPage = () => {
   const orders = useContext(OrdersCtx);
@@ -34,10 +35,11 @@ const OrdersPage = () => {
         <Sidebar isSideOpen={isSideOpen} />
         <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-lg p-3 overflow-auto">
           {orders.length === 0 ? (
-            <div className='  p-3 flex flex-col items-center gap-10'>
-              <p className='text-[30px] text-center dark:text-slate-100 '>No orders found.</p>
-              <FindShopButton/>
-            </div>
+            <div className="flex flex-col items-center gap-10 pt-8">
+            <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6"/>
+            <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">You have not placed any order yet!</p>
+            <FindShopButton />
+          </div>
           ) : (
             <div>
               <div className='  p-3 '>

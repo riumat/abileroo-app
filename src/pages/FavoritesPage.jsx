@@ -6,6 +6,7 @@ import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import { FavoriteCtx } from "../App";
 import FindShopButton from "../Components/FindShopButton";
+import { MdErrorOutline } from "react-icons/md";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -66,7 +67,8 @@ const FavoritesPage = ({ likeShop, dislikeShop }) => {
           </div>
           {shopList?.length === 0 ? (
             <div className="flex flex-col items-center gap-10">
-              <p className="text-center text-slate-800 dark:text-slate-200">You have not selected any shops yet!</p>
+              <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6"/>
+              <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">You have not selected any shops yet!</p>
               <FindShopButton />
             </div>
           ) : (

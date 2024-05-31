@@ -55,8 +55,8 @@ const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
             </div>
             <div className="flex justify-around w-full">
               <p className="text-[18px] font-semibold text-center"> Total: {total} €</p>
-              <Link to={`/shop/${cart?.id}`} className="rounded-lg bg-white p-2 text-slate-800 text-[13px] font-bold">
-                Get More
+              <Link to={`/shop/${cart?.id}`} className="rounded-lg bg-white p-3 text-slate-800 text-[14px] logo-font">
+                Get More!
               </Link>
             </div>
             <button
