@@ -10,29 +10,32 @@ import FindPage from './pages/FindPage';
 import OrdersPage from './pages/OrdersPage';
 
 const App = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({ id: "", list: [] });
   const [favorites, setFavorites] = useState([]);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    setCart(JSON.parse(localStorage.getItem("cart")) || { id: "", list: [] });
     setFavorites(JSON.parse(localStorage.getItem("liked")) || []);
     setOrders(JSON.parse(localStorage.getItem("orders")) || []);
   }, [])
 
-  const addToCart = ({ id, name, price, product_image }) => {
-    const added = [...cart, { "id": id, "name": name, "price": price, "product_image": product_image }];
-    localStorage.setItem("cart", JSON.stringify(added));
-    setCart([...added]);
+  const addToCart = ({ id, name, price, product_image, shop }) => {
+    console.log(cart);
+    const added = [...cart.list, { id: id, name: name, price: price, product_image: product_image, shop: shop }];
+    localStorage.setItem("cart", JSON.stringify({ ...{ id: shop }, list: [...added] }));
+    setCart({ ...{ id: shop }, list: [...added] });
   }
 
   const removeFromCart = (id) => {
-    const index = cart.findIndex((item) => item.id === id);
+    console.log(cart);
+    const index = cart.list.findIndex(item => item.id === id);
     if (index !== -1) {
-      const removed=[...cart];
+      const removed = [...cart.list];
+      const shopId = removed.length === 0 ? "" : cart.id;
       removed.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(removed));
-      setCart([...removed]);
+      localStorage.setItem("cart", JSON.stringify({ ...{ id: shopId }, list: [...removed] }));
+      setCart({ ...{ id: shopId }, list: [...removed] });
     }
   };
 
@@ -52,8 +55,8 @@ const App = () => {
     setFavorites(removed);
   }
 
-  const sendOrder = (cartFormatted,total) => {
-    const added = [...orders, { order: cartFormatted, date: new Date(), total:total }];
+  const sendOrder = (cartFormatted, total) => {
+    const added = [...orders, { order: cartFormatted, date: new Date(), total: total }];
     localStorage.setItem("orders", JSON.stringify(added));
     setOrders(added);
     setCart([]);

@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import CartProductCard from "./CartProductCard";
 import { CartCtx } from "../../App";
-import { Link } from "react-router-dom";
 import FindShopButton from "../FindShopButton";
 
 const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
@@ -14,14 +13,14 @@ const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
     console.log(cart)
     setTotal(getTotal());
     setCartFormatted(getCartFormatted());
-  }, [cart]);
+  }, [cart?.list]);
 
   const getTotal = () => {
-    return cart?.reduce((current, product) => current + product.price, 0);
+    return cart?.list?.reduce((current, product) => current + product.price, 0);
   }
 
   const getCartFormatted = () => {
-    const counter = cart?.reduce((obj, product) => {
+    const counter = cart?.list?.reduce((obj, product) => {
       if (!obj[product.id]) {
         obj[product.id] = { ...product, count: 0 };
       }
@@ -32,8 +31,6 @@ const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
   }
 
 
-
-
   return (
     <div className=" rounded-lg flex flex-col gap-2  dark:text-slate-100 text-emerald-950">
 
@@ -42,7 +39,7 @@ const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
       </div>
 
       <div className="py-4 bg-emerald-50 dark:bg-transparent rounded-lg">
-        {cart?.length === 0 ? (
+        {cart?.list?.length === 0 ? (
           <div className="flex flex-col items-center gap-10">
             <p className="text-center">Your Cart is Empty.</p>
             <FindShopButton />
@@ -52,11 +49,16 @@ const Cart = ({ addToCart, removeFromCart, sendOrder }) => {
             <p className="text-[13px] text-slate-600 dark:text-slate-300 text-center">Current Order:</p>
             <div className="flex flex-col gap-5">
               {cartFormatted?.map((product, i) => (
-                <CartProductCard key={`product-cart-${i}`} p={product} addToCart={addToCart} removeFromCart={removeFromCart}   />
+                <CartProductCard key={`product-cart-${i}`} p={product} addToCart={addToCart} removeFromCart={removeFromCart} />
               ))}
             </div>
-            <p className="text-[18px] font-semibold text-center"> Total: {total} €</p>
-            <button className="p-3 bg-emerald-900 dark:bg-emerald-800 text-white rounded-lg " onClick={() => sendOrder(cartFormatted, total)}>Checkout</button>
+              <p className="text-[18px] font-semibold text-center"> Total: {total} €</p>
+            <button
+              className="p-3 bg-emerald-900 dark:bg-emerald-800 text-white rounded-lg"
+              onClick={() => sendOrder(cartFormatted, total)}
+            >
+              Checkout
+            </button>
           </div>
 
         )}

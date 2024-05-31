@@ -81,9 +81,9 @@ const Navbar = ({ toggleSidebar }) => {
             </div>
             <Link to={"/cart"} className="relative inline-block hover:text-white hover:bg-emerald-700 rounded">
               <BsCart3 className="cursor-pointer w-7 h-7  p-1 dark:text-slate-100" />
-              {cart?.length != 0 && (
+              {cart?.list?.length != 0 && (
                 <span className="absolute top-0 right-0 inline-flex items-center justify-center  text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px] dark:bg-white  dark:text-emerald-950">
-                  {cart?.length}
+                  {cart?.list?.length}
                 </span>
               )}
 
