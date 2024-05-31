@@ -43,7 +43,8 @@ const OrdersPage = () => {
           ) : (
             <div>
               <div className='  p-3 '>
-                <p className='text-[30px] text-center dark:text-slate-100 '>Your recent orders</p>
+              <p className="logo-font text-[30px] text-center pt-5 dark:text-slate-100">Your Recent Orders</p>
+
               </div>
               <div className='p-2 rounded-lg flex flex-col gap-3'>
                 {orders.map((order, i) => (

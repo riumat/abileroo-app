@@ -59,7 +59,7 @@ const App = () => {
     const added = [...orders, { order: cartFormatted, date: new Date(), total: total }];
     localStorage.setItem("orders", JSON.stringify(added));
     setOrders(added);
-    setCart([]);
+    setCart({ id: "", list: [] });
   }
 
 

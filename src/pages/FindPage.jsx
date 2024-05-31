@@ -5,6 +5,8 @@ import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";
+import FindShopButton from "../Components/FindShopButton";
+import { MdErrorOutline } from "react-icons/md";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -84,11 +86,22 @@ const FindPage = ({ likeShop, dislikeShop }) => {
           <div className="flex gap-3">
             <SortControls sortShops={sortShops} />
           </div>
-          {shopList?.length === 0 ? (
-            <p className="text-center text-slate-800 dark:text-slate-200">Shops not found</p>
-          ) : (
-            <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
-          )}
+          <div className="flex flex-col items-center gap-8 text-slate-800 dark:text-slate-100">
+
+            {shopList?.length === 0 ? (
+              <div className="flex flex-col items-center gap-10">
+                <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
+                <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">No shops found.</p>
+                <FindShopButton />
+              </div>
+            ) : (
+              <div className="flex flex-col gap-7 w-full">
+                <p className="logo-font text-[30px] text-center dark:text-slate-100">Our Shop Selection</p>
+
+                <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
+              </div>
+            )}
+          </div>
         </div>
 
       </div>

@@ -72,10 +72,11 @@ const FavoritesPage = ({ likeShop, dislikeShop }) => {
               <FindShopButton />
             </div>
           ) : (
-            <div className="flex flex-col gap-7">
-              <p className="text-[30px] dark:text-slate-100 ">Your Favorite Shops</p>
-              <ShopList shopList={shopList} likeShop={likeShop} dislikeShop={dislikeShop} />
-            </div>
+            <div className="flex flex-col gap-7 w-full">
+            <p className="logo-font text-[30px] text-center dark:text-slate-100">Your Favorite Shops</p>
+
+            <ShopList shopList={shopList}  likeShop={likeShop} dislikeShop={dislikeShop} />
+          </div>
           )}
         </div>
 
