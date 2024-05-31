@@ -13,7 +13,7 @@ const History = () => {
     <div className="w-full ">
       {orders?.length === 0 ? (
         <div className="p-3 shadow bg-white rounded-b-lg rounded-tr-lg dark:bg-slate-950 dark:text-slate-100 ">
-          <p className="text-center text-[14px] dark:text-slate-100">No past order found. </p>
+          <p className="text-center text-[14px] dark:text-slate-100 text-slate-700">Empty. You did not place any order yet </p>
         </div>
       ) : (
         <div className="shadow bg-white rounded-b-lg rounded-tr-lg flex flex-col gap-2 p-3 dark:bg-slate-950  dark:text-slate-100">

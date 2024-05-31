@@ -1,12 +1,14 @@
 import { IoIosTrendingUp } from "react-icons/io";
 import { FaShop } from "react-icons/fa6";
 import { RiDiscountPercentLine } from "react-icons/ri";
-import { MdOutlineDiscount, MdOutlineSettingsAccessibility, MdLogout } from "react-icons/md";
-import { FaShoppingCart } from "react-icons/fa";
+import { MdOutlineDiscount, MdLogout, MdBorderColor } from "react-icons/md";
+import { FaShoppingCart, FaHouseUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsHouseHeart } from "react-icons/bs";
+
+
 
 
 const Sidebar = ({ isSideOpen }) => {
@@ -69,7 +71,17 @@ const Sidebar = ({ isSideOpen }) => {
           <p className="font-semibold">Your Area</p>
         )}
 
+
+
         <div className="flex flex-col gap-2 text-slate-700 dark:text-slate-200">
+
+          <Link to={"/home"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+            <FaHouseUser className="w-5 h-5" />
+            {!isCompressed && (
+              <p>Home</p>
+            )}
+          </Link>
+
           <Link to={"/favorites"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
             <BsHouseHeart className="w-5 h-5" />
             {!isCompressed && (
@@ -78,7 +90,7 @@ const Sidebar = ({ isSideOpen }) => {
           </Link>
 
           <Link to={"/orders"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
-            <FaShoppingCart className="w-5 h-5" />
+            <MdBorderColor className="w-5 h-5" />
             {!isCompressed && (
               <p>Orders</p>
             )}
@@ -90,7 +102,7 @@ const Sidebar = ({ isSideOpen }) => {
               <p>Log out</p>
             )}
           </Link>
-          
+
         </div>
       </div>
     </div>
