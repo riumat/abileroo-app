@@ -23,7 +23,7 @@ const CartPage = ({ addToCart, removeFromCart, confirmOrder }) => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-lg p-3 overflow-auto">
+        <div className="flex flex-col gap-5 flex-1 rounded-lg p-3 overflow-auto bg-dark shadow-none">
           <Cart addToCart={addToCart} removeFromCart={removeFromCart} confirmOrder={confirmOrder} />
         </div>
 

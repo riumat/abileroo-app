@@ -35,7 +35,7 @@ const OrdersPage = () => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-lg p-3 overflow-auto">
+        <div className="flex flex-col gap-5 flex-1 bg-dark rounded-lg p-3 overflow-auto">
           {orders.length === 0 ? (
             <div className="flex flex-col items-center gap-10 pt-8">
               <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
@@ -49,7 +49,7 @@ const OrdersPage = () => {
 
               </div>
 
-              <div className='p-2 rounded-lg flex flex-col gap-3'>
+              <div className='p-2 rounded-lg flex flex-col gap-5'>
                 {orders.map((order, i) => (
                   <OrderCard order={order} i={i} />
                 ))}

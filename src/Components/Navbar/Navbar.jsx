@@ -45,11 +45,11 @@ const Navbar = ({ toggleSidebar }) => {
   }
 
   return (
-    <nav className="component-card rounded-b-lg dark:bg-slate-950 text-emerald-900" >
+    <nav className="rounded-b-lg bg-light shadow-none" >
       {isSearchOpen ? (
         <div className="flex justify-between items-center text-emerald-800 dark:text-slate-100 pb-[5.5px]">
           <Searchbar />
-          <div onClick={() => setIsSearchOpen(false)} className="cursor-pointer rounded-e-lg bg-emerald-50 dark:bg-emerald-950/70 py-3 md:py-2">
+          <div onClick={() => setIsSearchOpen(false)} className="cursor-pointer rounded-e-lg bg-dark py-3 md:py-2">
             <IoMdClose className="w-[22px] h-[22px]" />
           </div>
         </div>
@@ -74,13 +74,13 @@ const Navbar = ({ toggleSidebar }) => {
           <div className="flex gap-5 me-3 md:me-10 items-center">
             <div>
               {isDarkMode ? (
-                <MdOutlineLightMode className="w-7 h-7 cursor-pointer hover:fill-white p-1 rounded hover:bg-emerald-700 dark:text-slate-100" onClick={toggleDarkMode} />
+                <MdOutlineLightMode className="nav-button" onClick={toggleDarkMode} />
               ) : (
-                <MdOutlineDarkMode className="w-7 h-7 cursor-pointer hover:fill-white p-1 rounded hover:bg-emerald-700 dark:text-slate-100" onClick={toggleDarkMode} />
+                <MdOutlineDarkMode className="nav-button" onClick={toggleDarkMode} />
               )}
             </div>
-            <Link to={"/cart"} className="relative inline-block hover:text-white hover:bg-emerald-700 rounded">
-              <BsCart3 className="cursor-pointer w-7 h-7  p-1 dark:text-slate-100" />
+            <Link to={"/cart"} className="relative inline-block">
+              <BsCart3 className="nav-button" />
               {cart?.list?.length != 0 && (
                 <span className="absolute top-0 right-0 inline-flex items-center justify-center  text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px] dark:bg-white  dark:text-emerald-950">
                   {cart?.list?.length}

@@ -51,13 +51,13 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
 
 
   return (
-    <div className=" rounded-lg flex flex-col gap-2  dark:text-slate-100 text-emerald-950">
+    <div className="flex flex-col gap-2 ">
 
-      <div className=" flex justify-center bg-white dark:bg-slate-950 shadow py-10 rounded-lg ">
+      <div className="flex justify-center bg-light  py-10 rounded-lg ">
         <FaShoppingCart className="w-10 h-10 " />
       </div>
 
-      <div className="py-4 bg-emerald-50 dark:bg-transparent rounded-lg">
+      <div className="py-4 bg-dark rounded-lg">
         {cart?.list?.length === 0 ? (
           <div className="flex flex-col items-center gap-10">
             <p className="text-center">Your Cart is Empty.</p>

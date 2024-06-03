@@ -6,7 +6,7 @@ const OrderCard = ({ order, i }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <div key={`order-${i}`} className={`flex flex-col w-full gap-5 p-3 `}>
+    <div key={`order-${i}`} className={`flex flex-col w-full gap-5 p-3 rounded-lg ${isVisible ? "bg-dark" : "bg-light"}`}>
       <div className="flex justify-evenly md:gap-5 items-center text-[13px] md:text-[15px]">
         <p className='text-slate-900 dark:text-slate-200 font-bold'>Order #{i + 1}</p>
         <p className='text-slate-600 dark:text-slate-400 text-[13px]'>{`${new Date(order?.date).toLocaleDateString("it")} @ ${new Date(order?.date).toLocaleTimeString("it")}`}</p>

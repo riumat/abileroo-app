@@ -45,13 +45,13 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 p-3 rounded-t-lg overflow-auto">
+        <div className="flex flex-col gap-5 flex-1 bg-dark p-3 rounded-t-lg overflow-auto">
 
           <div className="flex flex-col gap-7 items-center ">
 
-            <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center dark:bg-slate-950 shadow bg-white">
+            <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center bg-light">
               <img src={shopData?.image} alt="" className="w-[130px] h-[130px] rounded-lg object-cover" />
-              <p className="text-[25px] lg:text-[40px] font-semibold text-slate-800 dark:text-slate-100">{shopData?.name}</p>
+              <p className="text-[25px] lg:text-[40px] font-semibold">{shopData?.name}</p>
             </div>
             {shopData && (
               <Info
@@ -69,7 +69,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
             <p className="text-[23px] font-bold text-center dark:text-slate-100">Products</p>
             <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7 mb-10">
               {shopData?.products?.map((p, i) => (
-                <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} id={shopData.id}/>
+                <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />
               ))}
             </div>
           </div>

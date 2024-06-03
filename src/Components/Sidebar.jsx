@@ -5,7 +5,7 @@ import { MdOutlineDiscount, MdLogout, MdBorderColor } from "react-icons/md";
 import { FaHouseUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BsHouseHeart } from "react-icons/bs";
 
 
@@ -16,7 +16,7 @@ const Sidebar = ({ isSideOpen }) => {
 
   if (!isSideOpen) return;
   return (
-    <div className={`rounded-lg p-5 absolute md:static z-50 text-[13px] bg-light shadow-none  flex flex-col gap-16 ${isCompressed ? "w-18" : "w-[200px]"}`}>
+    <div className={`rounded-lg p-5 absolute md:static z-50 text-[13px] bg-light shadow-none  flex flex-col gap-16 ${isCompressed ? "w-18" : "w-[170px]"}`}>
 
       <div className="md:flex justify-center hidden">
         <IoMenu
@@ -28,41 +28,41 @@ const Sidebar = ({ isSideOpen }) => {
       <div className="flex flex-col gap-12  ">
 
 
-        <Link to={"/find"} className="sb-button" >
+        <NavLink to={"/find"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}  >
           <FaShop className="w-5 h-5" />
           {!isCompressed && (
             <p>Shops</p>
           )}
-        </Link>
+        </NavLink>
 
-        <div className="sb-button">
+        <NavLink to={"/products"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
           <MdOutlineDiscount className="w-5 h-5" />
           {!isCompressed && (
             <p>Products</p>
           )}
-        </div>
+        </NavLink>
 
 
-        <Link to={"/home"} className="sb-button">
+        <NavLink to={"/home"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
           <FaHouseUser className="w-5 h-5" />
           {!isCompressed && (
             <p>Home</p>
           )}
-        </Link>
+        </NavLink>
 
-        <Link to={"/favorites"} className="sb-button">
+        <NavLink to={"/favorites"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
           <BsHouseHeart className="w-5 h-5" />
           {!isCompressed && (
             <p>Favorites</p>
           )}
-        </Link>
+        </NavLink>
 
-        <Link to={"/orders"} className="sb-button">
+        <NavLink to={"/orders"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
           <MdBorderColor className="w-5 h-5" />
           {!isCompressed && (
             <p>Orders</p>
           )}
-        </Link>
+        </NavLink>
 
         <Link to={"/"} className="sb-button">
           <MdLogout className="w-5 h-5" />

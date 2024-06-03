@@ -9,6 +9,7 @@ import FavoritesPage from './pages/FavoritesPage';
 import FindPage from './pages/FindPage';
 import OrdersPage from './pages/OrdersPage';
 import CheckoutPage from './pages/CheckoutPage';
+import ProductsPage from './pages/ProductsPage';
 
 const App = () => {
   const [cart, setCart] = useState({});
@@ -87,6 +88,7 @@ const App = () => {
                     <Route exact path='/' element={<AuthPage />} />
                     <Route path='/home' element={<HomePage />} />
                     <Route path='/find' element={<FindPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
+                    <Route path='/products' element={<ProductsPage addToCart={addToCart} />} />
                     <Route path='/shop/:shopId' element={<ShopPage addToCart={addToCart} likeShop={likeShop} dislikeShop={dislikeShop} />} />
                     <Route path='/cart' element={<CartPage addToCart={addToCart} removeFromCart={removeFromCart} confirmOrder={confirmOrder} />} />
                     <Route path='/favorites' element={<FavoritesPage likeShop={likeShop} dislikeShop={dislikeShop} />} />

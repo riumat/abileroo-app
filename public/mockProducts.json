@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "shop": 1,
+    "name": "Cheeseburger",
+    "product_image": "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-cheeseburger-BB-1:nutrition-calculator-tile?wid=472&hei=472&dpr=off",
+    "description": "Pane, hamburger, cheddar, ketchup",
+    "price": 5.0,
+    "available_amount": 197
+  },
+  {
+    "id": 2,
+    "shop": 2,
+    "name": "Margherita",
+    "product_image": "https://it.ooni.com/cdn/shop/articles/Margherita-9920.jpg?crop=center&height=915&v=1644590028&width=1200",
+    "description": "Pomodoro, mozzarella, basilico",
+    "price": 4.5,
+    "available_amount": 48
+  },
+  {
+    "id": 3,
+    "shop": 3,
+    "name": "Happy Meal",
+    "product_image": "https://www.mcdonalds.it/sites/default/files/styles/compressed/public/product_category/mobile/happy-meal--hero-mob_0.jpg?itok=mW9bRjCu",
+    "description": "Hamburger, nuggets di pollo, bibita",
+    "price": 7,
+    "available_amount": 230
+  },
+  {
+    "id": 4,
+    "shop": 3,
+    "name": "Happy Meal Pro",
+    "product_image": "https://s7d1.scene7.com/is/image/mcdonalds/cheeseburger_Sommer23:nutrition-calculator-tile?wid=450&hei=450&dpr=off",
+    "description": "Hamburger, nuggets di pollo, bibita, succo",
+    "price": 8.5,
+    "available_amount": 3
+  },
+  {
+    "id": 5,
+    "shop": 4,
+    "name": "Marinara",
+    "product_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSssyFpYWK7eDK7kIQR7L800aPOCNvhooOfWlgKw_MmMg&s",
+    "description": "Pomodoro, origano",
+    "price": 4,
+    "available_amount": 22
+  },
+  {
+    "id": 6,
+    "shop": 4,
+    "name": "Romana",
+    "product_image": "https://nicolosiphp.com/wp-content/uploads/2023/03/Romana-Pizze-Classiche-Nicolosi-PHP.jpg",
+    "description": "Pomodoro, porchetta, formaggio, patate",
+    "price": 5.5,
+    "available_amount": 33
+  },
+  {
+    "id": 9,
+    "shop": 9,
+    "name": "Sushimi",
+    "product_image": "https://media-cdn.tripadvisor.com/media/photo-s/18/05/d5/1e/carpaccio-misto.jpg",
+    "description": "Tonno, Salmone, Sesamo",
+    "price": 12.0,
+    "available_amount": 197
+  }
+]
