@@ -14,6 +14,7 @@ const App = () => {
   const [cart, setCart] = useState({});
   const [favorites, setFavorites] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [summary, setSummary] = useState({});
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || { id: "", list: [] });
@@ -33,8 +34,8 @@ const App = () => {
     const index = cart.list.findIndex(item => item.id === id);
     if (index !== -1) {
       const removed = [...cart.list];
-      const shopId = removed.length === 0 ? "" : cart.id;
       removed.splice(index, 1);
+      const shopId = removed.length === 0 ? "" : cart.id;
       localStorage.setItem("cart", JSON.stringify({ ...{ id: shopId }, list: [...removed] }));
       setCart({ ...{ id: shopId }, list: [...removed] });
     }
@@ -56,12 +57,19 @@ const App = () => {
     setFavorites(removed);
   }
 
-  const sendOrder = (cartFormatted, total) => {
-    const added = [...orders, { order: cartFormatted, date: new Date(), total: total }];
+  const confirmOrder = (cartFormatted, total, deliveryDate, address, email) => {
+    setSummary({ order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: email });
+
+  }
+
+  const sendOrder = (order, date, total) => {
+    const added = [...orders, { order: order, date: date, total: total }];
+    console.log(added);
     localStorage.setItem("orders", JSON.stringify(added));
     setOrders(added);
     setCart({ id: "", list: [] });
   }
+
 
 
 
@@ -70,22 +78,25 @@ const App = () => {
       <FavoriteCtx.Provider value={favorites}>
         <CartCtx.Provider value={cart}>
           <OrdersCtx.Provider value={orders} >
-            <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-950 overflow-hidden">
+            <SummaryCtx.Provider value={summary} >
 
-              <div className='flex flex-col h-full mx-5'>
-                <Routes>
-                  <Route exact path='/' element={<AuthPage />} />
-                  <Route path='/home' element={<HomePage />} />
-                  <Route path='/find' element={<FindPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
-                  <Route path='/shop/:shopId' element={<ShopPage addToCart={addToCart} likeShop={likeShop} dislikeShop={dislikeShop} />} />
-                  <Route path='/cart' element={<CartPage addToCart={addToCart} removeFromCart={removeFromCart} sendOrder={sendOrder} />} />
-                  <Route path='/favorites' element={<FavoritesPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
-                  <Route path='/orders' element={<OrdersPage />} />
-                  <Route path='/checkout' element={<CheckoutPage />} />
-                </Routes>
-              </div>
+              <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-950 overflow-hidden">
 
-            </main>
+                <div className='flex flex-col h-full mx-5'>
+                  <Routes>
+                    <Route exact path='/' element={<AuthPage />} />
+                    <Route path='/home' element={<HomePage />} />
+                    <Route path='/find' element={<FindPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
+                    <Route path='/shop/:shopId' element={<ShopPage addToCart={addToCart} likeShop={likeShop} dislikeShop={dislikeShop} />} />
+                    <Route path='/cart' element={<CartPage addToCart={addToCart} removeFromCart={removeFromCart} confirmOrder={confirmOrder} />} />
+                    <Route path='/favorites' element={<FavoritesPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
+                    <Route path='/orders' element={<OrdersPage />} />
+                    <Route path='/checkout' element={<CheckoutPage sendOrder={sendOrder} />} />
+                  </Routes>
+                </div>
+
+              </main>
+            </SummaryCtx.Provider>
           </OrdersCtx.Provider>
         </CartCtx.Provider>
       </FavoriteCtx.Provider>
@@ -98,4 +109,5 @@ export default App;
 export const CartCtx = createContext();
 export const FavoriteCtx = createContext();
 export const OrdersCtx = createContext();
+export const SummaryCtx = createContext();
 

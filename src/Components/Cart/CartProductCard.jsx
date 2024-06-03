@@ -1,12 +1,11 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const CartProductCard = ({ p, removeFromCart, addToCart}) => {
-  console.log(p)
   return (
     <div className="flex justify-between text-[14px] shadow  items-center bg-white dark:bg-slate-950 rounded-lg"
     >
       <div className="flex gap-5 items-center">
-        <img src={p.product_image} className="w-28 h-28 object-cover rounded-s-lg" alt="" loading="lazy" />
+        <img src={p.product_image} className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-s-lg" alt="" loading="lazy" />
         <div className="flex flex-col">
           <p >{p.name}</p>
           <p className="font-bold text-[16px]">x{p.count}</p>
