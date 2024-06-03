@@ -16,7 +16,7 @@ const Sidebar = ({ isSideOpen }) => {
 
   if (!isSideOpen) return;
   return (
-    <div className={`bg-white dark:bg-slate-950 rounded-lg p-5 absolute md:static z-50 text-[13px] dark:text-slate-100  ${isCompressed ? "w-18" : "w-[200px]"}`}>
+    <div className={`rounded-lg p-5 absolute md:static z-50 text-[13px] bg-light  ${isCompressed ? "w-18" : "w-[200px]"}`}>
 
       <div className="md:flex justify-center hidden">
         <IoMenu className="w-7 h-7 p-1 rounded-lg cursor-pointer hover:bg-emerald-800 dark:hover:bg-emerald-800 hover:text-white dark:text-slate-100" onClick={() => setIsCompressed(prev => !prev)} />
@@ -27,14 +27,14 @@ const Sidebar = ({ isSideOpen }) => {
           <p className="font-semibold">Shops</p>
         )}
         <div className="flex flex-col gap-2 text-slate-700 dark:text-slate-200 ">
-          <div className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800  py-3">
+          <div className="sb-button">
             <IoIosTrendingUp className="w-5 h-5" />
             {!isCompressed && (
               <p>Trending</p>
             )}
           </div>
 
-          <Link to={"/find"} className="flex gap-5 items-center rounded-lg transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3" >
+          <Link to={"/find"} className="sb-button" >
             <FaShop className="w-5 h-5" />
             {!isCompressed && (
               <p>Find All</p>
@@ -50,14 +50,14 @@ const Sidebar = ({ isSideOpen }) => {
         )}
 
         <div className="flex flex-col gap-2 text-slate-700 dark:text-slate-200">
-          <div className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+          <div className="sb-button">
             <RiDiscountPercentLine className="w-5 h-5" />
             {!isCompressed && (
               <p>Discounts</p>
             )}
           </div>
 
-          <div className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+          <div className="sb-button">
             <MdOutlineDiscount className="w-5 h-5" />
             {!isCompressed && (
               <p>Find All</p>
@@ -75,28 +75,28 @@ const Sidebar = ({ isSideOpen }) => {
 
         <div className="flex flex-col gap-2 text-slate-700 dark:text-slate-200">
 
-          <Link to={"/home"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+          <Link to={"/home"} className="sb-button">
             <FaHouseUser className="w-5 h-5" />
             {!isCompressed && (
               <p>Home</p>
             )}
           </Link>
 
-          <Link to={"/favorites"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+          <Link to={"/favorites"} className="sb-button">
             <BsHouseHeart className="w-5 h-5" />
             {!isCompressed && (
               <p>Favorites</p>
             )}
           </Link>
 
-          <Link to={"/orders"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+          <Link to={"/orders"} className="sb-button">
             <MdBorderColor className="w-5 h-5" />
             {!isCompressed && (
               <p>Orders</p>
             )}
           </Link>
 
-          <Link to={"/"} className="flex gap-5 items-center rounded-lg  transition-colors cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3">
+          <Link to={"/"} className="sb-button">
             <MdLogout className="w-5 h-5" />
             {!isCompressed && (
               <p>Log out</p>

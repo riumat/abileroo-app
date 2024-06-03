@@ -17,7 +17,6 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(cart)
     setTotal(getTotal());
     setCartFormatted(getCartFormatted());
   }, [cart?.list]);
@@ -46,7 +45,6 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
       setIsError({ ...isError, user: true });
       return;
     } 
-    console.log(deliveryDate);
     confirmOrder(cart, total, deliveryDate, address, email);
     navigate("/checkout");
   }

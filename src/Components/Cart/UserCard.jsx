@@ -11,7 +11,6 @@ const UserCard = ({ setDeliverDate, isError, setAddress, setEmail }) => {
   useEffect(() => {
     const date = new Date(day);
     date.setHours(hour?.split(":")[0], hour?.split(":")[1]);
-    console.log(date);
     setDeliverDate(date);
 
   }, [hour, day])

@@ -40,7 +40,7 @@ const HomePage = () => {
           <div className="flex flex-col gap-12 p-3 z-10">
 
             <Link to={"/find"} className="flex flex-col items-start hover:scale-[1.01] duration-500">
-              <div className="bg-white rounded-t-lg shadow py-1 px-3 text-[13px] dark:bg-slate-950 dark:text-white">
+              <div className=" rounded-t-lg  py-1 px-3 text-[13px] bg-light">
                 <p>Search and Find Shops</p>
               </div>
               <Carousel />
@@ -49,14 +49,14 @@ const HomePage = () => {
             <div className="flex flex-col md:flex-row gap-5 ">
 
               <Link to={"/orders"} className="flex flex-col items-start flex-1 hover:scale-[1.01] duration-500">
-                <div className="bg-white rounded-t-lg shadow py-1 px-3 text-[13px] dark:bg-slate-950 dark:text-white">
+                <div className=" rounded-t-lg  py-1 px-3 text-[13px] bg-light">
                   <p>Your Orders</p>
                 </div>
                 <History />
               </Link>
 
               <Link to={"/favorites"} className="flex flex-col items-start flex-1  hover:scale-[1.01] duration-500">
-                <div className="bg-white rounded-t-lg shadow py-1 px-3 text-[13px]  dark:bg-slate-950 dark:text-white">
+                <div className="rounded-t-lg py-1 px-3 text-[13px] bg-light">
                   <p>Your Shops</p>
                 </div>
                 <FavoritesCard />

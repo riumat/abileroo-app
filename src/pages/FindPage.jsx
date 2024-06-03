@@ -81,12 +81,12 @@ const FindPage = ({ likeShop, dislikeShop }) => {
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 flex-grow overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
-        <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
+        <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">
 
           <div className="flex gap-3">
             <SortControls sortShops={sortShops} />
           </div>
-          <div className="flex flex-col items-center gap-8 text-slate-800 dark:text-slate-100">
+          <div className="flex flex-col items-center gap-8">
 
             {shopList?.length === 0 ? (
               <div className="flex flex-col items-center gap-10">

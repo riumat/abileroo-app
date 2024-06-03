@@ -10,15 +10,6 @@ const CheckoutPage = ({ sendOrder }) => {
   const summary = useContext(SummaryCtx);
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
 
-  useEffect(() => {
-    console.log(summary)
-  }, [summary])
-
-  //TODO summary is {address:"",date://data al momento dell'ordine,delivery://data di consegna inserita utente,email:"",order://array di oggetti,total:number //prezzo totale}
-  //delivery is invalid date
-  //in questa pagina fai il sommario dell'ordine, e spedisci a order in app.jsx, poi svuota cart, usa sendOrder in app.jsx per guida
-  // snellire sidebar dalle cose inutili, snellire il componente che racchiude il singolo ordine nella pagina ordersPage, e creare pagina dettaglio dell'ordine, e incominciare il lavoro con postman sul backend
-
   //cose da vedere https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply
   //https://www.google.com/search?q=clsx+tailwind&oq=clsx&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIGCAQQABgeMgYIBRAAGB4yBggGEAAYHjIGCAcQABgeMgYICBAAGB4yBggJEAAYHtIBCDM3NDBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
 
