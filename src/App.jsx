@@ -11,6 +11,7 @@ import OrdersPage from './pages/OrdersPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ProductsPage from './pages/ProductsPage';
 
+
 const App = () => {
   const [cart, setCart] = useState({});
   const [favorites, setFavorites] = useState([]);
@@ -24,14 +25,12 @@ const App = () => {
   }, [])
 
   const addToCart = ({ id, name, price, product_image, shop }) => {
-    console.log(cart);
     const added = [...cart.list, { id: id, name: name, price: price, product_image: product_image, shop: shop }];
     localStorage.setItem("cart", JSON.stringify({ ...{ id: shop }, list: [...added] }));
     setCart({ ...{ id: shop }, list: [...added] });
   }
 
   const removeFromCart = (id) => {
-    console.log(cart);
     const index = cart.list.findIndex(item => item.id === id);
     if (index !== -1) {
       const removed = [...cart.list];
@@ -60,18 +59,14 @@ const App = () => {
 
   const confirmOrder = (cartFormatted, total, deliveryDate, address, email) => {
     setSummary({ order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: email });
-
   }
 
   const sendOrder = (order, date, total) => {
     const added = [...orders, { order: order, date: date, total: total }];
-    console.log(added);
     localStorage.setItem("orders", JSON.stringify(added));
     setOrders(added);
     setCart({ id: "", list: [] });
   }
-
-
 
 
   return (
