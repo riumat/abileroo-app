@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router';
 import Logo from '../Components/Logo';
 import Register from '../Components/Auth/Register';
 import Login from '../Components/Auth/Login';
+import { axiosBase } from '../constants';
 
 
 const AuthPage = () => {
@@ -39,7 +39,7 @@ const AuthPage = () => {
     if (!validate(username) /* || !validate(email) */ || !validate(password)) {
       return;
     }
-    axios.get("mockLogin.json", { //login/ METHOD=POST
+    axiosBase.get("mockLogin.json", { //login/ METHOD=POST
       username: username,
       password: password,
     })

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
-import axios from "axios";
 import { useParams } from "react-router";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import Info from "../Components/Shop/Info";
+import { axiosBase } from "../constants";
 
 const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
   const [shopData, setShopData] = useState();
@@ -22,7 +22,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
 
 
   useEffect(() => {
-    axios.get(`../mockShop${shopId}.json`) ///shops/shop/${shopId}
+    axiosBase.get(`../mockShop${shopId}.json`) ///shops/shop/${shopId}
       .then(res => {
         setShopData({
           "id": res.data.id,

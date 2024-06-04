@@ -1,11 +1,11 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { axiosBase } from "../../constants";
 
 const Carousel = () => {
   const [shopList, setShopList] = useState([]);
 
   useEffect(() => {
-    axios.get("mock.json")
+    axiosBase.get("mock.json")
       .then(res => res.data)
       .then(data => setShopList(data));
   }, [])

@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react"
-import axios from "axios";
 import SortControls from "../Components/Shop/SortControls";
-import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import ProductCard from "../Components/Product/ProductCard";
+import { axiosBase } from "../constants";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -39,7 +38,7 @@ const ProductsPage = ({ addToCart }) => {
   }, [])
 
   useEffect(() => {
-    axios.get("mockProducts.json")
+    axiosBase.get("mockProducts.json")
       .then(res => res.data)
       .then(data => setProductList([...data]))
   }, [])
@@ -55,7 +54,7 @@ const ProductsPage = ({ addToCart }) => {
 
   const getShops = (url) => {
     setIsLoading(true);
-    axios.get(url)
+    axiosBase.get(url)
       .then(res => {
         setProductList(res.data)
         setIsLoading(false);

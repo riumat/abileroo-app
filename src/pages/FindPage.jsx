@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import axios from "axios";
 import SortControls from "../Components/Shop/SortControls";
 import ShopList from "../Components/Shop/ShopList";
 import Sidebar from "../Components/Sidebar";
@@ -7,6 +6,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
+import { axiosBase } from "../constants";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -34,12 +34,12 @@ const FindPage = ({ likeShop, dislikeShop }) => {
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
     localStorage.setItem("liked", JSON.stringify(liked));
-    getShops("mock.json"); // /shops/shops
+    getShops("mock.json"); // /shop/shops
   }, [])
 
   useEffect(() => {
     const name = params.get("search") || "";
-    axios.get("mock.json")
+    axiosBase.get("mock.json")
       .then(res => res.data)
       .then(data => {
         const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
@@ -58,7 +58,7 @@ const FindPage = ({ likeShop, dislikeShop }) => {
 
   const getShops = (url) => {
     setIsLoading(true);
-    axios.get(url)
+    axiosBase.get(url)
       .then(res => {
         setShopList(res.data)
         setIsLoading(false);
