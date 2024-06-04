@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 
 const OrderCard = ({ order, i }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div key={`order-${i}`} className={`flex flex-col w-full gap-5 p-3 rounded-lg ${isVisible ? "bg-dark" : "bg-light"}`}>
@@ -16,11 +18,15 @@ const OrderCard = ({ order, i }) => {
       {isVisible && (
         <div className='flex flex-col justify-items-center gap-3'>
           {order?.order?.map((product, j) => (
-            <div key={`order-product-${j}`} className='flex justify-between pe-5 items-center  bg-white dark:bg-slate-950 dark:text-slate-100 rounded-lg shadow'>
+            <div
+              key={`order-product-${j}`}
+              className='flex justify-between pe-5 items-center bg-white dark:bg-slate-950 dark:text-slate-100 rounded-lg shadow cursor-pointer'
+              onClick={() => navigate(`/shop/${product?.shop}`)}
+            >
               <div className='flex gap-3 items-center'>
-                <img src={product?.product_image} className="w-12 h-12 md:w-20 md:h-20 object-cover rounded-s-lg" alt="" />
+                <img src={product?.product_image} className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-s-lg" alt="" />
                 <div>
-                  <div className='flex gap-2 items-center'>
+                  <div className='flex gap-2 items-center'>2
                     <p className='text-[14px] font-bold'>{product?.name}</p>
                     <p className='text-[14px]'>x{product?.count}</p>
                   </div>

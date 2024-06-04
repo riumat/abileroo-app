@@ -1,46 +1,32 @@
-import { useEffect, useState } from 'react'
-import DatePicker from 'react-datepicker'
 
-import "react-datepicker/dist/react-datepicker.css";
-
-const UserCard = ({ setDeliverDate, isError, setAddress, setEmail }) => {
-  const [day, setDay] = useState(new Date());
-  const [hour, setHour] = useState(new Date().toTimeString().split(" ")[0]);
-
-
-  useEffect(() => {
-    const date = new Date(day);
-    date.setHours(hour?.split(":")[0], hour?.split(":")[1]);
-    setDeliverDate(date);
-
-  }, [hour, day])
-
+const UserCard = ({ setDeliverDate, isError, setAddress }) => {
+  
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className='p-5 bg-white dark:bg-slate-950 dark:text-slate-100 rounded-lg shadow flex flex-col gap-5 items-center  text-[14px]'
+      className='p-5 bg-light rounded-lg shadow flex flex-col gap-10 items-center text-[14px]'
     >
-      <input
-        onChange={(e) => setEmail(e.target.value)}
-        className={`p-2 text-[13px] w-64 border dark:bg-emerald-950 rounded-lg ${isError?.user ? "border-red-600" : ""}`}
-        type="email" name="" id="" placeholder='Your email here'
-      />
+      <p className='logo-font text-[23px]'>Delivery Info</p>
 
-      <input
-        onChange={(e) => setAddress(e.target.value)}
-        className={`p-2 text-[13px] w-64 border dark:bg-emerald-950 rounded-lg ${isError?.user ? "border-red-600" : ""}`}
-        type="text" placeholder='Your address here'
-      />
-      <DatePicker
-        className={`p-2 text-[13px] w-64 border dark:bg-emerald-950 rounded-lg ${isError?.date ? "border-red-600" : ""}`}
-        selected={day}
-        onChange={(date) => setDay(date)}
-      />
+      <div className={`flex flex-col gap-4 p-3 text-[13px] w-full border border-slate-400  rounded-lg ${isError?.user && "border-red-600 placeholder:text-red-400"}`}>
+        <p className='text-[15px] text-center'>Address</p>
+        <input
+          onChange={(e) => setAddress(e.target.value)}
+          type="text" placeholder={`${isError?.user ? "Address is required" : "Where should we deliver your order?"}`}
+          className={`p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[15px] ${isError?.user && "placeholder:text-red-400 border-red-200"}`}
 
-      <input
-        type="time" className={`p-2 text-[13px] w-64 border dark:bg-emerald-950 rounded-lg ${isError?.date ? "border-red-600" : ""}`}
-        onChange={(e) => setHour(e.target.value)}
-      />
+        />
+      </div>
+
+      <div className={`flex flex-col gap-4 p-3 text-[13px] w-full border border-slate-400  rounded-lg ${isError?.date && "border-red-600 placeholder:text-red-400"}`}>
+        <p className='text-[15px] text-center'>Day</p>
+        <input
+          type="datetime-local"
+          onChange={(e) => setDeliverDate(e.target.value)}
+          className={`p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[15px] ${isError?.date && " border-red-200"}`}
+        />
+      </div>
+      
     </form>
   )
 }

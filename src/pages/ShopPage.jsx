@@ -40,7 +40,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
   return (
     <div className="flex flex-col gap-5 overflow-hidden">
       {isSideOpen && window.innerWidth < 768 && (
-        <div className="absolute top-0 left-0 bg-black/60 h-screen w-screen" onClick={() => setIsSideOpen(prev => !prev)}></div>
+        <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
       )}
       <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
       <div className="flex gap-3 overflow-hidden">

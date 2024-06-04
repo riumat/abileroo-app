@@ -48,9 +48,12 @@ body {
   }
 
   .sb-button {
-    @apply flex items-center rounded-lg duration-300 cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3 active:scale-90 px-0 md:px-2;
+    @apply flex items-center rounded-lg duration-300 cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3 active:scale-90 px-2;
   }
   .nav-button{
     @apply w-7 h-7 cursor-pointer hover:text-white p-1 rounded-lg hover:bg-emerald-700 dark:text-slate-100
+  }
+  .bg-mobile{
+    @apply absolute top-0 left-0 bg-black/60 h-screen w-screen z-30;
   }
 }
