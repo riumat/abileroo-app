@@ -34,11 +34,11 @@ const ProductsPage = ({ addToCart }) => {
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
     localStorage.setItem("liked", JSON.stringify(liked));
-    getShops("mock.json"); // /shops/shops
+    //getShops(""); // /shops/shops
   }, [])
 
   useEffect(() => {
-    axiosBase.get("mockProducts.json")
+    axiosBase.get("product/products/")
       .then(res => res.data)
       .then(data => setProductList([...data]))
   }, [])

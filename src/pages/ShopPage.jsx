@@ -22,7 +22,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
 
 
   useEffect(() => {
-    axiosBase.get(`../mockShop${shopId}.json`) ///shops/shop/${shopId}
+    axiosBase.get(`shop/shop/${shopId}/`) ///shops/shop/${shopId}
       .then(res => {
         setShopData({
           "id": res.data.id,

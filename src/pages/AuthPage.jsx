@@ -39,12 +39,12 @@ const AuthPage = () => {
     if (!validate(username) /* || !validate(email) */ || !validate(password)) {
       return;
     }
-    axiosBase.get("mockLogin.json", { //login/ METHOD=POST
+    /* axiosBase.get("mockLogin.json", { //login/ METHOD=POST
       username: username,
       password: password,
     })
       .then(res => res.data)
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error)); */
 
     const credentials = {
       "username": username,

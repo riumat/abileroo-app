@@ -11,7 +11,7 @@ const FavoritesCard = () => {
   }, [favorites])
 
   const fetchShops = async () => {
-    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(`mockShop${shopId}.json`)))
+    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(`shop/shop/${shopId}`)))
     const data = await Promise.all(promises.map(res => res.data));
     setShopList([...data]);
   }

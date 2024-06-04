@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import History from "../Components/Home/History";
 import FavoritesCard from "../Components/Home/FavoritesCard";
 
+
+
+
 const HomePage = () => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
 

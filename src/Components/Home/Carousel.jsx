@@ -5,7 +5,7 @@ const Carousel = () => {
   const [shopList, setShopList] = useState([]);
 
   useEffect(() => {
-    axiosBase.get("mock.json")
+    axiosBase.get("shop/shops/")
       .then(res => res.data)
       .then(data => setShopList(data));
   }, [])

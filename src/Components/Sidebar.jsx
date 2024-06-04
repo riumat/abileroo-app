@@ -1,6 +1,4 @@
-import { IoIosTrendingUp } from "react-icons/io";
 import { FaShop } from "react-icons/fa6";
-import { RiDiscountPercentLine } from "react-icons/ri";
 import { MdOutlineDiscount, MdLogout, MdBorderColor } from "react-icons/md";
 import { FaHouseUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";

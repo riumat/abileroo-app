@@ -34,16 +34,16 @@ const FindPage = ({ likeShop, dislikeShop }) => {
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
     localStorage.setItem("liked", JSON.stringify(liked));
-    getShops("mock.json"); // /shop/shops
+    getShops("shop/shops/"); // /shop/shops
   }, [])
 
   useEffect(() => {
     const name = params.get("search") || "";
-    axiosBase.get("mock.json")
+    axiosBase.get(`shop/shops/?search=${name}`)
       .then(res => res.data)
       .then(data => {
-        const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
-        setShopList([...filtered]);
+        //const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
+        setShopList([...data]);
       })
   }, [params])
 
