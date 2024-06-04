@@ -16,7 +16,7 @@ const Sidebar = ({ isSideOpen }) => {
 
   if (!isSideOpen) return;
   return (
-    <div className={`rounded-lg p-5 absolute md:static z-50 text-[13px] bg-light shadow-none  flex flex-col gap-16 ${isCompressed ? "w-18" : "w-[170px]"}`}>
+    <div className={`rounded-lg p-5 absolute md:static z-50 text-[13px] bg-light shadow-none transition-all flex flex-col gap-16 ${isCompressed ? "w-20" : "w-[170px]"}`}>
 
       <div className="md:flex justify-center hidden">
         <IoMenu
@@ -25,17 +25,15 @@ const Sidebar = ({ isSideOpen }) => {
         />
       </div>
 
-      <div className="flex flex-col gap-12  ">
+      <div className="flex flex-col gap-12">
 
 
-        <NavLink to={"/find"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}  >
+        <NavLink to={"/find"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "gap-5"} sb-button `)}  >
           <FaShop className="w-5 h-5" />
-          {!isCompressed && (
-            <p>Shops</p>
-          )}
+          <p className={`${isCompressed ? "text-[0px]" : ""} transition-all`}>Shops</p>
         </NavLink>
 
-        <NavLink to={"/products"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
+        <NavLink to={"/products"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "gap-5"} sb-button`)}>
           <MdOutlineDiscount className="w-5 h-5" />
           {!isCompressed && (
             <p>Products</p>
@@ -43,28 +41,28 @@ const Sidebar = ({ isSideOpen }) => {
         </NavLink>
 
 
-        <NavLink to={"/home"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
+        <NavLink to={"/home"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "gap-5"} sb-button`)}>
           <FaHouseUser className="w-5 h-5" />
           {!isCompressed && (
             <p>Home</p>
           )}
         </NavLink>
 
-        <NavLink to={"/favorites"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
+        <NavLink to={"/favorites"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "gap-5"} sb-button`)}>
           <BsHouseHeart className="w-5 h-5" />
           {!isCompressed && (
             <p>Favorites</p>
           )}
         </NavLink>
 
-        <NavLink to={"/orders"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} sb-button`)}>
+        <NavLink to={"/orders"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "gap-5"} sb-button`)}>
           <MdBorderColor className="w-5 h-5" />
           {!isCompressed && (
             <p>Orders</p>
           )}
         </NavLink>
 
-        <Link to={"/"} className="sb-button">
+        <Link to={"/"} className={`${!isCompressed && "gap-5"} sb-button`}>
           <MdLogout className="w-5 h-5" />
           {!isCompressed && (
             <p>Log out</p>

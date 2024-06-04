@@ -8,7 +8,7 @@ const ProductCard = ({ p, addToCart}) => {
 
   useEffect(() => {
     setIsAvaiable(cart?.id === p?.shop || cart?.id === "");
-  }, [cart?.id])
+  }, [cart])
 
   return (
     <div className="relative flex flex-col w-52 md:w-[230px] items-center justify-between pb-5 gap-2 shadow rounded-lg bg-light">
