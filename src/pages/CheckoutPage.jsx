@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import Navbar from "../Components/Navbar/Navbar"
-import Sidebar from "../Components/Sidebar"
 import { SummaryCtx } from "../App";
 import { Link } from "react-router-dom";
 import { FaBackspace, FaCheck } from "react-icons/fa";
@@ -24,13 +22,7 @@ const CheckoutPage = ({ sendOrder }) => {
 
 
   return (
-    <div className="flex flex-col gap-5 flex-grow overflow-hidden">
-      {isSideOpen && window.innerWidth < 768 && (
-        <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
-      )}
-      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
-      <div className="flex gap-3 flex-grow overflow-hidden">
-        <Sidebar isSideOpen={isSideOpen} />
+    
         <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-lg p-3 overflow-auto text-[14px] text-slate-700">
           <p className="logo-font text-[20px] text-center dark:text-slate-100">Order Summary</p>
 
@@ -67,8 +59,6 @@ const CheckoutPage = ({ sendOrder }) => {
           </div>
         </div>
 
-      </div>
-    </div>
   )
 }
 

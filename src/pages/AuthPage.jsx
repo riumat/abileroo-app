@@ -6,7 +6,7 @@ import Login from '../Components/Auth/Login';
 import { axiosBase } from '../constants';
 
 
-const AuthPage = () => {
+const AuthPage = ({setIsLogged}) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -53,6 +53,7 @@ const AuthPage = () => {
     localStorage.setItem("credentials", JSON.stringify(credentials));
     setUsername("");
     setPassword("");
+    setIsLogged(true);
     navigate("/home");
 
   }

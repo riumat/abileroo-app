@@ -80,13 +80,7 @@ const ProductsPage = ({ addToCart }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 flex-grow overflow-hidden">
-      {isSideOpen && window.innerWidth < 768 && (
-        <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
-      )}
-      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
-      <div className="flex gap-3 flex-grow overflow-hidden">
-        <Sidebar isSideOpen={isSideOpen} />
+   
         <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">
 
           <div className="flex gap-3">
@@ -108,9 +102,6 @@ const ProductsPage = ({ addToCart }) => {
             )}
           </div>
         </div>
-
-      </div>
-    </div>
   )
 }
 

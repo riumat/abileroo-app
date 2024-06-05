@@ -9,32 +9,31 @@ import CartProductCard from '../Components/Cart/CartProductCard';
 import FindShopButton from '../Components/FindShopButton';
 import { MdErrorOutline } from 'react-icons/md';
 import OrderCard from '../Components/Product/OrderCard';
+import { ClipLoader } from 'react-spinners';
 
 
 const OrdersPage = () => {
   const orders = useContext(OrdersCtx);
-  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  //TODO chiamata per gli ordini al backend
+  if (error) {
+    return (
+      <div className='w-full h-full bg-dark flex justify-center items-center'>
+        <p>Failed to fetch data</p>
+      </div>
+    )
+  }
 
-  const updateSidebar = () => {
-    setIsSideOpen(window.innerWidth > 768);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateSidebar);
-    return () => window.removeEventListener("resize", updateSidebar);
-  });
-
+  if (isLoading){
+    return(
+      <div className='w-full h-full flex justify-center items-center bg-dark '>
+        <ClipLoader/>
+      </div>
+    )
+  }
   return (
 
-
-
-    <div className="flex flex-col gap-5 flex-grow overflow-hidden">
-      {isSideOpen && window.innerWidth < 768 && (
-        <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
-      )}
-      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
-      <div className="flex gap-3 flex-grow overflow-hidden">
-        <Sidebar isSideOpen={isSideOpen} />
         <div className="flex flex-col gap-5 flex-1 bg-dark rounded-lg p-3 overflow-auto">
           {orders.length === 0 ? (
             <div className="flex flex-col items-center gap-10 pt-8">
@@ -56,19 +55,7 @@ const OrdersPage = () => {
               </div>
             </div>
           )}
-
-
         </div>
-
-      </div>
-    </div>
-
-
-
-
-
-
-
   )
 }
 

@@ -23,7 +23,7 @@ const Carousel = () => {
 
   if (error) {
     return (
-      <div className='w-full h-full bg-light rounded-b-lg rounded-tr-lg shadow flex justify-center items-center'>
+      <div className='w-full h-40 bg-light rounded-b-lg rounded-tr-lg shadow flex justify-center items-center'>
         <p>Failed to fetch data</p>
       </div>
     )
@@ -31,7 +31,7 @@ const Carousel = () => {
 
   if (isLoading){
     return(
-      <div className='w-full h-full flex justify-center items-center bg-light rounded-b-lg rounded-tr-lg shadow'>
+      <div className='w-full h-40 flex justify-center items-center bg-light rounded-b-lg rounded-tr-lg shadow'>
         <ClipLoader/>
       </div>
     )
