@@ -7,7 +7,8 @@ const Carousel = () => {
   useEffect(() => {
     axiosBase.get("shop/shops/")
       .then(res => res.data)
-      .then(data => setShopList(data));
+      .then(data => setShopList(data))
+      .catch(error=>console.log(error))
   }, [])
 
   return (

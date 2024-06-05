@@ -45,6 +45,10 @@ const FindPage = ({ likeShop, dislikeShop }) => {
         //const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
         setShopList([...data]);
       })
+      .catch(error => {
+        setError(true);
+        console.log(error);
+      })
   }, [params])
 
   const updateSidebar = () => {

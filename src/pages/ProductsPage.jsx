@@ -7,6 +7,7 @@ import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import ProductCard from "../Components/Product/ProductCard";
 import { axiosBase } from "../constants";
+import ProductList from "../Components/Product/ProductList";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -41,6 +42,11 @@ const ProductsPage = ({ addToCart }) => {
     axiosBase.get("product/products/")
       .then(res => res.data)
       .then(data => setProductList([...data]))
+      .catch(error => {
+        setError(true);
+        console.log(error);
+      })
+
   }, [])
 
   const updateSidebar = () => {
@@ -93,13 +99,7 @@ const ProductsPage = ({ addToCart }) => {
             ) : (
               <div className="flex flex-col gap-7 w-full">
                 <p className="logo-font text-[30px] text-center dark:text-slate-100">Products</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 justify-items-center">
-                  {productList?.map((product, index) => (
-                    <div key={`product-card-${index}`}>
-                      <ProductCard p={product} addToCart={addToCart} />
-                    </div>
-                  ))}
-                </div>
+                <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart}/>
               </div>
             )}
           </div>
