@@ -68,7 +68,7 @@ const App = () => {
     setCart({ id: "", list: [] });
   }
 
-
+  //todo spostare sidebar navbar in app.jsx gestire gli stati qui
   return (
     <BrowserRouter>
       <FavoriteCtx.Provider value={favorites}>

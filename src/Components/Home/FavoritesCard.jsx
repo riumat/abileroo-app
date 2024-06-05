@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { FavoriteCtx } from "../../App"
-import { axiosBase } from "../../constants";
+import { axiosBase, shopUrls } from "../../constants";
 
 const FavoritesCard = () => {
   const favorites = useContext(FavoriteCtx);
@@ -11,7 +11,7 @@ const FavoritesCard = () => {
   }, [favorites])
 
   const fetchShops = async () => {
-    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(`shop/shop/${shopId}`)))
+    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(shopUrls[shopId - 1]))) //shopUrls[shopId - 1] shop/shop/${shopId}
     const data = await Promise.all(promises.map(res => res.data));
     setShopList([...data]);
   }

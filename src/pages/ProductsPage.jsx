@@ -39,9 +39,12 @@ const ProductsPage = ({ addToCart }) => {
   }, [])
 
   useEffect(() => {
-    axiosBase.get("product/products/")
+    axiosBase.get("bd55ef2d-4ef9-41f7-bdb2-f69023d2a772") //product/products/
       .then(res => res.data)
-      .then(data => setProductList([...data]))
+      .then(data => {
+        setProductList([...data])
+        setIsLoading(false)
+      })
       .catch(error => {
         setError(true);
         console.log(error);
@@ -99,7 +102,7 @@ const ProductsPage = ({ addToCart }) => {
             ) : (
               <div className="flex flex-col gap-7 w-full">
                 <p className="logo-font text-[30px] text-center dark:text-slate-100">Products</p>
-                <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart}/>
+                <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart} />
               </div>
             )}
           </div>

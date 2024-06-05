@@ -6,7 +6,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import { FavoriteCtx } from "../App";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
-import { axiosBase } from "../constants";
+import { axiosBase, shopUrls } from "../constants";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -34,7 +34,7 @@ const FavoritesPage = ({ likeShop, dislikeShop }) => {
   }, [favorites])
 
   const fetchShops = async () => {
-    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(`mockShop${shopId}.json`)))
+    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(shopUrls[shopId - 1]))) //shop/shop/${shopId}
     const data = await Promise.all(promises.map(res => res.data));
     setShopList([...data]);
   }

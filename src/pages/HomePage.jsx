@@ -36,7 +36,9 @@ const HomePage = () => {
         <Sidebar isSideOpen={isSideOpen} />
 
         <div className="flex flex-col  flex-1 bg-home rounded-t-lg  overflow-y-auto overflow-x-hidden relative">
-        <div className='absolute bg-gradient-to-t from-emerald-50 from-30% to-black/70 dark:from-emerald-950 dark:from-0% dark:to-black/50  w-full h-full '/>
+
+
+          <div className='absolute bg-gradient-to-t from-emerald-50 from-30% to-black/70 dark:from-emerald-950 dark:from-0% dark:to-black/50  w-full h-full ' />
 
           <Greetings />
 

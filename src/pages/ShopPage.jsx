@@ -4,11 +4,13 @@ import { useParams } from "react-router";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import Info from "../Components/Shop/Info";
-import { axiosBase } from "../constants";
+import { axiosBase, shopUrls } from "../constants";
 
 const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
   const [shopData, setShopData] = useState();
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const { shopId } = useParams();
 
   const updateSidebar = () => {
@@ -22,7 +24,8 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
 
 
   useEffect(() => {
-    axiosBase.get(`shop/shop/${shopId}/`) ///shops/shop/${shopId}
+    setIsLoading(true);
+    axiosBase.get(shopUrls[shopId - 1]) ///shops/shop/${shopId}
       .then(res => {
         setShopData({
           "id": res.data.id,
@@ -33,8 +36,12 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
           "rating": res.data.rating,
           "products": res.data.products,
         });
+        setIsLoading(false);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        setError(true);
+        console.log(error)
+      });
   }, [])
 
   return (
@@ -46,6 +53,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
       <div className="flex gap-3 overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
         <div className="flex flex-col gap-5 flex-1 bg-dark p-3 rounded-t-lg overflow-auto">
+          
 
           <div className="flex flex-col gap-7 items-center ">
 
