@@ -11,9 +11,9 @@ const FavoritesCard = () => {
   }, [favorites])
 
   const fetchShops = async () => {
-    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(shopUrls[shopId - 1]))) //shopUrls[shopId - 1] shop/shop/${shopId}
+    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(`shop/shop/${shopId}`))) //shopUrls[shopId - 1] `shop/shop/${shopId}`
     const data = await Promise.all(promises.map(res => res.data));
-    setShopList([...data]);
+    setShopList([...data].map(shop => ({ ...shop, image: process.env.REACT_APP_BASE_URL + shop.image })));
   }
 
 
@@ -24,9 +24,9 @@ const FavoritesCard = () => {
       ) : (
         <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-y-10 justify-items-center dark:bg-slate-950">
           {shopList.map((shop, i) => (
-            
+
             <div key={`favorite-card-${i}`} className="flex flex-col items-center gap-2">
-              <img src={shop?.image} alt=""  className="w-24 h-24 rounded-lg object-contain"/>
+              <img src={shop?.image} alt="" className="w-24 h-24 rounded-lg object-contain" />
               <p className="text-[13px]">{shop?.name}</p>
             </div>
           ))}

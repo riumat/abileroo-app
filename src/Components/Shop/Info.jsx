@@ -14,7 +14,7 @@ const Info = ({ likeShop, dislikeShop, rating, description, address, id }) => {
   }, [favorites])
 
   return (
-    <div className="component-card shadow rounded-lg grid grid-cols-2 gap-y-7 lg:flex justify-between w-full py-5  text-emerald-800 bg-white dark:bg-slate-950 dark:text-slate-100">
+    <div className="component-card shadow rounded-lg flex  gap-y-7 lg:flex justify-between w-full py-5  text-emerald-800 bg-white dark:bg-slate-950 dark:text-slate-100">
 
       <div className="border-r border-slate-400  items-center flex justify-center flex-1">
         {isFavorite ? (
@@ -25,19 +25,9 @@ const Info = ({ likeShop, dislikeShop, rating, description, address, id }) => {
         }
       </div>
 
-      <div className="lg:border-r border-slate-400  flex flex-col items-center gap-2  justify-center flex-1">
-        <p className="text-[0px] lg:text-[14px] text-emerald-700 dark:text-emerald-200">Rated by other users</p>
-        <div className="flex">
-          {[...Array(rating)].map((star, i) => (
-            <FaStar key={`star-${i}`} />
-          ))
-          }
-        </div>
-      </div>
-
       <div className="border-r border-slate-400  items-center flex flex-col gap-2 justify-center flex-1">
-        <p className="text-[14px] text-emerald-700 dark:text-emerald-200">Type</p>
-        <p>{description}</p>
+        <p className="text-[12px] lg:text-[14px] text-emerald-700 dark:text-emerald-200">Type</p>
+        <p className="text-[13px] lg:text-[15px]">{description}</p>
       </div>
 
       <div className="items-center flex justify-center gap-2  flex-1">

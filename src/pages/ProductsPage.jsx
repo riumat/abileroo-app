@@ -39,7 +39,8 @@ const ProductsPage = ({ addToCart }) => {
   }, [])
 
   useEffect(() => {
-    axiosBase.get("bd55ef2d-4ef9-41f7-bdb2-f69023d2a772") //product/products/
+    setIsLoading(true)
+    axiosBase.get("product/products/") //product/products/ //bd55ef2d-4ef9-41f7-bdb2-f69023d2a772
       .then(res => res.data)
       .then(data => {
         setProductList([...data])

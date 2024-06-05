@@ -28,15 +28,18 @@ const FavoritesPage = ({ likeShop, dislikeShop }) => {
   const favorites = useContext(FavoriteCtx);
   const [shopList, setShopList] = useState([]);
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
+  const [isLoading,setIsLoading]=useState(false);
 
   useEffect(() => {
     fetchShops();
   }, [favorites])
 
   const fetchShops = async () => {
-    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(shopUrls[shopId - 1]))) //shop/shop/${shopId}
+    setIsLoading(true);
+    const promises = await Promise.all(favorites.map(shopId => axiosBase.get(`shop/shop/${shopId}`))) //`shop/shop/${shopId}`  shopUrls[shopId - 1]
     const data = await Promise.all(promises.map(res => res.data));
-    setShopList([...data]);
+    setShopList([...data].map(shop => ({ ...shop, image: process.env.REACT_APP_BASE_URL + shop.image })));
+    setIsLoading(false)
   }
 
   const updateSidebar = () => {

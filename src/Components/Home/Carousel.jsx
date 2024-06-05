@@ -9,7 +9,7 @@ const Carousel = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axiosBase.get("30523e18-8014-44af-81af-59ba12e43c08") //shop/shops/
+    axiosBase.get("/shop/shops/") //shop/shops/ //30523e18-8014-44af-81af-59ba12e43c08
       .then(res => res.data)
       .then(data => {
         setShopList(data)

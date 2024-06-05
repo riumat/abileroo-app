@@ -3,10 +3,10 @@ import { MdAddShoppingCart, MdErrorOutline } from "react-icons/md";
 import { CartCtx } from "../../App";
 import { useNavigate } from "react-router";
 
-const ProductCard = ({ p, addToCart}) => {
+const ProductCard = ({ p, addToCart }) => {
   const cart = useContext(CartCtx);
   const [isAvaiable, setIsAvaiable] = useState(true);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsAvaiable(cart?.id === p?.shop || cart?.id === "");
@@ -18,14 +18,14 @@ const ProductCard = ({ p, addToCart}) => {
         <div className="absolute flex flex-col justify-center gap-5 h-full w-full bg-black/80 text-white rounded-lg text-[14px] items-center p-2">
           <MdErrorOutline className="w-6 h-6" />
           <p className="text-center">You order already have some products from a different shop</p>
-          <button className="bg-white text-black p-2 rounded-lg" onClick={()=>navigate("/cart")}>Go to Cart</button>
+          <button className="bg-white text-black p-2 rounded-lg" onClick={() => navigate("/cart")}>Go to Cart</button>
         </div>
       )}
       <img src={p?.product_image} alt="" className="w-full h-32 object-cover rounded-t-lg" loading="lazy" />
       <div className="flex flex-col gap-2">
         <div className="flex flex-col items-center gap-2 border-b border-slate-300 py-3">
           <p className="text-[17px]">{p?.name}</p>
-          <p className="text-[10px]">{p?.description}</p>
+          <p className="text-[10px] text-center">{p?.description}</p>
           <p className="text-[35px]">{p?.price}€</p>
         </div>
       </div>

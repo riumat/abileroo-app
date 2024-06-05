@@ -25,16 +25,17 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    axiosBase.get(shopUrls[shopId - 1]) ///shops/shop/${shopId}
+    axiosBase.get(`shop/shop/${shopId}`) ///  shopUrls[shopId - 1]
       .then(res => {
         setShopData({
-          "id": res.data.id,
-          "name": res.data.name,
-          "address": res.data.address.split(","),
-          "description": res.data.description,
-          "image": res.data.image,
-          "rating": res.data.rating,
-          "products": res.data.products,
+          id: res.data.id,
+          name: res.data.name,
+          address: res.data.address.split(","),
+          description: res.data.description,
+          image: process.env.REACT_APP_BASE_URL + res.data.image,
+          products: [...res.data.products].map(product => (
+            { ...product, product_image: process.env.REACT_APP_BASE_URL + product.product_image }
+          )),
         });
         setIsLoading(false);
       })
@@ -53,7 +54,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
       <div className="flex gap-3 overflow-hidden">
         <Sidebar isSideOpen={isSideOpen} />
         <div className="flex flex-col gap-5 flex-1 bg-dark p-3 rounded-t-lg overflow-auto">
-          
+
 
           <div className="flex flex-col gap-7 items-center ">
 
@@ -65,7 +66,6 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
               <Info
                 likeShop={likeShop}
                 dislikeShop={dislikeShop}
-                rating={shopData.rating}
                 description={shopData.description}
                 address={shopData.address}
                 id={shopData.id}

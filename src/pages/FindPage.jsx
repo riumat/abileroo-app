@@ -34,13 +34,13 @@ const FindPage = ({ likeShop, dislikeShop }) => {
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
     localStorage.setItem("liked", JSON.stringify(liked));
-    getShops("30523e18-8014-44af-81af-59ba12e43c08"); // shop/shops/ 30523e18-8014-44af-81af-59ba12e43c08
+    getShops("shop/shops/"); // shop/shops/ 30523e18-8014-44af-81af-59ba12e43c08
   }, [])
 
   useEffect(() => {
     setIsLoading(true);
     const name = params.get("search") || "";
-    axiosBase.get(`30523e18-8014-44af-81af-59ba12e43c08`) //shop/shops/?search=${name}
+    axiosBase.get(`shop/shops/?search=${name}`) //shop/shops/?search=${name} //30523e18-8014-44af-81af-59ba12e43c08
       .then(res => res.data)
       .then(data => {
         const filtered = data.filter(shop => shop.name.toLowerCase().includes(name.toLowerCase()));
