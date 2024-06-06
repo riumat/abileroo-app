@@ -9,7 +9,7 @@ const HomePage = () => {
 
   //todo vedere bene gli overflow e h-full di ogni pagina
   return (
-        <div className="flex flex-col  flex-1 bg-home rounded-t-lg  overflow-y-auto overflow-x-hidden relative">
+        <div className="flex flex-col  flex-1 bg-home rounded-t-lg main-section">
           <div className='absolute bg-gradient-to-t from-emerald-50 from-30% to-black/70 dark:from-emerald-950 dark:from-0% dark:to-black/50  w-full h-full ' />
 
           <Greetings />

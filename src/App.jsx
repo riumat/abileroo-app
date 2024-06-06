@@ -26,6 +26,7 @@ const App = () => {
     setCart(JSON.parse(localStorage.getItem("cart")) || { id: "", list: [] });
     setFavorites(JSON.parse(localStorage.getItem("liked")) || []);
     setOrders(JSON.parse(localStorage.getItem("orders")) || []);
+    setIsLogged(JSON.parse(localStorage.getItem("logged")) || false);
   }, [])
 
   const addToCart = ({ id, name, price, product_image, shop }) => {
@@ -81,6 +82,11 @@ const App = () => {
     return () => window.removeEventListener("resize", updateSidebar);
   });
 
+  const logHandle = (logStatus) => {
+    setIsLogged(logStatus);
+    localStorage.setItem("logged", JSON.stringify(logStatus));
+  }
+
 
   //todo spostare sidebar navbar in app.jsx gestire gli stati qui
   return (
@@ -95,17 +101,17 @@ const App = () => {
 
                   {!isLogged ? (
                     <Routes>
-                      <Route exact path='/' element={<AuthPage setIsLogged={setIsLogged} />} />
+                      <Route exact path='/' element={<AuthPage setIsLogged={logHandle} />} />
                     </Routes>
                   ) : (
-                    <div className="flex flex-col gap-5 overflow-hidden">
+                    <div className="flex flex-col gap-5 overflow-hidden h-full">
                       {isSideOpen && window.innerWidth < 768 && (
                         <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
                       )}
-                      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
-                      <div className="flex gap-3 overflow-hidden">
-                        <Sidebar isSideOpen={isSideOpen} />
-                        <div className="flex flex-col gap-5 flex-1 bg-dark p-3 rounded-t-lg overflow-auto">
+                      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+                      <div className="flex gap-3 overflow-hidden h-full">
+                        <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+                        <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
                           <Routes>
                             <Route path='/home' element={<HomePage />} />

@@ -12,7 +12,7 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { CartCtx } from "../../App";
 
 
-const Navbar = ({ toggleSidebar }) => {
+const Navbar = ({ toggleSidebar, logHandle }) => {
   const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains("dark"));
   const [isTranslateOpen, setIsTranslateOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -89,7 +89,7 @@ const Navbar = ({ toggleSidebar }) => {
 
             </Link>
             <TranslateDropdown isOpen={isTranslateOpen} open={toggleTranslate} />
-            <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} />
+            <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} logHandle={logHandle} />
           </div>
         </nav>
 

@@ -56,4 +56,7 @@ body {
   .bg-mobile{
     @apply absolute top-0 left-0 bg-black/60 h-screen w-screen z-30;
   }
+  .main-section{
+    @apply h-full overflow-y-auto overflow-x-hidden relative;
+  }
 }

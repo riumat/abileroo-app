@@ -1,9 +1,16 @@
 import { IoMdSettings } from "react-icons/io";
 import { settingsOptions } from "../../constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const SettingsDropdown = ({ isOpen, open }) => {
+const SettingsDropdown = ({ isOpen, open, logHandle }) => {
   const user = JSON.parse(localStorage.getItem("credentials")) || "";
+  const navigate=useNavigate();
+
+  const logoutHandle=()=>{
+    localStorage.setItem("logged",JSON.stringify(false));
+    logHandle(false);
+    navigate("/");
+  }
 
   return (
     <div>
@@ -19,6 +26,7 @@ const SettingsDropdown = ({ isOpen, open }) => {
               <Link to={option.path} >{option.name} </Link>
             </div>
           ))}
+          <p className="p-3 cursor-pointer hover:bg-slate-300 w-full rounded-md " onClick={logoutHandle}>Logout</p>
         </div>
       )}
     </div>

@@ -27,7 +27,6 @@ const FindPage = ({ likeShop, dislikeShop }) => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [params] = useSearchParams();
-  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
 
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
@@ -70,7 +69,7 @@ const FindPage = ({ likeShop, dislikeShop }) => {
 
   return (
 
-    <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">
+    <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 main-section bg-dark ">
 
       <div className="flex gap-3">
         <SortControls sortShops={sortShops} />

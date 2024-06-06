@@ -3,14 +3,21 @@ import { MdOutlineDiscount, MdLogout, MdBorderColor } from "react-icons/md";
 import { FaHouseUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { BsHouseHeart } from "react-icons/bs";
 
 
 
 
-const Sidebar = ({ isSideOpen }) => {
+const Sidebar = ({ isSideOpen, logHandle }) => {
   const [isCompressed, setIsCompressed] = useState(false);
+  const navigate=useNavigate();
+
+  const logoutHandle=()=>{
+    localStorage.setItem("logged",JSON.stringify(false));
+    logHandle(false);
+    navigate("/");
+  }
 
   if (!isSideOpen) return;
   return (
@@ -60,12 +67,12 @@ const Sidebar = ({ isSideOpen }) => {
           )}
         </NavLink>
 
-        <Link to={"/"} className={`${!isCompressed && "gap-5"} sb-button`}>
+        <div className={`${!isCompressed && "gap-5"} sb-button`} onClick={logoutHandle} >
           <MdLogout className="w-5 h-5" />
           {!isCompressed && (
             <p>Log out</p>
           )}
-        </Link>
+        </div>
       </div>
 
     </div>
