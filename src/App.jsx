@@ -1,26 +1,21 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { createContext, useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { createContext, useState } from 'react';
 import { AuthPage, HomePage, FindPage, ProductsPage, ShopPage, CartPage, FavoritesPage, OrdersPage, CheckoutPage } from './utils/pages'
 import Navbar from './Components/Navbar/Navbar';
 import Sidebar from './Components/Sidebar';
 import { cartAdder, cartRemover } from './utils/cart';
-import { shopDisliker, shopLiker } from './utils/shop';
+import { shopAdder, shopDisliker, shopLiker, shopRemover } from './utils/shop';
 import { addOrder } from './utils/orders';
 import { useCart, useFavorites, useLogged, useOrders, useSidebar } from './utils/hooks';
+import { axiosBase } from './utils/constants';
 
 const App = () => {
-  const navigate = useNavigate();
   const [summary, setSummary] = useState({});
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const [cart, setCart] = useCart();
   const [favorites, setFavorites] = useFavorites();
   const [orders, setOrders] = useOrders();
   const [isLogged, setIsLogged] = useLogged();
-
-  useEffect(() => {
-    const path = isLogged ? "/home" : "/";
-    navigate(path);
-  }, [isLogged])
 
   const addToCart = (product) => {
     setCart(cartAdder(cart, product));
@@ -31,22 +26,50 @@ const App = () => {
   };
 
   const likeShop = (id) => {
-    setFavorites(shopLiker(favorites, id));
+    setFavorites(shopAdder(favorites, id));
   }
 
   const dislikeShop = (id) => {
-    setFavorites(shopDisliker(favorites, id));
+    setFavorites(shopRemover(favorites, id));
   }
 
   const confirmOrder = (cartFormatted, total, deliveryDate, address, email) => {
     setSummary(
-      { order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: email }
+      { order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: "mariorossi@gmail.com" }
     );
   }
 
-  const sendOrder = (order, date, total) => {
+  const sendOrder = (order, date, total, delivery, address, email) => {
     setOrders(addOrder(orders, order, date, total));
     setCart({ id: "", list: [] });
+    const token="eG5ocgrivhqVtLrLJ5EvXCdg6jl6j3Iy";
+    const session="05gl1pmydb3e1jcstab9hge02rvr5lfd";
+    
+    axiosBase.post("order/order-create/",
+      {
+        shop: order[0].shop,
+        date_time_delivery: delivery,
+        address: address,
+        client_email: email,
+        shipped: false,
+        delivered: false,
+        details: [...order].map(product => (
+          { product: product.id, amount: product.count }
+        ))
+      },
+      {
+        headers: {
+          csrftoken: token,
+          Cookie:`csrftoken=${token}; sessionid=${session}`
+        }
+      }
+      
+    )
+      .then(response => response.status)
+      .then(status => console.log(status))
+      .catch(error => console.log(error))
+
+
   }
 
   const logHandle = (logStatus) => {

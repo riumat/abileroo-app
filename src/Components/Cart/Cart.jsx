@@ -36,23 +36,22 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
   }
 
   const checkout = (cart, total) => {
-    if (deliveryDate < new Date()) {
+      if (new Date(deliveryDate) < new Date()) {
       setIsError({ ...isError, date: true });
       return;
     }
-    if (address === "") {
+    if (address === "" ) {
       setIsError({ ...isError, user: true });
       return;
     }
+    
     confirmOrder(cart, total, deliveryDate, address);
-    navigate("/checkout");
+    navigate("/checkout"); 
   }
 
 
   return (
     <div className="flex flex-col gap-2 ">
-
-
 
       <div className="py-4 rounded-lg">
 

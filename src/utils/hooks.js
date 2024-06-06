@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export const useSidebar = () => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
@@ -9,7 +10,7 @@ export const useSidebar = () => {
     return () => window.removeEventListener("resize", updateSidebar);
   });
 
-  return [isSideOpen,setIsSideOpen];
+  return [isSideOpen, setIsSideOpen];
 }
 
 export const useCart = () => {
@@ -44,10 +45,16 @@ export const useOrders = () => {
 
 export const useLogged = () => {
   const [isLogged, setIsLogged] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLogged(JSON.parse(localStorage.getItem("logged")) || false);
   }, [])
+
+  useEffect(() => {
+    const path = isLogged ? "/home" : "/";
+    navigate(path);
+  }, [isLogged])
 
   return [isLogged, setIsLogged];
 }

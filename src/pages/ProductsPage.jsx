@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import SortControls from "../Components/Shop/SortControls";
+import SortControls from "../Components/Sort/SortControls";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";

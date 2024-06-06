@@ -1,6 +1,6 @@
 
 const UserCard = ({ setDeliverDate, isError, setAddress }) => {
-  
+
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -26,7 +26,7 @@ const UserCard = ({ setDeliverDate, isError, setAddress }) => {
           className={`p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[15px] ${isError?.date && " border-red-200"}`}
         />
       </div>
-      
+
     </form>
   )
 }

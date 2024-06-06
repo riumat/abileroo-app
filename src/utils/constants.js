@@ -1,9 +1,12 @@
 import axios from "axios";
 
 export const axiosBase = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
-})
+  baseURL: process.env.REACT_APP_BASE_URL
+  
+},
 
+)
+//
 export const translateOptions = [
   { "lang": "English", "desc": "(USA)" },
   { "lang": "Chinese", "desc": "(Cantonese)" },
@@ -17,7 +20,7 @@ export const settingsOptions = [
   { "name": "Order History", "path": "/orders" }
 ];
 
-export const shopUrls=[
+export const shopUrls = [
   "0d4f9a9b-eca4-4b4c-af52-7fae5905cf62",
   "65bd5a97-a3ab-4641-bb54-5c6300fd57f6",
   "a31c2cf7-9ba5-4c47-a4bc-dcd36a7830bc",

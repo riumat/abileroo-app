@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import SortControls from "../Components/Shop/SortControls";
+import SortControls from "../Components/Sort/SortControls";
 import ShopList from "../Components/Shop/ShopList";
 import { FavoriteCtx } from "../App";
 import FindShopButton from "../Components/FindShopButton";
