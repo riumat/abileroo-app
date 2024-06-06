@@ -1,6 +1,6 @@
 import { MdOutlineTranslate } from "react-icons/md"
 import { useState } from "react"
-import { translateOptions } from "../../constants";
+import { translateOptions } from "../../utils/constants";
 
 const TranslateDropdown = ({ isOpen,open }) => {
 

@@ -1,5 +1,5 @@
 import { IoMdSettings } from "react-icons/io";
-import { settingsOptions } from "../../constants";
+import { settingsOptions } from "../../utils/constants";
 import { Link } from "react-router-dom";
 
 const SettingsDropdown = ({ isOpen, open, logHandle }) => {

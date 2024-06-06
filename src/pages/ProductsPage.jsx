@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import ProductCard from "../Components/Product/ProductCard";
-import { axiosBase } from "../constants";
+import { axiosBase } from "../utils/constants";
 import ProductList from "../Components/Product/ProductList";
 
 const sortList = (shops, isAscending) => {

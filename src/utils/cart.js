@@ -14,3 +14,4 @@ export const cartAdder = (cart, { id, name, price, product_image, shop }) => {
   localStorage.setItem("cart", JSON.stringify({ ...{ id: shop }, list: [...added] }));
   return { ...{ id: shop }, list: [...added] };
 }
+

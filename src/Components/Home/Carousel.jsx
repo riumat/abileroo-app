@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { axiosBase } from "../../constants";
+import { axiosBase } from "../../utils/constants";
 import { ClipLoader } from "react-spinners";
 
 const Carousel = () => {

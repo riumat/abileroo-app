@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
 import { useParams } from "react-router";
 import Info from "../Components/Shop/Info";
-import { axiosBase, shopUrls } from "../constants";
+import { axiosBase, shopUrls } from "../utils/constants";
 import { ClipLoader } from "react-spinners";
 
 const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {

@@ -4,7 +4,7 @@ import ShopList from "../Components/Shop/ShopList";
 import { FavoriteCtx } from "../App";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
-import { axiosBase, shopUrls } from "../constants";
+import { axiosBase, shopUrls } from "../utils/constants";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {

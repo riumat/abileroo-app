@@ -4,7 +4,7 @@ import ShopList from "../Components/Shop/ShopList";
 import { useSearchParams } from "react-router-dom";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
-import { axiosBase } from "../constants";
+import { axiosBase } from "../utils/constants";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { FavoriteCtx } from "../../App"
-import { axiosBase, shopUrls } from "../../constants";
+import { axiosBase, shopUrls } from "../../utils/constants";
 
 const FavoritesCard = () => {
   const favorites = useContext(FavoriteCtx);
