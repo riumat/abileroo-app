@@ -6,13 +6,14 @@ import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
 
 
-const AuthPage = ({setIsLogged}) => {
+const AuthPage = ({ setIsLogged }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [isToSign, setIsToSign] = useState(false);
   const [error, setError] = useState("");
+  const [wrong, setWrong] = useState("");
 
   const usernameChange = (value) => {
     setUsername(value);
@@ -39,22 +40,36 @@ const AuthPage = ({setIsLogged}) => {
     if (!validate(username) /* || !validate(email) */ || !validate(password)) {
       return;
     }
-    /* axiosBase.get("mockLogin.json", { //login/ METHOD=POST
-      username: username,
-      password: password,
-    })
-      .then(res => res.data)
-      .catch((error) => console.log(error)); */
 
-    const credentials = {
-      "username": username,
-      "passoword": password
-    }
-    localStorage.setItem("credentials", JSON.stringify(credentials));
-    setUsername("");
-    setPassword("");
-    setIsLogged(true);
-    navigate("/home");
+    const body = new FormData();
+    body.append("username", username);
+    body.append("password", password);
+
+    axiosBase({
+      url: "login/",
+      method: "post",
+      data: body,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(res => {
+        if (res.status === 202) {
+          const credentials = {
+            username: username,
+            passoword: password
+          }
+          localStorage.setItem("credentials", JSON.stringify(credentials));
+          setUsername("");
+          setPassword("");
+          setIsLogged(true);
+          navigate("/home");
+        }
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
+          setWrong("Wrong username or password.")
+        }
+      })
+
 
   }
 
@@ -82,6 +97,7 @@ const AuthPage = ({setIsLogged}) => {
         ) : (
           <Login
             error={error}
+            wrong={wrong}
             usernameChange={usernameChange}
             username={username}
             passwordChange={passwordChange}

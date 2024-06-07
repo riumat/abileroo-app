@@ -1,21 +1,21 @@
 
-const Login = ({ error, usernameChange,username, passwordChange, password, submitHandle }) => {
+const Login = ({ error, wrong, usernameChange, username, passwordChange, password, submitHandle }) => {
   return (
     <form className='flex flex-col gap-4 p-5 '>
 
-      <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-        <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Email Address/Username</p>
+      <div className={`p-3 rounded-xl border text-[15px] ${(error || wrong) === "" ? "border-emerald-700" : "border-red-500"}`}>
+        <p className={`text-[11px]  ${(error || wrong) === "" ? "" : "text-red-500"}`}>Email</p>
         <input
           required
-          name='username'
-          type="text"
+          name='email'
+          type="email"
           className='rounded-xl focus:outline-none '
           onChange={(e) => usernameChange(e.target.value)}
           value={username}
         />
       </div>
-      <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-        <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Password</p>
+      <div className={`p-3 rounded-xl border text-[15px] ${(error || wrong) === "" ? "border-emerald-700" : "border-red-500"}`}>
+        <p className={`text-[11px]  ${(error || wrong) === "" ? "" : "text-red-500"}`}>Password</p>
 
         <input
           required
@@ -40,6 +40,8 @@ const Login = ({ error, usernameChange,username, passwordChange, password, submi
 
       <div>
         <p className='text-red-500 text-[15px]'>{error}</p>
+        <p className='text-red-500 text-[15px]'>{wrong}</p>
+
       </div>
     </form>
 

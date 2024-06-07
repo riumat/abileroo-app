@@ -4,7 +4,7 @@ import { AuthPage, HomePage, FindPage, ProductsPage, ShopPage, CartPage, Favorit
 import Navbar from './Components/Navbar/Navbar';
 import Sidebar from './Components/Sidebar';
 import { cartAdder, cartRemover } from './utils/cart';
-import { shopAdder, shopDisliker, shopLiker, shopRemover } from './utils/shop';
+import { shopAdder, shopRemover } from './utils/shop';
 import { addOrder } from './utils/orders';
 import { useCart, useFavorites, useLogged, useOrders, useSidebar } from './utils/hooks';
 import { axiosBase } from './utils/constants';
@@ -42,33 +42,39 @@ const App = () => {
   const sendOrder = (order, date, total, delivery, address, email) => {
     setOrders(addOrder(orders, order, date, total));
     setCart({ id: "", list: [] });
-    const token="eG5ocgrivhqVtLrLJ5EvXCdg6jl6j3Iy";
-    const session="05gl1pmydb3e1jcstab9hge02rvr5lfd";
-    
-    axiosBase.post("order/order-create/",
-      {
-        shop: order[0].shop,
-        date_time_delivery: delivery,
-        address: address,
-        client_email: email,
-        shipped: false,
-        delivered: false,
-        details: [...order].map(product => (
-          { product: product.id, amount: product.count }
-        ))
-      },
-      {
-        headers: {
-          csrftoken: token,
-          Cookie:`csrftoken=${token}; sessionid=${session}`
-        }
-      }
-      
-    )
-      .then(response => response.status)
-      .then(status => console.log(status))
-      .catch(error => console.log(error))
+    const token = "eG5ocgrivhqVtLrLJ5EvXCdg6jl6j3Iy";
+    const session = "05gl1pmydb3e1jcstab9hge02rvr5lfd";
 
+    const body = new FormData();
+    body.append("shop", order[0].shop);
+    body.append("date_time_delivery", delivery);
+    body.append("address", address);
+    body.append("client_email", email);
+    body.append("shipped", false);
+    body.append("delivered", false);
+    body.append("details", [...order].map(product => (
+      { product: product.id, amount: product.count }
+    )));
+
+
+    axiosBase({
+      url: "order/order-create/",
+      method: "post",
+      data: body,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(res => {
+        if (res.status === 202) {
+          
+          console.log(res.data);
+          console.log(res.headers)
+        }
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
+          console.log(error)
+        }
+      })
 
   }
 
