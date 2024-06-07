@@ -44,7 +44,7 @@ const App = () => {
   const sendOrder = (order, date, total, delivery, address, email) => {
     setOrders(addOrder(orders, order, date, total));
     setCart({ id: "", list: [] });
-    const token = "Yj5Ykh0R5rPxVMYtJVSELe9tln9di2q8";
+    const token = "De8WwSRCZvne8BOBFcnOUwFbZTzbXLMJ";
     const session = "bxsii2ks45pkgj39i7iseaxmhnrvp9hb";
 
     const details = [...order].map(product => (
@@ -59,7 +59,6 @@ const App = () => {
     body.append("shipped", false);
     body.append("delivered", false);
     body.append("details", details);
-    axios.defaults.withCredentials = true
 
     axiosBase({
       url: "order/order-create/",
@@ -67,10 +66,10 @@ const App = () => {
       data: body,
       headers: {
         "Content-Type": "multipart/form-data",
-        //"Cookie":`csrftoken=${token}; sessionid=${session}`
-        //"sessionid":session
-        //"x-csrftoken":token
-
+        //"Cookie":`csrftoken=${token}; sessionid=${session}` //Refused to set unsafe header "Cookie"
+        //"sessionid":session //Response to preflight request doesn't pass access control check
+        //"x-csrftoken":token //Response to preflight request doesn't pass access control check
+        //Authorization: `Bearer ${token}`
       },
     })
       .then(res => {

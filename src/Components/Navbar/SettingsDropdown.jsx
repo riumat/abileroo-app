@@ -13,7 +13,7 @@ const SettingsDropdown = ({ isOpen, open, logHandle }) => {
 
       {isOpen && (
         <div
-          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-2 text-[14px]"
+          className="absolute right-0  mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-2 text-[14px] z-30"
         >
           <p className="text-[15px] px-3 py-2 border-b border-slate-300">Welcome back <span className="font-semibold">{user.username}</span>!</p>
           {settingsOptions.map((option, i) => (

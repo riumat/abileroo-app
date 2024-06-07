@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { axiosBase } from "./constants";
 
 export const useSidebar = () => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
@@ -38,6 +39,10 @@ export const useOrders = () => {
 
   useEffect(() => {
     setOrders(JSON.parse(localStorage.getItem("orders")) || []);
+
+    axiosBase.get("order/orders/?client_email=mario.rossi@yopmail.com")
+      .then(res => console.log(res.data))
+      .catch(error => console.log(error))
   }, [])
 
   return [orders, setOrders];

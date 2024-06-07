@@ -66,7 +66,6 @@ const AuthPage = ({ setIsLogged }) => {
             password: password
           }
           localStorage.setItem("credentials", JSON.stringify(credentials));
-          console.log(res)
           setUsername("");
           setPassword("");
           setIsLogged(true);
