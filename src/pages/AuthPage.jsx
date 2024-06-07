@@ -4,6 +4,8 @@ import Logo from '../Components/Logo';
 import Register from '../Components/Auth/Register';
 import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
+import axios from 'axios';
+import cookie from "react-cookies"
 
 
 const AuthPage = ({ setIsLogged }) => {
@@ -45,19 +47,26 @@ const AuthPage = ({ setIsLogged }) => {
     body.append("username", username);
     body.append("password", password);
 
+
+
     axiosBase({
       url: "login/",
       method: "post",
       data: body,
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        
+      },
+
     })
       .then(res => {
         if (res.status === 202) {
           const credentials = {
             username: username,
-            passoword: password
+            password: password
           }
           localStorage.setItem("credentials", JSON.stringify(credentials));
+          console.log(res)
           setUsername("");
           setPassword("");
           setIsLogged(true);
@@ -69,6 +78,8 @@ const AuthPage = ({ setIsLogged }) => {
           setWrong("Wrong username or password.")
         }
       })
+
+
 
 
   }

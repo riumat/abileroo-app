@@ -8,6 +8,8 @@ import { shopAdder, shopRemover } from './utils/shop';
 import { addOrder } from './utils/orders';
 import { useCart, useFavorites, useLogged, useOrders, useSidebar } from './utils/hooks';
 import { axiosBase } from './utils/constants';
+import cookie from "react-cookies"
+import axios from 'axios';
 
 const App = () => {
   const [summary, setSummary] = useState({});
@@ -35,15 +37,19 @@ const App = () => {
 
   const confirmOrder = (cartFormatted, total, deliveryDate, address, email) => {
     setSummary(
-      { order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: "mariorossi@gmail.com" }
+      { order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: "mario.rossi@yopmail.com" }
     );
   }
 
   const sendOrder = (order, date, total, delivery, address, email) => {
     setOrders(addOrder(orders, order, date, total));
     setCart({ id: "", list: [] });
-    const token = "eG5ocgrivhqVtLrLJ5EvXCdg6jl6j3Iy";
-    const session = "05gl1pmydb3e1jcstab9hge02rvr5lfd";
+    const token = "Yj5Ykh0R5rPxVMYtJVSELe9tln9di2q8";
+    const session = "bxsii2ks45pkgj39i7iseaxmhnrvp9hb";
+
+    const details = [...order].map(product => (
+      { product: product.id, amount: product.count }
+    ))
 
     const body = new FormData();
     body.append("shop", order[0].shop);
@@ -52,22 +58,29 @@ const App = () => {
     body.append("client_email", email);
     body.append("shipped", false);
     body.append("delivered", false);
-    body.append("details", [...order].map(product => (
-      { product: product.id, amount: product.count }
-    )));
-
+    body.append("details", details);
+    axios.defaults.withCredentials = true
 
     axiosBase({
       url: "order/order-create/",
       method: "post",
       data: body,
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        //"Cookie":`csrftoken=${token}; sessionid=${session}`
+        //"sessionid":session
+        //"x-csrftoken":token
+
+      },
     })
       .then(res => {
         if (res.status === 202) {
-          
+
           console.log(res.data);
           console.log(res.headers)
+        }
+        if(res.status===400){
+          console.log(res)
         }
       })
       .catch(error => {
