@@ -34,16 +34,27 @@ export const useFavorites = () => {
   return [favorites, setFavorites];
 }
 
-export const useOrders = () => {
+export const useOrders = (isLogged) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     setOrders(JSON.parse(localStorage.getItem("orders")) || []);
 
-    axiosBase.get("order/orders/?client_email=mario.rossi@yopmail.com")
-      .then(res => console.log(res.data))
-      .catch(error => console.log(error))
-  }, [])
+    if (isLogged) {
+      const username = JSON.parse(localStorage.getItem("credentials")).username;
+
+      axiosBase.get(`order/orders/?client_email=${username}`, {
+        headers: {
+          "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+      })
+        .then(res => {
+          setOrders(res.data)
+          console.log(res.data)
+        })
+        .catch(error => console.log(error))
+    }
+  }, [isLogged])
 
   return [orders, setOrders];
 }

@@ -47,25 +47,24 @@ const AuthPage = ({ setIsLogged }) => {
     body.append("username", username);
     body.append("password", password);
 
-
-
     axiosBase({
-      url: "login/",
+      url: "login-token/",
       method: "post",
       data: body,
       headers: {
         "Content-Type": "multipart/form-data",
-        
       },
-
     })
       .then(res => {
-        if (res.status === 202) {
+
+        if (res.status === 200) {
           const credentials = {
             username: username,
             password: password
           }
           localStorage.setItem("credentials", JSON.stringify(credentials));
+          localStorage.setItem("token", res.data.token)
+
           setUsername("");
           setPassword("");
           setIsLogged(true);

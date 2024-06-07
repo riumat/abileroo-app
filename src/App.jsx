@@ -13,11 +13,11 @@ import axios from 'axios';
 
 const App = () => {
   const [summary, setSummary] = useState({});
+  const [isLogged, setIsLogged] = useLogged();
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const [cart, setCart] = useCart();
   const [favorites, setFavorites] = useFavorites();
-  const [orders, setOrders] = useOrders();
-  const [isLogged, setIsLogged] = useLogged();
+  const [orders, setOrders] = useOrders(isLogged);
 
   const addToCart = (product) => {
     setCart(cartAdder(cart, product));
@@ -44,7 +44,7 @@ const App = () => {
   const sendOrder = (order, date, total, delivery, address, email) => {
     setOrders(addOrder(orders, order, date, total));
     setCart({ id: "", list: [] });
-    const token = "De8WwSRCZvne8BOBFcnOUwFbZTzbXLMJ";
+    const token = localStorage.getItem("token");
     const session = "bxsii2ks45pkgj39i7iseaxmhnrvp9hb";
 
     const details = [...order].map(product => (
@@ -59,33 +59,29 @@ const App = () => {
     body.append("shipped", false);
     body.append("delivered", false);
     body.append("details", details);
-
+  
     axiosBase({
       url: "order/order-create/",
       method: "post",
       data: body,
       headers: {
-        "Content-Type": "multipart/form-data",
-        //"Cookie":`csrftoken=${token}; sessionid=${session}` //Refused to set unsafe header "Cookie"
-        //"sessionid":session //Response to preflight request doesn't pass access control check
-        //"x-csrftoken":token //Response to preflight request doesn't pass access control check
-        //Authorization: `Bearer ${token}`
+        "Content-Type": "multipart/form-data", //application/x-www-form-urlencoded
+        "Authorization": `Token ${localStorage.getItem("token")}`
       },
     })
       .then(res => {
-        if (res.status === 202) {
-
-          console.log(res.data);
-          console.log(res.headers)
-        }
-        if(res.status===400){
-          console.log(res)
-        }
+        console.log(res)
+        /*  if (res.status === 201) {
+           console.log("added")
+           console.log(res.data);
+           console.log(res.headers)
+         }
+         if (res.status === 400) {
+           console.log(res)
+         } */
       })
       .catch(error => {
-        if (error.response.status === 400) {
-          console.log(error)
-        }
+        console.log(error)
       })
 
   }
@@ -93,6 +89,7 @@ const App = () => {
   const logHandle = (logStatus) => {
     setIsLogged(logStatus);
     localStorage.setItem("logged", JSON.stringify(logStatus));
+    if (!logStatus) localStorage.removeItem("credentials");
   }
 
   return (
