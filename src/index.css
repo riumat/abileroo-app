@@ -48,7 +48,7 @@ body {
   }
 
   .sb-button {
-    @apply flex items-center rounded-lg duration-300 cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3 active:scale-90 px-2;
+    @apply flex items-center justify-center rounded-lg duration-300 cursor-pointer hover:bg-emerald-200 dark:hover:bg-emerald-800 py-3 active:scale-90 px-2;
   }
   .nav-button{
     @apply w-7 h-7 cursor-pointer hover:text-white p-1 rounded-lg hover:bg-emerald-700 dark:text-slate-100
@@ -58,5 +58,8 @@ body {
   }
   .main-section{
     @apply h-full overflow-y-auto overflow-x-hidden relative;
+  }
+  .shop-card{
+    @apply flex flex-col lg:flex-row justify-center pb-2 lg:py-0 lg:justify-start items-center gap-5 shadow rounded-lg md:text-[0px] text-emerald-900 bg-white dark:bg-slate-950 dark:text-slate-100;
   }
 }

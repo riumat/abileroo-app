@@ -8,6 +8,8 @@ import { MdErrorOutline } from "react-icons/md";
 import ProductCard from "../Components/Product/ProductCard";
 import { axiosBase } from "../utils/constants";
 import ProductList from "../Components/Product/ProductList";
+import PathViewer from "../Components/Navbar/PathViewer";
+import { usePath } from "../utils/hooks";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -26,6 +28,7 @@ const sortList = (shops, isAscending) => {
 
 
 const ProductsPage = ({ addToCart }) => {
+  const path = usePath();
   const [productList, setProductList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -80,28 +83,29 @@ const ProductsPage = ({ addToCart }) => {
   };
 
   return (
-   
-        <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">
 
-          <div className="flex gap-3">
-            <SortControls sortShops={sortShops} />
-          </div>
-          <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">
 
-            {productList?.length === 0 ? (
-              <div className="flex flex-col items-center gap-10">
-                <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
-                <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">No products found.</p>
-                <FindShopButton />
-              </div>
-            ) : (
-              <div className="flex flex-col gap-7 w-full">
-                <p className="logo-font text-[30px] text-center dark:text-slate-100">Products</p>
-                <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart} />
-              </div>
-            )}
+      <div className="flex gap-3 justify-between">
+        <SortControls sortShops={sortShops} />
+        <PathViewer path={path} />
+      </div>
+      <div className="flex flex-col items-center gap-8">
+
+        {productList?.length === 0 ? (
+          <div className="flex flex-col items-center gap-10">
+            <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
+            <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">No products found.</p>
+            <FindShopButton />
           </div>
-        </div>
+        ) : (
+          <div className="flex flex-col gap-7 w-full">
+            <p className="logo-font text-[30px] text-center dark:text-slate-100">Products</p>
+            <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart} />
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
 

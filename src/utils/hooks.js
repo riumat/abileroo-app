@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { axiosBase } from "./constants";
 
 export const useSidebar = () => {
@@ -73,4 +73,15 @@ export const useLogged = () => {
   }, [isLogged])
 
   return [isLogged, setIsLogged];
+}
+
+export const usePath = () => {
+  const [path, setPath] = useState([]);
+  const location = useLocation();
+
+  useEffect(() => {
+    setPath(location.pathname.split("/").filter(route => route !== ""));
+  }, [location])
+
+  return path;
 }

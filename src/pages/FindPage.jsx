@@ -5,6 +5,8 @@ import { useSearchParams } from "react-router-dom";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import { axiosBase } from "../utils/constants";
+import PathViewer from "../Components/Navbar/PathViewer";
+import { usePath } from "../utils/hooks";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -23,6 +25,7 @@ const sortList = (shops, isAscending) => {
 
 
 const FindPage = ({ likeShop, dislikeShop }) => {
+  const path = usePath();
   const [shopList, setShopList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -71,8 +74,9 @@ const FindPage = ({ likeShop, dislikeShop }) => {
 
     <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 main-section bg-dark ">
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 justify-between">
         <SortControls sortShops={sortShops} />
+        <PathViewer path={path} />
       </div>
       <div className="flex flex-col items-center gap-8">
 

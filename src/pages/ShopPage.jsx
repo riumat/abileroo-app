@@ -4,8 +4,11 @@ import { useParams } from "react-router";
 import Info from "../Components/Shop/Info";
 import { axiosBase, shopUrls } from "../utils/constants";
 import { ClipLoader } from "react-spinners";
+import PathViewer from "../Components/Navbar/PathViewer";
+import { usePath } from "../utils/hooks";
 
 const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
+  const path = usePath();
   const [shopData, setShopData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -42,15 +45,19 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop }) => {
     )
   }
 
-  if (isLoading){
-    return(
+  if (isLoading) {
+    return (
       <div className='w-full h-full flex justify-center items-center bg-dark '>
-        <ClipLoader/>
+        <ClipLoader />
       </div>
     )
   }
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 px-3">
+
+      <div className="flex gap-3 justify-end">
+        <PathViewer path={path} />
+      </div>
       <div className="flex flex-col gap-7 items-center ">
 
         <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center bg-light">

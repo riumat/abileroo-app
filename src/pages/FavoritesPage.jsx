@@ -5,6 +5,8 @@ import { FavoriteCtx } from "../App";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import { axiosBase, shopUrls } from "../utils/constants";
+import PathViewer from "../Components/Navbar/PathViewer";
+import { usePath } from "../utils/hooks";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -23,6 +25,7 @@ const sortList = (shops, isAscending) => {
 
 
 const FavoritesPage = ({ likeShop, dislikeShop }) => {
+  const path = usePath();
   const favorites = useContext(FavoriteCtx);
   const [shopList, setShopList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,8 +56,9 @@ const FavoritesPage = ({ likeShop, dislikeShop }) => {
 
     <div className="flex flex-col gap-3 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 justify-between">
         <SortControls sortShops={sortShops} />
+        <PathViewer path={path} />
       </div>
       {shopList?.length === 0 && !isLoading ? (
         <div className="flex flex-col items-center gap-10">
