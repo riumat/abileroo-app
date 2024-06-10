@@ -8,7 +8,6 @@ import { shopAdder, shopRemover } from './utils/shop';
 import { addOrder } from './utils/orders';
 import { useCart, useFavorites, useLogged, useOrders, useSidebar } from './utils/hooks';
 import { axiosBase } from './utils/constants';
-import cookie from "react-cookies"
 import axios from 'axios';
 
 const App = () => {

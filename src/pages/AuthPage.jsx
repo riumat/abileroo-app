@@ -5,7 +5,6 @@ import Register from '../Components/Auth/Register';
 import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
 import axios from 'axios';
-import cookie from "react-cookies"
 import { ClipLoader } from 'react-spinners';
 
 
