@@ -6,9 +6,11 @@ import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
 import axios from 'axios';
 import cookie from "react-cookies"
+import { ClipLoader } from 'react-spinners';
 
 
 const AuthPage = ({ setIsLogged }) => {
+  const [isLoading,setIsLoading]=useState(false);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -38,8 +40,10 @@ const AuthPage = ({ setIsLogged }) => {
   }
 
   const submitHandle = (e) => {
+    setIsLoading(true)
     e.preventDefault();
     if (!validate(username) /* || !validate(email) */ || !validate(password)) {
+      setIsLoading(false);
       return;
     }
 
@@ -68,22 +72,31 @@ const AuthPage = ({ setIsLogged }) => {
           setUsername("");
           setPassword("");
           setIsLogged(true);
+          setIsLoading(false);
           navigate("/home");
         }
       })
       .catch(error => {
         if (error.response.status === 400) {
+          setIsLoading(false);
           setWrong("Wrong username or password.")
         }
       })
+  }
 
 
-
-
+  if (isLoading){
+    return(
+      <div className='w-full h-full flex justify-center items-center'>
+        <ClipLoader/>
+      </div>
+    )
   }
 
   return (
+    
     <div className='h-full w-full flex items-center justify-center'>
+      
       <div className='flex flex-col gap-5 rounded-xl w-[450px] bg-white p-7'>
         <div className='flex items-center justify-center gap-2'>
           <Logo />
