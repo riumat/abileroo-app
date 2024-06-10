@@ -59,7 +59,7 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
           <div className="flex flex-col lg:flex-row justify-between gap-3 w-full">
             <div className="flex flex-col gap-5 w-full flex-1">
               {cartFormatted?.map((product, i) => (
-                <CartProductCard key={`product-cart-${i}`} p={product} addToCart={addToCart} removeFromCart={removeFromCart} />
+                <CartProductCard key={`product-cart-${i}`} p={product} counter={product.count} addToCart={addToCart} removeFromCart={removeFromCart} />
               ))}
             </div>
             <div className="flex flex-col gap-10 flex-[0.7]">
