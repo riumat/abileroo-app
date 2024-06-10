@@ -6,7 +6,9 @@ import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import { axiosBase } from "../utils/constants";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { usePath } from "../utils/hooks";
+import { usePath, useSidebar } from "../utils/hooks";
+import Navbar from "../Components/Navbar/Navbar";
+import Sidebar from "../Components/Sidebar";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -24,8 +26,9 @@ const sortList = (shops, isAscending) => {
 };
 
 
-const FindPage = ({ likeShop, dislikeShop }) => {
+const FindPage = ({ likeShop, dislikeShop, logHandle }) => {
   const path = usePath();
+  const [isSideOpen, setIsSideOpen] = useSidebar();
   const [shopList, setShopList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -65,36 +68,53 @@ const FindPage = ({ likeShop, dislikeShop }) => {
         console.log(error);
       })
   }
-
   const sortShops = (isAscending) => {
+
     setShopList(sortList(shopList, isAscending));
   };
 
   return (
-
-    <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 main-section bg-dark ">
-
-      <div className="flex gap-3 justify-between">
-        <SortControls sortShops={sortShops} />
-        <PathViewer path={path} />
-      </div>
-      <div className="flex flex-col items-center gap-8">
-
-        {shopList?.length === 0 ? (
-          <div className="flex flex-col items-center gap-10">
-            <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
-            <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">No shops found.</p>
-            <FindShopButton />
-          </div>
-        ) : (
-          <div className="flex flex-col gap-7 w-full">
-            <p className="logo-font text-[30px] text-center dark:text-slate-100">Our Shop Selection</p>
-
-            <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
-          </div>
+    <>
+      <div className="flex flex-col gap-5 overflow-hidden h-full">
+        {isSideOpen && window.innerWidth < 768 && (
+          <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <div className="flex gap-3 overflow-hidden h-full">
+          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
+
+
+
+            <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 main-section bg-dark ">
+
+              <div className="flex gap-3 justify-between">
+                <SortControls sortShops={sortShops} />
+                <PathViewer path={path} />
+              </div>
+              <div className="flex flex-col items-center gap-8">
+
+                {shopList?.length === 0 ? (
+                  <div className="flex flex-col items-center gap-10">
+                    <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
+                    <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">No shops found.</p>
+                    <FindShopButton />
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-7 w-full">
+                    <p className="logo-font text-[30px] text-center dark:text-slate-100">Our Shop Selection</p>
+
+                    <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
+                  </div>
+                )}
+              </div>
+            </div>
+
+
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

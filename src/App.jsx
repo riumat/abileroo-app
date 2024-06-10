@@ -1,19 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { createContext, useState } from 'react';
 import { AuthPage, HomePage, FindPage, ProductsPage, ShopPage, CartPage, FavoritesPage, OrdersPage, CheckoutPage } from './utils/pages'
-import Navbar from './Components/Navbar/Navbar';
-import Sidebar from './Components/Sidebar';
 import { cartAdder, cartRemover } from './utils/cart';
 import { shopAdder, shopRemover } from './utils/shop';
 import { addOrder } from './utils/orders';
-import { useCart, useFavorites, useLogged, useOrders, useSidebar } from './utils/hooks';
+import { useCart, useFavorites, useLogged, useOrders } from './utils/hooks';
 import { axiosBase } from './utils/constants';
 import axios from 'axios';
 
 const App = () => {
   const [summary, setSummary] = useState({});
   const [isLogged, setIsLogged] = useLogged();
-  const [isSideOpen, setIsSideOpen] = useSidebar();
   const [cart, setCart] = useCart();
   const [favorites, setFavorites] = useFavorites();
   const [orders, setOrders] = useOrders(isLogged);
@@ -58,7 +55,7 @@ const App = () => {
     body.append("shipped", false);
     body.append("delivered", false);
     body.append("details", details);
-  
+
     axiosBase({
       url: "order/order-create/",
       method: "post",
@@ -100,41 +97,21 @@ const App = () => {
             <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-950 overflow-hidden">
               <div className='flex flex-col h-full mx-5'>
 
-                {!isLogged ?
-                  (
-                    <Routes>
-                      <Route exact path='/' element={<AuthPage setIsLogged={logHandle} />} />
-                    </Routes>
-                  )
-                  :
-                  (
-                    <div className="flex flex-col gap-5 overflow-hidden h-full">
-                      {isSideOpen && window.innerWidth < 768 && (
-                        <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
-                      )}
-                      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
-                      <div className="flex gap-3 overflow-hidden h-full">
-                        <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
-                        <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
+                <Routes>
+                  <Route exact path='/' element={<AuthPage setIsLogged={logHandle} />} />
 
-                          <Routes>
-                            <Route path='/home' element={<HomePage />} />
-                            <Route path='/find' element={<FindPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
-                            <Route path='/products' element={<ProductsPage addToCart={addToCart} />} />
-                            <Route path='/shop/:shopId' element={<ShopPage addToCart={addToCart} likeShop={likeShop} dislikeShop={dislikeShop} />} />
-                            <Route path='/cart' element={<CartPage addToCart={addToCart} removeFromCart={removeFromCart} confirmOrder={confirmOrder} />} />
-                            <Route path='/favorites' element={<FavoritesPage likeShop={likeShop} dislikeShop={dislikeShop} />} />
-                            <Route path='/orders' element={<OrdersPage />} />
-                            <Route path='/checkout' element={<CheckoutPage sendOrder={sendOrder} />} />
-                          </Routes>
-
-                        </div>
-                      </div>
-                    </div>
-                  )
-                }
+                  <Route path='/home' element={<HomePage logHandle={logHandle} />} />
+                  <Route path='/find' element={<FindPage likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
+                  <Route path='/products' element={<ProductsPage addToCart={addToCart} logHandle={logHandle} />} />
+                  <Route path='/shop/:shopId' element={<ShopPage addToCart={addToCart} likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
+                  <Route path='/cart' element={<CartPage addToCart={addToCart} removeFromCart={removeFromCart} confirmOrder={confirmOrder} logHandle={logHandle} />} />
+                  <Route path='/favorites' element={<FavoritesPage likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
+                  <Route path='/orders' element={<OrdersPage logHandle={logHandle} />} />
+                  <Route path='/checkout' element={<CheckoutPage sendOrder={sendOrder} logHandle={logHandle} />} />
+                </Routes>
 
               </div>
+
             </main>
           </SummaryCtx.Provider>
         </OrdersCtx.Provider>

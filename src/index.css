@@ -62,4 +62,7 @@ body {
   .shop-card{
     @apply flex flex-col lg:flex-row justify-center pb-2 lg:py-0 lg:justify-start items-center gap-5 shadow rounded-lg md:text-[0px] text-emerald-900 bg-white dark:bg-slate-950 dark:text-slate-100;
   }
+  .img-filter{
+    @apply absolute bg-gradient-to-t from-emerald-50 from-30% to-black/70 dark:from-emerald-950 dark:from-0% dark:to-black/50  w-full h-full ;
+  }
 }

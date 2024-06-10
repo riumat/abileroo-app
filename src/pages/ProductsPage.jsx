@@ -9,7 +9,7 @@ import ProductCard from "../Components/Product/ProductCard";
 import { axiosBase } from "../utils/constants";
 import ProductList from "../Components/Product/ProductList";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { usePath } from "../utils/hooks";
+import { usePath, useSidebar } from "../utils/hooks";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -27,19 +27,19 @@ const sortList = (shops, isAscending) => {
 };
 
 
-const ProductsPage = ({ addToCart }) => {
+const ProductsPage = ({ addToCart, logHandle }) => {
   const path = usePath();
+  const [isSideOpen, setIsSideOpen] = useSidebar();
   const [productList, setProductList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [params] = useSearchParams();
-  const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
     localStorage.setItem("liked", JSON.stringify(liked));
     //getShops(""); // /shops/shops
-  }, [])
+  }, []) */
 
   useEffect(() => {
     setIsLoading(true)
@@ -56,16 +56,7 @@ const ProductsPage = ({ addToCart }) => {
 
   }, [])
 
-  const updateSidebar = () => {
-    setIsSideOpen(window.innerWidth > 768);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateSidebar);
-    return () => window.removeEventListener("resize", updateSidebar);
-  });
-
-  const getShops = (url) => {
+ /*  const getShops = (url) => {
     setIsLoading(true);
     axiosBase.get(url)
       .then(res => {
@@ -76,36 +67,51 @@ const ProductsPage = ({ addToCart }) => {
         setError(true);
         console.log(error);
       })
-  }
+  } */
 
   const sortShops = (isAscending) => {
     setProductList(sortList(productList, isAscending));
   };
 
   return (
-
-    <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">
-
-      <div className="flex gap-3 justify-between">
-        <SortControls sortShops={sortShops} />
-        <PathViewer path={path} />
-      </div>
-      <div className="flex flex-col items-center gap-8">
-
-        {productList?.length === 0 ? (
-          <div className="flex flex-col items-center gap-10">
-            <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
-            <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">No products found.</p>
-            <FindShopButton />
-          </div>
-        ) : (
-          <div className="flex flex-col gap-7 w-full">
-            <p className="logo-font text-[30px] text-center dark:text-slate-100">Products</p>
-            <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart} />
-          </div>
+    <>
+      <div className="flex flex-col gap-5 overflow-hidden h-full">
+        {isSideOpen && window.innerWidth < 768 && (
+          <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <div className="flex gap-3 overflow-hidden h-full">
+          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
+
+            <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">
+
+              <div className="flex gap-3 justify-between">
+                <SortControls sortShops={sortShops} />
+                <PathViewer path={path} />
+              </div>
+              <div className="flex flex-col items-center gap-8">
+
+                {productList?.length === 0 ? (
+                  <div className="flex flex-col items-center gap-10">
+                    <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
+                    <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">No products found.</p>
+                    <FindShopButton />
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-7 w-full">
+                    <p className="logo-font text-[30px] text-center dark:text-slate-100">Products</p>
+                    <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart} />
+                  </div>
+                )}
+              </div>
+            </div>
+
+
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
