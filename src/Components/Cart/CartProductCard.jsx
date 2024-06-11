@@ -1,7 +1,6 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
-const CartProductCard = ({ p,counter, removeFromCart, addToCart }) => {
-  console.log(p)
+const CartProductCard = ({ p, removeFromCart, addToCart }) => {
   return (
     <div className="flex justify-between text-[14px] shadow  items-center bg-white dark:bg-slate-950 rounded-lg"
     >
@@ -13,7 +12,7 @@ const CartProductCard = ({ p,counter, removeFromCart, addToCart }) => {
         </div>
       </div>
 
-      <div className="flex items-center me-7 border border-black rounded-lg">
+      <div className="flex items-center me-7 border border-black dark:border-slate-400 rounded-lg">
         <div
           className="p-2 rounded-s-lg border-e border-slate-500 hover:bg-green-100 dark:hover:bg-emerald-900 cursor-pointer active:scale-50 duration-500"
           onClick={() => addToCart(p)}>

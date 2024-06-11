@@ -22,9 +22,9 @@ const ShopCard = ({ shop, likeShop, dislikeShop }) => {
   }
 
   return (
-    <div className="shop-card">
-      <div className=" w-[200px] h-[200px] md:w-40 md:h-40 overflow-hidden rounded-t-lg lg:rounded-s-lg lg:rounded-tr-none flex justify-center items-center">
-        <img className="" src={shop?.image} alt="" loading="lazy" />
+    <div className="shop-card card">
+      <div className=" w-[200px] h-[200px] md:w-40 md:h-40 overflow-hidden rounded-t-lg lg:rounded-s-lg lg:rounded-tr-none flex justify-center items-center ">
+        <img className=" w-full h-full" src={shop?.image} alt="" loading="lazy" />
       </div>
       <div className="flex flex-col gap-3 lg:gap-2 items-center lg:items-start ">
         <div className="lg:px-5">

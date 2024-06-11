@@ -42,10 +42,11 @@ export const useOrders = (isLogged) => {
 
     if (isLogged) {
       const username = JSON.parse(localStorage.getItem("credentials")).username;
+      const token = JSON.parse(localStorage.getItem("token"));
 
       axiosBase.get(`order/orders/?client_email=${username}`, {
         headers: {
-          "Authorization": `Token ${localStorage.getItem("token")}`
+          "Authorization": `Token ${token}`
         }
       })
         .then(res => {
@@ -60,15 +61,16 @@ export const useOrders = (isLogged) => {
 }
 
 export const useLogged = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem("logged")) || false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setIsLogged(JSON.parse(localStorage.getItem("logged")) || false);
   }, [])
 
   useEffect(() => {
-    const path = isLogged ? "/home" : "/";
+    const path = isLogged ? location.pathname : "/";
     navigate(path);
   }, [isLogged])
 

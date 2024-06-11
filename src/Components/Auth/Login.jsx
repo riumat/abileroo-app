@@ -9,7 +9,7 @@ const Login = ({ error, wrong, usernameChange, username, passwordChange, passwor
           required
           name='email'
           type="email"
-          className='rounded-xl focus:outline-none '
+          className='rounded-xl focus:outline-none bg-transparent '
           onChange={(e) => usernameChange(e.target.value)}
           value={username}
         />
@@ -35,7 +35,7 @@ const Login = ({ error, wrong, usernameChange, username, passwordChange, passwor
       <button
         onClick={submitHandle}
         type="submit"
-        className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white hover:bg-emerald-700 hover:text-black transition-colors'
+        className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white'
       >Log In</button>
 
       <div>

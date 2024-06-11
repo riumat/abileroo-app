@@ -99,7 +99,6 @@ const App = () => {
 
                 <Routes>
                   <Route exact path='/' element={<AuthPage setIsLogged={logHandle} />} />
-
                   <Route path='/home' element={<HomePage logHandle={logHandle} />} />
                   <Route path='/find' element={<FindPage likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
                   <Route path='/products' element={<ProductsPage addToCart={addToCart} logHandle={logHandle} />} />

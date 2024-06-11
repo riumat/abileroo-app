@@ -17,7 +17,7 @@ const Register = ({ error, emailChange,email, usernameChange, username, password
       </div>
 
       <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-        <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Email Address/Username</p>
+        <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Username</p>
         <input
           required
           name='username'

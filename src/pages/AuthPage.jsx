@@ -9,7 +9,7 @@ import { ClipLoader } from 'react-spinners';
 
 
 const AuthPage = ({ setIsLogged }) => {
-  const [isLoading,setIsLoading]=useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -66,7 +66,7 @@ const AuthPage = ({ setIsLogged }) => {
             password: password
           }
           localStorage.setItem("credentials", JSON.stringify(credentials));
-          localStorage.setItem("token", res.data.token)
+          localStorage.setItem("token", JSON.stringify(res.data.token))
 
           setUsername("");
           setPassword("");
@@ -79,23 +79,25 @@ const AuthPage = ({ setIsLogged }) => {
         if (error.response.status === 400) {
           setIsLoading(false);
           setWrong("Wrong username or password.")
+        } else {
+          console.log(error)
         }
       })
   }
 
 
-  if (isLoading){
-    return(
+  if (isLoading) {
+    return (
       <div className='w-full h-full flex justify-center items-center'>
-        <ClipLoader/>
+        <ClipLoader />
       </div>
     )
   }
 
   return (
-    
+
     <div className='h-full w-full flex items-center justify-center'>
-      
+
       <div className='flex flex-col gap-5 rounded-xl w-[450px] bg-white p-7'>
         <div className='flex items-center justify-center gap-2'>
           <Logo />

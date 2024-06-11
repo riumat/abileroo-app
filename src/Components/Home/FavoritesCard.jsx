@@ -20,7 +20,7 @@ const FavoritesCard = () => {
   return (
     <div className="p-3 bg-white shadow rounded-b-lg rounded-tr-lg  text-[14px] w-full dark:bg-slate-950 dark:text-slate-100">
       {favorites.length === 0 ? (
-        <p className="text-center text-slate-700 dark:text-slate-100">Empty. Find shops and add them to the favorites!</p>
+        <p className="text-center text-slate-700 dark:text-slate-100">Empty. Find shops and give them a heart!</p>
       ) : (
         <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-y-10 justify-items-center dark:bg-slate-950">
           {shopList.map((shop, i) => (
