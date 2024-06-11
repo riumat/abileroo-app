@@ -22,7 +22,7 @@ const ShopCard = ({ shop, likeShop, dislikeShop }) => {
   }
 
   return (
-    <div className="shop-card card">
+    <div className="shop-card bg-light">
       <div className=" w-[200px] h-[200px] md:w-40 md:h-40 overflow-hidden rounded-t-lg lg:rounded-s-lg lg:rounded-tr-none flex justify-center items-center ">
         <img className=" w-full h-full" src={shop?.image} alt="" loading="lazy" />
       </div>

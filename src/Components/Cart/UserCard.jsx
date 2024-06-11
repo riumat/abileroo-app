@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-
 const UserCard = ({ setDeliverDate, isError, setAddress }) => {
   const [dateTime, setDateTime] = useState();
+
   const setValue = () => {
     const now = new Date();
     const year = now.getFullYear();
@@ -12,11 +12,11 @@ const UserCard = ({ setDeliverDate, isError, setAddress }) => {
     const minute = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
     return `${year}-${month}-${day}T${hour + 1}:${minute}`
   }
+
   useEffect(() => {
     setDateTime(setValue())
+    setDeliverDate(setValue())
   }, [])
-
- 
 
   return (
     <form
@@ -30,7 +30,7 @@ const UserCard = ({ setDeliverDate, isError, setAddress }) => {
         <input
           onChange={(e) => setAddress(e.target.value)}
           type="text" placeholder={`${isError?.user ? "Address is required" : "Where should we deliver your order?"}`}
-          className={`p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[14px] ${isError?.user && "placeholder:text-red-400 border-red-200"}`}
+          className={`cart-input ${isError?.user && "placeholder:text-red-400 border-red-200"}`}
 
         />
       </div>
@@ -42,7 +42,7 @@ const UserCard = ({ setDeliverDate, isError, setAddress }) => {
           onChange={(e) => setDeliverDate(e.target.value)}
           step={60}
           defaultValue={dateTime}
-          className={`relative p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[14px] hover:bg-slate-100 hover:dark:bg-slate-900 rounded-lg ${isError?.date && " border-red-200"}`}
+          className={`relative cart-input ${isError?.date && " border-red-200"}`}
         />
       </div>
 

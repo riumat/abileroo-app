@@ -14,7 +14,7 @@ const Info = ({ likeShop, dislikeShop, rating, description, address, id }) => {
   }, [favorites])
 
   return (
-    <div className="component-card shadow rounded-lg flex  gap-y-7 lg:flex justify-between w-full py-5  text-emerald-800 bg-white dark:bg-slate-950 dark:text-slate-100">
+    <div className="rounded-lg flex gap-y-7 lg:flex justify-between w-full py-5 bg-light">
 
       <div className="border-r border-slate-400  items-center flex justify-center flex-1">
         {isFavorite ? (

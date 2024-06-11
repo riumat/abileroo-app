@@ -82,7 +82,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
             <Link to={"/cart"} className="relative inline-block">
               <BsCart3 className="nav-button" />
               {cart?.list?.length != 0 && (
-                <span className="absolute top-0 right-0 inline-flex items-center justify-center  text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px] dark:bg-white  dark:text-emerald-950">
+                <span className="nav-cart-badge">
                   {cart?.list?.length}
                 </span>
               )}

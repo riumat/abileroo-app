@@ -39,6 +39,7 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
       return;
     }
     if (new Date(deliveryDate) < new Date() || isNaN(new Date(deliveryDate))) {
+      console.log(new Date(setDeliveryDate))
       setIsError({ ...isError, date: true });
       return;
     }
@@ -63,7 +64,10 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
             <div className="flex flex-col gap-10 flex-1">
               <UserCard setDeliverDate={(date) => setDeliveryDate(date)} isError={isError} setAddress={setAddress} />
               <div className="flex  gap-2">
-                <Link to={`/shop/${cart?.id}`} className="rounded-lg bg-white shadow p-3 text-slate-800 text-[15px] logo-font flex items-center justify-center flex-1">
+                <Link
+                  to={`/shop/${cart?.id}`}
+                  className="rounded-lg bg-white shadow p-3 text-slate-800 text-[15px] logo-font flex items-center justify-center flex-1"
+                >
                   Forgot Something?
                 </Link>
                 <button

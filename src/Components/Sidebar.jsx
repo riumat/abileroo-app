@@ -26,42 +26,59 @@ const Sidebar = ({ isSideOpen, logHandle }) => {
 
       <div className="flex flex-col gap-12">
 
-        <NavLink to={"/home"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}>
+        <NavLink
+          to={"/home"}
+          className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}
+        >
           <FaHouseUser className="w-5 h-5" />
           {!isCompressed && (
             <p>Home</p>
           )}
         </NavLink>
 
-        <NavLink to={"/find"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button `)}  >
+        <NavLink
+          to={"/find"}
+          className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button `)}
+        >
           <FaShop className="w-5 h-5" />
           {!isCompressed && (
             <p>Shops</p>
           )}
         </NavLink>
 
-        <NavLink to={"/products"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}>
+        <NavLink
+          to={"/products"}
+          className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}
+        >
           <MdOutlineDiscount className="w-5 h-5" />
           {!isCompressed && (
             <p>Products</p>
           )}
         </NavLink>
 
-        <NavLink to={"/favorites"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}>
+        <NavLink
+          to={"/favorites"}
+          className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}
+        >
           <BsHouseHeart className="w-5 h-5" />
           {!isCompressed && (
             <p>Favorites</p>
           )}
         </NavLink>
 
-        <NavLink to={"/orders"} className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}>
+        <NavLink
+          to={"/orders"}
+          className={({ isActive }) => (`${isActive ? "bg-emerald-200 dark:bg-emerald-800" : ""} ${!isCompressed && "justify-start gap-5"} sb-button`)}
+        >
           <MdBorderColor className="w-5 h-5" />
           {!isCompressed && (
             <p>Orders</p>
           )}
         </NavLink>
 
-        <div className={`${!isCompressed && "justify-start gap-5"} sb-button`} onClick={() => logHandle(false)} >
+        <div
+          className={`${!isCompressed && "justify-start gap-5"} sb-button`}
+          onClick={() => logHandle(false)} >
           <MdLogout className="w-5 h-5" />
           {!isCompressed && (
             <p>Log out</p>

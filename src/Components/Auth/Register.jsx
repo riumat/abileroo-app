@@ -46,7 +46,7 @@ const Register = ({ error, emailChange,email, usernameChange, username, password
       <button
         onClick={submitHandle}
         type="submit"
-        className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white hover:bg-emerald-200 hover:text-black transition-colors'
+        className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white'
       >Log In</button>
 
       <div>

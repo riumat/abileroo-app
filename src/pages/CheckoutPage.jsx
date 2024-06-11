@@ -10,6 +10,7 @@ import { useSidebar } from "../utils/hooks";
 const CheckoutPage = ({ sendOrder, logHandle }) => {
   const summary = useContext(SummaryCtx);
   const [isSideOpen, setIsSideOpen] = useSidebar();
+  const date=new Date(summary.delivery).toLocaleString("it");
 
 
   return (
@@ -24,7 +25,7 @@ const CheckoutPage = ({ sendOrder, logHandle }) => {
           <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
 
-            <div className="flex flex-col gap-5 flex-1 bg-emerald-50 dark:bg-emerald-950/70 rounded-lg p-3 overflow-auto text-[14px] text-slate-700">
+            <div className="flex flex-col gap-5 flex-1 bg-dark rounded-lg p-3 overflow-auto text-[14px] text-slate-700">
               <p className="logo-font text-[20px] text-center dark:text-slate-100">Order Summary</p>
 
               <div className="rounded-lg shadow bg-white p-3 flex flex-col gap-3 dark:text-slate-300 dark:bg-slate-950">
@@ -33,7 +34,7 @@ const CheckoutPage = ({ sendOrder, logHandle }) => {
 
                 <p>Address: <span className="text-slate-950 dark:text-white font-bold">{summary.address}</span></p>
 
-                <p>Delivery Date: <span className="text-slate-950 dark:text-white font-bold">{`${new Date(summary.delivery).toLocaleString("it")}`}</span></p>
+                <p>Delivery Date: <span className="text-slate-950 dark:text-white font-bold">{date}</span></p>
               </div>
               <div className="rounded-lg shadow bg-white p-3 flex flex-col gap-3 dark:text-slate-300 dark:bg-slate-950">
                 <p>Your Order: </p>
