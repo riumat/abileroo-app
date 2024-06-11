@@ -18,7 +18,7 @@ export const useCart = () => {
   const [cart, setCart] = useState({});
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || { id: "", list: [] });
+    setCart(JSON.parse(localStorage.getItem("cart")) ?? { id: "", list: [] });
   }, [])
 
   return [cart, setCart];
@@ -28,7 +28,7 @@ export const useFavorites = () => {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    setFavorites(JSON.parse(localStorage.getItem("liked")) || []);
+    setFavorites(JSON.parse(localStorage.getItem("liked")) ?? []);
   }, [])
 
   return [favorites, setFavorites];
@@ -38,7 +38,7 @@ export const useOrders = (isLogged) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    setOrders(JSON.parse(localStorage.getItem("orders")) || []);
+    setOrders(JSON.parse(localStorage.getItem("orders")) ?? []);
 
     if (isLogged) {
       const username = JSON.parse(localStorage.getItem("credentials")).username;
@@ -61,12 +61,12 @@ export const useOrders = (isLogged) => {
 }
 
 export const useLogged = () => {
-  const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem("logged")) || false);
+  const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem("logged")) ?? false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    setIsLogged(JSON.parse(localStorage.getItem("logged")) || false);
+    setIsLogged(JSON.parse(localStorage.getItem("logged")) ?? false);
   }, [])
 
   useEffect(() => {

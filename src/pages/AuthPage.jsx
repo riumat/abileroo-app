@@ -63,7 +63,8 @@ const AuthPage = ({ setIsLogged }) => {
         if (res.status === 200) {
           const credentials = {
             username: username,
-            password: password
+            password: password,
+            formatted: username.split("@").at(0),
           }
           localStorage.setItem("credentials", JSON.stringify(credentials));
           localStorage.setItem("token", JSON.stringify(res.data.token))

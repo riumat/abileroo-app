@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import "../../index.css";
+import { useEffect, useState } from 'react'
 
 const useDate = () => {
   const [isEvening, setIsEvening] = useState();
@@ -12,7 +11,7 @@ const useDate = () => {
 }
 
 const Greetings = () => {
-  const username = JSON.parse(localStorage.getItem("credentials"))?.username || "test";
+  const username = JSON.parse(localStorage.getItem("credentials")).formatted;
   const isEvening = useDate();
 
   return (

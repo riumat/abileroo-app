@@ -29,7 +29,7 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
       }
       obj[product.id].count++;
       return obj;
-    }, {}) || {};
+    }, {}) ?? {};
     return Object.values(counter);
   }
 
