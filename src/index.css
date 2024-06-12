@@ -98,6 +98,10 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   .nav-cart-badge{
     @apply absolute top-0 right-0 inline-flex items-center justify-center  text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px] dark:bg-white  dark:text-emerald-950;
   }
+  .nav-trans-badge{
+    @apply absolute top-0 right-0 inline-flex items-center justify-center  text-[10px] transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px] dark:bg-white  dark:text-emerald-950;
+
+  }
 
   .nav-dropdown{
     @apply absolute right-0 z-30 mt-2 w-56 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-2 text-[14px];

@@ -1,0 +1,26 @@
+{
+  "greet": {
+    "morning": "Buongiorno",
+    "evening": "Buonasera"
+  },
+  "sidebar": {
+    "home": "Home",
+    "shops": "Attività",
+    "products": "Prodotti",
+    "favorites": "Preferiti",
+    "orders": "Ordini",
+    "logout": "Esci"
+  },
+  "settings": {
+    "user": "Impostazioni Utente",
+    "favorites": "Preferiti",
+    "orders": "Ordini Recenti",
+    "logout": "Esci"
+  },
+  "searchbar": "Cerca attività",
+  "homepage": {
+    "search": "Esplora le attività",
+    "orders": "I tuoi Ordini",
+    "shops": "Le tue Atitività"
+  }
+}

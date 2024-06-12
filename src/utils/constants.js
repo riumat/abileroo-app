@@ -9,16 +9,14 @@ axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.defaults.withCredentials = true
 //
 export const translateOptions = [
-  { "lang": "English", "desc": "(USA)" },
-  { "lang": "Chinese", "desc": "(Cantonese)" },
-  { "lang": "Spanish", "desc": "" },
-  { "lang": "French", "desc": "" }
+  { "lang": "English", value: "us", country: "US" },
+  { "lang": "Italiano", value: "it", country: "IT" },
 ]
 
 export const settingsOptions = [
-  { "name": "Account Settings", "path": "/home" },
-  { "name": "Favorites", "path": "/favorites" },
-  { "name": "Order History", "path": "/orders" }
+  { "name": "user", "path": "/home" },
+  { "name": "favorites", "path": "/favorites" },
+  { "name": "orders", "path": "/orders" }
 ];
 
 export const shopUrls = [

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from "react-i18next";
+
 
 const useDate = () => {
   const [isEvening, setIsEvening] = useState();
@@ -13,11 +15,12 @@ const useDate = () => {
 const Greetings = () => {
   const username = JSON.parse(localStorage.getItem("credentials"))?.formatted;
   const isEvening = useDate();
+  const { t } = useTranslation("translation", { keyPrefix: "greet" });
 
   return (
     <div className='flex flex-col items-center lg:items-start lg:flex-row gap-3  h-56 justify-center relative'>
-        <p className='text-[25px] lg:text-[34px]  text-emerald-50 z-20 pt-8'>Good {`${isEvening ? "Evening" : "Morning"}`},</p>
-        <p className='text-[25px] lg:text-[34px] font-bold text-white z-20 pt-8'>{username}</p>
+      <p className='text-[25px] lg:text-[34px]  text-emerald-50 z-20 pt-8'>{`${isEvening ? t("evening") : t("morning")}`},</p>
+      <p className='text-[25px] lg:text-[34px] font-bold text-white z-20 pt-8'>{username}</p>
     </div>
   )
 }

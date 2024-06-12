@@ -1,0 +1,26 @@
+{
+  "greet": {
+    "morning": "Good Morning",
+    "evening": "Good Evening"
+  },
+  "sidebar": {
+    "home": "Home",
+    "shops": "Shops",
+    "products": "Products",
+    "favorites": "Favorites",
+    "orders": "Orders",
+    "logout": "Log Out"
+  },
+  "settings": {
+    "user": "Account Settings",
+    "favorites": "Favorites",
+    "orders": "Order History",
+    "logout": "Log Out"
+  },
+  "searchbar": "Search shop",
+  "homepage": {
+    "search": "Search and Find Shops",
+    "orders": "Your Orders",
+    "shops": "Your Shops"
+  }
+}

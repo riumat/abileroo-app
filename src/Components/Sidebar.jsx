@@ -5,12 +5,14 @@ import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { BsHouseHeart } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 
 
 
 
 const Sidebar = ({ isSideOpen, logHandle }) => {
   const [isCompressed, setIsCompressed] = useState(false);
+  const { t } = useTranslation("translation", { keyPrefix: "sidebar" });
 
 
   if (!isSideOpen) return;
@@ -42,7 +44,7 @@ const Sidebar = ({ isSideOpen, logHandle }) => {
         >
           <FaShop className="w-5 h-5" />
           {!isCompressed && (
-            <p>Shops</p>
+            <p>{t("shops")}</p>
           )}
         </NavLink>
 
@@ -52,7 +54,7 @@ const Sidebar = ({ isSideOpen, logHandle }) => {
         >
           <MdOutlineDiscount className="w-5 h-5" />
           {!isCompressed && (
-            <p>Products</p>
+            <p>{t("products")}</p>
           )}
         </NavLink>
 
@@ -62,7 +64,7 @@ const Sidebar = ({ isSideOpen, logHandle }) => {
         >
           <BsHouseHeart className="w-5 h-5" />
           {!isCompressed && (
-            <p>Favorites</p>
+            <p>{t("favorites")}</p>
           )}
         </NavLink>
 
@@ -72,7 +74,7 @@ const Sidebar = ({ isSideOpen, logHandle }) => {
         >
           <MdBorderColor className="w-5 h-5" />
           {!isCompressed && (
-            <p>Orders</p>
+            <p>{t("orders")}</p>
           )}
         </NavLink>
 
@@ -81,7 +83,7 @@ const Sidebar = ({ isSideOpen, logHandle }) => {
           onClick={() => logHandle(false)} >
           <MdLogout className="w-5 h-5" />
           {!isCompressed && (
-            <p>Log out</p>
+            <p>{t("logout")}</p>
           )}
         </div>
       </div>

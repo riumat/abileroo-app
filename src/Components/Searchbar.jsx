@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { useTranslation } from "react-i18next";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router";
 
 const Searchbar = () => {
   const [query, setQueryName] = useState("");
   const navigate = useNavigate();
+  const {t}=useTranslation()
 
   const submitHandle = (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const Searchbar = () => {
 
       <input
         className="p-3 md:p-2 outline-none flex-1 rounded-lg bg-transparent"
-        placeholder="Search shop"
+        placeholder={t("searchbar")}
         type="text"
         onChange={(e) => setQueryName(e.target.value)} />
 

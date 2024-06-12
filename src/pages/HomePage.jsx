@@ -6,12 +6,14 @@ import FavoritesCard from "../Components/Home/FavoritesCard";
 import { useSidebar } from "../utils/hooks";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
+import { useTranslation } from "react-i18next";
 
 
 
-const HomePage = ({logHandle}) => {
+const HomePage = ({ logHandle }) => {
   const [isSideOpen, setIsSideOpen] = useSidebar();
-
+  const {t}=useTranslation("translation",{keyPrefix:"homepage"})
+  
   return (
     <>
       <div className="flex flex-col gap-5 overflow-hidden h-full">
@@ -25,7 +27,7 @@ const HomePage = ({logHandle}) => {
 
 
             <div className="flex flex-col flex-1 bg-home rounded-t-lg main-section">
-              <div className='img-filter'/>
+              <div className='img-filter' />
 
               <Greetings />
 
@@ -33,23 +35,23 @@ const HomePage = ({logHandle}) => {
 
                 <Link to={"/find"} className="flex flex-col items-start  duration-500">
                   <div className=" rounded-t-lg  py-1 px-3 text-[13px] bg-light">
-                    <p>Search and Find Shops</p>
+                    <p>{t("search")}</p>
                   </div>
                   <Carousel />
                 </Link>
-  
+
                 <div className="flex flex-col md:flex-row gap-5 ">
 
                   <Link to={"/orders"} className="flex flex-col items-start flex-1 duration-500">
                     <div className=" rounded-t-lg  py-1 px-3 text-[13px] bg-light">
-                      <p>Your Orders</p>
+                      <p>{t("orders")}</p>
                     </div>
                     <History />
                   </Link>
 
                   <Link to={"/favorites"} className="flex flex-col items-start flex-1 duration-500">
                     <div className="rounded-t-lg py-1 px-3 text-[13px] bg-light">
-                      <p>Your Shops</p>
+                      <p>{t("shops")}</p>
                     </div>
                     <FavoritesCard />
                   </Link>
@@ -60,7 +62,7 @@ const HomePage = ({logHandle}) => {
             </div>
 
 
-            
+
           </div>
         </div>
       </div>
