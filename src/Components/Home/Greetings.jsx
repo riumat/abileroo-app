@@ -11,7 +11,7 @@ const useDate = () => {
 }
 
 const Greetings = () => {
-  const username = JSON.parse(localStorage.getItem("credentials")).formatted;
+  const username = JSON.parse(localStorage.getItem("credentials"))?.formatted;
   const isEvening = useDate();
 
   return (
