@@ -9,6 +9,7 @@ import PathViewer from "../Components/Navbar/PathViewer";
 import { usePath, useSidebar } from "../utils/hooks";
 import Navbar from "../Components/Navbar/Navbar";
 import Sidebar from "../Components/Sidebar";
+import { useTranslation } from "react-i18next";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -33,6 +34,7 @@ const FindPage = ({ likeShop, dislikeShop, logHandle }) => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [params] = useSearchParams();
+  const {t}=useTranslation("translation",{keyPrefix:"find-page"})
 
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) ?? [];
@@ -102,7 +104,7 @@ const FindPage = ({ likeShop, dislikeShop, logHandle }) => {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-7 w-full">
-                    <p className="logo-font text-[30px] text-center dark:text-slate-100">Our Shop Selection</p>
+                    <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
 
                     <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
                   </div>

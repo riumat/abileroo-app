@@ -18,9 +18,24 @@
     "logout": "Esci"
   },
   "searchbar": "Cerca attività",
-  "homepage": {
+  "home-page": {
     "search": "Esplora le attività",
-    "orders": "I tuoi Ordini",
-    "shops": "Le tue Atitività"
+    "orders": "I tuoi ordini",
+    "shops": "Le tue attività"
+  },
+  "find-page": {
+    "title": "Attività selezionate per te"
+  },
+  "product-page": {
+    "title": "Tutti i prodotti"
+  },
+  "favorite-page": {
+    "title": "Le tue attività preferite"
+  },
+  "order-page": {
+    "title": "I tuoi ordini recenti"
+  },
+  "cart-page": {
+    "title": "Il tuo carrello"
   }
 }

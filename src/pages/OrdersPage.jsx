@@ -8,6 +8,7 @@ import PathViewer from '../Components/Navbar/PathViewer';
 import { usePath, useSidebar } from '../utils/hooks';
 import Navbar from '../Components/Navbar/Navbar';
 import Sidebar from '../Components/Sidebar';
+import { useTranslation } from 'react-i18next';
 
 
 const OrdersPage = ({logHandle}) => {
@@ -16,6 +17,9 @@ const OrdersPage = ({logHandle}) => {
   const orders = useContext(OrdersCtx);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const {t}=useTranslation("translation",{keyPrefix:"order-page"})
+
+
 
   if (error) {
     return (
@@ -56,7 +60,7 @@ const OrdersPage = ({logHandle}) => {
               ) : (
                 <div>
                   <div className='  p-3 '>
-                    <p className="logo-font text-[30px] text-center pt-5 dark:text-slate-100">Your Recent Orders</p>
+                    <p className="logo-font text-[30px] text-center pt-5 dark:text-slate-100">{t("title")}</p>
 
                   </div>
 

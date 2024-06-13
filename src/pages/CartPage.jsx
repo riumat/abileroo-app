@@ -7,11 +7,13 @@ import PathViewer from "../Components/Navbar/PathViewer";
 import { usePath, useSidebar } from "../utils/hooks";
 import Sidebar from "../Components/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
+import { useTranslation } from "react-i18next";
 
 const CartPage = ({ addToCart, removeFromCart, confirmOrder, logHandle }) => {
   const path = usePath();
   const cart = useContext(CartCtx);
   const [isSideOpen, setIsSideOpen] = useSidebar();
+  const { t } = useTranslation("translation", { keyPrefix: "cart-page" })
 
   return (
     <>
@@ -37,8 +39,8 @@ const CartPage = ({ addToCart, removeFromCart, confirmOrder, logHandle }) => {
                 </div>
               ) : (
                 <div>
-                  <div className='  p-3 '>
-                    <p className="logo-font text-[30px] text-center pt-5 dark:text-slate-100">Cart</p>
+                  <div className='p-3'>
+                    <p className="logo-font text-[30px] text-center pt-5 dark:text-slate-100">{t("title")}</p>
 
                   </div>
                   <Cart addToCart={addToCart} removeFromCart={removeFromCart} confirmOrder={confirmOrder} />

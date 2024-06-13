@@ -10,6 +10,7 @@ import { axiosBase } from "../utils/constants";
 import ProductList from "../Components/Product/ProductList";
 import PathViewer from "../Components/Navbar/PathViewer";
 import { usePath, useSidebar } from "../utils/hooks";
+import { useTranslation } from "react-i18next";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -34,6 +35,7 @@ const ProductsPage = ({ addToCart, logHandle }) => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [params] = useSearchParams();
+  const {t}=useTranslation("translation",{keyPrefix:"product-page"})
 
   /* useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
@@ -100,7 +102,7 @@ const ProductsPage = ({ addToCart, logHandle }) => {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-7 w-full">
-                    <p className="logo-font text-[30px] text-center dark:text-slate-100">Products</p>
+                    <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
                     <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart} />
                   </div>
                 )}

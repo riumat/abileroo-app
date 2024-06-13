@@ -92,7 +92,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     @apply  p-2 cursor-pointer active:scale-50 duration-500;
   }
   .cart-input{
-    @apply p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[14px] hover:bg-slate-100 hover:dark:bg-slate-900 rounded-lg;
+    @apply p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[15px] hover:bg-slate-100 hover:dark:bg-slate-900 rounded-lg;
   }
 
   .nav-cart-badge{

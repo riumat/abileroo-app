@@ -9,6 +9,7 @@ import PathViewer from "../Components/Navbar/PathViewer";
 import { usePath, useSidebar } from "../utils/hooks";
 import Navbar from "../Components/Navbar/Navbar";
 import Sidebar from "../Components/Sidebar";
+import { useTranslation } from "react-i18next";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -33,6 +34,7 @@ const FavoritesPage = ({ likeShop, dislikeShop, logHandle }) => {
   const [shopList, setShopList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const {t}=useTranslation("translation",{keyPrefix:"favorite-page"})
 
   useEffect(() => {
     fetchShops();
@@ -81,7 +83,7 @@ const FavoritesPage = ({ likeShop, dislikeShop, logHandle }) => {
                 </div>
               ) : (
                 <div className="flex flex-col gap-7 w-full">
-                  <p className="logo-font text-[30px] text-center dark:text-slate-100">Your Favorite Shops</p>
+                  <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
 
                   <ShopList shopList={shopList} isLoading={isLoading} error={error} likeShop={likeShop} dislikeShop={dislikeShop} />
                 </div>

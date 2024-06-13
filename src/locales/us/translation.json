@@ -18,9 +18,24 @@
     "logout": "Log Out"
   },
   "searchbar": "Search shop",
-  "homepage": {
+  "home-page": {
     "search": "Search and Find Shops",
     "orders": "Your Orders",
     "shops": "Your Shops"
+  },
+  "find-page":{
+    "title":"Our Shop Selection"
+  },
+  "product-page":{
+    "title":"Products"
+  },
+  "favorite-page":{
+    "title":"Your Favorite Shops"
+  },
+  "order-page":{
+    "title":"Your Recent Orders"
+  },
+  "cart-page":{
+    "title":"Cart"
   }
 }

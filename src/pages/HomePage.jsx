@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 const HomePage = ({ logHandle }) => {
   const [isSideOpen, setIsSideOpen] = useSidebar();
-  const {t}=useTranslation("translation",{keyPrefix:"homepage"})
+  const {t}=useTranslation("translation",{keyPrefix:"home-page"})
   
   return (
     <>
