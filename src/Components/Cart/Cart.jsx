@@ -52,7 +52,9 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
                 <CartProductCard key={`product-cart-${i}`} p={product} addToCart={addToCart} removeFromCart={removeFromCart} />
               ))}
             </div>
-            <UserCard onSubmit={onSubmit} shopId={cart?.id} total={total}/>
+            <div className="flex-1">
+              <UserCard onSubmit={onSubmit} shopId={cart?.id} total={total} />
+            </div>
           </div>
 
         </div>

@@ -7,6 +7,7 @@ import { addOrder } from './utils/orders';
 import { useCart, useFavorites, useLogged, useOrders } from './utils/hooks';
 import { axiosBase } from './utils/constants';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const App = () => {
   const [summary, setSummary] = useState({});
@@ -14,6 +15,7 @@ const App = () => {
   const [cart, setCart] = useCart();
   const [favorites, setFavorites] = useFavorites();
   const [orders, setOrders] = useOrders(isLogged);
+  const email = useSelector(state => state.user.email);
 
   const addToCart = (product) => {
     setCart(cartAdder(cart, product));
@@ -31,9 +33,9 @@ const App = () => {
     setFavorites(shopRemover(favorites, id));
   }
 
-  const confirmOrder = (cartFormatted, total, deliveryDate, address, email) => {
+  const confirmOrder = (cartFormatted, total, deliveryDate, address) => {
     setSummary(
-      { order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: "mario.rossi@yopmail.com" }
+      { order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: email }
     );
   }
 

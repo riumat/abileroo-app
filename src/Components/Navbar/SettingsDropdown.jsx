@@ -2,9 +2,11 @@ import { IoMdSettings } from "react-icons/io";
 import { settingsOptions } from "../../utils/constants";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const SettingsDropdown = ({ isOpen, open, logHandle }) => {
-  const username = JSON.parse(localStorage.getItem("credentials"))?.formatted ?? "";
+  const localname = JSON.parse(localStorage.getItem("credentials"))?.formatted ?? "";
+  const username = useSelector(state => state.user.username) ?? localname;
   const { t } = useTranslation("translation", { keyPrefix: "settings" })
 
   return (

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from "react-i18next";
+import { useSelector } from 'react-redux';
 
 
 const useDate = () => {
   const [isEvening, setIsEvening] = useState();
+
 
   useEffect(() => {
     const hour = new Date().getHours().toLocaleString("it");
@@ -13,7 +15,8 @@ const useDate = () => {
 }
 
 const Greetings = () => {
-  const username = JSON.parse(localStorage.getItem("credentials"))?.formatted;
+  const localname = JSON.parse(localStorage.getItem("credentials"))?.formatted ?? "";
+  const username = useSelector(state => state.user.username) ?? localname;
   const isEvening = useDate();
   const { t } = useTranslation("translation", { keyPrefix: "greet" });
 

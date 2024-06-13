@@ -19,7 +19,6 @@ const AuthPage = ({ setIsLogged }) => {
   const [isToSign, setIsToSign] = useState(false);
   const [error, setError] = useState("");
   const [wrong, setWrong] = useState("");
-  const cred = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   const usernameChange = (value) => {
@@ -70,10 +69,10 @@ const AuthPage = ({ setIsLogged }) => {
             password: password,
             formatted: username.split("@").at(0),
           }
-          dispatch(login(username, username)) //todo change email to username
+          dispatch(login({ email: username, username: username.split("@").at(0) })); //todo change email to username
+
           localStorage.setItem("credentials", JSON.stringify(credentials));
           localStorage.setItem("token", JSON.stringify(res.data.token))
-          console.log(cred)
           setUsername("");
           setPassword("");
           setIsLogged(true);
