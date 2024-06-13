@@ -31,10 +31,12 @@
     "title": "Products"
   },
   "favorite-page": {
-    "title": "Your Favorite Shops"
+    "title": "Your Favorite Shops",
+    "empty":"You have not selected any shops yet!"
   },
   "order-page": {
-    "title": "Your Recent Orders"
+    "title": "Your Recent Orders",
+    "empty":"You have not placed any order yet!"
   },
   "cart-page": {
     "title": "Cart",
@@ -53,7 +55,8 @@
     "buttons": {
       "redirect": "Forgot Something?",
       "checkout": "Checkout"
-    }
+    },
+    "empty":"Your cart is empty!"
   },
   "check-page":{
     "title":"Order Summary",
@@ -80,6 +83,7 @@
   "order-card":{
     "order":"Order",
     "total":"Total"
-  }
+  },
+  "browsing-button":"Start Browsing"
   
 }

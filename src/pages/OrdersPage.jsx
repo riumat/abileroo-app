@@ -56,7 +56,7 @@ const OrdersPage = ({logHandle}) => {
               {orders.length === 0 ? (
                 <div className="flex flex-col items-center gap-10 pt-8">
                   <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
-                  <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">You have not placed any order yet!</p>
+                  <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">{t("empty")}</p>
                   <FindShopButton />
                 </div>
               ) : (

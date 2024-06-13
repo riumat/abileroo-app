@@ -31,10 +31,12 @@
     "title": "Tutti i prodotti"
   },
   "favorite-page": {
-    "title": "Le tue attività preferite"
+    "title": "Le tue attività preferite",
+    "empty":"Non hai ancora aggiunto niente ai preferiti!"
   },
   "order-page": {
-    "title": "I tuoi ordini recenti"
+    "title": "I tuoi ordini recenti",
+    "empty":"Non hai ancora effettuato ordini!"
   },
   "cart-page": {
     "title": "Carrello",
@@ -53,7 +55,8 @@
     "buttons": {
       "redirect": "Dimenticato Qualcosa?",
       "checkout": "Checkout"
-    }
+    },
+    "empty":"Il tuo carrello è vuoto!"
   },
   "check-page":{
     "title":"Riepilogo Ordine",
@@ -80,5 +83,7 @@
   "order-card":{
     "order":"Ordine",
     "total":"Totale"
-  }
+  },
+  "browsing-button":"Scopri le attività"
+
 }
