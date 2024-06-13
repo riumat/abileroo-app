@@ -6,6 +6,8 @@ import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/user/userSlice';
 
 
 const AuthPage = ({ setIsLogged }) => {
@@ -17,6 +19,8 @@ const AuthPage = ({ setIsLogged }) => {
   const [isToSign, setIsToSign] = useState(false);
   const [error, setError] = useState("");
   const [wrong, setWrong] = useState("");
+  const cred = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   const usernameChange = (value) => {
     setUsername(value);
@@ -66,9 +70,10 @@ const AuthPage = ({ setIsLogged }) => {
             password: password,
             formatted: username.split("@").at(0),
           }
+          dispatch(login(username, username)) //todo change email to username
           localStorage.setItem("credentials", JSON.stringify(credentials));
           localStorage.setItem("token", JSON.stringify(res.data.token))
-
+          console.log(cred)
           setUsername("");
           setPassword("");
           setIsLogged(true);
