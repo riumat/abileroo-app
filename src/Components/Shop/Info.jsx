@@ -1,8 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai"
-import { FaHeart , FaRegHeart} from "react-icons/fa6";
-
-import { FaStar } from "react-icons/fa"
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { FavoriteCtx } from "../../App"
 
 const Info = ({ likeShop, dislikeShop, rating, description, address, id }) => {
@@ -26,7 +23,6 @@ const Info = ({ likeShop, dislikeShop, rating, description, address, id }) => {
       </div>
 
       <div className="border-r border-slate-400  items-center flex flex-col gap-2 justify-center flex-1">
-        <p className="text-[12px] lg:text-[14px] text-emerald-700 dark:text-emerald-200">Type</p>
         <p className="text-[13px] lg:text-[15px]">{description}</p>
       </div>
 

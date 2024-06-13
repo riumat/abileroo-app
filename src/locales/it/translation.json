@@ -12,6 +12,7 @@
     "logout": "Esci"
   },
   "settings": {
+    "greet":"Bentornato",
     "user": "Impostazioni Utente",
     "favorites": "Preferiti",
     "orders": "Ordini Recenti",
@@ -36,6 +37,48 @@
     "title": "I tuoi ordini recenti"
   },
   "cart-page": {
-    "title": "Il tuo carrello"
+    "title": "Carrello",
+    "summary": "Riepilogo",
+    "errors": {
+      "address": "Indirizzo è obbligatorio",
+      "date-required": "Data è obbligatoria",
+      "date-invalid": "Data non valida"
+    },
+    "labels": {
+      "address": "Indirizzo",
+      "date": "Data di consegna",
+      "address-placeholder":"Dove dovremmo consegnare il tuo ordine?"
+    },
+    "total": "Il tuo totale",
+    "buttons": {
+      "redirect": "Dimenticato Qualcosa?",
+      "checkout": "Checkout"
+    }
+  },
+  "check-page":{
+    "title":"Riepilogo Ordine",
+    "info":{
+      "title":"Le tue informazioni",
+      "address":"Indirizzo",
+      "date":"Data di Consegna"
+    },
+    "order":{
+      "title":"Il tuo Ordine",
+      "total":"Totale"
+    },
+    "buttons":{
+      "confirm":"Conferma e Ordina",
+      "back":"Torna al Carrello"
+    }
+  },
+  "product-card":{
+    "error":{
+      "label":"Hai già nel carrello un prodotto di un'altra attività",
+      "button":"Torna al carrello"
+    }
+  },
+  "order-card":{
+    "order":"Ordine",
+    "total":"Totale"
   }
 }

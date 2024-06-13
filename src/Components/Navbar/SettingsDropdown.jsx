@@ -13,7 +13,7 @@ const SettingsDropdown = ({ isOpen, open, logHandle }) => {
 
       {isOpen && (
         <div className="nav-dropdown" >
-          <p className="text-[15px] px-3 py-2 border-b border-slate-300">Welcome back <span className="font-semibold">{username}</span>!</p>
+          <p className="text-[15px] px-3 py-2 border-b border-slate-300">{t("greet")} <span className="font-semibold">{username}</span>!</p>
           {settingsOptions.map((option, i) => (
             <div key={`optiondropdown-${i}`} className="p-3 cursor-pointer hover:bg-slate-300 w-full rounded-md" >
               <Link to={option.path} >{t(`${option.name}`)} </Link>

@@ -12,6 +12,7 @@
     "logout": "Log Out"
   },
   "settings": {
+    "greet":"Welcome back",
     "user": "Account Settings",
     "favorites": "Favorites",
     "orders": "Order History",
@@ -23,19 +24,62 @@
     "orders": "Your Orders",
     "shops": "Your Shops"
   },
-  "find-page":{
-    "title":"Our Shop Selection"
+  "find-page": {
+    "title": "Our Shop Selection"
   },
-  "product-page":{
-    "title":"Products"
+  "product-page": {
+    "title": "Products"
   },
-  "favorite-page":{
-    "title":"Your Favorite Shops"
+  "favorite-page": {
+    "title": "Your Favorite Shops"
   },
-  "order-page":{
-    "title":"Your Recent Orders"
+  "order-page": {
+    "title": "Your Recent Orders"
   },
-  "cart-page":{
-    "title":"Cart"
+  "cart-page": {
+    "title": "Cart",
+    "summary": "Summary",
+    "errors": {
+      "address": "Address is required",
+      "date-required": "Date is required",
+      "date-invalid": "Invalid Date"
+    },
+    "labels": {
+      "address": "Address",
+      "date": "date",
+      "address-placeholder":"Where should we deliver your order?"
+    },
+    "total": "Your total",
+    "buttons": {
+      "redirect": "Forgot Something?",
+      "checkout": "Checkout"
+    }
+  },
+  "check-page":{
+    "title":"Order Summary",
+    "info":{
+      "title":"Your Informations",
+      "address":"Address",
+      "date":"Delivery Date"
+    },
+    "order":{
+      "title":"Your Order",
+      "total":"Total"
+    },
+    "buttons":{
+      "confirm":"Confirm and Place Order",
+      "back":"Go back to Cart"
+    }
+  },
+  "product-card":{
+    "error":{
+      "label":"You order already have some products from a different shop",
+      "button":"Go back to Cart"
+    }
+  },
+  "order-card":{
+    "order":"Order",
+    "total":"Total"
   }
+  
 }

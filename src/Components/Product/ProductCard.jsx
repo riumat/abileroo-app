@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { MdAddShoppingCart, MdErrorOutline } from "react-icons/md";
 import { CartCtx } from "../../App";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ p, addToCart }) => {
   const cart = useContext(CartCtx);
   const [isAvaiable, setIsAvaiable] = useState(true);
   const navigate = useNavigate();
+  const {t}=useTranslation("translation",{keyPrefix:"product-card"})
 
   useEffect(() => {
     setIsAvaiable(cart?.id === p?.shop || cart?.id === "");
@@ -17,8 +19,8 @@ const ProductCard = ({ p, addToCart }) => {
       {!isAvaiable && (
         <div className="product-filter">
           <MdErrorOutline className="w-6 h-6" />
-          <p className="text-center">You order already have some products from a different shop</p>
-          <button className="bg-white text-black p-2 rounded-lg" onClick={() => navigate("/cart")}>Go to Cart</button>
+          <p className="text-center">{t("error.label")}</p>
+          <button className="bg-white text-black p-2 rounded-lg" onClick={() => navigate("/cart")}>{t("error.button")}</button>
         </div>
       )}
       <img src={p?.product_image} alt="" className="w-full h-32 object-cover rounded-t-lg" loading="lazy" />

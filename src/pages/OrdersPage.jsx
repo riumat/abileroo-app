@@ -36,6 +36,8 @@ const OrdersPage = ({logHandle}) => {
       </div>
     )
   }
+
+  //todo traduzione pagine con fetch vuoto
   return (
     <>
       <div className="flex flex-col gap-5 overflow-hidden h-full">

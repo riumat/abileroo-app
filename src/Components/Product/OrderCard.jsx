@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { useTranslation } from "react-i18next";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { useNavigate } from "react-router";
 
 
 const OrderCard = ({ order, i }) => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "order-card" });
   const date = `${new Date(order?.date).toLocaleDateString("it")} @ ${new Date(order?.date).toLocaleTimeString("it")}`
 
   return (
@@ -13,13 +15,21 @@ const OrderCard = ({ order, i }) => {
 
       <div className="flex justify-evenly md:gap-5 items-center text-[13px] md:text-[15px]">
 
-        <p className='text-slate-900 dark:text-slate-200 font-bold'>Order #{i + 1}</p>
+        <p className='text-slate-900 dark:text-slate-200 font-bold'>{t("order")} #{i + 1}</p>
         <p className='text-slate-600 dark:text-slate-400 text-[13px]'>{date}</p>
-        <p className='text-[0px] md:text-[13px] dark:text-slate-100'>Total - <span className='font-bold text-[13px]'>{order?.total}€</span></p>
-        <IoMdArrowDropdown
-          className='cursor-pointer w-7 h-7 p-1 border rounded-lg hover:bg-slate-600 bg-slate-900 text-emerald-50 active:scale-75 duration-300'
-          onClick={() => setIsVisible(prev => !prev)}
-        />
+        <p className='text-[0px] md:text-[13px] dark:text-slate-100'>{t("total")} - <span className='font-bold text-[13px]'>{order?.total}€</span></p>
+        {isVisible ? (
+          <IoMdArrowDropup
+            className='cursor-pointer w-7 h-7 p-1 border rounded-lg bg-slate-900 text-emerald-50 active:scale-90 duration-300'
+            onClick={() => setIsVisible(prev => !prev)}
+          />
+        ) : (
+          <IoMdArrowDropdown
+            className='cursor-pointer w-7 h-7 p-1 border rounded-lg  bg-slate-900 text-emerald-50 active:scale-90 duration-300'
+            onClick={() => setIsVisible(prev => !prev)}
+          />
+        )}
+
 
       </div>
       {isVisible && (
