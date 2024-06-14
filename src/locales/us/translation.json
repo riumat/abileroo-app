@@ -12,7 +12,7 @@
     "logout": "Log Out"
   },
   "settings": {
-    "greet":"Welcome back",
+    "greet": "Welcome back",
     "user": "Account Settings",
     "favorites": "Favorites",
     "orders": "Order History",
@@ -32,11 +32,11 @@
   },
   "favorite-page": {
     "title": "Your Favorite Shops",
-    "empty":"You have not selected any shops yet!"
+    "empty": "You have not selected any shops yet!"
   },
   "order-page": {
     "title": "Your Recent Orders",
-    "empty":"You have not placed any order yet!"
+    "empty": "You have not placed any order yet!"
   },
   "cart-page": {
     "title": "Cart",
@@ -49,41 +49,58 @@
     "labels": {
       "address": "Address",
       "date": "date",
-      "address-placeholder":"Where should we deliver your order?"
+      "address-placeholder": "Where should we deliver your order?"
     },
     "total": "Your total",
     "buttons": {
       "redirect": "Forgot Something?",
       "checkout": "Checkout"
     },
-    "empty":"Your cart is empty!"
+    "empty": "Your cart is empty!"
   },
-  "check-page":{
-    "title":"Order Summary",
-    "info":{
-      "title":"Your Informations",
-      "address":"Address",
-      "date":"Delivery Date"
+  "check-page": {
+    "title": "Order Summary",
+    "info": {
+      "title": "Your Informations",
+      "address": "Address",
+      "date": "Delivery Date"
     },
-    "order":{
-      "title":"Your Order",
-      "total":"Total"
+    "order": {
+      "title": "Your Order",
+      "total": "Total"
     },
-    "buttons":{
-      "confirm":"Confirm and Place Order",
-      "back":"Go back to Cart"
+    "buttons": {
+      "confirm": "Confirm and Place Order",
+      "back": "Go back to Cart"
     }
   },
-  "product-card":{
-    "error":{
-      "label":"You order already have some products from a different shop",
-      "button":"Go back to Cart"
+  "product-card": {
+    "error": {
+      "label": "You order already have some products from a different shop",
+      "button": "Go back to Cart"
     }
   },
-  "order-card":{
-    "order":"Order",
-    "total":"Total"
+  "order-card": {
+    "order": "Order",
+    "total": "Total"
   },
-  "browsing-button":"Start Browsing"
-  
+  "browsing-button": "Start Browsing",
+  "auth-page": {
+    "greet": "Welcome back!",
+    "desc": "Please enter your credentials to continue",
+    "checkbox": "Keep me logged in",
+    "submit":{
+      "login":"Log In",
+      "register":"Sign In"
+    },
+    "switch": {
+      "login": "Don't have an account?",
+      "register": "Already have an account?"
+    },
+    "errors":{
+      "email":"Email field is required.",
+      "password":"Password field is required",
+      "wrong":"Incorrect email or password."
+    }
+  }
 }

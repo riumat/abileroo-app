@@ -6,89 +6,98 @@ import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../redux/user/userSlice';
+import { useTranslation } from 'react-i18next';
+import LangToggle from '../Components/LangToggle';
+
+const setLocalRef = (credentials, dispatch, token) => {
+  dispatch(
+    login({
+      email: credentials.email,
+      username: credentials.username
+    }));
+
+  localStorage.setItem("credentials", JSON.stringify(credentials));
+  localStorage.setItem("token", JSON.stringify(token))
+}
 
 
 const AuthPage = ({ setIsLogged }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
   const [isToSign, setIsToSign] = useState(false);
-  const [error, setError] = useState("");
-  const [wrong, setWrong] = useState("");
+  const [isWrong, setIsWrong] = useState(false);
+  const { t } = useTranslation("translation", { keyPrefix: "auth-page" });
   const dispatch = useDispatch();
 
-  const usernameChange = (value) => {
-    setUsername(value);
-  }
+  /*  const usernameChange = (value) => {
+     setEmail(value);
+   }
+ 
+   const passwordChange = (value) => {
+     setPassword(value);
+   }
+   const emailChange = (value) => {
+     setEmail(value);
+   }
+ 
+   const validate = (value) => {
+     setError("");
+     if (value === "") {
+       setError("Please fill all fields.");
+       return false;
+     }
+     return true;
+   } */
 
-  const passwordChange = (value) => {
-    setPassword(value);
-  }
-  const emailChange = (value) => {
-    setEmail(value);
-  }
+  const onSubmit = (data) => {
+    if (!isToSign) {
+      setIsLoading(true)
+      /* if (!validate(email) || !validate(password)) {
+        setIsLoading(false);
+        return;
+      } */
+      const body = new FormData();
+      body.append("username", data.email);
+      body.append("password", data.password);
 
-  const validate = (value) => {
-    setError("");
-    if (value === "") {
-      setError("Please fill all fields.");
-      return false;
-    }
-    return true;
-  }
+      axiosBase({
+        url: "login-token/",
+        method: "post",
+        data: body,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+        .then(res => {
 
-  const submitHandle = (e) => {
-    setIsLoading(true)
-    e.preventDefault();
-    if (!validate(username) /* || !validate(email) */ || !validate(password)) {
-      setIsLoading(false);
-      return;
-    }
-
-    const body = new FormData();
-    body.append("username", username);
-    body.append("password", password);
-
-    axiosBase({
-      url: "login-token/",
-      method: "post",
-      data: body,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
-      .then(res => {
-
-        if (res.status === 200) {
-          const credentials = {
-            username: username,
-            password: password,
-            formatted: username.split("@").at(0),
+          if (res.status === 200) {
+            const credentials = {
+              email: data.email,
+              password: data.password,
+              username: data.email.split("@").at(0),
+            }
+            setLocalRef(credentials, dispatch, res.data.token);
+            //setEmail("");
+            // setPassword("");
+            setIsLogged(true);
+            setIsLoading(false);
+            navigate("/home");
           }
-          dispatch(login({ email: username, username: username.split("@").at(0) })); //todo change email to username
-
-          localStorage.setItem("credentials", JSON.stringify(credentials));
-          localStorage.setItem("token", JSON.stringify(res.data.token))
-          setUsername("");
-          setPassword("");
-          setIsLogged(true);
-          setIsLoading(false);
-          navigate("/home");
-        }
-      })
-      .catch(error => {
-        if (error.response.status === 400) {
-          setIsLoading(false);
-          setWrong("Wrong username or password.")
-        } else {
-          console.log(error)
-        }
-      })
+        })
+        .catch(error => {
+          if (error.response.status === 400) {
+            setIsLoading(false);
+            setIsWrong(true)
+          } else {
+            console.log(error)
+          }
+        })
+    }
   }
+
+
 
 
   if (isLoading) {
@@ -107,40 +116,25 @@ const AuthPage = ({ setIsLogged }) => {
         <div className='flex items-center justify-center gap-2'>
           <Logo />
         </div>
-        <div className='flex flex-col gap-2'>
-          <p className='text-[25px] text-emerald-900 font-semibold text-center'>Welcome back!</p>
-          <p className='text-emerald-700 text-[14px] text-center'>Please enter your credentials to continue</p>
+        <div className='flex flex-col gap-2 items-center'>
+          <p className='text-[25px] text-emerald-900 font-semibold text-center'>{t("greet")}</p>
+          <LangToggle />
+          <p className='text-emerald-700 text-[14px] text-center'>{t("desc")}</p>
         </div>
-        {isToSign ? (
-          <Register
-            error={error}
-            usernameChange={usernameChange}
-            username={username}
-            emailChange={emailChange}
-            email={email}
-            passwordChange={passwordChange}
-            password={password}
-            submitHandle={submitHandle}
-          />
-        ) : (
-          <Login
-            error={error}
-            wrong={wrong}
-            usernameChange={usernameChange}
-            username={username}
-            passwordChange={passwordChange}
-            password={password}
-            submitHandle={submitHandle}
-          />
-        )
-        }
+
+        <Login
+          isWrong={isWrong}
+          onSubmit={onSubmit}
+          isToSign={isToSign}
+        />
+
 
         <div className='border-t border-emerald-500 pt-3'>
           <p
             className='text-[13px] text-emerald-700 text-center cursor-pointer'
             onClick={() => setIsToSign(prev => !prev)}
           >
-            {`${isToSign ? "Already have an account?" : "Dont have an account?"}`}
+            {`${isToSign ? t("switch.register") : t("switch.login")}`}
           </p>
 
         </div>

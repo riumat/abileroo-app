@@ -84,6 +84,24 @@
     "order":"Ordine",
     "total":"Totale"
   },
-  "browsing-button":"Scopri le attività"
+  "browsing-button":"Scopri le attività",
+  "auth-page": {
+    "greet": "Bentornato!",
+    "desc": "Per favore inserisci le tue credenziali per continuare",
+    "checkbox": "Salva per il prossimo accesso",
+    "submit": {
+      "login":"Accedi",
+      "register":"Registrati"
+    },
+    "switch": {
+      "login": "Non sei registrato?",
+      "register": "Hai già un account?"
+    },
+    "errors":{
+      "email":"Il campo Email è obbligatorio.",
+      "password":"Il campo Password è obbligatorio.",
+      "wrong":"Email o password non corrette."
+    }
+  }
 
 }

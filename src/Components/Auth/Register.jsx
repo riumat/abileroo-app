@@ -1,5 +1,5 @@
 
-const Register = ({ error, emailChange,email, usernameChange, username, passwordChange, password,  submitHandle}) => {
+const Register = ({ error, emailChange, email, passwordChange, password, submitHandle }) => {
   return (
     <form className='flex flex-col gap-4 p-5 '>
 
@@ -16,17 +16,6 @@ const Register = ({ error, emailChange,email, usernameChange, username, password
         />
       </div>
 
-      <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
-        <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Username</p>
-        <input
-          required
-          name='username'
-          type="text"
-          className='rounded-xl focus:outline-none '
-          onChange={(e) => usernameChange(e.target.value)}
-          value={username}
-        />
-      </div>
       <div className={`p-3 rounded-xl border text-[15px] ${error === "" ? "border-emerald-700" : "border-red-500"}`}>
         <p className={`text-[11px]  ${error === "" ? "" : "text-red-500"}`}>Password</p>
 
