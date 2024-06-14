@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 const SettingsDropdown = ({ isOpen, open, logHandle }) => {
-  const localname = JSON.parse(localStorage.getItem("credentials"))?.formatted ?? "";
+  const localname = JSON.parse(localStorage.getItem("credentials"))?.username ?? "";
   const username = useSelector(state => state.user.username) ?? localname;
   const { t } = useTranslation("translation", { keyPrefix: "settings" })
 

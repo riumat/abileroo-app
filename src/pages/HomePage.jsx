@@ -12,8 +12,8 @@ import { useTranslation } from "react-i18next";
 
 const HomePage = ({ logHandle }) => {
   const [isSideOpen, setIsSideOpen] = useSidebar();
-  const {t}=useTranslation("translation",{keyPrefix:"home-page"})
-  
+  const { t } = useTranslation("translation", { keyPrefix: "home-page" })
+
   return (
     <>
       <div className="flex flex-col gap-5 overflow-hidden h-full">
