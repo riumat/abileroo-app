@@ -10,6 +10,7 @@ import MobileSearchbar from "../Sort/MobileSearchbar";
 import { IoMdClose } from "react-icons/io";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { CartCtx } from "../../App";
+import LangToggle from "../LangToggle";
 
 
 const Navbar = ({ toggleSidebar, logHandle }) => {
@@ -56,7 +57,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
       ) : (
         <nav className="flex items-center justify-between md:p-3 py-3 px-1">
 
-          <div className="flex gap-8 md:gap-10 items-center">
+          <div className="flex gap-3 md:gap-10 items-center">
             <Link to={"/home"} className=" ms-3 md:ms-10">
               <Logo />
             </Link>
@@ -71,7 +72,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
               <MobileSearchbar openSearchbar={() => setIsSearchOpen(true)} />
             )}
           </div>
-          <div className="flex gap-5 me-3 md:me-10 items-center">
+          <div className="flex gap-3 md:gap-5 me-3 md:me-10 items-center">
             <div>
               {isDarkMode ? (
                 <MdOutlineLightMode className="nav-button" onClick={toggleDarkMode} />
@@ -79,7 +80,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
                 <MdOutlineDarkMode className="nav-button" onClick={toggleDarkMode} />
               )}
             </div>
-            <Link to={"/cart"} className="relative inline-block">
+            <Link to={"/cart"} className="relative inline-block mr-1">
               <BsCart3 className="nav-button" />
               {cart?.list?.length != 0 && (
                 <span className="nav-cart-badge">
@@ -88,7 +89,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
               )}
 
             </Link>
-            <TranslateDropdown isOpen={isTranslateOpen} open={toggleTranslate} />
+            <LangToggle/>
             <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} logHandle={logHandle} />
           </div>
         </nav>
