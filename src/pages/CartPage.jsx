@@ -10,9 +10,9 @@ import Navbar from "../Components/Navbar/Navbar";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-const CartPage = ({  confirmOrder, logHandle }) => {
+const CartPage = ({ logHandle }) => {
   const path = usePath();
-  const cart = useSelector(state=>state.cart);
+  const cart = useSelector(state => state.cart);
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const { t } = useTranslation("translation", { keyPrefix: "cart-page" })
 
@@ -44,7 +44,7 @@ const CartPage = ({  confirmOrder, logHandle }) => {
                     <p className="logo-font text-[30px] text-center pt-5 dark:text-slate-100">{t("title")}</p>
 
                   </div>
-                  <Cart confirmOrder={confirmOrder} />
+                  <Cart />
                 </div>
 
               )}

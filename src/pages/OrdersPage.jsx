@@ -1,5 +1,5 @@
 import { OrdersCtx } from '../App'
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FindShopButton from '../Components/FindShopButton';
 import { MdErrorOutline } from 'react-icons/md';
 import OrderCard from '../Components/Product/OrderCard';
@@ -9,15 +9,32 @@ import { usePath, useSidebar } from '../utils/hooks';
 import Navbar from '../Components/Navbar/Navbar';
 import Sidebar from '../Components/Sidebar';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { getList } from '../redux/order/orderSlice'
+import { axiosBase } from '../utils/constants';
 
-
-const OrdersPage = ({logHandle}) => {
+const OrdersPage = ({ logHandle }) => {
   const path = usePath();
   const [isSideOpen, setIsSideOpen] = useSidebar();
-  const orders = useContext(OrdersCtx);
+  const orders = useSelector(state => state.order.list);
+  const email = useSelector(state => state.user.email)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const {t}=useTranslation("translation",{keyPrefix:"order-page"})
+  const { t } = useTranslation("translation", { keyPrefix: "order-page" })
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    if (token) {
+      axiosBase.get(`order/orders/?client_email=${email}`, {
+        headers: {
+          "Authorization": `Token ${token}`
+        }
+      })
+        .then(res => dispatch(getList({ list: res.data })))
+        .catch(error => console.log(error))
+    }
+  }, [])
 
 
 
@@ -37,7 +54,6 @@ const OrdersPage = ({logHandle}) => {
     )
   }
 
-  //todo traduzione pagine con fetch vuoto
   return (
     <>
       <div className="flex flex-col gap-5 overflow-hidden h-full">

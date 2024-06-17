@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { OrdersCtx } from "../../App"
+import { useSelector } from "react-redux";
 
 const History = () => {
   const [last, setLast] = useState({});
-  const orders = useContext(OrdersCtx);
+  const orders = useSelector(state=>state.order.list);
 
   useEffect(() => {
     setLast(orders[orders.length - 1])

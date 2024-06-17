@@ -3,13 +3,16 @@ import CartProductCard from "./CartProductCard";
 import { CartCtx } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
 import UserCard from "./UserCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCheckout } from "../../redux/order/orderSlice";
 
-const Cart = ({ confirmOrder }) => {
+const Cart = () => {
   const [total, setTotal] = useState(0);
   const [cartFormatted, setCartFormatted] = useState([]);
   const cart = useSelector(state => state.cart);
+  const email = useSelector(state => state.user.email)
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTotal(getTotal());
@@ -37,9 +40,21 @@ const Cart = ({ confirmOrder }) => {
     } */
 
   const onSubmit = (data) => {
-    confirmOrder(cartFormatted, total, data.date, data.address);
+    //confirmOrder(cartFormatted, total, data.date, data.address);
+    dispatch(setCheckout({
+      checkout: {
+        order: cartFormatted,
+        date: new Date().toISOString(),
+        total: total,
+        delivery: data.date,
+        address: data.address,
+        email: email
+      }
+    }))
     navigate("/checkout");
   }
+
+  //{ order: cartFormatted, date: new Date(), total: total, delivery: deliveryDate, address: address, email: email }
 
   return (
     <div className="flex flex-col gap-2 ">

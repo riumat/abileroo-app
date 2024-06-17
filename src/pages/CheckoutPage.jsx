@@ -1,18 +1,84 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { SummaryCtx } from "../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBackspace, FaCheck } from "react-icons/fa";
 import Navbar from "../Components/Navbar/Navbar";
 import Sidebar from "../Components/Sidebar";
 import { useSidebar } from "../utils/hooks";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAll } from "../redux/cart/cartSlice";
+import { addToList } from "../redux/order/orderSlice";
+import { axiosBase } from "../utils/constants";
 
 
-const CheckoutPage = ({ sendOrder, logHandle }) => {
-  const summary = useContext(SummaryCtx);
+const CheckoutPage = ({ logHandle }) => {
+  const summary = useSelector(state => state.order.checkout);
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const { t } = useTranslation("translation", { keyPrefix: "check-page" });
   const date = new Date(summary.delivery).toLocaleString("it");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const orders = useSelector(state => state.order.list)
+
+  const orderHandle = ({ order, date, total, delivery, address, email }) => {
+    //setOrders(addOrder(orders, order, date, total));
+    dispatch(addToList({
+      order: {
+        order: order,
+        date: date,
+        total: total
+      }
+    }))
+    console.log(orders);
+    console.log({
+      order: order,
+      date: date,
+      total: total,
+
+    })
+    dispatch(deleteAll());
+
+    const details = [...order].map(product => (
+      { product: product.id, amount: product.count }
+    ))
+
+    const body = new FormData();
+    body.append("shop", order[0].shop);
+    body.append("date_time_delivery", delivery);
+    body.append("address", address);
+    body.append("client_email", email);
+    body.append("shipped", false);
+    body.append("delivered", false);
+    body.append("details", details);
+
+    axiosBase({
+      url: "order/order-create/",
+      method: "post",
+      data: body,
+      headers: {
+        "Content-Type": "multipart/form-data", //application/x-www-form-urlencoded
+        "Authorization": `Token ${localStorage.getItem("token")}`
+      },
+    })
+      .then(res => {
+        console.log(res)
+        /*  if (res.status === 201) {
+           console.log("added")
+           console.log(res.data);
+           console.log(res.headers)
+         }
+         if (res.status === 400) {
+           console.log(res)
+         } */
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+  useEffect(() => {
+    if (!summary) navigate(-1);
+  }, [])
 
   return (
     <>
@@ -51,7 +117,7 @@ const CheckoutPage = ({ sendOrder, logHandle }) => {
 
               <div className="flex md:flex-row flex-col gap-5 w-full">
                 <button
-                  onClick={() => sendOrder(summary.order, summary.date, summary.total, summary.delivery, summary.address, summary.email)}
+                  onClick={() => orderHandle(summary)}
                   className="rounded-lg bg-emerald-800 dark:bg-emerald-700 text-white p-2 flex-1 flex justify-center gap-2 items-center"
                 >
                   <FaCheck className="w-5 h-5" />
@@ -62,7 +128,7 @@ const CheckoutPage = ({ sendOrder, logHandle }) => {
                   <p>{t("buttons.back")}</p>
                 </Link>
               </div>
-              
+
             </div>
 
 

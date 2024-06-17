@@ -14,15 +14,7 @@ export const useSidebar = () => {
   return [isSideOpen, setIsSideOpen];
 }
 
-export const useCart = () => {
-  const [cart, setCart] = useState({});
 
-  useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) ?? { id: "", list: [] });
-  }, [])
-
-  return [cart, setCart];
-}
 
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -34,31 +26,7 @@ export const useFavorites = () => {
   return [favorites, setFavorites];
 }
 
-export const useOrders = (isLogged) => {
-  const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    setOrders(JSON.parse(localStorage.getItem("orders")) ?? []);
-
-    if (isLogged) {
-      const username = JSON.parse(localStorage.getItem("credentials")).username;
-      const token = JSON.parse(localStorage.getItem("token"));
-
-      axiosBase.get(`order/orders/?client_email=${username}`, {
-        headers: {
-          "Authorization": `Token ${token}`
-        }
-      })
-        .then(res => {
-          setOrders(res.data)
-          console.log(res.data)
-        })
-        .catch(error => console.log(error))
-    }
-  }, [isLogged])
-
-  return [orders, setOrders];
-}
 
 export const useLogged = () => {
   const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem("logged")) ?? false);

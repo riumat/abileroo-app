@@ -20,7 +20,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isMobile, setMobile] = useState(window.innerWidth > 768);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const cart = useSelector(state=>state.cart);
+  const cart = useSelector(state => state.cart);
 
   const updateMedia = () => {
     setMobile(window.innerWidth > 768);
@@ -83,14 +83,14 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
             </div>
             <Link to={"/cart"} className="relative inline-block mr-1">
               <BsCart3 className="nav-button" />
-              {cart?.list?.length != 0 && (
+              {cart?.list?.length !== 0 && (
                 <span className="nav-cart-badge">
                   {cart?.list?.length}
                 </span>
               )}
 
             </Link>
-            <LangToggle/>
+            <LangToggle />
             <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} logHandle={logHandle} />
           </div>
         </nav>
