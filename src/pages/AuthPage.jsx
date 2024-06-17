@@ -4,24 +4,25 @@ import Logo from '../Components/Logo';
 import Register from '../Components/Auth/Register';
 import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
-import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/user/userSlice';
 import { useTranslation } from 'react-i18next';
 import LangToggle from '../Components/LangToggle';
 
-const setLocalRef = (credentials, dispatch, token) => {
+const setLocalRef = (dispatch, data, token) => {
+  const email = data.email;
+  const username = data.email.split("@").at(0);
   dispatch(
     login({
-      email: credentials.email,
-      username: credentials.username
+      email: email,
+      username: username,
+      token: token,
     }));
 
-  localStorage.setItem("credentials", JSON.stringify(credentials));
+  localStorage.setItem("credentials", JSON.stringify({ email: email, username: username }));
   localStorage.setItem("token", JSON.stringify(token))
 }
-
 
 const AuthPage = ({ setIsLogged }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,33 +32,10 @@ const AuthPage = ({ setIsLogged }) => {
   const { t } = useTranslation("translation", { keyPrefix: "auth-page" });
   const dispatch = useDispatch();
 
-  /*  const usernameChange = (value) => {
-     setEmail(value);
-   }
- 
-   const passwordChange = (value) => {
-     setPassword(value);
-   }
-   const emailChange = (value) => {
-     setEmail(value);
-   }
- 
-   const validate = (value) => {
-     setError("");
-     if (value === "") {
-       setError("Please fill all fields.");
-       return false;
-     }
-     return true;
-   } */
-
   const onSubmit = (data) => {
     if (!isToSign) {
       setIsLoading(true)
-      /* if (!validate(email) || !validate(password)) {
-        setIsLoading(false);
-        return;
-      } */
+
       const body = new FormData();
       body.append("username", data.email);
       body.append("password", data.password);
@@ -71,16 +49,8 @@ const AuthPage = ({ setIsLogged }) => {
         },
       })
         .then(res => {
-
           if (res.status === 200) {
-            const credentials = {
-              email: data.email,
-              password: data.password,
-              username: data.email.split("@").at(0),
-            }
-            setLocalRef(credentials, dispatch, res.data.token);
-            //setEmail("");
-            // setPassword("");
+            setLocalRef(dispatch, data, res.data.token);
             setIsLogged(true);
             setIsLoading(false);
             navigate("/home");
@@ -97,9 +67,6 @@ const AuthPage = ({ setIsLogged }) => {
     }
   }
 
-
-
-
   if (isLoading) {
     return (
       <div className='w-full h-full flex justify-center items-center'>
@@ -109,7 +76,6 @@ const AuthPage = ({ setIsLogged }) => {
   }
 
   return (
-
     <div className='h-full w-full flex items-center justify-center'>
 
       <div className='flex flex-col gap-5 rounded-xl w-[450px] bg-white p-7'>
@@ -127,7 +93,6 @@ const AuthPage = ({ setIsLogged }) => {
           onSubmit={onSubmit}
           isToSign={isToSign}
         />
-
 
         <div className='border-t border-emerald-500 pt-3'>
           <p
