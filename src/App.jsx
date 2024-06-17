@@ -6,8 +6,8 @@ import { shopAdder, shopRemover } from './utils/shop';
 import { addOrder } from './utils/orders';
 import { useCart, useFavorites, useLogged, useOrders } from './utils/hooks';
 import { axiosBase } from './utils/constants';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { add } from "./redux/cart/cartSlice";
 
 const App = () => {
   const [summary, setSummary] = useState({});
@@ -16,15 +16,10 @@ const App = () => {
   const [favorites, setFavorites] = useFavorites();
   const [orders, setOrders] = useOrders(isLogged);
   const email = useSelector(state => state.user.email);
-
-  const addToCart = (product) => {
-    setCart(cartAdder(cart, product));
-  }
-
-  const removeFromCart = (id) => {
-    setCart(cartRemover(cart, id))
-  };
-
+  const dispatch = useDispatch();
+  const cartSelector = useSelector(state => state.cart);
+ 
+ 
   const likeShop = (id) => {
     setFavorites(shopAdder(favorites, id));
   }
@@ -103,9 +98,9 @@ const App = () => {
                   <Route exact path='/' element={<AuthPage setIsLogged={logHandle} />} />
                   <Route path='/home' element={<HomePage logHandle={logHandle} />} />
                   <Route path='/find' element={<FindPage likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
-                  <Route path='/products' element={<ProductsPage addToCart={addToCart} logHandle={logHandle} />} />
-                  <Route path='/shop/:shopId' element={<ShopPage addToCart={addToCart} likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
-                  <Route path='/cart' element={<CartPage addToCart={addToCart} removeFromCart={removeFromCart} confirmOrder={confirmOrder} logHandle={logHandle} />} />
+                  <Route path='/products' element={<ProductsPage logHandle={logHandle} />} />
+                  <Route path='/shop/:shopId' element={<ShopPage  likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
+                  <Route path='/cart' element={<CartPage confirmOrder={confirmOrder} logHandle={logHandle} />} />
                   <Route path='/favorites' element={<FavoritesPage likeShop={likeShop} dislikeShop={dislikeShop} logHandle={logHandle} />} />
                   <Route path='/orders' element={<OrdersPage logHandle={logHandle} />} />
                   <Route path='/checkout' element={<CheckoutPage sendOrder={sendOrder} logHandle={logHandle} />} />

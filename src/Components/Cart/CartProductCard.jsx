@@ -1,6 +1,20 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { add, remove } from "../../redux/cart/cartSlice";
 
-const CartProductCard = ({ p, removeFromCart, addToCart }) => {
+const CartProductCard = ({ p }) => {
+  const dispatch = useDispatch();
+
+  const addHandle = (product) => {
+    dispatch(add({
+      product: product,
+      id: product.shop,
+    }))
+  }
+
+  const removeHandle = (id) => {
+    dispatch(remove({ id: id }))
+  }
   return (
     <div className="flex justify-between text-[14px] shadow  items-center bg-white dark:bg-slate-950 rounded-lg">
       <div className="flex gap-5 items-center">
@@ -17,12 +31,12 @@ const CartProductCard = ({ p, removeFromCart, addToCart }) => {
       <div className="flex items-center me-7 border border-black dark:border-slate-400 rounded-lg">
         <div
           className="cart-controller rounded-s-lg border-e border-slate-500 hover:bg-green-100 dark:hover:bg-emerald-900"
-          onClick={() => addToCart(p)}>
+          onClick={() => addHandle(p)}>
           <FaPlus className="w-3 h-3" />
         </div>
         <div
           className="cart-controller rounded-e-lg hover:bg-red-100 dark:hover:bg-red-800 "
-          onClick={() => removeFromCart(p.id)}>
+          onClick={() => removeHandle(p.id)}>
           <FaMinus className="w-3 h-3" />
         </div>
       </div>

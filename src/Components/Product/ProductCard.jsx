@@ -3,16 +3,26 @@ import { MdAddShoppingCart, MdErrorOutline } from "react-icons/md";
 import { CartCtx } from "../../App";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../../redux/cart/cartSlice";
 
-const ProductCard = ({ p, addToCart }) => {
-  const cart = useContext(CartCtx);
-  const [isAvaiable, setIsAvaiable] = useState(true);
+const ProductCard = ({ p }) => {
+  const cart = useSelector(state => state.cart);
+  const [isAvaiable, setIsAvaiable] = useState(cart?.id === p?.shop || cart?.id === "");
   const navigate = useNavigate();
-  const {t}=useTranslation("translation",{keyPrefix:"product-card"})
+  const { t } = useTranslation("translation", { keyPrefix: "product-card" })
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsAvaiable(cart?.id === p?.shop || cart?.id === "");
   }, [cart])
+
+  const addHandle = (product) => {
+    dispatch(add({
+      product: product,
+      id: product.shop,
+    }))
+  }
 
   return (
     <div className="relative flex flex-col w-52 md:w-[230px] h-[350px] items-center justify-between pb-5 gap-2 bg-light rounded-lg">
@@ -29,7 +39,7 @@ const ProductCard = ({ p, addToCart }) => {
         <p className="text-[10px] text-center">{p?.description}</p>
         <p className="text-[35px]">{p?.price}€</p>
       </div>
-      <div className="cursor-pointer py-2 px-5 rounded-lg " onClick={() => addToCart(p)}>
+      <div className="cursor-pointer py-2 px-5 rounded-lg " onClick={() => addHandle(p)}>
         <MdAddShoppingCart className="w-7 h-7 active:scale-50 active:text-green-500 duration-500" />
       </div>
     </div>

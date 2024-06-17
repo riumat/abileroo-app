@@ -3,11 +3,12 @@ import CartProductCard from "./CartProductCard";
 import { CartCtx } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
 import UserCard from "./UserCard";
+import { useSelector } from "react-redux";
 
-const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
+const Cart = ({ confirmOrder }) => {
   const [total, setTotal] = useState(0);
   const [cartFormatted, setCartFormatted] = useState([]);
-  const cart = useContext(CartCtx);
+  const cart = useSelector(state => state.cart);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const Cart = ({ addToCart, removeFromCart, confirmOrder }) => {
           <div className="flex flex-col lg:flex-row justify-between gap-3 w-full">
             <div className="flex flex-col gap-5 w-full flex-1">
               {cartFormatted?.map((product, i) => (
-                <CartProductCard key={`product-cart-${i}`} p={product} addToCart={addToCart} removeFromCart={removeFromCart} />
+                <CartProductCard key={`product-cart-${i}`} p={product} />
               ))}
             </div>
             <div className="flex-1">

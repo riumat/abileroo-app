@@ -28,7 +28,7 @@ const sortList = (shops, isAscending) => {
 };
 
 
-const ProductsPage = ({ addToCart, logHandle }) => {
+const ProductsPage = ({ logHandle }) => {
   const path = usePath();
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const [productList, setProductList] = useState();
@@ -103,7 +103,7 @@ const ProductsPage = ({ addToCart, logHandle }) => {
                 ) : (
                   <div className="flex flex-col gap-7 w-full">
                     <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
-                    <ProductList productList={productList} error={error} isLoading={isLoading} addToCart={addToCart} />
+                    <ProductList productList={productList} error={error} isLoading={isLoading} />
                   </div>
                 )}
               </div>

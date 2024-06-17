@@ -11,6 +11,7 @@ import { IoMdClose } from "react-icons/io";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { CartCtx } from "../../App";
 import LangToggle from "../LangToggle";
+import { useSelector } from "react-redux";
 
 
 const Navbar = ({ toggleSidebar, logHandle }) => {
@@ -19,7 +20,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isMobile, setMobile] = useState(window.innerWidth > 768);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const cart = useContext(CartCtx);
+  const cart = useSelector(state=>state.cart);
 
   const updateMedia = () => {
     setMobile(window.innerWidth > 768);

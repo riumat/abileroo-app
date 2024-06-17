@@ -14,9 +14,8 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   fallbackLng: 'us',
-  debug: true,
+  debug: false,
   resources,
-  
 })
 
 export default i18n;

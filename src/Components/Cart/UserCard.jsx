@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { MdErrorOutline } from "react-icons/md";
@@ -14,7 +15,7 @@ const setValue = () => {
 }
 
 const UserCard = ({ onSubmit, shopId, total }) => {
-  const dateTime = setValue();
+  const [dateTime, setDateTime] = useState(setValue());
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { t } = useTranslation("translation", { keyPrefix: "cart-page" });
 

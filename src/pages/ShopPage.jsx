@@ -9,7 +9,7 @@ import { usePath, useSidebar } from "../utils/hooks";
 import Navbar from "../Components/Navbar/Navbar";
 import Sidebar from "../Components/Sidebar";
 
-const ShopPage = ({ addToCart, likeShop, dislikeShop, logHandle }) => {
+const ShopPage = ({ likeShop, dislikeShop, logHandle }) => {
   const path = usePath();
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const [shopData, setShopData] = useState();
@@ -93,7 +93,7 @@ const ShopPage = ({ addToCart, likeShop, dislikeShop, logHandle }) => {
                 <p className="text-[23px] font-bold text-center dark:text-slate-100">Products</p>
                 <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7 mb-10">
                   {shopData?.products?.map((p, i) => (
-                    <ProductCard key={`product-${i}`} p={p} addToCart={addToCart} />
+                    <ProductCard key={`product-${i}`} p={p} />
                   ))}
                 </div>
               </div>

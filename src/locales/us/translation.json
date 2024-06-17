@@ -76,7 +76,7 @@
   },
   "product-card": {
     "error": {
-      "label": "You order already have some products from a different shop",
+      "label": "You order already has some products from a different shop",
       "button": "Go back to Cart"
     }
   },
