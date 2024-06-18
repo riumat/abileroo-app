@@ -27,14 +27,14 @@ const sortList = (shops, isAscending) => {
 };
 
 
-const FindPage = ({ likeShop, dislikeShop, logHandle }) => {
+const FindPage = () => {
   const path = usePath();
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const [shopList, setShopList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [params] = useSearchParams();
-  const {t}=useTranslation("translation",{keyPrefix:"find-page"})
+  const { t } = useTranslation("translation", { keyPrefix: "find-page" })
 
   useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) ?? [];
@@ -81,9 +81,9 @@ const FindPage = ({ likeShop, dislikeShop, logHandle }) => {
         {isSideOpen && window.innerWidth < 768 && (
           <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
-        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
         <div className="flex gap-3 overflow-hidden h-full">
-          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <Sidebar isSideOpen={isSideOpen}  />
           <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
 
@@ -106,7 +106,7 @@ const FindPage = ({ likeShop, dislikeShop, logHandle }) => {
                   <div className="flex flex-col gap-7 w-full">
                     <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
 
-                    <ShopList shopList={shopList} error={error} isLoading={isLoading} likeShop={likeShop} dislikeShop={dislikeShop} />
+                    <ShopList shopList={shopList} error={error} isLoading={isLoading} />
                   </div>
                 )}
               </div>

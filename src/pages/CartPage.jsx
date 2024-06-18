@@ -10,7 +10,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-const CartPage = ({ logHandle }) => {
+const CartPage = () => {
   const path = usePath();
   const cart = useSelector(state => state.cart);
   const [isSideOpen, setIsSideOpen] = useSidebar();
@@ -22,9 +22,9 @@ const CartPage = ({ logHandle }) => {
         {isSideOpen && window.innerWidth < 768 && (
           <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
-        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
         <div className="flex gap-3 overflow-hidden h-full">
-          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <Sidebar isSideOpen={isSideOpen} />
           <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
 

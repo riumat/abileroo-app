@@ -28,14 +28,14 @@ const sortList = (shops, isAscending) => {
 };
 
 
-const ProductsPage = ({ logHandle }) => {
+const ProductsPage = () => {
   const path = usePath();
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const [productList, setProductList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [params] = useSearchParams();
-  const {t}=useTranslation("translation",{keyPrefix:"product-page"})
+  const { t } = useTranslation("translation", { keyPrefix: "product-page" })
 
   /* useEffect(() => {
     const liked = JSON.parse(localStorage.getItem("liked")) || [];
@@ -58,18 +58,18 @@ const ProductsPage = ({ logHandle }) => {
 
   }, [])
 
- /*  const getShops = (url) => {
-    setIsLoading(true);
-    axiosBase.get(url)
-      .then(res => {
-        setProductList(res.data)
-        setIsLoading(false);
-      })
-      .catch(error => {
-        setError(true);
-        console.log(error);
-      })
-  } */
+  /*  const getShops = (url) => {
+     setIsLoading(true);
+     axiosBase.get(url)
+       .then(res => {
+         setProductList(res.data)
+         setIsLoading(false);
+       })
+       .catch(error => {
+         setError(true);
+         console.log(error);
+       })
+   } */
 
   const sortShops = (isAscending) => {
     setProductList(sortList(productList, isAscending));
@@ -81,9 +81,9 @@ const ProductsPage = ({ logHandle }) => {
         {isSideOpen && window.innerWidth < 768 && (
           <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
-        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
         <div className="flex gap-3 overflow-hidden h-full">
-          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <Sidebar isSideOpen={isSideOpen} />
           <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
             <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 overflow-y-auto overflow-x-hidden bg-dark ">

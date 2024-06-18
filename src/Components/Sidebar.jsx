@@ -3,17 +3,17 @@ import { MdOutlineDiscount, MdLogout, MdBorderColor } from "react-icons/md";
 import { FaHouseUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { BsHouseHeart } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/auth/authSlice";
 
 
-
-
-const Sidebar = ({ isSideOpen, logHandle }) => {
+const Sidebar = ({ isSideOpen }) => {
+  const dispatch = useDispatch();
   const [isCompressed, setIsCompressed] = useState(false);
   const { t } = useTranslation("translation", { keyPrefix: "sidebar" });
-
 
   if (!isSideOpen) return;
   return (
@@ -80,7 +80,7 @@ const Sidebar = ({ isSideOpen, logHandle }) => {
 
         <div
           className={`${!isCompressed && "justify-start gap-5"} sb-button`}
-          onClick={() => logHandle(false)} >
+          onClick={() => dispatch(logout())} >
           <MdLogout className="w-5 h-5" />
           {!isCompressed && (
             <p>{t("logout")}</p>

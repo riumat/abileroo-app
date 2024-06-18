@@ -1,40 +1,35 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import Logo from '../Components/Logo';
-import Register from '../Components/Auth/Register';
 import Login from '../Components/Auth/Login';
 import { axiosBase } from '../utils/constants';
 import { ClipLoader } from 'react-spinners';
-import { useDispatch } from 'react-redux';
-import { login } from '../redux/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import LangToggle from '../Components/LangToggle';
+import { fulfilled, loginError, loginSuccess, pending } from '../redux/auth/authSlice';
 
 const setLocalRef = (dispatch, data, token) => {
   const email = data.email;
   const username = data.email.split("@").at(0);
   dispatch(
-    login({
-      email: email,
-      username: username,
+    loginSuccess({
+      userInfo: {
+        email: email,
+        username: username
+      },
       token: token,
     }));
-
-  localStorage.setItem("credentials", JSON.stringify({ email: email, username: username }));
-  localStorage.setItem("token", JSON.stringify(token))
 }
 
-const AuthPage = ({ setIsLogged }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+const AuthPage = () => {
+  const { isLoading } = useSelector(state => state.auth)
   const [isToSign, setIsToSign] = useState(false);
-  const [isWrong, setIsWrong] = useState(false);
   const { t } = useTranslation("translation", { keyPrefix: "auth-page" });
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
     if (!isToSign) {
-      setIsLoading(true)
+      dispatch(pending());
 
       const body = new FormData();
       body.append("username", data.email);
@@ -49,17 +44,15 @@ const AuthPage = ({ setIsLogged }) => {
         },
       })
         .then(res => {
-          if (res.status === 200) {
+          if (res?.status === 200) {
             setLocalRef(dispatch, data, res.data.token);
-            setIsLogged(true);
-            setIsLoading(false);
-            navigate("/home");
+            dispatch(fulfilled());
           }
         })
         .catch(error => {
-          if (error.response.status === 400) {
-            setIsLoading(false);
-            setIsWrong(true)
+          if (error?.response?.status === 400) {
+            dispatch(fulfilled());
+            dispatch(loginError());
           } else {
             console.log(error)
           }
@@ -89,7 +82,6 @@ const AuthPage = ({ setIsLogged }) => {
         </div>
 
         <Login
-          isWrong={isWrong}
           onSubmit={onSubmit}
           isToSign={isToSign}
         />

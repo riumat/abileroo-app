@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { FavoriteCtx } from "../../App"
 import { axiosBase, shopUrls } from "../../utils/constants";
+import { useSelector } from "react-redux";
 
 const FavoritesCard = () => {
-  const favorites = useContext(FavoriteCtx);
+  const favorites = useSelector(state=>state.favorites.list);
   const [shopList, setShopList] = useState([]);
 
   useEffect(() => {

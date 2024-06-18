@@ -10,6 +10,7 @@ import { usePath, useSidebar } from "../utils/hooks";
 import Navbar from "../Components/Navbar/Navbar";
 import Sidebar from "../Components/Sidebar";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const sortList = (shops, isAscending) => {
   return shops.slice().sort((a, b) => {
@@ -27,14 +28,14 @@ const sortList = (shops, isAscending) => {
 };
 
 
-const FavoritesPage = ({ likeShop, dislikeShop, logHandle }) => {
+const FavoritesPage = () => {
   const path = usePath();
   const [isSideOpen, setIsSideOpen] = useSidebar();
-  const favorites = useContext(FavoriteCtx);
+  const favorites = useSelector(state => state.favorites.list);
   const [shopList, setShopList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const {t}=useTranslation("translation",{keyPrefix:"favorite-page"})
+  const { t } = useTranslation("translation", { keyPrefix: "favorite-page" })
 
   useEffect(() => {
     fetchShops();
@@ -63,9 +64,9 @@ const FavoritesPage = ({ likeShop, dislikeShop, logHandle }) => {
         {isSideOpen && window.innerWidth < 768 && (
           <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
-        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
         <div className="flex gap-3 overflow-hidden h-full">
-          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <Sidebar isSideOpen={isSideOpen} />
           <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
 
@@ -85,7 +86,7 @@ const FavoritesPage = ({ likeShop, dislikeShop, logHandle }) => {
                 <div className="flex flex-col gap-7 w-full">
                   <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
 
-                  <ShopList shopList={shopList} isLoading={isLoading} error={error} likeShop={likeShop} dislikeShop={dislikeShop} />
+                  <ShopList shopList={shopList} isLoading={isLoading} error={error}  />
                 </div>
               )}
             </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { axiosBase } from "./constants";
+import { useSelector } from "react-redux";
 
 export const useSidebar = () => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
@@ -14,35 +15,16 @@ export const useSidebar = () => {
   return [isSideOpen, setIsSideOpen];
 }
 
-
-
-export const useFavorites = () => {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    setFavorites(JSON.parse(localStorage.getItem("liked")) ?? []);
-  }, [])
-
-  return [favorites, setFavorites];
-}
-
-
-
 export const useLogged = () => {
-  const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem("logged")) ?? false);
+  const isLogged = useSelector(state => state.auth.isLog);
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    setIsLogged(JSON.parse(localStorage.getItem("logged")) ?? false);
-  }, [])
-
-  useEffect(() => {
+  /* useEffect(() => {
+    console.log(isLogged);
     const path = isLogged ? location.pathname : "/";
     navigate(path);
-  }, [isLogged])
-
-  return [isLogged, setIsLogged];
+  }, [isLogged]) */
 }
 
 export const usePath = () => {

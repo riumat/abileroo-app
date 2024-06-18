@@ -9,7 +9,7 @@ import { usePath, useSidebar } from "../utils/hooks";
 import Navbar from "../Components/Navbar/Navbar";
 import Sidebar from "../Components/Sidebar";
 
-const ShopPage = ({ likeShop, dislikeShop, logHandle }) => {
+const ShopPage = () => {
   const path = usePath();
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const [shopData, setShopData] = useState();
@@ -61,9 +61,9 @@ const ShopPage = ({ likeShop, dislikeShop, logHandle }) => {
         {isSideOpen && window.innerWidth < 768 && (
           <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
-        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
         <div className="flex gap-3 overflow-hidden h-full">
-          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <Sidebar isSideOpen={isSideOpen} />
           <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
 
@@ -80,8 +80,6 @@ const ShopPage = ({ likeShop, dislikeShop, logHandle }) => {
                 </div>
                 {shopData && (
                   <Info
-                    likeShop={likeShop}
-                    dislikeShop={dislikeShop}
                     description={shopData.description}
                     address={shopData.address}
                     id={shopData.id}

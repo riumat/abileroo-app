@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 
 
-const HomePage = ({ logHandle }) => {
+const HomePage = () => {
   const [isSideOpen, setIsSideOpen] = useSidebar();
   const { t } = useTranslation("translation", { keyPrefix: "home-page" })
 
@@ -20,9 +20,9 @@ const HomePage = ({ logHandle }) => {
         {isSideOpen && window.innerWidth < 768 && (
           <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
         )}
-        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} logHandle={logHandle} />
+        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
         <div className="flex gap-3 overflow-hidden h-full">
-          <Sidebar isSideOpen={isSideOpen} logHandle={logHandle} />
+          <Sidebar isSideOpen={isSideOpen} />
           <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
 
 

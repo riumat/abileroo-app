@@ -1,16 +1,18 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { MdErrorOutline } from "react-icons/md";
+import { useSelector } from "react-redux";
 
-const Login = ({ isWrong, onSubmit, isToSign }) => {
+const Login = ({ onSubmit, isToSign }) => {
+  const { error } = useSelector(state => state.auth);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { t } = useTranslation("translation", { keyPrefix: "auth-page" });
 
   return (
     <form className='flex flex-col gap-4 p-5' onSubmit={handleSubmit(onSubmit)}>
 
-      <div className={`p-3 rounded-xl border text-[16px] ${(errors.email || isWrong) ? "border-red-500" : "border-emerald-700"}`}>
-        <div className={`text-[11px]  ${(errors.email || isWrong) ? "text-red-500" : ""}`}>
+      <div className={`p-3 rounded-xl border text-[16px] ${(errors.email || error) ? "border-red-500" : "border-emerald-700"}`}>
+        <div className={`text-[11px]  ${(errors.email || error) ? "text-red-500" : ""}`}>
           {errors.email ? (
             <div className="flex gap-1 items-center">
               <MdErrorOutline className="text-red-500 w-3.5 h-3.5" />
@@ -26,8 +28,8 @@ const Login = ({ isWrong, onSubmit, isToSign }) => {
           className='rounded-xl focus:outline-none bg-transparent '
         />
       </div>
-      <div className={`p-3 rounded-xl border text-[16px] ${(errors.password || isWrong) ? "border-red-500" : "border-emerald-700"}`}>
-        <div className={`text-[11px]  ${(errors.password || isWrong) ? "text-red-500" : ""}`}>
+      <div className={`p-3 rounded-xl border text-[16px] ${(errors.password || error) ? "border-red-500" : "border-emerald-700"}`}>
+        <div className={`text-[11px]  ${(errors.password || error) ? "text-red-500" : ""}`}>
           {errors.password ? (
             <div className="flex gap-1 items-center">
               <MdErrorOutline className="text-red-500 w-3.5 h-3.5" />
@@ -54,7 +56,7 @@ const Login = ({ isWrong, onSubmit, isToSign }) => {
         className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white'
       >{isToSign ? t("submit.register") : t("submit.login")}</button>
 
-      {isWrong && (
+      {error && (
         <div className="flex items-center w-full justify-center gap-2">
           <MdErrorOutline className="text-red-500 w-4 h-4" />
           <p className="text-red-500 font-bold">{t("errors.wrong")}</p>

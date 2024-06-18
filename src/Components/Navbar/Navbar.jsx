@@ -1,22 +1,19 @@
 import { Link } from "react-router-dom"
 import Logo from "../Logo"
 import SettingsDropdown from "./SettingsDropdown";
-import TranslateDropdown from "./TranslateDropdown";
 import { BsCart3 } from "react-icons/bs";
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import Searchbar from "../Searchbar";
 import { IoMenu } from "react-icons/io5";
 import MobileSearchbar from "../Sort/MobileSearchbar";
 import { IoMdClose } from "react-icons/io";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { CartCtx } from "../../App";
 import LangToggle from "../LangToggle";
 import { useSelector } from "react-redux";
 
 
-const Navbar = ({ toggleSidebar, logHandle }) => {
+const Navbar = ({ toggleSidebar }) => {
   const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains("dark"));
-  const [isTranslateOpen, setIsTranslateOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isMobile, setMobile] = useState(window.innerWidth > 768);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -31,13 +28,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
     return () => window.removeEventListener("resize", updateMedia);
   });
 
-  const toggleTranslate = () => {
-    setIsSettingsOpen(false);
-    setIsTranslateOpen(prev => !prev);
-  }
-
   const toggleSettings = () => {
-    setIsTranslateOpen(false);
     setIsSettingsOpen(prev => !prev);
   }
 
@@ -91,7 +82,7 @@ const Navbar = ({ toggleSidebar, logHandle }) => {
 
             </Link>
             <LangToggle />
-            <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} logHandle={logHandle} />
+            <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} />
           </div>
         </nav>
 

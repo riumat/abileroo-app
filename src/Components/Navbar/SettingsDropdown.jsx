@@ -2,9 +2,11 @@ import { IoMdSettings } from "react-icons/io";
 import { settingsOptions } from "../../utils/constants";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/auth/authSlice";
 
-const SettingsDropdown = ({ isOpen, open, logHandle }) => {
+const SettingsDropdown = ({ isOpen, open }) => {
+  const dispatch = useDispatch();
   const localname = JSON.parse(localStorage.getItem("credentials"))?.username ?? "";
   const username = useSelector(state => state.user.username) ?? localname;
   const { t } = useTranslation("translation", { keyPrefix: "settings" })
@@ -21,7 +23,12 @@ const SettingsDropdown = ({ isOpen, open, logHandle }) => {
               <Link to={option.path} >{t(`${option.name}`)} </Link>
             </div>
           ))}
-          <p className="p-3 cursor-pointer hover:bg-slate-300 w-full rounded-md " onClick={() => logHandle(false)}>{t("logout")}</p>
+          <p
+            className="p-3 cursor-pointer hover:bg-slate-300 w-full rounded-md "
+            onClick={() => dispatch(logout())}
+          >
+            {t("logout")}
+          </p>
         </div>
       )}
     </div>

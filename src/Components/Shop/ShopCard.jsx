@@ -1,24 +1,27 @@
 import { useContext, useEffect, useState } from "react"
-import { FaHeart , FaRegHeart} from "react-icons/fa6";
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 import { FavoriteCtx } from "../../App";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../../redux/favorites/favoriteSlice";
 
-const ShopCard = ({ shop, likeShop, dislikeShop }) => {
+const ShopCard = ({ shop }) => {
   const [isFavorite, setIsFavorite] = useState();
-  const favorites = useContext(FavoriteCtx);
+  const favorites = useSelector(state => state.favorites.list);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsFavorite(favorites.includes(shop?.id));
-  }, [favorites,shop?.id])
+  }, [favorites, shop?.id])
 
   const dislikeHandler = (e) => {
     e.preventDefault();
-    dislikeShop(shop?.id)
+    dispatch(removeFavorite({ id: shop?.id }))
   }
 
   const likeHandler = (e) => {
     e.preventDefault();
-    likeShop(shop?.id);
+    dispatch(addFavorite({ id: shop?.id }))
   }
 
   return (
