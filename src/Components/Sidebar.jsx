@@ -3,7 +3,7 @@ import { MdOutlineDiscount, MdLogout, MdBorderColor } from "react-icons/md";
 import { FaHouseUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BsHouseHeart } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ const Sidebar = ({ isSideOpen }) => {
 
   if (!isSideOpen) return;
   return (
-    <div className={`rounded-lg py-5 absolute md:static z-50 text-[13px] bg-light shadow-none transition-all flex flex-col gap-16 ${isCompressed ? "w-16 px-3" : "w-[170px] px-5"}`}>
+    <div className={`rounded-lg py-5 absolute md:static z-50 text-[13px] bg-light shadow-none transition-all flex flex-col gap-16 overflow-y-auto ${isCompressed ? "w-16 px-3" : "w-[170px] px-5"}`}>
 
       <div className="md:flex justify-center hidden">
         <IoMenu

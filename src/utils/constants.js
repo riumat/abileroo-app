@@ -7,7 +7,8 @@ export const axiosBase = axios.create({
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.defaults.withCredentials = true
-//
+
+
 export const translateOptions = [
   { "lang": "English", value: "us", country: "US" },
   { "lang": "Italiano", value: "it", country: "IT" },

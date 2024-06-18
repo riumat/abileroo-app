@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import { axiosBase } from "./constants";
-import { useSelector } from "react-redux";
+import { useLocation } from "react-router";
 
 export const useSidebar = () => {
   const [isSideOpen, setIsSideOpen] = useState(window.innerWidth > 768);
@@ -15,17 +13,7 @@ export const useSidebar = () => {
   return [isSideOpen, setIsSideOpen];
 }
 
-export const useLogged = () => {
-  const isLogged = useSelector(state => state.auth.isLog);
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  /* useEffect(() => {
-    console.log(isLogged);
-    const path = isLogged ? location.pathname : "/";
-    navigate(path);
-  }, [isLogged]) */
-}
 
 export const usePath = () => {
   const [path, setPath] = useState([]);

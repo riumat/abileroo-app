@@ -1,36 +1,18 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import SortControls from "../Components/Sort/SortControls";
 import ShopList from "../Components/Shop/ShopList";
-import { FavoriteCtx } from "../App";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
-import { axiosBase, shopUrls } from "../utils/constants";
+import { axiosBase } from "../utils/constants";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { usePath, useSidebar } from "../utils/hooks";
-import Navbar from "../Components/Navbar/Navbar";
-import Sidebar from "../Components/Sidebar";
+import { usePath } from "../utils/hooks";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-
-const sortList = (shops, isAscending) => {
-  return shops.slice().sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (isAscending) {
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-    } else {
-      if (nameA > nameB) return -1;
-      if (nameA < nameB) return 1;
-    }
-    return 0;
-  });
-};
+import { sortList } from "../utils/functions";
 
 
 const FavoritesPage = () => {
   const path = usePath();
-  const [isSideOpen, setIsSideOpen] = useSidebar();
   const favorites = useSelector(state => state.favorites.list);
   const [shopList, setShopList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,48 +36,29 @@ const FavoritesPage = () => {
     }
   }
 
-  const sortShops = (isAscending) => {
-    setShopList(sortList(shopList, isAscending));
-  };
-
   return (
-    <>
-      <div className="flex flex-col gap-5 overflow-hidden h-full">
-        {isSideOpen && window.innerWidth < 768 && (
-          <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
-        )}
-        <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
-        <div className="flex gap-3 overflow-hidden h-full">
-          <Sidebar isSideOpen={isSideOpen} />
-          <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
+    <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
+      <div className="flex flex-col gap-3 flex-1 bg-dark rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
 
-
-            <div className="flex flex-col gap-3 flex-1 bg-dark rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
-
-              <div className="flex gap-3 justify-between">
-                <SortControls sortShops={sortShops} />
-                <PathViewer path={path} />
-              </div>
-              {shopList?.length === 0 && !isLoading ? (
-                <div className="flex flex-col items-center gap-10 pt-8">
-                  <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
-                  <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">{t("empty")}</p>
-                  <FindShopButton />
-                </div>
-              ) : (
-                <div className="flex flex-col gap-7 w-full">
-                  <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
-
-                  <ShopList shopList={shopList} isLoading={isLoading} error={error}  />
-                </div>
-              )}
-            </div>
-
-
-          </div>
+        <div className="flex gap-3 justify-between">
+          <SortControls sortShops={(isAscending) => setShopList(sortList(shopList, isAscending))} />
+          <PathViewer path={path} />
         </div>
+        {shopList?.length === 0 && !isLoading ? (
+          <div className="flex flex-col items-center gap-10 pt-8">
+            <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
+            <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">{t("empty")}</p>
+            <FindShopButton />
+          </div>
+        ) : (
+          <div className="flex flex-col gap-7 w-full">
+            <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
+
+            <ShopList shopList={shopList} isLoading={isLoading} error={error} />
+          </div>
+        )}
       </div>
-    </>
+    </div>
   )
 }
 
