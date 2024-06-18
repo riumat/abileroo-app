@@ -45,13 +45,13 @@ const AuthPage = () => {
       })
         .then(res => {
           if (res?.status === 200) {
+            dispatch(fulfilled())
             setLocalRef(dispatch, data, res.data.token);
-            dispatch(fulfilled());
           }
         })
         .catch(error => {
+          dispatch(fulfilled())
           if (error?.response?.status === 400) {
-            dispatch(fulfilled());
             dispatch(loginError());
           } else {
             console.log(error)
