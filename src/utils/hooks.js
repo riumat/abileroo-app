@@ -24,3 +24,13 @@ export const usePath = () => {
 
   return path;
 }
+
+export const useDate = () => {
+  const [isEvening, setIsEvening] = useState();
+
+  useEffect(() => {
+    const hour = new Date().getHours().toLocaleString("it");
+    setIsEvening(hour > 13);
+  }, [])
+  return isEvening;
+}

@@ -1,18 +1,6 @@
-import { useEffect, useState } from 'react'
 import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux';
-
-
-const useDate = () => {
-  const [isEvening, setIsEvening] = useState();
-
-
-  useEffect(() => {
-    const hour = new Date().getHours().toLocaleString("it");
-    setIsEvening(hour > 13);
-  }, [])
-  return isEvening;
-}
+import { useDate } from '../../utils/hooks';
 
 const Greetings = () => {
   const localname = JSON.parse(localStorage.getItem("credentials"))?.username ?? "";
