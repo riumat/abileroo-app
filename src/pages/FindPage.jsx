@@ -5,13 +5,11 @@ import { useSearchParams } from "react-router-dom";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { usePath } from "../utils/hooks";
 import { useTranslation } from "react-i18next";
 import { sortList } from "../utils/functions";
 import { axiosBase } from "../utils/axios.config";
 
 const FindPage = () => {
-  const path = usePath();
   const [shopList, setShopList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +37,7 @@ const FindPage = () => {
 
         <div className="flex gap-3 justify-between">
           <SortControls sortShops={(isAscending) => setShopList(sortList(shopList, isAscending))} />
-          <PathViewer path={path} />
+          <PathViewer />
         </div>
         <div className="flex flex-col items-center gap-8">
 

@@ -4,7 +4,6 @@ import ShopList from "../Components/Shop/ShopList";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { usePath } from "../utils/hooks";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { sortList } from "../utils/functions";
@@ -12,7 +11,6 @@ import { axiosBase } from "../utils/axios.config";
 
 
 const FavoritesPage = () => {
-  const path = usePath();
   const favorites = useSelector(state => state.favorites.list);
   const [shopList, setShopList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +40,7 @@ const FavoritesPage = () => {
 
         <div className="flex gap-3 justify-between">
           <SortControls sortShops={(isAscending) => setShopList(sortList(shopList, isAscending))} />
-          <PathViewer path={path} />
+          <PathViewer />
         </div>
         {shopList?.length === 0 && !isLoading ? (
           <div className="flex flex-col items-center gap-10 pt-8">

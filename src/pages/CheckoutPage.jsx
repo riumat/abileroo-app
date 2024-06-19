@@ -63,6 +63,7 @@ const CheckoutPage = () => {
   }
   useEffect(() => {
     if (!summary) navigate(-1);
+    // eslint-disable-next-line
   }, [])
 
   return (

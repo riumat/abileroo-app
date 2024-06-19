@@ -4,14 +4,12 @@ import { MdErrorOutline } from 'react-icons/md';
 import OrderCard from '../Components/Product/OrderCard';
 import { ClipLoader } from 'react-spinners';
 import PathViewer from '../Components/Navbar/PathViewer';
-import { usePath } from '../utils/hooks';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { getList } from '../redux/order/orderSlice'
 import { axiosBase } from "../utils/axios.config";
 
 const OrdersPage = () => {
-  const path = usePath();
   const orders = useSelector(state => state.order.list);
   const email = useSelector(state => state.user.email)
   const [isLoading, setIsLoading] = useState(false);
@@ -29,9 +27,13 @@ const OrdersPage = () => {
         }
       })
         .then(res => dispatch(getList({ list: res.data })))
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(error)
+          setError(true)
+        })
         .finally(setIsLoading(false))
     }
+    // eslint-disable-next-line
   }, [])
 
   if (error) {
@@ -54,7 +56,7 @@ const OrdersPage = () => {
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
       <div className="flex flex-col gap-3 flex-1 bg-dark rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
         <div className="flex gap-3 justify-end">
-          <PathViewer path={path} />
+          <PathViewer />
         </div>
         {orders.length === 0 ? (
           <div className="flex flex-col items-center gap-10 pt-8">

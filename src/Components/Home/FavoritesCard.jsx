@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react"
-import { FavoriteCtx } from "../../App"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import { axiosBase } from "../../utils/axios.config";
 

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import { IoMdHome, IoIosArrowForward } from "react-icons/io";
+import { usePath } from "../../utils/hooks";
 
 
-const PathViewer = ({ path }) => {
+const PathViewer = () => {
+  const path = usePath();
   return (
     <div className="bg-light p-2 rounded-b-lg ">
       <div className="text-[13px] md:text-[15px] flex items-center gap-3 md:gap-5 ">

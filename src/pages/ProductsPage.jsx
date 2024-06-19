@@ -4,13 +4,11 @@ import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
 import ProductList from "../Components/Product/ProductList";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { usePath } from "../utils/hooks";
 import { useTranslation } from "react-i18next";
 import { sortList } from "../utils/functions";
 import { axiosBase } from "../utils/axios.config";
 
 const ProductsPage = () => {
-  const path = usePath();
   const [productList, setProductList] = useState();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,7 +35,7 @@ const ProductsPage = () => {
 
         <div className="flex gap-3 justify-between">
           <SortControls sortShops={(isAscending) => setProductList(sortList(productList, isAscending))} />
-          <PathViewer path={path} />
+          <PathViewer />
         </div>
         <div className="flex flex-col items-center gap-8">
 

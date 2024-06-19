@@ -4,11 +4,9 @@ import { useParams } from "react-router";
 import Info from "../Components/Shop/Info";
 import { ClipLoader } from "react-spinners";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { usePath } from "../utils/hooks";
 import { axiosBase } from "../utils/axios.config";
 
 const ShopPage = () => {
-  const path = usePath();
   const [shopData, setShopData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -56,7 +54,7 @@ const ShopPage = () => {
       <div className="flex flex-col gap-5 px-3">
 
         <div className="flex gap-3 justify-end">
-          <PathViewer path={path} />
+          <PathViewer />
         </div>
         <div className="flex flex-col gap-7 items-center ">
 
