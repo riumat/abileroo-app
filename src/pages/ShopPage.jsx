@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import ProductCard from "../Components/Product/ProductCard";
 import { useParams } from "react-router";
 import Info from "../Components/Shop/Info";
-import { axiosBase } from "../utils/constants";
 import { ClipLoader } from "react-spinners";
 import PathViewer from "../Components/Navbar/PathViewer";
 import { usePath } from "../utils/hooks";
+import { axiosBase } from "../utils/axios.config";
 
 const ShopPage = () => {
   const path = usePath();

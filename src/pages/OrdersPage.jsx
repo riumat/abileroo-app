@@ -8,7 +8,7 @@ import { usePath } from '../utils/hooks';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { getList } from '../redux/order/orderSlice'
-import { axiosBase } from '../utils/constants';
+import { axiosBase } from "../utils/axios.config";
 
 const OrdersPage = () => {
   const path = usePath();

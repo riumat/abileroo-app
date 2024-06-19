@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 import SortControls from "../Components/Sort/SortControls";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
-import { axiosBase } from "../utils/constants";
 import ProductList from "../Components/Product/ProductList";
 import PathViewer from "../Components/Navbar/PathViewer";
 import { usePath } from "../utils/hooks";
 import { useTranslation } from "react-i18next";
 import { sortList } from "../utils/functions";
+import { axiosBase } from "../utils/axios.config";
 
 const ProductsPage = () => {
   const path = usePath();

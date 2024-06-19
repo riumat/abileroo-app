@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Logo from '../Components/Logo';
 import Login from '../Components/Auth/Login';
-import { axiosBase } from '../utils/constants';
 import { ClipLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import LangToggle from '../Components/LangToggle';
 import { fulfilled, loginError, loginSuccess, pending } from '../redux/auth/authSlice';
+import { axiosBase } from '../utils/axios.config';
 
 const setLocalRef = (dispatch, data, token) => {
   const email = data.email;

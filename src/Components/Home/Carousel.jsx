@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { axiosBase } from "../../utils/constants";
 import { ClipLoader } from "react-spinners";
+import { axiosBase } from "../../utils/axios.config";
 
 const Carousel = () => {
   const [shopList, setShopList] = useState([]);

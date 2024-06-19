@@ -4,11 +4,11 @@ import ShopList from "../Components/Shop/ShopList";
 import { useSearchParams } from "react-router-dom";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
-import { axiosBase } from "../utils/constants";
 import PathViewer from "../Components/Navbar/PathViewer";
 import { usePath } from "../utils/hooks";
 import { useTranslation } from "react-i18next";
 import { sortList } from "../utils/functions";
+import { axiosBase } from "../utils/axios.config";
 
 const FindPage = () => {
   const path = usePath();

@@ -7,6 +7,8 @@ import FindPage from '../pages/FindPage';
 import OrdersPage from '../pages/OrdersPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import ProductsPage from '../pages/ProductsPage';
+import Layout from '../pages/Layout';
+import ProtectedRoute from '../pages/ProtectedRoute';
 
 export {
   HomePage,
@@ -17,5 +19,7 @@ export {
   FindPage,
   OrdersPage,
   CheckoutPage,
-  ProductsPage
+  ProductsPage,
+  Layout,
+  ProtectedRoute,
 }

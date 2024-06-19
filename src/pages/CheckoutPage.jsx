@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAll } from "../redux/cart/cartSlice";
 import { addToList } from "../redux/order/orderSlice";
-import { axiosBase } from "../utils/constants";
+import { axiosBase } from "../utils/axios.config";
 
 const CheckoutPage = () => {
   const summary = useSelector(state => state.order.checkout);
