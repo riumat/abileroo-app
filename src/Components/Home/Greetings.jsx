@@ -16,7 +16,7 @@ const useDate = () => {
 
 const Greetings = () => {
   const localname = JSON.parse(localStorage.getItem("credentials"))?.username ?? "";
-  const username = useSelector(state => state.user.username) ?? localname;
+  const username = useSelector(state => state.auth.userInfo.username) ?? localname;
   const isEvening = useDate();
   const { t } = useTranslation("translation", { keyPrefix: "greet" });
 

@@ -38,8 +38,9 @@ export const authSlice = createSlice({
       localStorage.removeItem("logged");
       state.isLoading = false;
     },
-    pending: state => {
+    pending: (state,action) => {
       state.isLoading = true;
+      state.error = false;
     },
     fulfilled: state => {
       state.isLoading = false;

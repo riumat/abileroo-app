@@ -8,9 +8,9 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(success,token,error)
     if (success && token && !error) navigate("/home");
     if (error || !success) navigate("/");
-    // eslint-disable-next-line
   }, [success, token, error])
 
   return (

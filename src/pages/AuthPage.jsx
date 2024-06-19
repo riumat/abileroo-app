@@ -5,21 +5,7 @@ import { ClipLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import LangToggle from '../Components/LangToggle';
-import { fulfilled, loginError, loginSuccess, pending } from '../redux/auth/authSlice';
-import { axiosBase } from '../utils/axios.config';
-
-const setLocalRef = (dispatch, data, token) => {
-  const email = data.email;
-  const username = data.email.split("@").at(0);
-  dispatch(
-    loginSuccess({
-      userInfo: {
-        email: email,
-        username: username
-      },
-      token: token,
-    }));
-}
+import { pending } from '../redux/auth/authSlice';
 
 const AuthPage = () => {
   const { isLoading } = useSelector(state => state.auth)
@@ -27,37 +13,8 @@ const AuthPage = () => {
   const { t } = useTranslation("translation", { keyPrefix: "auth-page" });
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    if (!isToSign) {
-      dispatch(pending());
-
-      const body = new FormData();
-      body.append("username", data.email);
-      body.append("password", data.password);
-
-      axiosBase({
-        url: "login-token/",
-        method: "post",
-        data: body,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-        .then(res => {
-          if (res?.status === 200) {
-            dispatch(fulfilled())
-            setLocalRef(dispatch, data, res.data.token);
-          }
-        })
-        .catch(error => {
-          dispatch(fulfilled())
-          if (error?.response?.status === 400) {
-            dispatch(loginError());
-          } else {
-            console.log(error)
-          }
-        })
-    }
+  const onSubmit = data => {
+    dispatch(pending(data));
   }
 
   if (isLoading) {

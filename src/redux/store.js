@@ -1,16 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./user/userSlice"
-import cartReducer from "./cart/cartSlice"
-import orderReducer from "./order/orderSlice"
-import favoriteReducer from "./favorites/favoriteSlice";
-import authReducer from "./auth/authSlice";
+import createSagaMiddleware from 'redux-saga'
+import rootReducers from "./reducers";
+import { sagas } from "./sagas";
 
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-    cart: cartReducer,
-    order: orderReducer,
-    favorites: favoriteReducer,
-    auth: authReducer
-  }
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+  reducer: rootReducers,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 })
+
+sagaMiddleware.run(sagas);
+
+export default store;

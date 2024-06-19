@@ -12,3 +12,10 @@ export const sortList = (shops, isAscending) => {
     return 0;
   });
 };
+
+export const formBuilder = (email, password) => {
+  const body = new FormData();
+  body.append("username", email);
+  body.append("password", password);
+  return body;
+}

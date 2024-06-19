@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import CartProductCard from "./CartProductCard";
-import { CartCtx } from "../../App";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import UserCard from "./UserCard";
 import { useDispatch, useSelector } from "react-redux";
 import { setCheckout } from "../../redux/order/orderSlice";

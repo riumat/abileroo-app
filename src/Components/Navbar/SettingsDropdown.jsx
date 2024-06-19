@@ -8,7 +8,7 @@ import { logout } from "../../redux/auth/authSlice";
 const SettingsDropdown = ({ isOpen, open }) => {
   const dispatch = useDispatch();
   const localname = JSON.parse(localStorage.getItem("credentials"))?.username ?? "";
-  const username = useSelector(state => state.user.username) ?? localname;
+  const username = useSelector(state => state.auth.userInfo.username) ?? localname;
   const { t } = useTranslation("translation", { keyPrefix: "settings" })
 
   return (
