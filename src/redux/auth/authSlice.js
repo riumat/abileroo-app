@@ -12,7 +12,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    loginSuccess: (state, action) => {
+    getLoginSuccess: (state, action) => {
       state.success = true;
       state.error = false;
       state.userInfo = action.payload.userInfo;
@@ -22,7 +22,7 @@ export const authSlice = createSlice({
       localStorage.setItem("logged", JSON.stringify(true));
       state.isLoading = false;
     },
-    loginError: state => {
+    getLoginError: state => {
       state.success = false;
       state.error = true;
       localStorage.removeItem("credentials");
@@ -38,7 +38,7 @@ export const authSlice = createSlice({
       localStorage.removeItem("logged");
       state.isLoading = false;
     },
-    pending: (state,action) => {
+    getLogin: state => {
       state.isLoading = true;
       state.error = false;
     },
@@ -48,5 +48,5 @@ export const authSlice = createSlice({
   }
 })
 
-export const { loginSuccess, loginError, logout, pending, fulfilled } = authSlice.actions;
+export const { getLoginSuccess, getLoginError, logout, getLogin, fulfilled } = authSlice.actions;
 export default authSlice.reducer;

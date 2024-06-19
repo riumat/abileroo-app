@@ -5,7 +5,7 @@ import { ClipLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import LangToggle from '../Components/LangToggle';
-import { pending } from '../redux/auth/authSlice';
+import { getLogin } from '../redux/auth/authSlice';
 
 const AuthPage = () => {
   const { isLoading } = useSelector(state => state.auth)
@@ -14,7 +14,7 @@ const AuthPage = () => {
   const dispatch = useDispatch();
 
   const onSubmit = data => {
-    dispatch(pending(data));
+    dispatch(getLogin(data));
   }
 
   if (isLoading) {

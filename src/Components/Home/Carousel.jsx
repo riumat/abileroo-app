@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ClipLoader } from "react-spinners";
-import { axiosBase } from "../../utils/axios.config";
+import { useDispatch, useSelector } from "react-redux";
+import { getShopList } from "../../redux/shop/shopSlice";
 
 const Carousel = () => {
-  const [shopList, setShopList] = useState([]);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const { shopList, error, isLoading } = useSelector(state => state.shop)
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
-    axiosBase.get("/shop/shops/") //shop/shops/ //30523e18-8014-44af-81af-59ba12e43c08
-      .then(res => res.data)
-      .then(data => {
-        setShopList(data)
-        setIsLoading(false)
-      })
-      .catch(error => {
-        setError(true);
-        console.log(error);
-      })
+    dispatch(getShopList());
   }, [])
 
   if (error) {
@@ -29,10 +19,10 @@ const Carousel = () => {
     )
   }
 
-  if (isLoading){
-    return(
+  if (isLoading) {
+    return (
       <div className='w-full h-40 flex justify-center items-center bg-light rounded-b-lg rounded-tr-lg shadow'>
-        <ClipLoader/>
+        <ClipLoader />
       </div>
     )
   }

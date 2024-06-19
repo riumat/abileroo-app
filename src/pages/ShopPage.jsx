@@ -1,37 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProductCard from "../Components/Product/ProductCard";
 import { useParams } from "react-router";
 import Info from "../Components/Shop/Info";
 import { ClipLoader } from "react-spinners";
 import PathViewer from "../Components/Navbar/PathViewer";
-import { axiosBase } from "../utils/axios.config";
+import { useDispatch, useSelector } from "react-redux";
+import { getShop } from "../redux/shop/shopSlice";
 
 const ShopPage = () => {
-  const [shopData, setShopData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { shop, isLoading, error } = useSelector(state => state.shop);
   const { shopId } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
-    axiosBase.get(`shop/shop/${shopId}`) ///  shopUrls[shopId - 1]
-      .then(res => {
-        setShopData({
-          id: res.data.id,
-          name: res.data.name,
-          address: res.data.address.split(","),
-          description: res.data.description,
-          image: process.env.REACT_APP_BASE_URL + res.data.image,
-          products: [...res.data.products].map(product => (
-            { ...product, product_image: process.env.REACT_APP_BASE_URL + product.product_image }
-          )),
-        });
-        setIsLoading(false);
-      })
-      .catch(error => {
-        setError(true);
-        console.log(error)
-      });
+    dispatch(getShop(shopId));
   }, [])
 
   if (error) {
@@ -59,14 +41,14 @@ const ShopPage = () => {
         <div className="flex flex-col gap-7 items-center ">
 
           <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center bg-light">
-            <img src={shopData?.image} alt="" className="w-[130px] h-[130px] rounded-lg object-cover" />
-            <p className="text-[28px] lg:text-[45px] logo-font">{shopData?.name}</p>
+            <img src={shop?.image} alt="" className="w-[130px] h-[130px] rounded-lg object-cover" />
+            <p className="text-[28px] lg:text-[45px] logo-font">{shop?.name}</p>
           </div>
-          {shopData && (
+          {shop && (
             <Info
-              description={shopData.description}
-              address={shopData.address}
-              id={shopData.id}
+              description={shop.description}
+              address={shop.address}
+              id={shop.id}
             />
           )}
         </div>
@@ -74,7 +56,7 @@ const ShopPage = () => {
         <div className="flex flex-col gap-7">
           <p className="text-[23px] font-bold text-center dark:text-slate-100">Products</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-x-4 gap-y-7 mb-10">
-            {shopData?.products?.map((p, i) => (
+            {shop?.products?.map((p, i) => (
               <ProductCard key={`product-${i}`} p={p} />
             ))}
           </div>

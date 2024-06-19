@@ -8,7 +8,6 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(success,token,error)
     if (success && token && !error) navigate("/home");
     if (error || !success) navigate("/");
   }, [success, token, error])
