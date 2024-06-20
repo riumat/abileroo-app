@@ -1,21 +1,11 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { MdErrorOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
-
-const setValue = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() < 10 ? `0${parseInt(now.getMonth()) + 1}` : now.getMonth();
-  const day = now.getDate() < 10 ? `0${now.getDate()}` : now.getDate();
-  const hour = now.getHours() < 10 ? `0${now.getHours()}` : now.getHours();
-  const minute = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
-  return `${year}-${month}-${day}T${parseInt(hour) + 1}:${minute}`
-}
+import { setDateString } from "../../utils/functions";
 
 const UserCard = ({ onSubmit, shopId, total }) => {
-  const [dateTime, setDateTime] = useState(setValue());
+  const dateString = setDateString();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { t } = useTranslation("translation", { keyPrefix: "cart-page" });
 
@@ -60,7 +50,7 @@ const UserCard = ({ onSubmit, shopId, total }) => {
           type="datetime-local"
           {...register("date", { required: t("errors.date-required"), validate: { value: value => new Date(value) > new Date() || t("errors.date-invalid") } })}
           step={60}
-          defaultValue={dateTime}
+          defaultValue={dateString}
           className={`relative cart-input ${errors.date && " border-red-200"}`}
         />
       </div>

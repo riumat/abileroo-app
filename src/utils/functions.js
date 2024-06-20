@@ -19,3 +19,28 @@ export const formBuilder = (email, password) => {
   body.append("password", password);
   return body;
 }
+
+export const getCartFormatted = (list) => {
+  const counter = list?.reduce((obj, product) => {
+    if (!obj[product.id]) {
+      obj[product.id] = { ...product, count: 0 };
+    }
+    obj[product.id].count++;
+    return obj;
+  }, {}) ?? {};
+  return Object.values(counter);
+}
+
+export const getTotal = (list) => {
+  return list?.reduce((current, product) => current + product.price, 0);
+}
+
+export const setDateString = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() < 10 ? `0${parseInt(now.getMonth()) + 1}` : now.getMonth();
+  const day = now.getDate() < 10 ? `0${now.getDate()}` : now.getDate();
+  const hour = now.getHours() < 10 ? `0${now.getHours()}` : now.getHours();
+  const minute = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
+  return `${year}-${month}-${day}T${parseInt(hour) + 1}:${minute}`
+}

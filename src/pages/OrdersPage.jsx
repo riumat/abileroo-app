@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import FindShopButton from '../Components/FindShopButton';
 import { MdErrorOutline } from 'react-icons/md';
 import OrderCard from '../Components/Product/OrderCard';
@@ -6,34 +6,15 @@ import { ClipLoader } from 'react-spinners';
 import PathViewer from '../Components/Navbar/PathViewer';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { getList } from '../redux/order/orderSlice'
-import { axiosBase } from "../utils/axios.config";
+import { getOrderList } from '../redux/order/orderSlice'
 
 const OrdersPage = () => {
-  const orders = useSelector(state => state.order.list);
-  const email = useSelector(state => state.user.email)
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { orderList, error, isLoading } = useSelector(state => state.order);
   const { t } = useTranslation("translation", { keyPrefix: "order-page" })
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("token"));
-    if (token) {
-      setIsLoading(true);
-      axiosBase.get(`order/orders/?client_email=${email}`, {
-        headers: {
-          "Authorization": `Token ${token}`
-        }
-      })
-        .then(res => dispatch(getList({ list: res.data })))
-        .catch(error => {
-          console.log(error)
-          setError(true)
-        })
-        .finally(setIsLoading(false))
-    }
-    // eslint-disable-next-line
+    dispatch(getOrderList());
   }, [])
 
   if (error) {
@@ -58,7 +39,7 @@ const OrdersPage = () => {
         <div className="flex gap-3 justify-end">
           <PathViewer />
         </div>
-        {orders.length === 0 ? (
+        {orderList.length === 0 ? (
           <div className="flex flex-col items-center gap-10 pt-8">
             <MdErrorOutline className="text-black dark:text-slate-100 w-6 h-6" />
             <p className="text-center text-slate-800 dark:text-slate-200 text-[18px]">{t("empty")}</p>
@@ -72,7 +53,7 @@ const OrdersPage = () => {
             </div>
 
             <div className='p-2 rounded-lg flex flex-col gap-5'>
-              {orders.map((order, i) => (
+              {orderList.map((order, i) => (
                 <OrderCard key={`order-card-${i}`} order={order} i={i} />
               ))}
             </div>

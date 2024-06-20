@@ -1,21 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  list: JSON.parse(localStorage.getItem("orders")) ?? [],
+  orderList: JSON.parse(localStorage.getItem("orders")) ?? [],
   checkout: null,
+  success: false,
+  isLoading: false,
+  error: false,
 }
 export const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
     addToList: (state, action) => {
-      state.list = [...state.list, action.payload.order]
-      localStorage.setItem("order", JSON.stringify([...state.list]));
+      state.orderList = [...state.orderList, action.payload.order]
+      localStorage.setItem("order", JSON.stringify([...state.orderList]));
     },
-
-    getList: (state, action) => {
-      state.list = [...action.payload.list];
-      localStorage.setItem("order", JSON.stringify([...state.list]));
+    getOrderListSuccess: (state, action) => {
+      state.orderList = [...action.payload.list];
+      localStorage.setItem("order", JSON.stringify([...state.orderList]));
+    },
+    getOrderListError: state => {
+      state.error = true;
+      state.isLoading = false;
+    },
+    getOrderList: state => {
+      state.error = false;
+      state.isLoading = true;
     },
     setCheckout: (state, action) => {
       state.checkout = { ...action.payload.checkout };
@@ -24,5 +34,5 @@ export const orderSlice = createSlice({
 }
 )
 
-export const { addToList, getList, setCheckout } = orderSlice.actions;
+export const { addToList, getOrderListSuccess, getOrderListError, getOrderList, setCheckout } = orderSlice.actions;
 export default orderSlice.reducer;

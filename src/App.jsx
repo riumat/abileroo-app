@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Router from './router/Router';
@@ -6,9 +6,11 @@ import Router from './router/Router';
 const App = () => {
   const { success, token, error } = useSelector(state => state.auth);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    if (success && token && !error) navigate("/home");
+    console.log(location.pathname)
+    if (success && token && !error) location.pathname !== "/" ? navigate(location.pathname) : navigate("/home");
     if (error || !success) navigate("/");
   }, [success, token, error])
 

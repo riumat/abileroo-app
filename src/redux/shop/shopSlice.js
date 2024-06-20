@@ -4,7 +4,8 @@ const initialState = {
   shopList: [],
   error: false,
   isLoading: false,
-  shop: null
+  shop: null,
+  success: false,
 }
 
 export const shopSlice = createSlice({

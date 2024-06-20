@@ -4,15 +4,15 @@ import { useSelector } from "react-redux";
 
 const History = () => {
   const [last, setLast] = useState({});
-  const orders = useSelector(state=>state.order.list);
+  const { orderList, error, isLoading } = useSelector(state => state.order);
 
   useEffect(() => {
-    setLast(orders[orders.length - 1])
-  }, [orders])
+    setLast(orderList[orderList.length - 1])
+  }, [orderList])
 
   return (
     <div className="w-full ">
-      {orders?.length === 0 ? (
+      {orderList?.length === 0 ? (
         <div className="p-3 shadow bg-white rounded-b-lg rounded-tr-lg dark:bg-slate-950 dark:text-slate-100 ">
           <p className="text-center text-[14px] dark:text-slate-100 text-slate-700">Empty. You did not place any order yet </p>
         </div>
