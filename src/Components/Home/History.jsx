@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
-import { OrdersCtx } from "../../App"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
+import { ClipLoader } from "react-spinners";
 
 const History = () => {
   const [last, setLast] = useState({});
@@ -10,6 +10,21 @@ const History = () => {
     setLast(orderList[orderList.length - 1])
   }, [orderList])
 
+  if (error) {
+    return (
+      <div className='w-full h-full bg-dark flex justify-center items-center'>
+        <p>Failed to fetch data</p>
+      </div>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <div className='w-full h-full flex justify-center items-center bg-dark '>
+        <ClipLoader />
+      </div>
+    )
+  }
   return (
     <div className="w-full ">
       {orderList?.length === 0 ? (

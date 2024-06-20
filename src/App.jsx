@@ -9,7 +9,6 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname)
     if (success && token && !error) location.pathname !== "/" ? navigate(location.pathname) : navigate("/home");
     if (error || !success) navigate("/");
   }, [success, token, error])
