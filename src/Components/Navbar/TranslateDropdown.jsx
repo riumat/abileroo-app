@@ -1,15 +1,16 @@
-import { MdOutlineTranslate } from "react-icons/md"
 import { translateOptions } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
+import { MdOutlineArrowDropDownCircle } from "react-icons/md";
+
 
 const TranslateDropdown = ({ isOpen, open }) => {
   const { i18n } = useTranslation();
   return (
-    <div className="relative">
-      <MdOutlineTranslate className="nav-button" onClick={open} />
-      <div className="nav-trans-badge">
-        <ReactCountryFlag countryCode={i18n.language.toUpperCase()} style={{ fontSize: "1.6em" }} svg  />
+    <div className="relative cursor-pointer" onClick={open}>
+      <div className="flex gap-1 items-center text-orange-900 dark:text-orange-50">
+        <p className="text-[14px] ">{i18n.language === "us" ? "English" : "Italiano"}</p>
+        <MdOutlineArrowDropDownCircle />
       </div>
       {isOpen && (
         <div className="nav-dropdown">

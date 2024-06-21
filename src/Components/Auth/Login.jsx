@@ -11,7 +11,7 @@ const Login = ({ onSubmit, isToSign }) => {
   return (
     <form className='flex flex-col gap-4 p-5' onSubmit={handleSubmit(onSubmit)}>
 
-      <div className={`p-3 rounded-xl border text-[16px] ${(errors.email || error) ? "border-red-500" : "border-emerald-700"}`}>
+      <div className={`p-3 rounded-xl border-2 text-[16px] ${(errors.email || error) ? "border-red-500" : "border-orange-900/60"}`}>
         <div className={`text-[11px]  ${(errors.email || error) ? "text-red-500" : ""}`}>
           {errors.email ? (
             <div className="flex gap-1 items-center">
@@ -28,7 +28,7 @@ const Login = ({ onSubmit, isToSign }) => {
           className='rounded-xl focus:outline-none bg-transparent '
         />
       </div>
-      <div className={`p-3 rounded-xl border text-[16px] ${(errors.password || error) ? "border-red-500" : "border-emerald-700"}`}>
+      <div className={`p-3 rounded-xl border-2 text-[16px] ${(errors.password || error) ? "border-red-500" : "border-orange-900/60"}`}>
         <div className={`text-[11px]  ${(errors.password || error) ? "text-red-500" : ""}`}>
           {errors.password ? (
             <div className="flex gap-1 items-center">
@@ -42,18 +42,18 @@ const Login = ({ onSubmit, isToSign }) => {
           {...register("password", { required: t("errors.password") })}
           name='password'
           type="password"
-          className='rounded-xl focus:outline-none '
+          className='rounded-xl focus:outline-none bg-transparent '
         />
       </div>
 
       <div className='flex gap-2'>
         <input type="checkbox" name="" id="" className='w-4 h-4 cursor-pointer border-emerald-700' />
-        <p className='text-[14px] text-emerald-700'>{t("checkbox")}</p>
+        <p className='text-[14px] text-orange-800'>{t("checkbox")}</p>
       </div>
 
       <button
         type="submit"
-        className='p-2 bg-emerald-700 rounded-xl focus:outline-none cursor-pointer text-white'
+        className='p-2 bg-orange-800 rounded-xl focus:outline-none cursor-pointer text-white'
       >{isToSign ? t("submit.register") : t("submit.login")}</button>
 
       {error && (

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 @tailwind base;
@@ -8,24 +8,15 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", sans serif;
+  font-family: "Poppins", sans serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(250, 236, 215);
 }
 
-.logo-font {
-  font-family: "Poetsen One", sans-serif;
-}
 
 .carousel {
   animation: slide 35s linear infinite;
-}
-
-.bg-home {
-  background-image: url("https://png.pngtree.com/background/20230417/original/pngtree-burger-food-restaurant-background-picture-image_2445056.jpg");
-  background-size: cover;
-  background-position: 2px -170px;
-  background-repeat: no-repeat;
 }
 
 
@@ -52,14 +43,36 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 }
 
+.light-color {
+  color: rgb(37, 27, 0);
+}
+
+.dark-color {
+  color: rgb(255, 238, 205);
+
+}
+
+.bg-light-color {
+  color: rgb(255, 243, 218);
+}
+
+.bg-dark-color {
+  color: rgb(28, 22, 0);
+}
+
+
+
 @layer components {
-  .bg-light {
-    @apply bg-white text-slate-950 dark:bg-slate-950 dark:text-slate-100 shadow;
+  .logo-font {
+    font-family: "Poetsen One", sans-serif;
   }
 
-  .bg-dark {
-    @apply bg-emerald-50/30 dark:bg-emerald-950/30 text-slate-950 dark:border-emerald-950 dark:text-slate-100;
+  
+  .bg-light {
+    @apply bg-light-main text-dark-main dark:bg-dark-main dark:text-light-main ;
   }
+
+ 
 
   .card {
     @apply bg-white dark:bg-slate-950 text-emerald-900 dark:text-slate-100;
@@ -70,7 +83,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .nav-button {
-    @apply w-7 h-7 cursor-pointer hover:text-white p-1 rounded-lg hover:bg-emerald-700 dark:text-slate-100
+    @apply w-7 h-7  cursor-pointer bg-light-main dark:bg-dark-main  text-orange-900 hover:text-white p-1 rounded-lg hover:bg-orange-900 dark:text-orange-50 border-2 border-orange-900 dark:border-orange-50 ;
   }
 
   .bg-mobile {
@@ -82,7 +95,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .shop-card {
-    @apply flex flex-col lg:flex-row justify-center pb-2 lg:py-0 lg:justify-start items-center gap-5 rounded-lg md:text-[0px];
+    @apply flex flex-col  justify-start pb-2 lg:py-0 lg:justify-start  gap-5 rounded-lg md:text-[0px];
   }
 
   .img-filter {
@@ -98,11 +111,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .nav-cart-badge {
-    @apply absolute top-0 right-0 inline-flex items-center justify-center text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px] dark:bg-white dark:text-emerald-950;
+    @apply absolute -top-[2.5px] right-[6.5px] inline-flex items-center justify-center text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-orange-900 rounded py-[1.3px] px-[3px]  ;
   }
 
   .nav-trans-badge {
-    @apply absolute top-0 right-0 inline-flex items-center justify-center text-[10px] transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px] dark:bg-white dark:text-emerald-950;
+    @apply absolute top-0 right-0 inline-flex items-center justify-center text-[10px] transform translate-x-1/2 -translate-y-1/2 text-white  bg-emerald-950 rounded py-[0.5px] px-[3px] ;
 
   }
 
@@ -115,6 +128,13 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .lang-toggle {
-    @apply mr-1 h-3.5 w-8 md:w-8 appearance-none rounded-lg bg-emerald-600/30 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-emerald-900 after:shadow after:content-['']  checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-['']  checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100  dark:bg-neutral-600 dark:after:bg-neutral-400 transition-all duration-300;
+    @apply mr-1 h-3.5 w-8 md:w-8 appearance-none rounded-lg bg-emerald-600/30 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-emerald-900 after:shadow after:content-[''] checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 dark:bg-neutral-600 dark:after:bg-neutral-400 transition-all duration-300;
+  }
+
+  .nav-border {
+    @apply border-b-2;
+  }
+  .big-title{
+    @apply  inline-block bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-orange-300   text-transparent leading-tight  ;
   }
 }

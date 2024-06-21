@@ -20,15 +20,24 @@
   },
   "searchbar": "Search shop",
   "home-page": {
+    "title": "Your Go-To Spot for",
+    "title2": "Quick and Tasty Eats!",
+    "tutorial": {
+      "text1": "Browse through your favorite shops or restaurants, search for the food you crave, and add it to your cart.",
+      "text2": "Once you've selected your food, head to the checkout page and pay for your order using your preferred payment method.",
+      "text3": "After payment confirmation, sit back and relax! You'll receive updates on the status of your order, so you can track your food's journey to your home."
+    },
     "search": "Search and Find Shops",
     "orders": "Your Orders",
     "shops": "Your Shops"
   },
   "find-page": {
-    "title": "Our Shop Selection"
+    "title": "Order Your Favorite Food from Our List of Restaurants",
+    "desc": "Discover a wide variety of restaurants and cuisines at your fingertips. Browse through our list of popular eateries and order your favorite dishes for delivery or pickup. From classic comfort food to international flavors, we have it all. Browse our list of restaurants below and start ordering today!"
   },
   "product-page": {
-    "title": "Products"
+    "title": "Discover the Best Dishes from Our Partner Restaurants",
+    "desc": "Explore the menus of our partner restaurants and discover a world of flavors. From classic comfort food to international cuisine, we have it all. Browse through our list of dishes and order your favorite meals for delivery."
   },
   "favorite-page": {
     "title": "Your Favorite Shops",
@@ -89,18 +98,26 @@
     "greet": "Welcome back!",
     "desc": "Please enter your credentials to continue",
     "checkbox": "Keep me logged in",
-    "submit":{
-      "login":"Log In",
-      "register":"Sign In"
+    "submit": {
+      "login": "Log In",
+      "register": "Sign In"
     },
     "switch": {
       "login": "Don't have an account?",
       "register": "Already have an account?"
     },
-    "errors":{
-      "email":"Email field is required.",
-      "password":"Password field is required",
-      "wrong":"Incorrect email or password."
+    "errors": {
+      "email": "Email field is required.",
+      "password": "Password field is required",
+      "wrong": "Incorrect email or password."
     }
+  },
+  "fetch-error":{
+    "title":"Ops! Something went wrong.",
+    "desc":"Please try again later"
+  },
+  "sort":{
+    "alf":"Alphabetical",
+    "inv":"Inverse Alphabetical"
   }
 }

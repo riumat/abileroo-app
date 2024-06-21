@@ -12,7 +12,7 @@
     "logout": "Esci"
   },
   "settings": {
-    "greet":"Bentornato",
+    "greet": "Bentornato",
     "user": "Impostazioni Utente",
     "favorites": "Preferiti",
     "orders": "Ordini Recenti",
@@ -20,23 +20,32 @@
   },
   "searchbar": "Cerca attività",
   "home-page": {
+    "title": "Il tuo punto di riferimento per",
+    "title2": "pasti Veloci e Gustosi!",
+    "tutorial": {
+      "text1": "Esplora i tuoi negozi o ristoranti preferiti, cerca il cibo che desideri e aggiungilo al tuo carrello.",
+      "text2": "Una volta selezionato il tuo cibo, vai alla pagina di pagamento e paga il tuo ordine utilizzando il metodo di pagamento preferito.",
+      "text3": "Dopo la conferma del pagamento, siediti e rilassati! Riceverai aggiornamenti sullo stato del tuo ordine per tracciare il percorso del tuo cibo fino a casa tua."
+    },
     "search": "Esplora le attività",
     "orders": "I tuoi ordini",
     "shops": "Le tue attività"
   },
   "find-page": {
-    "title": "Attività selezionate per te"
+    "title": "Ordina il tuo cibo preferito dalla nostra lista di ristoranti",
+    "desc": "Scopri una vasta gamma di ristoranti e cucine a portata di mano. Esegui una ricerca tra la nostra lista di locali popolari e ordina i tuoi piatti preferiti per consegna o ritiro. Da cibi comfort classici a sapori internazionali, abbiamo tutto. Esegui una ricerca tra la nostra lista di ristoranti qui sotto e inizia a ordinare oggi!"
   },
   "product-page": {
-    "title": "Tutti i prodotti"
+    "title": "Scopri i Migliori Piatti dei Nostri Ristoranti Partner",
+    "desc": "Esplora i menu dei nostri ristoranti partner e scopri un mondo di sapori. Da cibi comfort classici a cucine internazionali, abbiamo tutto. Esegui una ricerca tra la nostra lista di piatti e ordina i tuoi pasti preferiti per consegna."
   },
   "favorite-page": {
     "title": "Le tue attività preferite",
-    "empty":"Non hai ancora aggiunto niente ai preferiti!"
+    "empty": "Non hai ancora aggiunto niente ai preferiti!"
   },
   "order-page": {
     "title": "I tuoi ordini recenti",
-    "empty":"Non hai ancora effettuato ordini!"
+    "empty": "Non hai ancora effettuato ordini!"
   },
   "cart-page": {
     "title": "Carrello",
@@ -49,59 +58,66 @@
     "labels": {
       "address": "Indirizzo",
       "date": "Data di consegna",
-      "address-placeholder":"Dove dovremmo consegnare il tuo ordine?"
+      "address-placeholder": "Dove dovremmo consegnare il tuo ordine?"
     },
     "total": "Il tuo totale",
     "buttons": {
       "redirect": "Dimenticato Qualcosa?",
       "checkout": "Checkout"
     },
-    "empty":"Il tuo carrello è vuoto!"
+    "empty": "Il tuo carrello è vuoto!"
   },
-  "check-page":{
-    "title":"Riepilogo Ordine",
-    "info":{
-      "title":"Le tue informazioni",
-      "address":"Indirizzo",
-      "date":"Data di Consegna"
+  "check-page": {
+    "title": "Riepilogo Ordine",
+    "info": {
+      "title": "Le tue informazioni",
+      "address": "Indirizzo",
+      "date": "Data di Consegna"
     },
-    "order":{
-      "title":"Il tuo Ordine",
-      "total":"Totale"
+    "order": {
+      "title": "Il tuo Ordine",
+      "total": "Totale"
     },
-    "buttons":{
-      "confirm":"Conferma e Ordina",
-      "back":"Torna al Carrello"
+    "buttons": {
+      "confirm": "Conferma e Ordina",
+      "back": "Torna al Carrello"
     }
   },
-  "product-card":{
-    "error":{
-      "label":"Hai già nel carrello un prodotto di un'altra attività",
-      "button":"Torna al carrello"
+  "product-card": {
+    "error": {
+      "label": "Hai già nel carrello un prodotto di un'altra attività",
+      "button": "Torna al carrello"
     }
   },
-  "order-card":{
-    "order":"Ordine",
-    "total":"Totale"
+  "order-card": {
+    "order": "Ordine",
+    "total": "Totale"
   },
-  "browsing-button":"Scopri le attività",
+  "browsing-button": "Scopri le attività",
   "auth-page": {
     "greet": "Bentornato!",
     "desc": "Per favore inserisci le tue credenziali per continuare",
     "checkbox": "Salva per il prossimo accesso",
     "submit": {
-      "login":"Accedi",
-      "register":"Registrati"
+      "login": "Accedi",
+      "register": "Registrati"
     },
     "switch": {
       "login": "Non sei registrato?",
       "register": "Hai già un account?"
     },
-    "errors":{
-      "email":"Il campo Email è obbligatorio.",
-      "password":"Il campo Password è obbligatorio.",
-      "wrong":"Email o password non corrette."
+    "errors": {
+      "email": "Il campo Email è obbligatorio.",
+      "password": "Il campo Password è obbligatorio.",
+      "wrong": "Email o password non corrette."
     }
+  },
+  "fetch-error":{
+    "title":"Ops! Qualcosa è andato storto.",
+    "desc":"Per favore riprova più tardi"
+  },
+  "sort":{
+    "alf":"Alfabetico",
+    "inv":"Alfabetico Inverso"
   }
-
 }

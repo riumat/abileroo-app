@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import Logo from "../Logo"
 import SettingsDropdown from "./SettingsDropdown";
 import { BsCart3 } from "react-icons/bs";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Searchbar from "../Searchbar";
 import { IoMenu } from "react-icons/io5";
 import MobileSearchbar from "../Sort/MobileSearchbar";
@@ -10,14 +10,23 @@ import { IoMdClose } from "react-icons/io";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import LangToggle from "../LangToggle";
 import { useSelector } from "react-redux";
+import LinkButton from "./LinkButton";
+import TranslateDropdown from "./TranslateDropdown";
+import { FaRegHeart } from "react-icons/fa";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { useTranslation } from "react-i18next";
+import { CgLogOut } from "react-icons/cg";
+import Logout from "./Logout";
 
 
 const Navbar = ({ toggleSidebar }) => {
   const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains("dark"));
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isTranslateOpen, setIsTranslateOpen] = useState(false);
   const [isMobile, setMobile] = useState(window.innerWidth > 768);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const cart = useSelector(state => state.cart);
+  const { t } = useTranslation("translation", { keyPrefix: "sidebar" })
 
   const updateMedia = () => {
     setMobile(window.innerWidth > 768);
@@ -30,6 +39,11 @@ const Navbar = ({ toggleSidebar }) => {
 
   const toggleSettings = () => {
     setIsSettingsOpen(prev => !prev);
+    if (isTranslateOpen) setIsTranslateOpen(false);
+  }
+  const toggleTranslate = () => {
+    setIsTranslateOpen(prev => !prev);
+    if (isSettingsOpen) setIsSettingsOpen(false);
   }
 
   const toggleDarkMode = () => {
@@ -64,6 +78,14 @@ const Navbar = ({ toggleSidebar }) => {
               <MobileSearchbar openSearchbar={() => setIsSearchOpen(true)} />
             )}
           </div>
+          <div className="flex items-center gap-5">
+            <LinkButton path={"/home"} text={t("home")} />
+            <LinkButton path={"/find"} text={t("shops")} />
+
+            <LinkButton path={"/products"} text={t("products")} />
+            <LinkButton path={"/Orders"} text={t("orders")} />
+          </div>
+
           <div className="flex gap-3 md:gap-5 me-3 md:me-10 items-center">
             <div>
               {isDarkMode ? (
@@ -72,8 +94,10 @@ const Navbar = ({ toggleSidebar }) => {
                 <MdOutlineDarkMode className="nav-button" onClick={toggleDarkMode} />
               )}
             </div>
-            <Link to={"/cart"} className="relative inline-block mr-1">
-              <BsCart3 className="nav-button" />
+            <Link to={"/cart"} className="relative mr-1">
+
+              <MdOutlineShoppingBag className="nav-button bg-light relative" />
+
               {cart?.list?.length !== 0 && (
                 <span className="nav-cart-badge">
                   {cart?.list?.length}
@@ -81,9 +105,14 @@ const Navbar = ({ toggleSidebar }) => {
               )}
 
             </Link>
-            <LangToggle />
-            <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} />
+            <Link to={"/favorites"}>
+              <FaRegHeart className="nav-button" />
+            </Link>
+            <TranslateDropdown isOpen={isTranslateOpen} open={toggleTranslate} />
+            {/* <SettingsDropdown isOpen={isSettingsOpen} open={toggleSettings} /> */}
+            <Logout />
           </div>
+
         </nav>
 
       )}

@@ -9,9 +9,9 @@ const Greetings = () => {
   const { t } = useTranslation("translation", { keyPrefix: "greet" });
 
   return (
-    <div className='flex flex-col items-center lg:items-start lg:flex-row gap-3  h-56 justify-center relative'>
-      <p className='text-[25px] lg:text-[34px]  text-emerald-50 z-20 pt-8'>{`${isEvening ? t("evening") : t("morning")}`},</p>
-      <p className='text-[25px] lg:text-[34px] font-bold text-white z-20 pt-8'>{username}</p>
+    <div className='flex  items-start lg:items-start  gap-3  justify-start relative'>
+      <p className='text-[16px] lg:text-[18px]  text-emerald-50 z-20 pt-8'>{`${isEvening ? t("evening") : t("morning")}`},</p>
+      <p className='text-[16px] lg:text-[18px] font-bold text-orange-100 z-20 pt-8'>{username}!</p>
     </div>
   )
 }

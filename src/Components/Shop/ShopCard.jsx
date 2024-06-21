@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
-import { FavoriteCtx } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/favorites/favoriteSlice";
 
@@ -25,24 +24,29 @@ const ShopCard = ({ shop }) => {
   }
 
   return (
-    <div className="shop-card bg-light">
-      <div className=" w-[200px] h-[200px] md:w-40 md:h-40 overflow-hidden rounded-t-lg lg:rounded-s-lg lg:rounded-tr-none flex justify-center items-center ">
+    <div className="shop-card bg-light w-[256px]">
+
+      <div className=" w-[200px] h-[200px] md:w-[256px] md:h-[256px] overflow-hidden rounded-xl flex justify-center ">
         <img className=" w-full h-full" src={shop?.image} alt="" loading="lazy" />
       </div>
-      <div className="flex flex-col gap-3 lg:gap-2 items-center lg:items-start ">
-        <div className="lg:px-5">
-          <p className="text-[20px] lg:text-[25px] ">{shop?.name}</p>
+
+      <div className="flex flex-col gap-3 lg:gap-2">
+
+        <div className="flex justify-between">
+          <p className="text-[20px] lg:text-[17px] font-bold  text-orange-950">{shop?.name}</p>
+          {isFavorite ? (
+            <FaHeart className="w-7 h-7 p-1 active:scale-50 duration-500" onClick={dislikeHandler} />
+          ) : (
+            <FaRegHeart className="w-7 h-7 p-1 active:scale-50 duration-500" onClick={likeHandler} />
+          )}
         </div>
-        <div className="lg:px-5 text-emerald-800 dark:text-slate-200 flex flex-col  justify-center lg:text-[14px] ">
-          <p className="text-[0px] lg:text-[14px] ">{shop?.address}</p>
-          <div className="flex flex-col lg:flex-row gap-2 items-center">
-            <p className="text-[12px] lg:text-[14px] ">{shop?.description}</p>
-            {isFavorite ? (
-              <FaHeart className="w-6 h-6 p-1 active:scale-50 duration-500" onClick={dislikeHandler} />
-            ) : (
-              <FaRegHeart className="w-6 h-6 p-1 active:scale-50 duration-500" onClick={likeHandler} />
-            )}
-          </div>
+
+        <div className=" text-orange-900 dark:text-slate-200 flex flex-col lg:text-[14px] ">
+
+          <p className="text-[12px] lg:text-[12px] line-clamp-1 ">{shop?.description}</p>
+          <p className="text-[0px] lg:text-[12px] line-clamp-1 ">{shop?.address}</p>
+
+
         </div>
       </div>
 

@@ -21,16 +21,23 @@ const FindPage = () => {
 
   return (
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
-      <div className="flex flex-col gap-3 flex-1 rounded-t-lg px-3 main-section bg-dark ">
+      <div className="flex flex-col gap-3 flex-1 rounded-t-lg  main-section bg-dark ">
         <div className="flex gap-3 justify-between">
-          <SortControls sortShops={(isAscending) => dispatch(orderShopList(sortList(shopList, isAscending)))} />
-          <PathViewer />
+         
+          {/* <PathViewer /> */}
         </div>
 
+        <div className="flex flex-col items-center gap-5 bg-gradient-to-r from-black to-95% to-amber-950 py-10">
+          <p className="inline-block bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-orange-200   text-transparent leading-tight text-[50px] text-center">{t("title")}</p>
+          <p className="text-orange-50 text-center w-[800px]">{t("desc")}</p>
+        </div>
+
+
         <div className="flex flex-col items-center gap-8">
+        <SortControls sortShops={(isAscending) => dispatch(orderShopList(sortList(shopList, isAscending)))} />
+
           <div className="flex flex-col gap-7 w-full">
 
-            <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
             <ShopList shopList={shopList} error={error} isLoading={isLoading} />
 
           </div>

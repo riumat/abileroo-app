@@ -19,11 +19,11 @@ const LangToggle = () => {
         checked={i18n.language !== "us"}
         height={15}
         width={30}
-        offColor="#a7f3d0"
-        onColor="#a7f3d0"
+        offColor="#ffda96"
+        onColor="#ffda96"
         checkedIcon={false}
-        onHandleColor="#064e3b"
-        offHandleColor="#064e3b"
+        onHandleColor="#4d3406"
+        offHandleColor="#4d3406"
         uncheckedIcon={false}
       />
 

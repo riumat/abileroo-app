@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import LangToggle from '../Components/LangToggle';
 import { getLogin } from '../redux/auth/authSlice';
+import TranslateDropdown from '../Components/Navbar/TranslateDropdown';
 
 const AuthPage = () => {
   const { isLoading } = useSelector(state => state.auth)
@@ -26,16 +27,16 @@ const AuthPage = () => {
   }
 
   return (
-    <div className='h-full w-full flex items-center justify-center'>
+    <div className='h-full w-full flex items-center justify-center bg-light'>
 
-      <div className='flex flex-col gap-5 rounded-xl w-[450px] bg-white p-7'>
+      <div className='flex flex-col gap-5 rounded-xl w-[450px] bg-light p-7'>
         <div className='flex items-center justify-center gap-2'>
           <Logo />
         </div>
         <div className='flex flex-col gap-2 items-center'>
-          <p className='text-[25px] text-emerald-900 font-semibold text-center'>{t("greet")}</p>
-          <LangToggle />
-          <p className='text-emerald-700 text-[14px] text-center'>{t("desc")}</p>
+          <p className='text-[25px] text-orange-900 font-semibold text-center'>{t("greet")}</p>
+          <TranslateDropdown/>
+          <p className='text-orange-800 text-[14px] text-center'>{t("desc")}</p>
         </div>
 
         <Login
@@ -43,9 +44,9 @@ const AuthPage = () => {
           isToSign={isToSign}
         />
 
-        <div className='border-t border-emerald-500 pt-3'>
+        <div className='border-t border-orange-900 pt-3'>
           <p
-            className='text-[13px] text-emerald-700 text-center cursor-pointer'
+            className='text-[13px] text-orange-800 text-center cursor-pointer'
             onClick={() => setIsToSign(prev => !prev)}
           >
             {`${isToSign ? t("switch.register") : t("switch.login")}`}

@@ -7,6 +7,8 @@ import PathViewer from '../Components/Navbar/PathViewer';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderList } from '../redux/order/orderSlice'
+import ErrorDisplay from "../Components/ErrorDisplay";
+import LoadingDisplay from "../Components/LoadingDisplay";
 
 const OrdersPage = () => {
   const { orderList, error, isLoading } = useSelector(state => state.order);
@@ -17,21 +19,8 @@ const OrdersPage = () => {
     dispatch(getOrderList());
   }, [])
 
-  if (error) {
-    return (
-      <div className='w-full h-full bg-dark flex justify-center items-center'>
-        <p>Failed to fetch data</p>
-      </div>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className='w-full h-full flex justify-center items-center bg-dark '>
-        <ClipLoader />
-      </div>
-    )
-  }
+  if (error) return <ErrorDisplay />
+  if (isLoading) return <LoadingDisplay />
 
   return (
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
