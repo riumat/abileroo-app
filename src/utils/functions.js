@@ -44,3 +44,10 @@ export const setDateString = () => {
   const minute = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
   return `${year}-${month}-${day}T${parseInt(hour) + 1}:${minute}`
 }
+
+export const setShopImage = (url) => {
+  if (url) {
+    return process.env.REACT_APP_BASE_URL + url;
+  }
+  return null;
+}

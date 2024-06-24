@@ -7,24 +7,25 @@ const Info = ({ description, address, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const favorites = useSelector(state => state.favorites.list);
   const dispatch = useDispatch();
+  console.log(id)
 
   useEffect(() => {
     setIsFavorite(favorites.includes(id));
   }, [favorites])
 
   return (
-    <div className="rounded-lg flex gap-y-7 lg:flex justify-between w-full py-5 bg-light">
+    <div className="rounded-lg flex gap-y-7 lg:flex justify-between w-full my-16 flex-1 text-orange-50  ">
 
-      <div className="border-r border-slate-400  items-center flex justify-center flex-1">
+      <div className="border-r border-orange-100/20  items-center flex justify-center flex-1">
         {isFavorite ? (
-          <FaHeart className="w-7 h-7 cursor-pointer" onClick={() => dispatch(removeFavorite(id))} />
+          <FaHeart className="w-7 h-7 cursor-pointer active:scale-75 duration-200" onClick={() => dispatch(removeFavorite(id))} />
         ) : (
-          <FaRegHeart className="w-7 h-7 cursor-pointer" onClick={() => dispatch(addFavorite(id))} />
+          <FaRegHeart className="w-7 h-7 cursor-pointer active:scale-75 duration-200" onClick={() => dispatch(addFavorite(id))} />
         )
         }
       </div>
 
-      <div className="border-r border-slate-400  items-center flex flex-col gap-2 justify-center flex-1">
+      <div className="border-r border-orange-100/20  items-center flex flex-col gap-2 justify-center flex-1">
         <p className="text-[13px] lg:text-[15px]">{description}</p>
       </div>
 

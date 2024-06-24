@@ -33,16 +33,16 @@ const ShopPage = () => {
   }
   return (
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
-      <div className="flex flex-col gap-5 px-3">
+      <div className="flex flex-col gap-5">
 
         <div className="flex gap-3 justify-end">
           <PathViewer />
         </div>
-        <div className="flex flex-col gap-7 items-center ">
+        <div className="flex justify-center p-5 bg-gradient-to-r from-black to-95% to-amber-950">
 
-          <div className="rounded-lg py-7 w-full px-12 md:px-32 flex flex-col gap-5 items-center bg-light">
-            <img src={shop?.image} alt="" className="w-[130px] h-[130px] rounded-lg object-cover" />
-            <p className="text-[28px] lg:text-[45px] logo-font">{shop?.name}</p>
+          <div className=" flex items-center gap-10 flex-1 ">
+            <img src={shop?.image} alt="" className="w-[200px] h-[200px] rounded-lg object-cover" />
+            <p className="text-[28px] lg:text-[45px] text-gradient from-white via-yellow-200 to-orange-200">{shop?.name}</p>
           </div>
           {shop && (
             <Info

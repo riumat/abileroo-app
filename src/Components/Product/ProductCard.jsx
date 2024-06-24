@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../redux/cart/cartSlice";
 import { LuPlusCircle } from "react-icons/lu";
+import { imageReplacer } from "../../utils/constants";
 
 
 
@@ -28,7 +29,7 @@ const ProductCard = ({ p }) => {
   }
 
   return (
-    <div className="relative flex flex-col w-52 md:w-[256px] h-[320px] items-center pb-5 gap-2 bg-light rounded-lg">
+    <div className="relative flex flex-col w-52 md:w-[256px] h-[320px] items-center pb-5 gap-2 bg-light rounded-lg cursor-pointer">
       {!isAvaiable && (
         <div className="product-filter">
           <MdErrorOutline className="w-6 h-6" />
@@ -38,18 +39,18 @@ const ProductCard = ({ p }) => {
       )}
 
 
-      <img src={p?.product_image} alt="" className="w-full h-36 object-cover rounded-xl" loading="lazy" />
+      <img src={p?.product_image ?? imageReplacer} alt="" className="w-full h-36 object-cover rounded-xl" loading="lazy" />
       <div className="flex flex-col items-center gap-2 py-3 w-full">
         <p className="text-[17px] font-bold text-orange-950">{p?.name}</p>
         <p className="text-[10px] text-center line-clamp-2 text-orange-900">{p?.description}</p>
         <div className="flex justify-between items-center">
           <p className="text-[35px]">{p?.price}€</p>
           <div className="cursor-pointer py-2 px-5 rounded-lg " onClick={() => addHandle(p)}>
-        <LuPlusCircle className="w-8 h-8 active:scale-50 active:text-green-500 duration-500" />
-      </div>
+            <LuPlusCircle className="w-8 h-8 active:scale-50 active:text-green-500 duration-500" />
+          </div>
         </div>
       </div>
-     
+
     </div>
 
   )

@@ -67,12 +67,10 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     font-family: "Poetsen One", sans-serif;
   }
 
-  
-  .bg-light {
-    @apply bg-light-main text-dark-main dark:bg-dark-main dark:text-light-main ;
-  }
 
- 
+  .bg-light {
+    @apply bg-[#faf4e3] text-orange-950 dark:bg-[#171203] dark:text-orange-50 duration-200;
+  }
 
   .card {
     @apply bg-white dark:bg-slate-950 text-emerald-900 dark:text-slate-100;
@@ -83,7 +81,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .nav-button {
-    @apply w-7 h-7  cursor-pointer bg-light-main dark:bg-dark-main  text-orange-900 hover:text-white p-1 rounded-lg hover:bg-orange-900 dark:text-orange-50 border-2 border-orange-900 dark:border-orange-50 ;
+    @apply w-7 h-7 cursor-pointer bg-light-main dark:bg-dark-main text-orange-900 hover:text-white p-1 rounded-lg hover:bg-orange-900 dark:text-orange-50 border-2 border-orange-900 dark:border-orange-50 active:scale-75 duration-300;
   }
 
   .bg-mobile {
@@ -95,7 +93,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .shop-card {
-    @apply flex flex-col  justify-start pb-2 lg:py-0 lg:justify-start  gap-5 rounded-lg md:text-[0px];
+    @apply flex flex-col justify-start pb-2 lg:py-0 lg:justify-start gap-5 rounded-lg md:text-[0px];
   }
 
   .img-filter {
@@ -103,7 +101,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .cart-controller {
-    @apply p-2 cursor-pointer active:scale-50 duration-500;
+    @apply p-2 cursor-pointer ;
   }
 
   .cart-input {
@@ -111,11 +109,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .nav-cart-badge {
-    @apply absolute -top-[2.5px] right-[6.5px] inline-flex items-center justify-center text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-orange-900 rounded py-[1.3px] px-[3px]  ;
+    @apply absolute -top-[2.5px] right-[6.5px] inline-flex items-center justify-center text-[10px] font-bold transform translate-x-1/2 -translate-y-1/2 text-white bg-orange-900 rounded py-[1.3px] px-[3px];
   }
 
   .nav-trans-badge {
-    @apply absolute top-0 right-0 inline-flex items-center justify-center text-[10px] transform translate-x-1/2 -translate-y-1/2 text-white  bg-emerald-950 rounded py-[0.5px] px-[3px] ;
+    @apply absolute top-0 right-0 inline-flex items-center justify-center text-[10px] transform translate-x-1/2 -translate-y-1/2 text-white bg-emerald-950 rounded py-[0.5px] px-[3px];
 
   }
 
@@ -134,7 +132,12 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   .nav-border {
     @apply border-b-2;
   }
-  .big-title{
-    @apply  inline-block bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-orange-300   text-transparent leading-tight  ;
+
+  .big-title {
+    @apply inline-block bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-orange-300 text-transparent leading-tight;
+  }
+
+  .text-gradient {
+    @apply inline-block bg-clip-text bg-gradient-to-r leading-tight text-transparent;
   }
 }

@@ -12,7 +12,7 @@ const UserCard = ({ onSubmit, shopId, total }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='p-5 bg-light rounded-lg shadow flex flex-col gap-5 items-center text-[14px]'
+      className='p-5 bg-light rounded-lg flex flex-col gap-5 items-center text-[14px]'
     >
       <div className="flex justify-between w-full">
         <p className=' text-[17px] pt-3'>{t("summary")}</p>
@@ -33,7 +33,7 @@ const UserCard = ({ onSubmit, shopId, total }) => {
         </div>
       </div>
 
-      <div className={`flex flex-col gap-3 px-3 py-2 text-[18px] w-full border rounded-lg ${errors.address ? "border-red-600 placeholder:text-red-400" : "border-slate-400 "}`}>
+      <div className={`flex flex-col gap-3 px-3 py-2 text-[18px] w-full border rounded-lg ${errors.address ? "border-red-600 placeholder:text-red-400" : "border-orange-950/30 "}`}>
         <p className='text-[13px] font-light text-center'>{t("labels.address")}</p>
 
         <input
@@ -43,7 +43,7 @@ const UserCard = ({ onSubmit, shopId, total }) => {
         />
       </div>
 
-      <div className={`flex flex-col gap-3 px-3 py-2 text-[18px] w-full border rounded-lg ${errors.date ? "border-red-600 placeholder:text-red-400" : "border-slate-400 "}`}>
+      <div className={`flex flex-col gap-3 px-3 py-2 text-[18px] w-full border rounded-lg ${errors.date ? "border-red-600 placeholder:text-red-400" : "border-orange-950/30"}`}>
         <p className='text-[13px] font-light text-center'>{t("labels.date")}</p>
 
         <input
@@ -57,21 +57,23 @@ const UserCard = ({ onSubmit, shopId, total }) => {
 
       <p className="text-[20px] font-bold">{t("total")}: {total}€</p>
 
-      <div className="flex w-full  gap-2">
+      <div className="flex flex-col gap-2">
 
-        <Link
-          to={`/shop/${shopId}`}
-          className="rounded-lg bg-white shadow p-3 text-slate-800 text-[15px] logo-font flex items-center justify-center flex-1"
-        >
-          {t("buttons.redirect")}
-        </Link>
+       
 
         <button
           type="submit"
-          className="p-3 bg-emerald-900 dark:bg-emerald-700 text-white text-[17px] rounded-lg flex-1"
+          className="p-3 bg-orange-950 dark:bg-orange-800 text-white text-[20px] rounded-lg px-24 py-5 font-semibold "
         >
           {t("buttons.checkout")}
         </button>
+
+        <Link
+          to={`/shop/${shopId}`}
+          className="rounded-lg bg-orange-800/20  px-3 py-2 text-orange-950 text-[14px] logo-font flex items-center justify-center"
+        >
+          {t("buttons.redirect")}
+        </Link>
 
       </div>
 

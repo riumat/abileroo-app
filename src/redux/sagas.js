@@ -3,6 +3,7 @@ import { watchGetAuth } from "./auth/authSagas"
 import { watchGetShop } from "./shop/shopSagas"
 import { watchGetProduct } from "./product/productSaga"
 import { watchGetOrder } from "./order/orderSagas"
+import { watchFavoritesSagas } from "./favorites/favoritesSagas"
 
 export const sagas = function* () {
   yield all([
@@ -10,5 +11,6 @@ export const sagas = function* () {
     fork(watchGetShop),
     fork(watchGetProduct),
     fork(watchGetOrder),
+    fork(watchFavoritesSagas),
   ])
 }

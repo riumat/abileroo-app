@@ -21,5 +21,7 @@ export const shopUrls = [
   "5f7dd07f-c775-4bc0-a9c0-7eaa558763c6"
 ]
 
+export const imageReplacer="https://www.mangiosenza.it/wp-content/plugins/userpro/img/placeholder.jpg";
+
 
 

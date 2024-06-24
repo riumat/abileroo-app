@@ -10,8 +10,8 @@ const Greetings = () => {
 
   return (
     <div className='flex  items-start lg:items-start  gap-3  justify-start relative'>
-      <p className='text-[16px] lg:text-[18px]  text-emerald-50 z-20 pt-8'>{`${isEvening ? t("evening") : t("morning")}`},</p>
-      <p className='text-[16px] lg:text-[18px] font-bold text-orange-100 z-20 pt-8'>{username}!</p>
+      <p className='text-[16px] lg:text-[18px]  text-emerald-50 z-20 '>{`${isEvening ? t("evening") : t("morning")}`},</p>
+      <p className='text-[16px] lg:text-[18px] font-bold text-orange-100 z-20 '>{username}!</p>
     </div>
   )
 }
