@@ -118,7 +118,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .nav-dropdown {
-    @apply absolute right-0 z-30 mt-2 w-56 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-2 text-[14px];
+    @apply absolute z-30 w-36 mt-2 -right-7 origin-top-right rounded-lg  ring-1 ring-black ring-opacity-5 focus:outline-none text-[14px];
   }
 
   .product-filter {

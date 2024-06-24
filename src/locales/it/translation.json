@@ -3,7 +3,7 @@
     "morning": "Buongiorno",
     "evening": "Buonasera"
   },
-  "sidebar": {
+  "navbar": {
     "home": "Home",
     "shops": "Attività",
     "products": "Prodotti",

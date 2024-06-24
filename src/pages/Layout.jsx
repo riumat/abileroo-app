@@ -1,18 +1,11 @@
 import Navbar from "../Components/Navbar/Navbar";
-import Sidebar from "../Components/Sidebar";
-import { useSidebar } from "../utils/hooks";
 
 const Layout = ({ Prop }) => {
-  const [isSideOpen, setIsSideOpen] = useSidebar();
 
   return (
     <div className="flex flex-col  overflow-hidden h-full bg-light dark:bg-dark">
-      {isSideOpen && window.innerWidth < 768 && (
-        <div className="bg-mobile" onClick={() => setIsSideOpen(prev => !prev)}></div>
-      )}
-      <Navbar toggleSidebar={() => setIsSideOpen(prev => !prev)} />
+      <Navbar />
       <div className="flex gap-3 overflow-hidden h-full">
-        {/* <Sidebar isSideOpen={isSideOpen} /> */}
         {Prop}
       </div>
     </div>

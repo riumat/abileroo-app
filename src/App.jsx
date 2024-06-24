@@ -14,7 +14,7 @@ const App = () => {
   }, [success, token, error])
 
   return (
-        <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-slate-950 overflow-hidden">
+        <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-neutral-950 overflow-hidden">
           <div className='flex flex-col h-full'>
             <Router />
           </div>

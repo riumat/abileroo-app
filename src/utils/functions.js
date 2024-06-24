@@ -51,3 +51,8 @@ export const setShopImage = (url) => {
   }
   return null;
 }
+
+export const toggleDarkMode = () => {
+  document.documentElement.classList.toggle("dark");
+  return document.documentElement.classList.contains("dark");
+}

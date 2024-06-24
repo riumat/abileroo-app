@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 
 export const useSidebar = () => {
@@ -11,6 +11,19 @@ export const useSidebar = () => {
   });
 
   return [isSideOpen, setIsSideOpen];
+}
+
+export const useMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const updateMedia = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+  return isMobile;
 }
 
 
@@ -33,4 +46,30 @@ export const useDate = () => {
     setIsEvening(hour > 13);
   }, [])
   return isEvening;
+}
+
+export const useDarkMode = () => {
+  const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains("dark"));
+  return [isDarkMode, setIsDarkMode];
+}
+
+
+export const useComponentVisible = (initialIsVisible) => {
+  const [isVisible, setIsVisible] = useState(initialIsVisible);
+  const ref = useRef(null);
+
+  const handleClickOutside = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, []);
+
+  return { ref, isVisible, setIsVisible };
 }

@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import FindShopButton from '../Components/FindShopButton';
 import { MdErrorOutline } from 'react-icons/md';
 import OrderCard from '../Components/Product/OrderCard';
-import { ClipLoader } from 'react-spinners';
-import PathViewer from '../Components/Navbar/PathViewer';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderList } from '../redux/order/orderSlice'
@@ -26,7 +24,6 @@ const OrdersPage = () => {
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
       <div className="flex flex-col gap-3 flex-1 bg-dark rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
         <div className="flex gap-3 justify-end">
-          <PathViewer />
         </div>
         {orderList.length === 0 ? (
           <div className="flex flex-col items-center gap-10 pt-8">

@@ -3,7 +3,6 @@ import ProductCard from "../Components/Product/ProductCard";
 import { useParams } from "react-router";
 import Info from "../Components/Shop/Info";
 import { ClipLoader } from "react-spinners";
-import PathViewer from "../Components/Navbar/PathViewer";
 import { useDispatch, useSelector } from "react-redux";
 import { getShop } from "../redux/shop/shopSlice";
 
@@ -36,7 +35,6 @@ const ShopPage = () => {
       <div className="flex flex-col gap-5">
 
         <div className="flex gap-3 justify-end">
-          <PathViewer />
         </div>
         <div className="flex justify-center p-5 bg-gradient-to-r from-black to-95% to-amber-950">
 

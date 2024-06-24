@@ -3,7 +3,7 @@
     "morning": "Good Morning",
     "evening": "Good Evening"
   },
-  "sidebar": {
+  "navbar": {
     "home": "Home",
     "shops": "Shops",
     "products": "Products",

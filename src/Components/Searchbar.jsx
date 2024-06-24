@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 const Searchbar = () => {
   const [query, setQueryName] = useState("");
   const navigate = useNavigate();
-  const {t}=useTranslation()
+  const { t } = useTranslation()
 
   const submitHandle = (e) => {
     e.preventDefault();

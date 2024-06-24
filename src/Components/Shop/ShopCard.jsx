@@ -12,7 +12,6 @@ const ShopCard = ({ shop }) => {
 
   useEffect(() => {
     setIsFavorite(favorites.includes(shop?.id));
-    console.log(shop)
   }, [favorites, shop?.id])
 
   const dislikeHandler = (e) => {
@@ -26,7 +25,7 @@ const ShopCard = ({ shop }) => {
   }
 
   return (
-    <div className="shop-card bg-light w-[256px] cursor-pointer">
+    <div className="shop-card bg-light w-[200px] md:w-[256px] cursor-pointer">
 
       <div className=" w-[200px] h-[200px] md:w-[256px] md:h-[256px] overflow-hidden rounded-xl flex justify-center ">
         <img className=" w-full h-full object-cover" src={shop?.image ?? imageReplacer} alt="" loading="lazy" />

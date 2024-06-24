@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import SortControls from "../Components/Sort/SortControls";
 import ProductList from "../Components/Product/ProductList";
-import PathViewer from "../Components/Navbar/PathViewer";
 import { useTranslation } from "react-i18next";
 import { sortList } from "../utils/functions";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +22,6 @@ const ProductsPage = () => {
 
         <div className="flex gap-3 justify-between">
 
-          {/* <PathViewer /> */}
         </div>
 
         <div className="flex flex-col items-center gap-5 bg-gradient-to-r from-black to-95% to-amber-950 py-10">

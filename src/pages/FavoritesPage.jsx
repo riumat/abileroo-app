@@ -3,7 +3,6 @@ import SortControls from "../Components/Sort/SortControls";
 import ShopList from "../Components/Shop/ShopList";
 import FindShopButton from "../Components/FindShopButton";
 import { MdErrorOutline } from "react-icons/md";
-import PathViewer from "../Components/Navbar/PathViewer";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { sortList } from "../utils/functions";
@@ -17,16 +16,14 @@ const FavoritesPage = () => {
 
   useEffect(() => {
     dispatch(resolveFavorites());
-    console.log(list)
   }, [ids])
 
   return (
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
-      <div className="flex flex-col gap-3 flex-1 bg-dark rounded-t-lg px-3 overflow-y-auto overflow-x-hidden ">
+      <div className="flex flex-col gap-3 flex-1 bg-dark rounded-t-lg  overflow-y-auto overflow-x-hidden ">
 
         <div className="flex gap-3 justify-between">
           <SortControls sortShops={(isAscending) => dispatch(orderFavorites(sortList(list, isAscending)))} />
-          <PathViewer />
         </div>
         {list?.length === 0 && !isLoading ? (
           <div className="flex flex-col items-center gap-10 pt-8">
@@ -36,7 +33,9 @@ const FavoritesPage = () => {
           </div>
         ) : (
           <div className="flex flex-col gap-7 w-full">
-            <p className="logo-font text-[30px] text-center dark:text-slate-100">{t("title")}</p>
+            <div className="flex flex-col items-center gap-5 bg-gradient-to-r from-black to-95% to-amber-950 py-10">
+          <p className="text-gradient from-white via-yellow-200 to-orange-200 text-[50px] text-center">{t("title")}</p>
+        </div>
 
             <ShopList shopList={list} isLoading={isLoading} error={error} />
           </div>
