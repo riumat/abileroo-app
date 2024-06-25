@@ -62,7 +62,7 @@ const CartInfoForm = ({ onSubmit, shopId, total }) => {
 
         <Link
           to={`/shop/${shopId}`}
-          className="rounded-lg bg-orange-800/20  px-3 py-2 text-orange-950 text-[14px] flex items-center justify-center"
+          className="rounded-lg bg-orange-800/20 dark:bg-orange-800/40  px-3 py-2 text-orange-950 dark:text-orange-100 text-[14px] flex items-center justify-center"
         >
           {t("buttons.redirect")}
         </Link>

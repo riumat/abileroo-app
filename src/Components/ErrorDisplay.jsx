@@ -5,8 +5,8 @@ const ErrorDisplay = () => {
   return (
     <div className='w-full h-full bg-dark flex justify-center items-center '>
       <div className="flex flex-col">
-        <p className="text-[30px] text-center text-orange-950">{t("title")}</p>
-        <p className="text-[18px] text-center text-orange-900">{t("desc")}</p>
+        <p className="text-[30px] text-center text-orange-950 dark:text-orange-50">{t("title")}</p>
+        <p className="text-[18px] text-center text-orange-900 dark:text-orange-100">{t("desc")}</p>
       </div>
     </div>
   )

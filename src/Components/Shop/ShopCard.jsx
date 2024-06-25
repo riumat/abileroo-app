@@ -4,6 +4,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/favorites/favoriteSlice";
 import { imageReplacer } from "../../utils/constants";
+import { motion } from "framer-motion";
 
 const ShopCard = ({ shop }) => {
   const [isFavorite, setIsFavorite] = useState();
@@ -25,7 +26,7 @@ const ShopCard = ({ shop }) => {
   }
 
   return (
-    <div className="shop-card bg-light w-[200px] md:w-[256px] cursor-pointer">
+    <motion.div className="shop-card bg-light w-[200px] md:w-[256px] cursor-pointer" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:1}} >
 
       <div className=" w-[200px] h-[200px] md:w-[256px] md:h-[256px] overflow-hidden rounded-xl flex justify-center ">
         <img className=" w-full h-full object-cover" src={shop?.image ?? imageReplacer} alt="" loading="lazy" />
@@ -51,7 +52,7 @@ const ShopCard = ({ shop }) => {
         </div>
       </div>
 
-    </div>
+    </motion.div>
   )
 }
 

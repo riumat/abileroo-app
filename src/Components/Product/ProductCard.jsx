@@ -40,9 +40,9 @@ const ProductCard = ({ p }) => {
 
 
       <img src={p?.product_image ?? imageReplacer} alt="" className="w-full h-36 object-cover rounded-xl" loading="lazy" />
-      <div className="flex flex-col items-center gap-2 py-3 w-full">
-        <p className="text-[17px] font-bold text-orange-950">{p?.name}</p>
-        <p className="text-[10px] text-center line-clamp-2 text-orange-900">{p?.description}</p>
+      <div className="flex flex-col items-center gap-2 py-3 w-full ">
+        <p className="text-[17px] font-bold text-orange-950 dark:text-orange-50">{p?.name}</p>
+        <p className="text-[10px] text-center line-clamp-2 text-orange-900 dark:text-orange-100">{p?.description}</p>
         <div className="flex justify-between items-center">
           <p className="text-[35px]">{p?.price}€</p>
           <div className="cursor-pointer py-2 px-5 rounded-lg " onClick={() => addHandle(p)}>
