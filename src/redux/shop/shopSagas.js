@@ -1,11 +1,11 @@
 import { put, takeLatest } from "redux-saga/effects";
-import { axiosBase } from "../../utils/axios.config";
 import { getShopError, getShopListError, getShopListSuccess, getShopSuccess } from "./shopSlice";
+import { getShopFromId, getShopFromQuery } from "../../utils/fetchers";
 
 const getShopListSaga = function* ({ payload }) {
   const query = payload ?? "";
   try {
-    const res = yield axiosBase.get(`shop/shops/?search=${query}`);
+    const res = yield getShopFromQuery(query);
 
     yield put(getShopListSuccess({
       shopList: [...res.data]
@@ -18,7 +18,7 @@ const getShopListSaga = function* ({ payload }) {
 
 const getShopSaga = function* ({ payload }) {
   try {
-    const res = yield axiosBase.get(`shop/shop/${payload}`);
+    const res = yield getShopFromId(payload);
     yield put(getShopSuccess({
       shop: {
         id: res.data.id,

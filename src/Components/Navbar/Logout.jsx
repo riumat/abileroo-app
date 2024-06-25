@@ -6,7 +6,7 @@ const Logout = () => {
   const dispatch = useDispatch();
   return (
     <div className="flex gap-1 items-center text-orange-900 dark:text-orange-50 cursor-pointer" onClick={() => dispatch(logout())}>
-      <p className="text-[14px] ">Logout</p>
+      <p className="text-[0px] lg:text-[14px] ">Logout</p>
       <CgLogOut />
     </div>
   )

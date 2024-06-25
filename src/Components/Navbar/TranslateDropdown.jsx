@@ -2,18 +2,20 @@ import { translateOptions } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
 import { MdOutlineArrowDropDownCircle } from "react-icons/md";
-import { forwardRef } from "react";
+import { useComponentVisible } from "../../utils/hooks";
 
 
-const TranslateDropdown = forwardRef(function TranslateDropdown({ isOpen, open }, ref) {
+const TranslateDropdown = () => {
   const { i18n } = useTranslation();
+  const { ref, isVisible, setIsVisible } = useComponentVisible(false);
+
   return (
-    <div className="relative cursor-pointer bg-light" onClick={open} ref={ref}>
-      <div className="flex gap-1 items-center text-orange-900 dark:text-orange-50">
-        <p className="text-[14px] ">{i18n.language === "us" ? "English" : "Italiano"}</p>
+    <div className="relative cursor-pointer bg-light" onClick={() => setIsVisible(prev => !prev)} ref={ref}>
+      <div className="flex flex-col sm:flex-row gap-0 sm:gap-1 items-center text-orange-900 dark:text-orange-50">
+        <p className=" text-[10px] sm:text-[14px] ">{i18n.language === "us" ? "English" : "Italiano"}</p>
         <MdOutlineArrowDropDownCircle />
       </div>
-      {isOpen && (
+      {isVisible && (
         <div className="nav-dropdown bg-light flex flex-col ">
 
           {translateOptions.map((option, i) => (
@@ -28,6 +30,6 @@ const TranslateDropdown = forwardRef(function TranslateDropdown({ isOpen, open }
       )}
     </div>
   )
-})
+}
 
 export default TranslateDropdown

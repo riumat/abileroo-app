@@ -1,18 +1,10 @@
 import { put, takeLatest } from "redux-saga/effects";
-import { axiosBase } from "../../utils/axios.config";
 import { getLoginError, getLoginSuccess } from "./authSlice";
-import { formBuilder } from "../../utils/functions";
+import { sendCredentials } from "../../utils/fetchers";
 
 const getAuthSaga = function* ({ payload }) {
   try {
-    const response = yield axiosBase({
-      url: "login-token/",
-      method: "post",
-      data: formBuilder(payload.email, payload.password),
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = yield sendCredentials(payload);
     yield put(getLoginSuccess({
       userInfo: {
         email: payload.email,

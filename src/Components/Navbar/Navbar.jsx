@@ -6,18 +6,17 @@ import MobileSearchbar from "../Sort/MobileSearchbar";
 import { IoMdClose } from "react-icons/io";
 import TranslateDropdown from "./TranslateDropdown";
 import Logout from "./Logout";
-import { useComponentVisible, useMobile } from "../../utils/hooks";
+import { useBreakpoints } from "../../utils/hooks";
 import NavLinks from "./NavLinks";
 import NavIcons from "./NavIcons";
 
 
 const Navbar = () => {
-  const isMobile = useMobile();
+  const { isMobile, isTablet } = useBreakpoints();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { ref, isVisible, setIsVisible } = useComponentVisible(false);
 
   return (
-    <nav className="rounded-b-lg bg-light shadow-none" >
+    <nav className="bg-light" >
       {isSearchOpen ? (
         <div className="flex justify-between items-center text-emerald-800 dark:text-slate-100 pb-[5.5px]">
           <Searchbar />
@@ -28,8 +27,8 @@ const Navbar = () => {
       ) : (
         <nav className="flex items-center justify-between md:p-3 py-3 px-1">
 
-          <div className="flex gap-3 md:gap-10 items-center">
-            <Link to={"/home"} className=" ms-3 md:ms-10">
+          <div className="flex gap-3 md:gap-10 items-center flex-1 justify-center">
+            <Link to={"/home"} className=" ms-3 ">
               <Logo />
             </Link>
 
@@ -40,11 +39,12 @@ const Navbar = () => {
             )}
           </div>
 
-          <NavLinks />
-
-          <div className="flex gap-3 md:gap-5 me-3 md:me-10 items-center">
+          <div className=" flex flex-1 justify-center">
+            <NavLinks isTablet={isTablet} />
+          </div>
+          <div className="flex gap-3 md:gap-5 xl:gap-7 me-3  items-center flex-1 justify-end">
             <NavIcons />
-            <TranslateDropdown isOpen={isVisible} open={() => setIsVisible(prev => !prev)} ref={ref} />
+            <TranslateDropdown />
             <Logout />
           </div>
 

@@ -1,8 +1,6 @@
 import { useState } from "react"
 import { useTranslation } from "react-i18next";
 import { IoSearchSharp } from "react-icons/io5";
-
-
 import { useNavigate } from "react-router";
 
 const Searchbar = () => {
@@ -18,10 +16,10 @@ const Searchbar = () => {
   return (
     <form
       onSubmit={(e) => submitHandle(e)}
-      className="flex items-center justify-between flex-grow rounded-s-lg md:rounded-lg bg-dark text-orange-900 dark:text-orange-50 text-[15px] cursor-text w-56"
+      className="flex items-center justify-between flex-grow rounded-s-lg md:rounded-lg bg-dark text-orange-900 dark:text-orange-50 text-[15px] cursor-text w-56 "
     >
       <div className="px-3 py-1">
-        <IoSearchSharp className="w-5 h-5" />
+        <IoSearchSharp className="w-5 h-5 text-orange-900 dark:text-orange-50"  />
       </div>
 
       <input

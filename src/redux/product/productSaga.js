@@ -1,10 +1,10 @@
 import { put, takeLatest } from "redux-saga/effects"
-import { axiosBase } from "../../utils/axios.config"
 import { getProductListError, getProductListSuccess } from "./productSlice";
+import { getProducts } from "../../utils/fetchers";
 
 const getProductSaga = function* () {
   try {
-    const res = yield axiosBase.get("product/products/"); 
+    const res = yield getProducts(); 
     yield put(getProductListSuccess({
       productList: [...res.data],
     }));

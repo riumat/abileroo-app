@@ -12,15 +12,15 @@ const HomePage = () => {
 
           <Greetings />
 
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center flex-col md:flex-row md:gap-0 gap-10">
 
             <div className="flex-1 flex flex-col gap-10">
               <BigTitle />
               <FindShopButton />
             </div>
 
-            <div className="flex-1 flex justify-center">
-              <img src="bg-image.png" className="h-[400px] scale-[2]" alt="" />
+            <div className="flex-1 flex  justify-center">
+              <img src="./images/bg-image.webp" className="h-[400px] scale-[1.5] lg:scale-[2]" alt="" />
             </div>
 
           </div>

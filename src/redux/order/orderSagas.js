@@ -1,16 +1,11 @@
 import { put, select, takeLatest } from "redux-saga/effects"
 import { getOrderListError, getOrderListSuccess } from "./orderSlice";
-import { axiosBase } from "../../utils/axios.config";
+import { getOrdersFromEmail } from "../../utils/fetchers";
 
 const getOrderListSaga = function* () {
   const { token, userInfo } = yield select(state => state.auth);
   try {
-    const res = yield axiosBase(`order/orders/?client_email=${userInfo.email}`, {
-      method: "get",
-      headers: {
-        "Authorization": `Token ${token}`
-      }
-    })
+    const res = yield getOrdersFromEmail(userInfo.email, token)
     yield put(getOrderListSuccess({
       orderList: [...res.data],
     }))
