@@ -7,7 +7,6 @@ const Info = ({ description, address, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const favorites = useSelector(state => state.favorites.list);
   const dispatch = useDispatch();
-  console.log(id)
 
   useEffect(() => {
     setIsFavorite(favorites.includes(id));

@@ -28,6 +28,7 @@ const CheckoutPage = () => {
       { product: product.id, amount: product.count }
     ))
 
+    //TODO saga?
     const body = new FormData();
     body.append("shop", order[0].shop);
     body.append("date_time_delivery", delivery);
@@ -63,8 +64,7 @@ const CheckoutPage = () => {
   }
   useEffect(() => {
     if (!summary) navigate(-1);
-    // eslint-disable-next-line
-  }, [])
+  }, [summary])
 
   return (
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">

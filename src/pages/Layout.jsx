@@ -5,9 +5,9 @@ const Layout = ({ Prop }) => {
   return (
     <div className="flex flex-col  overflow-hidden h-full bg-light dark:bg-dark">
       <Navbar />
-      <div className="flex gap-3 overflow-hidden h-full">
+      <section className="flex gap-3 overflow-hidden h-full">
         {Prop}
-      </div>
+      </section>
     </div>
   )
 }

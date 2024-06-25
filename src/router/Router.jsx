@@ -1,7 +1,18 @@
-import { useRoutes } from 'react-router'
+import { useLocation, useNavigate, useRoutes } from 'react-router'
 import { AuthPage, HomePage, FindPage, ProductsPage, ShopPage, CartPage, FavoritesPage, OrdersPage, CheckoutPage, Layout, ProtectedRoute } from "../utils/pages"
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const Router = () => {
+  const { success, token, error } = useSelector(state => state.auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (success && token && !error) location.pathname !== "/" ? navigate(location.pathname) : navigate("/home");
+    if (error || !success) navigate("/");
+  }, [success, token, error])
+
   const routes = useRoutes([
     {
       element: <AuthPage />,

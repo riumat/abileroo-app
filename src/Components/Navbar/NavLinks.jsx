@@ -3,7 +3,6 @@ import LinkButton from "./LinkButton"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useComponentVisible } from "../../utils/hooks";
 
-
 const NavLinks = ({ isTablet }) => {
   const { t } = useTranslation("translation", { keyPrefix: "navbar" })
   const { ref, isVisible, setIsVisible } = useComponentVisible(false);

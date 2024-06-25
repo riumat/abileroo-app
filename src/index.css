@@ -101,11 +101,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .cart-controller {
-    @apply p-2 cursor-pointer ;
+    @apply p-2 cursor-pointer;
   }
 
   .cart-input {
-    @apply p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[15px] hover:bg-slate-100 hover:dark:bg-slate-900 rounded-lg;
+    @apply p-1 border-b dark:border-slate-700 bg-transparent dark:text-white text-[15px] hover:bg-slate-100 hover:dark:bg-slate-900 ;
   }
 
   .nav-cart-badge {
@@ -118,7 +118,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   }
 
   .nav-dropdown {
-    @apply absolute z-30 w-36 mt-2 -right-7 origin-top-right rounded-lg  ring-1 ring-black ring-opacity-5 focus:outline-none text-[14px];
+    @apply absolute z-30 w-36 mt-2 -right-7 origin-top-right rounded-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-[14px];
   }
 
   .product-filter {
@@ -139,5 +139,9 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
   .text-gradient {
     @apply inline-block bg-clip-text bg-gradient-to-r leading-tight text-transparent;
+  }
+
+  .cart-form-field {
+    @apply flex flex-col gap-3 px-3 py-2 text-[18px] w-full border ;
   }
 }

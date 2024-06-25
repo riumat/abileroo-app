@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { MdErrorOutline } from "react-icons/md";
 import { useSelector } from "react-redux";
 
-const Login = ({ onSubmit, isToSign }) => {
+const AuthForm = ({ onSubmit, isToSign }) => {
   const { error } = useSelector(state => state.auth);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { t } = useTranslation("translation", { keyPrefix: "auth-page" });
@@ -69,4 +69,4 @@ const Login = ({ onSubmit, isToSign }) => {
   )
 }
 
-export default Login
+export default AuthForm

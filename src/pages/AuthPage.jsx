@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import Logo from '../Components/Logo';
-import Login from '../Components/Auth/Login';
 import { ClipLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import LangToggle from '../Components/LangToggle';
-import { getLogin } from '../redux/auth/authSlice';
+import { getLogin, getRegister } from '../redux/auth/authSlice';
 import TranslateDropdown from '../Components/Navbar/TranslateDropdown';
+import AuthForm from '../Components/Auth/AuthForm';
 
 const AuthPage = () => {
   const { isLoading } = useSelector(state => state.auth)
@@ -15,7 +14,11 @@ const AuthPage = () => {
   const dispatch = useDispatch();
 
   const onSubmit = data => {
-    dispatch(getLogin(data));
+    if (!isToSign) {
+      dispatch(getLogin(data));
+    } else {
+      dispatch(getRegister(data));
+    }
   }
 
   if (isLoading) {
@@ -35,11 +38,11 @@ const AuthPage = () => {
         </div>
         <div className='flex flex-col gap-2 items-center'>
           <p className='text-[25px] text-orange-900 font-semibold text-center'>{t("greet")}</p>
-          <TranslateDropdown/>
+          <TranslateDropdown />
           <p className='text-orange-800 text-[14px] text-center'>{t("desc")}</p>
         </div>
 
-        <Login
+        <AuthForm
           onSubmit={onSubmit}
           isToSign={isToSign}
         />

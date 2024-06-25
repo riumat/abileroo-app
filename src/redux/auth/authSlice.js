@@ -44,9 +44,13 @@ export const authSlice = createSlice({
     },
     fulfilled: state => {
       state.isLoading = false;
+    },
+    getRegister: state => {
+      state.isLoading = true;
+      state.error = false;
     }
   }
 })
 
-export const { getLoginSuccess, getLoginError, logout, getLogin, fulfilled } = authSlice.actions;
+export const { getLoginSuccess, getLoginError, logout, getLogin, fulfilled, getRegister } = authSlice.actions;
 export default authSlice.reducer;

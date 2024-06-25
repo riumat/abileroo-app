@@ -16,6 +16,7 @@ const CartProductCard = ({ p }) => {
   const removeHandle = (id) => {
     dispatch(remove({ id: id }))
   }
+  
   return (
     <div className="flex justify-between text-[14px]  items-center  rounded-lg">
       <div className="flex gap-5 items-center">

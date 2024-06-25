@@ -1,24 +1,19 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import Router from './router/Router';
+import store from './redux/store';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
-  const { success, token, error } = useSelector(state => state.auth);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (success && token && !error) location.pathname !== "/" ? navigate(location.pathname) : navigate("/home");
-    if (error || !success) navigate("/");
-  }, [success, token, error])
 
   return (
-        <main className="absolute w-full h-full t-0 l-0 bg-white dark:bg-neutral-950 overflow-hidden">
-          <div className='flex flex-col h-full'>
-            <Router />
-          </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <main className='w-screen h-screen'>
+          <Router />
         </main>
+      </BrowserRouter>
+    </Provider>
+
   );
 }
 

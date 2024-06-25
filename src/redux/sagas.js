@@ -1,7 +1,7 @@
 import { all, fork } from "redux-saga/effects"
 import { watchGetAuth } from "./auth/authSagas"
 import { watchGetShop } from "./shop/shopSagas"
-import { watchGetProduct } from "./product/productSaga"
+import { watchGetProduct } from "./product/productSagas"
 import { watchGetOrder } from "./order/orderSagas"
 import { watchFavoritesSagas } from "./favorites/favoritesSagas"
 
