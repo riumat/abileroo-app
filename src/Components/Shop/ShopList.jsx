@@ -12,8 +12,10 @@ const ShopList = ({ shopList, error, isLoading }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 justify-items-center lg:justify-items-center gap-x-10 gap-y-7 w-full">
       {shopList?.map((shop, i) => (
-        <motion.div key={`shop-card-${i}`} variants={listAnimation} initial="initial" animate="animate" transition={{ease:"easeOut", duration:0.6, delay: 0.2 * i }}>
-          <Link to={`/shop/${shop.id}`} className="cursor-pointer border-2 border-transparent p-3 rounded-xl hover:border-orange-900  hover:shadow-xl">
+        <motion.div key={`shop-card-${i}`} variants={listAnimation} initial="initial" animate="animate" transition={{ ease: "easeOut", duration: 0.6, delay: 0.2 * i }}
+          className="cursor-pointer border-2 border-transparent p-3 rounded-xl hover:border-orange-900  hover:shadow-xl"
+        >
+          <Link to={`/shop/${shop.id}`} >
             <ShopCard shop={shop} />
           </Link>
         </motion.div>

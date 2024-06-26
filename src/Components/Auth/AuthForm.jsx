@@ -48,7 +48,7 @@ const AuthForm = ({ onSubmit, isToSign }) => {
 
       <div className='flex gap-2'>
         <input type="checkbox" name="" id="" className='w-4 h-4 cursor-pointer border-emerald-700' />
-        <p className='text-[14px] text-orange-800'>{t("checkbox")}</p>
+        <p className='text-[14px] '>{t("checkbox")}</p>
       </div>
 
       <button

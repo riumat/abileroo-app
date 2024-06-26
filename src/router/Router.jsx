@@ -11,6 +11,7 @@ const Router = () => {
   useEffect(() => {
     if (success && token && !error) location.pathname !== "/" ? navigate(location.pathname) : navigate("/home");
     if (error || !success) navigate("/");
+    // eslint-disable-next-line
   }, [success, token, error])
 
   const routes = useRoutes([

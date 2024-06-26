@@ -112,12 +112,17 @@
       "wrong": "Incorrect email or password."
     }
   },
-  "fetch-error":{
-    "title":"Ops! Something went wrong.",
-    "desc":"Please try again later"
+  "fetch-error": {
+    "title": "Ops! Something went wrong.",
+    "desc": "Please try again later"
   },
-  "sort":{
-    "alf":"Alphabetical",
-    "inv":"Inverse Alphabetical"
+  "sort": {
+    "alf": "Alphabetical",
+    "inv": "Inverse Alphabetical"
+  },
+  "protected": {
+    "title": "Unauthorized",
+    "button": "Login",
+    "text": "to gain access"
   }
 }

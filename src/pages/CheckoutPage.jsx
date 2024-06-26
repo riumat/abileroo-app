@@ -25,11 +25,11 @@ const CheckoutPage = () => {
 
     dispatch(sendOrder({ order: order, delivery: delivery, address: address, email: email }));
   }
-  
+
   useEffect(() => {
     if (success) navigate("/home");
-
     if (!checkout && !success) navigate(-1);
+    // eslint-disable-next-line
   }, [checkout, success])
 
   if (isLoading) return <LoadingDisplay />
@@ -46,7 +46,7 @@ const CheckoutPage = () => {
 
           <p>{t("info.address")}: <span className="text-slate-950 dark:text-white font-bold">{checkout?.address}</span></p>
 
-          <p>{t("info.date")}: <span className="text-slate-950 dark:text-white font-bold">{date??""}</span></p>
+          <p>{t("info.date")}: <span className="text-slate-950 dark:text-white font-bold">{date ?? ""}</span></p>
         </div>
 
         <div className="rounded-lg shadow bg-white p-3 flex flex-col gap-3 dark:text-slate-300 dark:bg-slate-950">

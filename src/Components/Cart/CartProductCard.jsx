@@ -16,7 +16,7 @@ const CartProductCard = ({ p }) => {
   const removeHandle = (id) => {
     dispatch(remove({ id: id }))
   }
-  
+
   return (
     <div className="flex justify-between text-[14px]  items-center  rounded-lg">
       <div className="flex gap-5 items-center">
@@ -32,13 +32,13 @@ const CartProductCard = ({ p }) => {
 
       <div className="flex items-center me-7 border border-black dark:border-slate-400 ">
         <div
-          className="cart-controller rounded-s-lg border-e border-slate-500 "
+          className="cart-controller rounded-s-lg border-e"
           onClick={() => addHandle(p)}>
           <FaPlus className="w-3 h-3" />
         </div>
         <p className="px-3 text-center cursor-default w-8">{p.count}</p>
         <div
-          className="cart-controller rounded-e-lg border-s border-slate-500  "
+          className="cart-controller rounded-e-lg border-s "
           onClick={() => removeHandle(p.id)}>
           <FaMinus className="w-3 h-3" />
         </div>

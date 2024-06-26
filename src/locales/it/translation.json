@@ -119,5 +119,10 @@
   "sort":{
     "alf":"Alfabetico",
     "inv":"Alfabetico Inverso"
+  },
+  "protected": {
+    "title": "Non autorizzato",
+    "button": "Accedi",
+    "text": "per proseguire"
   }
 }
