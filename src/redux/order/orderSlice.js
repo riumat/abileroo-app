@@ -16,7 +16,7 @@ export const orderSlice = createSlice({
       localStorage.setItem("order", JSON.stringify([...state.orderList]));
     },
     getOrderListSuccess: (state, action) => {
-      state.orderList = [...action.payload.list];
+      state.checkout = [...action.payload.list];
       localStorage.setItem("order", JSON.stringify([...state.orderList]));
     },
     getOrderListError: state => {
@@ -29,10 +29,21 @@ export const orderSlice = createSlice({
     },
     setCheckout: (state, action) => {
       state.checkout = { ...action.payload.checkout };
+      state.error = false;
+      state.success = false;
+    },
+    sendOrder: state => {
+      state.error = false;
+      state.isLoading = true;
+    },
+    sendOrderSuccess: state => {
+      state.success = true;
+      state.error = false;
+      state.isLoading = false;
+      state.checkout = null;
     }
   }
-}
-)
+})
 
-export const { addToList, getOrderListSuccess, getOrderListError, getOrderList, setCheckout } = orderSlice.actions;
+export const { addToList, getOrderListSuccess, getOrderListError, getOrderList, setCheckout, sendOrder, sendOrderSuccess } = orderSlice.actions;
 export default orderSlice.reducer;

@@ -20,6 +20,24 @@ export const formBuilder = (email, password) => {
   return body;
 }
 
+export const orderBuilder = ({order, delivery, address, email}) => {
+  console.log(order,delivery,address,email)
+  const details = [...order].map(product => (
+    { product: product.id, amount: product.count }
+  ))
+
+  const body = new FormData();
+  body.append("shop", order[0].shop);
+  body.append("date_time_delivery", delivery);
+  body.append("address", address);
+  body.append("client_email", email);
+  body.append("shipped", false);
+  body.append("delivered", false);
+  body.append("details", details);
+
+  return body;
+}
+
 export const getCartFormatted = (list) => {
   const counter = list?.reduce((obj, product) => {
     if (!obj[product.id]) {

@@ -3,18 +3,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaBackspace, FaCheck } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAll } from "../redux/cart/cartSlice";
-import { addToList } from "../redux/order/orderSlice";
-import { axiosBase } from "../utils/axios.config";
+import { addToList, sendOrder } from "../redux/order/orderSlice";
+import LoadingDisplay from "../Components/LoadingDisplay";
+import ErrorDisplay from "../Components/ErrorDisplay";
 
 const CheckoutPage = () => {
-  const summary = useSelector(state => state.order.checkout);
+  const { success, checkout, isLoading, error } = useSelector(state => state.order);
   const { t } = useTranslation("translation", { keyPrefix: "check-page" });
-  const date = new Date(summary.delivery).toLocaleString("it");
+  const date = new Date(checkout?.delivery).toLocaleString("it");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const orderHandle = ({ order, date, total, delivery, address, email }) => {
+    console.log(order)
     dispatch(addToList({
       order: {
         order: order,
@@ -22,49 +23,18 @@ const CheckoutPage = () => {
         total: total
       }
     }))
-    dispatch(deleteAll());
 
-    const details = [...order].map(product => (
-      { product: product.id, amount: product.count }
-    ))
-
-    //TODO saga?
-    const body = new FormData();
-    body.append("shop", order[0].shop);
-    body.append("date_time_delivery", delivery);
-    body.append("address", address);
-    body.append("client_email", email);
-    body.append("shipped", false);
-    body.append("delivered", false);
-    body.append("details", details);
-
-    axiosBase({
-      url: "order/order-create/",
-      method: "post",
-      data: body,
-      headers: {
-        "Content-Type": "multipart/form-data", //application/x-www-form-urlencoded
-        "Authorization": `Token ${localStorage.getItem("token")}`
-      },
-    })
-      .then(res => {
-        console.log(res)
-        /*  if (res.status === 201) {
-           console.log("added")
-           console.log(res.data);
-           console.log(res.headers)
-         }
-         if (res.status === 400) {
-           console.log(res)
-         } */
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    dispatch(sendOrder({ order: order, delivery: delivery, address: address, email: email }));
   }
+  
   useEffect(() => {
-    if (!summary) navigate(-1);
-  }, [summary])
+    if (success) navigate("/home");
+
+    if (!checkout && !success) navigate(-1);
+  }, [checkout, success])
+
+  if (isLoading) return <LoadingDisplay />
+  if (error) return <ErrorDisplay />
 
   return (
     <div className="flex flex-col gap-5 flex-1 bg-dark rounded-t-lg overflow-auto">
@@ -73,27 +43,27 @@ const CheckoutPage = () => {
 
         <div className="rounded-lg shadow bg-white p-3 flex flex-col gap-3 dark:text-slate-300 dark:bg-slate-950">
           <p>{t("info.title")}:</p>
-          <p>Email: <span className="text-slate-950 dark:text-white font-bold">{summary.email}</span></p>
+          <p>Email: <span className="text-slate-950 dark:text-white font-bold">{checkout?.email}</span></p>
 
-          <p>{t("info.address")}: <span className="text-slate-950 dark:text-white font-bold">{summary.address}</span></p>
+          <p>{t("info.address")}: <span className="text-slate-950 dark:text-white font-bold">{checkout?.address}</span></p>
 
-          <p>{t("info.date")}: <span className="text-slate-950 dark:text-white font-bold">{date}</span></p>
+          <p>{t("info.date")}: <span className="text-slate-950 dark:text-white font-bold">{date??""}</span></p>
         </div>
 
         <div className="rounded-lg shadow bg-white p-3 flex flex-col gap-3 dark:text-slate-300 dark:bg-slate-950">
           <p>{t("order.title")}: </p>
-          {summary?.order?.map((product, index) => (
+          {checkout?.order?.map((product, index) => (
             <div key={`summary-product-${index}`}>
               <p className="text-slate-950 dark:text-white font-bold">{product.name} - x{product.count}</p>
             </div>
           ))}
 
-          <p>{t("order.total")}: <span className="text-slate-950 dark:text-white font-bold">{summary.total}€</span></p>
+          <p>{t("order.total")}: <span className="text-slate-950 dark:text-white font-bold">{checkout?.total}€</span></p>
         </div>
 
         <div className="flex md:flex-row flex-col gap-5 w-full">
           <button
-            onClick={() => orderHandle(summary)}
+            onClick={() => orderHandle(checkout)}
             className="rounded-lg bg-emerald-800 dark:bg-emerald-700 text-white p-2 flex-1 flex justify-center gap-2 items-center"
           >
             <FaCheck className="w-5 h-5" />

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { axiosBase } from "./axios.config";
-import { formBuilder } from "./functions";
+import { formBuilder, orderBuilder } from "./functions";
 import { registerMock } from "./constants";
 
 export const sendCredentials = async (payload) => {
@@ -44,4 +44,16 @@ export const getProducts = async () => {
 
 export const getShopFromQuery = async (query) => {
   return await axiosBase.get(`shop/shops/?search=${query}`)
+}
+
+export const postOrder = async (order, delivery, address, email) => {
+  return await axiosBase({
+    url: "https://run.mocky.io/v3/4a343ddb-1feb-4dda-bc90-158d052a755d ",//https://run.mocky.io/v3/4a343ddb-1feb-4dda-bc90-158d052a755d  order/order-create/
+    method: "post",
+    data: orderBuilder(order, delivery, address, email),
+    headers: {
+      "Content-Type": "multipart/form-data", //application/x-www-form-urlencoded
+      "Authorization": `Token ${localStorage.getItem("token")}`
+    },
+  })
 }
