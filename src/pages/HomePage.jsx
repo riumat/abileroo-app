@@ -8,7 +8,7 @@ const HomePage = () => {
 
   return (
     <AnimatedPage>
-      <div className="flex flex-col gap-5 main-section w-full">
+      <div className="main-section flex-col gap-5 ">
         <div className=" bg-gradient-to-r from-black to-95% to-amber-950">
           <div className=" mx-5 my-8 flex flex-col gap-5">
 

@@ -1,9 +1,9 @@
-import { translateOptions } from "../../utils/constants";
+import { dropdownsAnimation, translateOptions } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
 import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 import { useComponentVisible } from "../../utils/hooks";
-
+import { motion } from "framer-motion";
 
 const TranslateDropdown = () => {
   const { i18n } = useTranslation();
@@ -16,17 +16,17 @@ const TranslateDropdown = () => {
         <MdOutlineArrowDropDownCircle />
       </div>
       {isVisible && (
-        <div className="nav-dropdown bg-light flex flex-col ">
+        <motion.div className="nav-dropdown bg-light flex flex-col " variants={dropdownsAnimation} initial="initial" animate="animate" >
 
           {translateOptions.map((option, i) => (
-            <div key={`translatedropdown-${i}`} className="px-2 py-3 cursor-pointer w-full rounded-md bg-light active:scale-90 duration-100" >
+            <div key={`translatedropdown-${i}`} className="px-2 py-3 cursor-pointer w-full rounded-md bg-light active:scale-90 duration-100 hover:bg-orange-950/10" >
               <div onClick={() => i18n.changeLanguage(option.value)} className="flex items-center gap-3 justify-center" >
                 <ReactCountryFlag countryCode={option.country} style={{ fontSize: "1.7em" }} svg />
                 <p>{option.lang}</p>
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   )

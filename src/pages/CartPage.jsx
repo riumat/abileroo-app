@@ -24,7 +24,7 @@ const CartPage = () => {
           ) : (
             <div>
               <div className="bg-gradient-to-r from-black to-95% to-amber-950 flex justify-center py-5">
-                <p className="text-gradient from-white via-yellow-200 to-orange-200 text-[50px]  dark:text-slate-100">{t("title")}</p>
+                <p className="text-gradient from-white via-yellow-200 to-orange-200 page-title">{t("title")}</p>
               </div>
               <Cart />
             </div>

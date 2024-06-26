@@ -28,4 +28,19 @@ export const registerMock = "https://run.mocky.io/v3/fcefb1dd-1fcc-4b4a-98a6-595
 export const darkColor = "#431407";
 export const lightColor = "#fff7ed"
 
+export const dropdownsAnimation = {
+  initial: { opacity: 0, y: -5 },
+  animate: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.3 } },
+  exit: { opacity: 0, y: -5 },
+}
 
+export const pagesAnimation = {
+  initial: { opacity: 0, y: -20 },
+  animate: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.5 } },
+  exit: { opacity: 0, y: 20, transition: { ease: "easeOut", duration: 0.5 } },
+}
+
+export const listAnimation = {
+  initial: { opacity: 0, y: -20 },
+  animate: { opacity: 1, y: 0 },
+}

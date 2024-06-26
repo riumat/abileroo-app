@@ -18,7 +18,7 @@ const NavIcons = () => {
           <MdOutlineDarkMode className="nav-button" onClick={() => setIsDarkMode(toggleDarkMode())} />
         )}
       </div>
-      <Link to={"/cart"} className="relative mr-1">
+      <Link to={"/cart"} className="relative">
 
         <MdOutlineShoppingBag className="nav-button bg-light relative" />
 

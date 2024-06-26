@@ -23,8 +23,8 @@ const ProductsPage = () => {
         <div className="flex flex-col gap-3 flex-1 overflow-y-auto overflow-x-hidden bg-dark ">
 
           <div className="flex flex-col items-center gap-5 bg-gradient-to-r from-black to-95% to-amber-950 py-10">
-            <p className="text-gradient from-white via-yellow-200 to-orange-200 text-[50px] text-center">{t("title")}</p>
-            <p className="text-orange-50 text-center w-[800px]">{t("desc")}</p>
+            <p className="text-gradient from-white via-yellow-200 to-orange-200 page-title">{t("title")}</p>
+            <p className="text-orange-50 text-center w-[800px] page-desc">{t("desc")}</p>
           </div>
 
           <div className="flex flex-col items-center gap-8">
