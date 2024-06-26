@@ -24,6 +24,7 @@ export const shopUrls = [
 export const imageReplacer = "https://www.mangiosenza.it/wp-content/plugins/userpro/img/placeholder.jpg";
 
 export const registerMock = "https://run.mocky.io/v3/fcefb1dd-1fcc-4b4a-98a6-595b83b3e837";
+export const orderMock="https://run.mocky.io/v3/4a343ddb-1feb-4dda-bc90-158d052a755d"
 
 export const darkColor = "#431407";
 export const lightColor = "#fff7ed"

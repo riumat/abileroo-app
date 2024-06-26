@@ -15,7 +15,6 @@ const CheckoutPage = () => {
   const dispatch = useDispatch();
 
   const orderHandle = ({ order, date, total, delivery, address, email }) => {
-    console.log(order)
     dispatch(addToList({
       order: {
         order: order,

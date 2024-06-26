@@ -21,7 +21,6 @@ export const formBuilder = (email, password) => {
 }
 
 export const orderBuilder = ({order, delivery, address, email}) => {
-  console.log(order,delivery,address,email)
   const details = [...order].map(product => (
     { product: product.id, amount: product.count }
   ))

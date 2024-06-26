@@ -12,7 +12,6 @@ export const favoriteSlice = createSlice({
   initialState,
   reducers: {
     addFavorite: (state, action) => {
-      console.log(action.payload)
       state.ids = [...state.ids, action.payload.id]
       localStorage.setItem("liked", JSON.stringify([...state.ids]));
     },
